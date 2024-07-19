@@ -1,0 +1,24 @@
+--- 
+title: "HemaScope Tutorial"
+author: "Zhenyi Wang, Yuxin Miao, and Junyi Zhang"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+description: This is the tutorial for HemaScope.
+link-citations: yes
+github-repo: https://github.com/ZhenyiWangTHU/HemaScopeR/
+---
+
+# Introduction
+
+HemaScope is a specialized bioinformatics toolkit designed for analyzing both single-cell and spatial transcriptome sequencing data from hematopoietic cells, including myeloid and lymphoid lineages. We have developed an R package named HemaScopeR, a Shiny interface named HemaScopeShiny, and a cloud platform named HemaScopeCloud. 
+
+This tutorial introduces how to install and use the R package and Shiny interface, as well as how to access and operate the cloud platform.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/Figure1_latest.png")
+```
+
+<!--chapter:end:index.Rmd-->
+

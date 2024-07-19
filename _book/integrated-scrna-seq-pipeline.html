@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Integrated scRNA-seq pipeline | HemaScope Tutorial</title>
+  <meta name="description" content="This is the tutorial for HemaScope." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Integrated scRNA-seq pipeline | HemaScope Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the tutorial for HemaScope." />
+  <meta name="github-repo" content="https://github.com/ZhenyiWangTHU/HemaScopeR/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Integrated scRNA-seq pipeline | HemaScope Tutorial" />
+  
+  <meta name="twitter:description" content="This is the tutorial for HemaScope." />
+  
+
+<meta name="author" content="Zhenyi Wang and Yuxin Miao" />
+
+
+<meta name="date" content="2024-07-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="installation.html"/>
+<link rel="next" href="step-by-step-scrna-seq-pipeline.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">HemaScope</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.1</b> Install R and python</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.2</b> Install required R-packages</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-required-python-packages"><i class="fa fa-check"></i><b>2.3</b> Install required Python-packages</a></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-hemascoper"><i class="fa fa-check"></i><b>2.4</b> Install HemaScopeR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>4</b> Step-by-step scRNA-seq Pipeline</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>4.1</b> Step 1. Load the R packages and the input data</a></li>
+<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.2</b> Step 2. Quality Control</a></li>
+<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.3</b> Step 3. Clustering</a></li>
+<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.4</b> Step 4. Identify Cell Types</a></li>
+<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.5</b> Step 5. Visualization</a></li>
+<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.6</b> Step 6. Find DEGs</a></li>
+<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.7</b> Step 7. Assign Cell Cycles</a></li>
+<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.8</b> Step 8. Calculate Heterogeneity</a></li>
+<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.9</b> Step 9. Violin Plot for Marker Genes</a></li>
+<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.10</b> Step 10. Calculate Lineage Scores</a></li>
+<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.11</b> Step 11. GSVA</a></li>
+<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.12</b> Step 12. Construct Trajectories</a></li>
+<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.13</b> Step 13. TF Analysis</a></li>
+<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.14</b> Step 14. Cell-Cell Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html"><i class="fa fa-check"></i><b>5</b> Stey-by-step st-seq pipeline</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading"><i class="fa fa-check"></i><b>5.1</b> Step 1. Data loading</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>5.1.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.1.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#funciton-behavior"><i class="fa fa-check"></i><b>5.1.2</b> Funciton behavior:</a></li>
+<li class="chapter" data-level="5.1.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example"><i class="fa fa-check"></i><b>5.1.3</b> An example:</a></li>
+<li class="chapter" data-level="5.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs"><i class="fa fa-check"></i><b>5.1.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>5.2</b> Step 2. QC</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>5.2.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>5.2.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-1"><i class="fa fa-check"></i><b>5.2.3</b> An example:</a></li>
+<li class="chapter" data-level="5.2.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>5.2.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-3.-clustering-1"><i class="fa fa-check"></i><b>5.3</b> Step 3. Clustering</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>5.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.3.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-1"><i class="fa fa-check"></i><b>5.3.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.3.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-2"><i class="fa fa-check"></i><b>5.3.3</b> An example:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>5.3.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-4.-degs"><i class="fa fa-check"></i><b>5.4</b> Step 4. DEGs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>5.4.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.4.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-2"><i class="fa fa-check"></i><b>5.4.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.4.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-3"><i class="fa fa-check"></i><b>5.4.3</b> An example:</a></li>
+<li class="chapter" data-level="5.4.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>5.4.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-5.-spatially-variable-features"><i class="fa fa-check"></i><b>5.5</b> Step 5. Spatially variable features</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>5.5.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-3"><i class="fa fa-check"></i><b>5.5.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.5.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-4"><i class="fa fa-check"></i><b>5.5.3</b> An example:</a></li>
+<li class="chapter" data-level="5.5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>5.5.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-6.-spatial-interaction"><i class="fa fa-check"></i><b>5.6</b> Step 6. Spatial interaction</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>5.6.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-4"><i class="fa fa-check"></i><b>5.6.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-5"><i class="fa fa-check"></i><b>5.6.3</b> An example:</a></li>
+<li class="chapter" data-level="5.6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>5.6.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-7.-cnv-analysis"><i class="fa fa-check"></i><b>5.7</b> Step 7. CNV analysis</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-6"><i class="fa fa-check"></i><b>5.7.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.7.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-5"><i class="fa fa-check"></i><b>5.7.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.7.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-6"><i class="fa fa-check"></i><b>5.7.3</b> An example:</a></li>
+<li class="chapter" data-level="5.7.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>5.7.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-8.-deconvolution"><i class="fa fa-check"></i><b>5.8</b> Step 8. Deconvolution</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-7"><i class="fa fa-check"></i><b>5.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.8.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-6"><i class="fa fa-check"></i><b>5.8.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.8.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-7"><i class="fa fa-check"></i><b>5.8.3</b> An example:</a></li>
+<li class="chapter" data-level="5.8.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>5.8.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-9.-cell-cycle"><i class="fa fa-check"></i><b>5.9</b> Step 9. Cell cycle</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-8"><i class="fa fa-check"></i><b>5.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.9.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-7"><i class="fa fa-check"></i><b>5.9.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.9.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-8"><i class="fa fa-check"></i><b>5.9.3</b> An example:</a></li>
+<li class="chapter" data-level="5.9.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>5.9.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-10.-niche-analysis"><i class="fa fa-check"></i><b>5.10</b> Step 10. Niche analysis</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>5.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.10.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-8"><i class="fa fa-check"></i><b>5.10.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.10.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-9"><i class="fa fa-check"></i><b>5.10.3</b> An example:</a></li>
+<li class="chapter" data-level="5.10.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>5.10.4</b> Outputs:</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HemaScope Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="integrated-scrna-seq-pipeline" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Integrated scRNA-seq pipeline<a href="integrated-scrna-seq-pipeline.html#integrated-scrna-seq-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Load the R packages.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="integrated-scrna-seq-pipeline.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc libraries</span></span>
+<span id="cb12-2"><a href="integrated-scrna-seq-pipeline.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb12-3"><a href="integrated-scrna-seq-pipeline.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
+<span id="cb12-4"><a href="integrated-scrna-seq-pipeline.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
+<span id="cb12-5"><a href="integrated-scrna-seq-pipeline.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
+<span id="cb12-6"><a href="integrated-scrna-seq-pipeline.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
+<span id="cb12-7"><a href="integrated-scrna-seq-pipeline.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
+<span id="cb12-8"><a href="integrated-scrna-seq-pipeline.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb12-9"><a href="integrated-scrna-seq-pipeline.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb12-10"><a href="integrated-scrna-seq-pipeline.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb12-11"><a href="integrated-scrna-seq-pipeline.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-12"><a href="integrated-scrna-seq-pipeline.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb12-13"><a href="integrated-scrna-seq-pipeline.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb12-14"><a href="integrated-scrna-seq-pipeline.html#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb12-15"><a href="integrated-scrna-seq-pipeline.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb12-16"><a href="integrated-scrna-seq-pipeline.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb12-17"><a href="integrated-scrna-seq-pipeline.html#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb12-18"><a href="integrated-scrna-seq-pipeline.html#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb12-19"><a href="integrated-scrna-seq-pipeline.html#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb12-20"><a href="integrated-scrna-seq-pipeline.html#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb12-21"><a href="integrated-scrna-seq-pipeline.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb12-22"><a href="integrated-scrna-seq-pipeline.html#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb12-23"><a href="integrated-scrna-seq-pipeline.html#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb12-24"><a href="integrated-scrna-seq-pipeline.html#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb12-25"><a href="integrated-scrna-seq-pipeline.html#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb12-26"><a href="integrated-scrna-seq-pipeline.html#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb12-27"><a href="integrated-scrna-seq-pipeline.html#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb12-28"><a href="integrated-scrna-seq-pipeline.html#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb12-29"><a href="integrated-scrna-seq-pipeline.html#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb12-30"><a href="integrated-scrna-seq-pipeline.html#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb12-31"><a href="integrated-scrna-seq-pipeline.html#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb12-32"><a href="integrated-scrna-seq-pipeline.html#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
+<span id="cb12-33"><a href="integrated-scrna-seq-pipeline.html#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb12-34"><a href="integrated-scrna-seq-pipeline.html#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb12-35"><a href="integrated-scrna-seq-pipeline.html#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb12-36"><a href="integrated-scrna-seq-pipeline.html#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb12-37"><a href="integrated-scrna-seq-pipeline.html#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb12-38"><a href="integrated-scrna-seq-pipeline.html#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb12-39"><a href="integrated-scrna-seq-pipeline.html#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb12-40"><a href="integrated-scrna-seq-pipeline.html#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb12-41"><a href="integrated-scrna-seq-pipeline.html#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-42"><a href="integrated-scrna-seq-pipeline.html#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb12-43"><a href="integrated-scrna-seq-pipeline.html#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb12-44"><a href="integrated-scrna-seq-pipeline.html#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb12-45"><a href="integrated-scrna-seq-pipeline.html#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb12-46"><a href="integrated-scrna-seq-pipeline.html#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb12-47"><a href="integrated-scrna-seq-pipeline.html#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb12-48"><a href="integrated-scrna-seq-pipeline.html#cb12-48" aria-hidden="true" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb12-49"><a href="integrated-scrna-seq-pipeline.html#cb12-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<ul>
+<li>Run the integrated scRNA-seq pipeline.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="integrated-scrna-seq-pipeline.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scRNASeq_10x_pipeline</span>(</span>
+<span id="cb13-2"><a href="integrated-scrna-seq-pipeline.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># input and output</span></span>
+<span id="cb13-3"><a href="integrated-scrna-seq-pipeline.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">input.data.dirs =</span> <span class="fu">c</span>(<span class="st">&#39;./SRR7881399/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-4"><a href="integrated-scrna-seq-pipeline.html#cb13-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881400/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-5"><a href="integrated-scrna-seq-pipeline.html#cb13-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881401/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-6"><a href="integrated-scrna-seq-pipeline.html#cb13-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881402/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-7"><a href="integrated-scrna-seq-pipeline.html#cb13-7" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881403/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-8"><a href="integrated-scrna-seq-pipeline.html#cb13-8" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881404/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-9"><a href="integrated-scrna-seq-pipeline.html#cb13-9" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881405/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-10"><a href="integrated-scrna-seq-pipeline.html#cb13-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881406/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-11"><a href="integrated-scrna-seq-pipeline.html#cb13-11" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881407/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-12"><a href="integrated-scrna-seq-pipeline.html#cb13-12" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881408/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-13"><a href="integrated-scrna-seq-pipeline.html#cb13-13" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881409/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-14"><a href="integrated-scrna-seq-pipeline.html#cb13-14" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881410/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-15"><a href="integrated-scrna-seq-pipeline.html#cb13-15" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881411/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-16"><a href="integrated-scrna-seq-pipeline.html#cb13-16" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881412/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-17"><a href="integrated-scrna-seq-pipeline.html#cb13-17" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881413/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-18"><a href="integrated-scrna-seq-pipeline.html#cb13-18" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881414/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-19"><a href="integrated-scrna-seq-pipeline.html#cb13-19" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881415/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-20"><a href="integrated-scrna-seq-pipeline.html#cb13-20" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881416/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-21"><a href="integrated-scrna-seq-pipeline.html#cb13-21" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881417/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-22"><a href="integrated-scrna-seq-pipeline.html#cb13-22" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881418/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-23"><a href="integrated-scrna-seq-pipeline.html#cb13-23" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881419/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-24"><a href="integrated-scrna-seq-pipeline.html#cb13-24" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881420/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-25"><a href="integrated-scrna-seq-pipeline.html#cb13-25" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881421/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-26"><a href="integrated-scrna-seq-pipeline.html#cb13-26" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881422/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb13-27"><a href="integrated-scrna-seq-pipeline.html#cb13-27" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881423/outs/filtered_feature_bc_matrix&#39;</span>),</span>
+<span id="cb13-28"><a href="integrated-scrna-seq-pipeline.html#cb13-28" aria-hidden="true" tabindex="-1"></a>                     <span class="at">project.names =</span> <span class="fu">c</span>(  <span class="st">&#39;SRR7881399&#39;</span>,</span>
+<span id="cb13-29"><a href="integrated-scrna-seq-pipeline.html#cb13-29" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881400&#39;</span>,</span>
+<span id="cb13-30"><a href="integrated-scrna-seq-pipeline.html#cb13-30" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881401&#39;</span>,</span>
+<span id="cb13-31"><a href="integrated-scrna-seq-pipeline.html#cb13-31" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881402&#39;</span>,</span>
+<span id="cb13-32"><a href="integrated-scrna-seq-pipeline.html#cb13-32" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881403&#39;</span>,</span>
+<span id="cb13-33"><a href="integrated-scrna-seq-pipeline.html#cb13-33" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881404&#39;</span>,</span>
+<span id="cb13-34"><a href="integrated-scrna-seq-pipeline.html#cb13-34" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881405&#39;</span>,</span>
+<span id="cb13-35"><a href="integrated-scrna-seq-pipeline.html#cb13-35" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881406&#39;</span>,</span>
+<span id="cb13-36"><a href="integrated-scrna-seq-pipeline.html#cb13-36" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881407&#39;</span>,</span>
+<span id="cb13-37"><a href="integrated-scrna-seq-pipeline.html#cb13-37" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881408&#39;</span>,</span>
+<span id="cb13-38"><a href="integrated-scrna-seq-pipeline.html#cb13-38" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881409&#39;</span>,</span>
+<span id="cb13-39"><a href="integrated-scrna-seq-pipeline.html#cb13-39" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881410&#39;</span>,</span>
+<span id="cb13-40"><a href="integrated-scrna-seq-pipeline.html#cb13-40" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881411&#39;</span>,</span>
+<span id="cb13-41"><a href="integrated-scrna-seq-pipeline.html#cb13-41" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881412&#39;</span>,</span>
+<span id="cb13-42"><a href="integrated-scrna-seq-pipeline.html#cb13-42" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881413&#39;</span>,</span>
+<span id="cb13-43"><a href="integrated-scrna-seq-pipeline.html#cb13-43" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881414&#39;</span>,</span>
+<span id="cb13-44"><a href="integrated-scrna-seq-pipeline.html#cb13-44" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881415&#39;</span>,</span>
+<span id="cb13-45"><a href="integrated-scrna-seq-pipeline.html#cb13-45" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881416&#39;</span>,</span>
+<span id="cb13-46"><a href="integrated-scrna-seq-pipeline.html#cb13-46" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881417&#39;</span>,</span>
+<span id="cb13-47"><a href="integrated-scrna-seq-pipeline.html#cb13-47" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881418&#39;</span>,</span>
+<span id="cb13-48"><a href="integrated-scrna-seq-pipeline.html#cb13-48" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881419&#39;</span>,</span>
+<span id="cb13-49"><a href="integrated-scrna-seq-pipeline.html#cb13-49" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881420&#39;</span>,</span>
+<span id="cb13-50"><a href="integrated-scrna-seq-pipeline.html#cb13-50" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881421&#39;</span>,</span>
+<span id="cb13-51"><a href="integrated-scrna-seq-pipeline.html#cb13-51" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881422&#39;</span>,</span>
+<span id="cb13-52"><a href="integrated-scrna-seq-pipeline.html#cb13-52" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881423&#39;</span>), </span>
+<span id="cb13-53"><a href="integrated-scrna-seq-pipeline.html#cb13-53" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output.dir =</span> <span class="st">&#39;./output/&#39;</span>,</span>
+<span id="cb13-54"><a href="integrated-scrna-seq-pipeline.html#cb13-54" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pythonPath =</span> <span class="st">&#39;/home/anaconda3/envs/HemaScopeR/bin/python&#39;</span>,</span>
+<span id="cb13-55"><a href="integrated-scrna-seq-pipeline.html#cb13-55" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># quality control and preprocessing</span></span>
+<span id="cb13-56"><a href="integrated-scrna-seq-pipeline.html#cb13-56" aria-hidden="true" tabindex="-1"></a>                     <span class="at">gene.column =</span> <span class="dv">2</span>,</span>
+<span id="cb13-57"><a href="integrated-scrna-seq-pipeline.html#cb13-57" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.cells =</span> <span class="dv">10</span>,</span>
+<span id="cb13-58"><a href="integrated-scrna-seq-pipeline.html#cb13-58" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.feature =</span> <span class="dv">200</span>,</span>
+<span id="cb13-59"><a href="integrated-scrna-seq-pipeline.html#cb13-59" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mt.pattern =</span> <span class="st">&#39;^MT-&#39;</span>,</span>
+<span id="cb13-60"><a href="integrated-scrna-seq-pipeline.html#cb13-60" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nFeature_RNA.limit =</span> <span class="dv">200</span>,</span>
+<span id="cb13-61"><a href="integrated-scrna-seq-pipeline.html#cb13-61" aria-hidden="true" tabindex="-1"></a>                     <span class="at">percent.mt.limit =</span> <span class="dv">20</span>,</span>
+<span id="cb13-62"><a href="integrated-scrna-seq-pipeline.html#cb13-62" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scale.factor =</span> <span class="dv">10000</span>,</span>
+<span id="cb13-63"><a href="integrated-scrna-seq-pipeline.html#cb13-63" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nfeatures =</span> <span class="dv">3000</span>,</span>
+<span id="cb13-64"><a href="integrated-scrna-seq-pipeline.html#cb13-64" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ndims =</span> <span class="dv">50</span>,</span>
+<span id="cb13-65"><a href="integrated-scrna-seq-pipeline.html#cb13-65" aria-hidden="true" tabindex="-1"></a>                     <span class="at">vars.to.regress =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-66"><a href="integrated-scrna-seq-pipeline.html#cb13-66" aria-hidden="true" tabindex="-1"></a>                     <span class="at">PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>,</span>
+<span id="cb13-67"><a href="integrated-scrna-seq-pipeline.html#cb13-67" aria-hidden="true" tabindex="-1"></a>                     <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
+<span id="cb13-68"><a href="integrated-scrna-seq-pipeline.html#cb13-68" aria-hidden="true" tabindex="-1"></a>                     <span class="at">n.neighbors =</span> <span class="dv">50</span>,</span>
+<span id="cb13-69"><a href="integrated-scrna-seq-pipeline.html#cb13-69" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># remove doublets</span></span>
+<span id="cb13-70"><a href="integrated-scrna-seq-pipeline.html#cb13-70" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublet.percentage =</span> <span class="fl">0.04</span>,</span>
+<span id="cb13-71"><a href="integrated-scrna-seq-pipeline.html#cb13-71" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
+<span id="cb13-72"><a href="integrated-scrna-seq-pipeline.html#cb13-72" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pN =</span> <span class="fl">0.25</span>,</span>
+<span id="cb13-73"><a href="integrated-scrna-seq-pipeline.html#cb13-73" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pK =</span> <span class="fl">0.1</span>,</span>
+<span id="cb13-74"><a href="integrated-scrna-seq-pipeline.html#cb13-74" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># phateR</span></span>
+<span id="cb13-75"><a href="integrated-scrna-seq-pipeline.html#cb13-75" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.knn =</span> <span class="dv">50</span>,</span>
+<span id="cb13-76"><a href="integrated-scrna-seq-pipeline.html#cb13-76" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.npca =</span> <span class="dv">20</span>,</span>
+<span id="cb13-77"><a href="integrated-scrna-seq-pipeline.html#cb13-77" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.t =</span> <span class="dv">10</span>,</span>
+<span id="cb13-78"><a href="integrated-scrna-seq-pipeline.html#cb13-78" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.ndim =</span> <span class="dv">2</span>,</span>
+<span id="cb13-79"><a href="integrated-scrna-seq-pipeline.html#cb13-79" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb13-80"><a href="integrated-scrna-seq-pipeline.html#cb13-80" aria-hidden="true" tabindex="-1"></a>                     <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
+<span id="cb13-81"><a href="integrated-scrna-seq-pipeline.html#cb13-81" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># visualization</span></span>
+<span id="cb13-82"><a href="integrated-scrna-seq-pipeline.html#cb13-82" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeOrders =</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">22</span>),</span>
+<span id="cb13-83"><a href="integrated-scrna-seq-pipeline.html#cb13-83" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeColors =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-84"><a href="integrated-scrna-seq-pipeline.html#cb13-84" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Org =</span> <span class="st">&#39;hsa&#39;</span>,</span>
+<span id="cb13-85"><a href="integrated-scrna-seq-pipeline.html#cb13-85" aria-hidden="true" tabindex="-1"></a>                     <span class="at">loom.files.path =</span> <span class="fu">c</span>( <span class="st">&#39;./SRR7881399/velocyto/SRR7881399.loom&#39;</span>,</span>
+<span id="cb13-86"><a href="integrated-scrna-seq-pipeline.html#cb13-86" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881400/velocyto/SRR7881400.loom&#39;</span>,</span>
+<span id="cb13-87"><a href="integrated-scrna-seq-pipeline.html#cb13-87" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881401/velocyto/SRR7881401.loom&#39;</span>,</span>
+<span id="cb13-88"><a href="integrated-scrna-seq-pipeline.html#cb13-88" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881402/velocyto/SRR7881402.loom&#39;</span>,</span>
+<span id="cb13-89"><a href="integrated-scrna-seq-pipeline.html#cb13-89" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881403/velocyto/SRR7881403.loom&#39;</span>,</span>
+<span id="cb13-90"><a href="integrated-scrna-seq-pipeline.html#cb13-90" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881404/velocyto/SRR7881404.loom&#39;</span>,</span>
+<span id="cb13-91"><a href="integrated-scrna-seq-pipeline.html#cb13-91" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881405/velocyto/SRR7881405.loom&#39;</span>,</span>
+<span id="cb13-92"><a href="integrated-scrna-seq-pipeline.html#cb13-92" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881406/velocyto/SRR7881406.loom&#39;</span>,</span>
+<span id="cb13-93"><a href="integrated-scrna-seq-pipeline.html#cb13-93" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881407/velocyto/SRR7881407.loom&#39;</span>,</span>
+<span id="cb13-94"><a href="integrated-scrna-seq-pipeline.html#cb13-94" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881408/velocyto/SRR7881408.loom&#39;</span>,</span>
+<span id="cb13-95"><a href="integrated-scrna-seq-pipeline.html#cb13-95" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881409/velocyto/SRR7881409.loom&#39;</span>,</span>
+<span id="cb13-96"><a href="integrated-scrna-seq-pipeline.html#cb13-96" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881410/velocyto/SRR7881410.loom&#39;</span>,</span>
+<span id="cb13-97"><a href="integrated-scrna-seq-pipeline.html#cb13-97" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881411/velocyto/SRR7881411.loom&#39;</span>,</span>
+<span id="cb13-98"><a href="integrated-scrna-seq-pipeline.html#cb13-98" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881412/velocyto/SRR7881412.loom&#39;</span>,</span>
+<span id="cb13-99"><a href="integrated-scrna-seq-pipeline.html#cb13-99" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881413/velocyto/SRR7881413.loom&#39;</span>,</span>
+<span id="cb13-100"><a href="integrated-scrna-seq-pipeline.html#cb13-100" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881414/velocyto/SRR7881414.loom&#39;</span>,</span>
+<span id="cb13-101"><a href="integrated-scrna-seq-pipeline.html#cb13-101" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881415/velocyto/SRR7881415.loom&#39;</span>,</span>
+<span id="cb13-102"><a href="integrated-scrna-seq-pipeline.html#cb13-102" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881416/velocyto/SRR7881416.loom&#39;</span>,</span>
+<span id="cb13-103"><a href="integrated-scrna-seq-pipeline.html#cb13-103" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881417/velocyto/SRR7881417.loom&#39;</span>,</span>
+<span id="cb13-104"><a href="integrated-scrna-seq-pipeline.html#cb13-104" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881418/velocyto/SRR7881418.loom&#39;</span>,</span>
+<span id="cb13-105"><a href="integrated-scrna-seq-pipeline.html#cb13-105" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881419/velocyto/SRR7881419.loom&#39;</span>,</span>
+<span id="cb13-106"><a href="integrated-scrna-seq-pipeline.html#cb13-106" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881420/velocyto/SRR7881420.loom&#39;</span>,</span>
+<span id="cb13-107"><a href="integrated-scrna-seq-pipeline.html#cb13-107" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881421/velocyto/SRR7881421.loom&#39;</span>,</span>
+<span id="cb13-108"><a href="integrated-scrna-seq-pipeline.html#cb13-108" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881422/velocyto/SRR7881422.loom&#39;</span>,</span>
+<span id="cb13-109"><a href="integrated-scrna-seq-pipeline.html#cb13-109" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881423/velocyto/SRR7881423.loom&#39;</span>),</span>
+<span id="cb13-110"><a href="integrated-scrna-seq-pipeline.html#cb13-110" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># cell cycle</span></span>
+<span id="cb13-111"><a href="integrated-scrna-seq-pipeline.html#cb13-111" aria-hidden="true" tabindex="-1"></a>                     <span class="at">cellcycleCutoff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-112"><a href="integrated-scrna-seq-pipeline.html#cb13-112" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># cell chat</span></span>
+<span id="cb13-113"><a href="integrated-scrna-seq-pipeline.html#cb13-113" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sorting =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-114"><a href="integrated-scrna-seq-pipeline.html#cb13-114" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncores =</span> <span class="dv">10</span>,</span>
+<span id="cb13-115"><a href="integrated-scrna-seq-pipeline.html#cb13-115" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># Verbose = FALSE,</span></span>
+<span id="cb13-116"><a href="integrated-scrna-seq-pipeline.html#cb13-116" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># activeEachStep</span></span>
+<span id="cb13-117"><a href="integrated-scrna-seq-pipeline.html#cb13-117" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Whether_load_previous_results =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-118"><a href="integrated-scrna-seq-pipeline.html#cb13-118" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step1_Input_Data =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-119"><a href="integrated-scrna-seq-pipeline.html#cb13-119" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step1_Input_Data.type =</span> <span class="st">&#39;cellranger-count&#39;</span>,</span>
+<span id="cb13-120"><a href="integrated-scrna-seq-pipeline.html#cb13-120" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-121"><a href="integrated-scrna-seq-pipeline.html#cb13-121" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveBatches =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-122"><a href="integrated-scrna-seq-pipeline.html#cb13-122" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveDoublets =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-123"><a href="integrated-scrna-seq-pipeline.html#cb13-123" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-124"><a href="integrated-scrna-seq-pipeline.html#cb13-124" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Identify_Cell_Types =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-125"><a href="integrated-scrna-seq-pipeline.html#cb13-125" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Use_Which_Labels =</span> <span class="st">&#39;clustering&#39;</span>,</span>
+<span id="cb13-126"><a href="integrated-scrna-seq-pipeline.html#cb13-126" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Cluster_Labels =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-127"><a href="integrated-scrna-seq-pipeline.html#cb13-127" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Changed_Labels =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-128"><a href="integrated-scrna-seq-pipeline.html#cb13-128" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_run_sc_CNV =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-129"><a href="integrated-scrna-seq-pipeline.html#cb13-129" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step5_Visualization =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-130"><a href="integrated-scrna-seq-pipeline.html#cb13-130" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step6_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-131"><a href="integrated-scrna-seq-pipeline.html#cb13-131" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step7_Assign_Cell_Cycle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-132"><a href="integrated-scrna-seq-pipeline.html#cb13-132" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step8_Calculate_Heterogeneity =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-133"><a href="integrated-scrna-seq-pipeline.html#cb13-133" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step9_Violin_Plot_for_Marker_Genes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-134"><a href="integrated-scrna-seq-pipeline.html#cb13-134" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step10_Calculate_Lineage_Scores =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-135"><a href="integrated-scrna-seq-pipeline.html#cb13-135" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-136"><a href="integrated-scrna-seq-pipeline.html#cb13-136" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.cellType.features=</span><span class="cn">TRUE</span>,</span>
+<span id="cb13-137"><a href="integrated-scrna-seq-pipeline.html#cb13-137" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.diff.features=</span><span class="cn">FALSE</span>,</span>
+<span id="cb13-138"><a href="integrated-scrna-seq-pipeline.html#cb13-138" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.comparison.design=</span><span class="cn">NULL</span>,</span>
+<span id="cb13-139"><a href="integrated-scrna-seq-pipeline.html#cb13-139" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-140"><a href="integrated-scrna-seq-pipeline.html#cb13-140" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.clusters =</span> <span class="fu">c</span>(<span class="st">&#39;3&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;9&#39;</span>,<span class="st">&#39;10&#39;</span>,<span class="st">&#39;11&#39;</span>,<span class="st">&#39;14&#39;</span>,<span class="st">&#39;15&#39;</span>,<span class="st">&#39;19&#39;</span>), </span>
+<span id="cb13-141"><a href="integrated-scrna-seq-pipeline.html#cb13-141" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.monocle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-142"><a href="integrated-scrna-seq-pipeline.html#cb13-142" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.slingshot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-143"><a href="integrated-scrna-seq-pipeline.html#cb13-143" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.scVelo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-144"><a href="integrated-scrna-seq-pipeline.html#cb13-144" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step13_TF_Analysis =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-145"><a href="integrated-scrna-seq-pipeline.html#cb13-145" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step14_Cell_Cell_Interaction =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-146"><a href="integrated-scrna-seq-pipeline.html#cb13-146" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step15_Generate_the_Report =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-147"><a href="integrated-scrna-seq-pipeline.html#cb13-147" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="installation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-by-step-scrna-seq-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/integrated_scRNA_seq_pipeline.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

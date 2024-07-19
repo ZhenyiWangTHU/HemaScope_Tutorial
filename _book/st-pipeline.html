@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 ST pipeline | HemaScope Tutorial</title>
+  <meta name="description" content="This is the tutorial for HemaScope." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 ST pipeline | HemaScope Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the tutorial for HemaScope." />
+  <meta name="github-repo" content="https://github.com/ZhenyiWangTHU/HemaScopeR/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 ST pipeline | HemaScope Tutorial" />
+  
+  <meta name="twitter:description" content="This is the tutorial for HemaScope." />
+  
+
+<meta name="author" content="Zhenyi Wang and Yuxin Miao" />
+
+
+<meta name="date" content="2024-07-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-by-step-scrna-seq-pipeline.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">HemaScope</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.1</b> Install R and python</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.2</b> Install required R-packages</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-required-python-packages"><i class="fa fa-check"></i><b>2.3</b> Install required Python-packages</a></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-hemascoper"><i class="fa fa-check"></i><b>2.4</b> Install HemaScopeR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>4</b> Step-by-step scRNA-seq Pipeline</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>4.1</b> Step 1. Load the R packages and the input data</a></li>
+<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.2</b> Step 2. Quality Control</a></li>
+<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.3</b> Step 3. Clustering</a></li>
+<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.4</b> Step 4. Identify Cell Types</a></li>
+<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.5</b> Step 5. Visualization</a></li>
+<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.6</b> Step 6. Find DEGs</a></li>
+<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.7</b> Step 7. Assign Cell Cycles</a></li>
+<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.8</b> Step 8. Calculate Heterogeneity</a></li>
+<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.9</b> Step 9. Violin Plot for Marker Genes</a></li>
+<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.10</b> Step 10. Calculate Lineage Scores</a></li>
+<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.11</b> Step 11. GSVA</a></li>
+<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.12</b> Step 12. Construct Trajectories</a></li>
+<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.13</b> Step 13. TF Analysis</a></li>
+<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.14</b> Step 14. Cell-Cell Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="st-pipeline.html"><a href="st-pipeline.html"><i class="fa fa-check"></i><b>5</b> ST pipeline</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="st-pipeline.html"><a href="st-pipeline.html#step-1.-data-loading"><i class="fa fa-check"></i><b>5.1</b> Step 1. Data loading</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>5.1.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.1.2" data-path="st-pipeline.html"><a href="st-pipeline.html#funciton-behavior"><i class="fa fa-check"></i><b>5.1.2</b> Funciton behavior:</a></li>
+<li class="chapter" data-level="5.1.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example"><i class="fa fa-check"></i><b>5.1.3</b> An example:</a></li>
+<li class="chapter" data-level="5.1.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs"><i class="fa fa-check"></i><b>5.1.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="st-pipeline.html"><a href="st-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>5.2</b> Step 2. QC</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>5.2.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.2.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>5.2.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.2.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-1"><i class="fa fa-check"></i><b>5.2.3</b> An example:</a></li>
+<li class="chapter" data-level="5.2.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>5.2.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="st-pipeline.html"><a href="st-pipeline.html#step-3.-clustering-1"><i class="fa fa-check"></i><b>5.3</b> Step 3. Clustering</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>5.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.3.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-1"><i class="fa fa-check"></i><b>5.3.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.3.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-2"><i class="fa fa-check"></i><b>5.3.3</b> An example:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>5.3.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="st-pipeline.html"><a href="st-pipeline.html#step-4.-degs"><i class="fa fa-check"></i><b>5.4</b> Step 4. DEGs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>5.4.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.4.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-2"><i class="fa fa-check"></i><b>5.4.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.4.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-3"><i class="fa fa-check"></i><b>5.4.3</b> An example:</a></li>
+<li class="chapter" data-level="5.4.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>5.4.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="st-pipeline.html"><a href="st-pipeline.html#step-5.-spatially-variable-features"><i class="fa fa-check"></i><b>5.5</b> Step 5. Spatially variable features</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>5.5.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-3"><i class="fa fa-check"></i><b>5.5.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.5.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-4"><i class="fa fa-check"></i><b>5.5.3</b> An example:</a></li>
+<li class="chapter" data-level="5.5.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>5.5.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="st-pipeline.html"><a href="st-pipeline.html#step-6.-spatial-interaction"><i class="fa fa-check"></i><b>5.6</b> Step 6. Spatial interaction</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>5.6.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.6.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-4"><i class="fa fa-check"></i><b>5.6.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.6.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-5"><i class="fa fa-check"></i><b>5.6.3</b> An example:</a></li>
+<li class="chapter" data-level="5.6.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>5.6.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="st-pipeline.html"><a href="st-pipeline.html#step-7.-cnv-analysis"><i class="fa fa-check"></i><b>5.7</b> Step 7. CNV analysis</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-6"><i class="fa fa-check"></i><b>5.7.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.7.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-5"><i class="fa fa-check"></i><b>5.7.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.7.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-6"><i class="fa fa-check"></i><b>5.7.3</b> An example:</a></li>
+<li class="chapter" data-level="5.7.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>5.7.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="st-pipeline.html"><a href="st-pipeline.html#step-8.-deconvolution"><i class="fa fa-check"></i><b>5.8</b> Step 8. Deconvolution</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-7"><i class="fa fa-check"></i><b>5.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.8.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-6"><i class="fa fa-check"></i><b>5.8.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.8.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-7"><i class="fa fa-check"></i><b>5.8.3</b> An example:</a></li>
+<li class="chapter" data-level="5.8.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>5.8.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="st-pipeline.html"><a href="st-pipeline.html#step-9.-cell-cycle"><i class="fa fa-check"></i><b>5.9</b> Step 9. Cell cycle</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-8"><i class="fa fa-check"></i><b>5.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.9.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-7"><i class="fa fa-check"></i><b>5.9.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.9.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-8"><i class="fa fa-check"></i><b>5.9.3</b> An example:</a></li>
+<li class="chapter" data-level="5.9.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>5.9.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="st-pipeline.html"><a href="st-pipeline.html#step-10.-niche-analysis"><i class="fa fa-check"></i><b>5.10</b> Step 10. Niche analysis</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="st-pipeline.html"><a href="st-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>5.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="5.10.2" data-path="st-pipeline.html"><a href="st-pipeline.html#function-behavior-8"><i class="fa fa-check"></i><b>5.10.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="5.10.3" data-path="st-pipeline.html"><a href="st-pipeline.html#an-example-9"><i class="fa fa-check"></i><b>5.10.3</b> An example:</a></li>
+<li class="chapter" data-level="5.10.4" data-path="st-pipeline.html"><a href="st-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>5.10.4</b> Outputs:</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HemaScope Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="st-pipeline" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> ST pipeline<a href="st-pipeline.html#st-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="step-1.-data-loading" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Step 1. Data loading<a href="st-pipeline.html#step-1.-data-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Loading_Data</code> function is designed for loading <a href="https://www.10xgenomics.com/cn/products/spatial-gene-expression">10X Visium</a> spatial transcriptomics data from <a href="https://www.10xgenomics.com/cn/support/software/space-ranger/latest">Space Ranger</a>. It will load data from <code>input.data.dir</code> and output it in the <a href="https://github.com/satijalab/seurat-object">SeuratOjbect</a> format.</p>
+<div id="function-arguments" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Function arguments:<a href="st-pipeline.html#function-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>input.data.dir</code>: The directory where the input data is stored.</li>
+<li><code>output.dir</code>: The directory where the processed output will be saved. If not specified, the output is saved in the current working directory. Default is ‘.’.</li>
+<li><code>sampleName</code>: A string naming the sample. Default is ‘Hema_ST’.</li>
+<li><code>rds.file</code>: A boolean indicating if the input data is in RDS file format rather than a typical results of Space Ranger. Default is FALSE.</li>
+<li><code>filename</code>: The name of the file to be loaded if the data is not in RDS format. Default is “filtered_feature_bc_matrix.h5”.</li>
+<li><code>assay</code>: The specific assay to apply to the data. Default is ‘Spatial’.</li>
+<li><code>slice</code>: The image slice identifier for the spatial data. Default is ‘slice1’.</li>
+<li><code>filter.matrix</code>: A boolean indicating whether to load filtered matrix. Default is TRUE.</li>
+<li><code>to.upper</code>: A boolean indicating whether to convert feature names to upper form. Default is FALSE.</li>
+</ul>
+</div>
+<div id="funciton-behavior" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Funciton behavior:<a href="st-pipeline.html#funciton-behavior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Directory Creation: The function first checks if the <code>output.dir</code> exists; if not, it creates it.</li>
+<li>RDS File Handling:
+If <code>rds.file</code> is TRUE, it reads the RDS file, ensuring the specified <code>assay</code> and <code>slice</code> are present in the Seurat object.</li>
+<li>Non-RDS File Handling:
+If <code>rds.file</code> is FALSE, it loads the data using <code>Load10X_Spatial</code> from <code>Seurat</code>.</li>
+<li>Saving the Object:
+Uses <code>SaveH5Seurat</code> and <code>Convert</code> to save the Seurat object in rds and h5ad formats.</li>
+<li>File Copying:
+Copies any necessary files (filter matrix, spatial image) to the <code>output.dir</code>.</li>
+<li>Return Value:
+Returns the processed Seurat object.</li>
+</ol>
+</div>
+<div id="an-example" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> An example:<a href="st-pipeline.html#an-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_Loading_Data(
+        input.data.dir = &#39;path/to/data&#39;,
+        output.dir = &#39;.&#39;,
+        sampleName = &#39;Hema_ST,
+        rds.file = FALSE,
+        filename = &#39;filtered_feature_bc_matrix.h5&#39;,
+        assay = &#39;Spatial&#39;,
+        slice = &#39;slice1&#39;,
+        filter.matrix = TRUE,
+        to.upper = FALSE
+    )</code></pre>
+</div>
+<div id="outputs" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Outputs:<a href="st-pipeline.html#outputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Spatial transcriptome data in rds and h5ad formats</li>
+</ul>
+</div>
+</div>
+<div id="step-2.-qc" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Step 2. QC<a href="st-pipeline.html#step-2.-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>QC_Spatial</code> function performs basic quality control on a SeuratObject containing 10X visium data and returns the filtered SeuratObject. It provides options to set thresholds for the number of genes, nUMI (unique molecular identifiers), and spots expressing each gene. It also allows for the removal of mitochondrial genes based on species.</p>
+<div id="function-arguments-1" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: A SeuratObject of 10X visium data.</li>
+<li><code>output.dir</code>: A character string specifying the path to store the results and figures. Default is the current working directory.</li>
+<li><code>min.gene</code>: An integer representing the minimum number of genes detected in a spot. Default is 200.</li>
+<li><code>max.gene</code>: An integer representing the maximum number of genes detected in a spot. Default is Inf (no upper limit).</li>
+<li><code>min.nUMI</code>: An integer representing the minimum number of nUMI detected in a spot. Default is 500.</li>
+<li><code>max.nUMI</code>: An integer representing the maximum number of nUMI detected in a spot. Default is Inf (no upper limit).</li>
+<li><code>min.spot</code>: An integer representing the minimum number of spots expressing each gene. Default is 3.</li>
+<li><code>species</code>: A character string representing the species of sample, either ‘human’ or ‘mouse’.</li>
+<li><code>bool.remove.mito</code>: A boolean value indicating whether to remove mitochondrial genes. Default is TRUE.</li>
+<li><code>SpatialColors</code>: A function that interpolates a set of given colors to create new color palettes and color ramps. Default is a color palette with reversed Spectral colors from <code>RColorBrewer</code>.</li>
+</ul>
+</div>
+<div id="function-behavior" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Function behavior:<a href="st-pipeline.html#function-behavior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Plots and saves the spatial distribution of nUMI and nGene.</li>
+<li>Plots and saves violin plots for nUMI and nGene.</li>
+<li>Identifies and marks low-quality spots based on nUMI and nGene thresholds.</li>
+<li>Plots the spatial distribution of quality.</li>
+<li>Plots and saves a histogram for the number of spots expressing each gene.</li>
+<li>Plots the spatial distribution of mitochondrial genes.</li>
+<li>Saves the raw SeuratObject before filtering.</li>
+<li>Removes low-quality spots and genes with fewer occurrences.</li>
+<li>Optionally removes mitochondrial genes.</li>
+<li>Saves the filtered SeuratObject.</li>
+<li>Returns the filtered <code>st_obj</code>.</li>
+</ol>
+</div>
+<div id="an-example-1" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> An example:<a href="st-pipeline.html#an-example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- QC_Spatial(
+            st_obj = st_obj,
+            output.dir = &#39;.&#39;,
+            min.gene = 200,
+            min.nUMI = Inf,
+            max.gene = 500,
+            max.nUMI = Inf,
+            min.spot = 3,
+            species = &#39;human&#39;,
+            bool.remove.mito = TRUE,
+            SpatialColors = colorRampPalette(colors = rev(x = brewer.pal(n = 11, name = &quot;Spectral&quot;)))
+        )</code></pre>
+</div>
+<div id="outputs-1" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Outputs:<a href="st-pipeline.html#outputs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing the spatial distribution of nUMI and nGene.
+<center class="half">
+<img src="figures/step2/nUMI_spatial.png" width="20%"/>
+<img src="figures/step2/nGene_spatial.png" width="20%"/>
+</center></li>
+<li>Violin plots of nUMI and nGene.
+<center class="half">
+<img src="figures/step2/nUMI_violin.png" width="20%"/>
+<img src="figures/step2/nGene_violin.png" width="20%"/>
+</center></li>
+<li>Figures showing the quality.
+<center class="half">
+<img src="figures/step2/quality_spatial.png" width="20%"/>
+</center></li>
+<li>Histograms for the number of spots expressing each gene.
+<center class="half">
+<img src="figures/step2/nSpot_hist.png" width="20%"/>
+</center></li>
+<li>Figures showing the spatial distribution of mitochondrial genes.
+<center class="half">
+<img src="figures/step2/mito_spatial.png" width="20%"/>
+</center></li>
+<li>Raw and filtered SeuratObject.</li>
+</ul>
+</div>
+</div>
+<div id="step-3.-clustering-1" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Step 3. Clustering<a href="st-pipeline.html#step-3.-clustering-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Clustering</code> function is designed to perform clustering analysis on spatial transcriptomics data. It integrates several key steps including data normalization, dimensionality reduction, clustering, and visualization. The function saves the results and visualizations to <code>output.dir</code>.</p>
+<div id="function-arguments-2" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input spatial transcriptomics seurat object that contains the data to be clustered.</li>
+<li><code>output.dir</code>: The directory where the output files will be saved. Default is the current directory (‘.’).</li>
+<li><code>normalization.method</code>: The method used for data normalization. Default is ‘SCTransform’.</li>
+<li><code>npcs</code>: The number of principal components to use in PCA. Default is 50.</li>
+<li><code>pcs.used</code>: The principal components to use for clustering. Default is the first 10 PCs (1:10).</li>
+<li><code>resolution</code>: The resolution parameter for the clustering algorithm. Default is 0.8.</li>
+<li><code>verbose</code>: A logical flag to print progress messages. Default is FALSE.</li>
+</ul>
+</div>
+<div id="function-behavior-1" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Data Normalization and PCA: Depending on the <code>normalization.method</code>, the function either uses <code>SCTransform</code> or a standard normalization method followed by scaling and variable feature detection. Performs PCA on the normalized data.</li>
+<li>Clustering and Dimensionality Reduction: Finds nearest neighbors using the specified principal components (<code>pcs.used</code>). Identifies clusters using the specified <code>resolution</code>. Performs UMAP and t-SNE for visualization of the clusters.</li>
+<li>Visualization: Generates spatial, UMAP, and t-SNE plots of the clusters with customized color schemes.
+Saves these plots as images in the specified directory.</li>
+<li>Saving Results: Saves the updated <code>st_obj</code> as an RDS file. Exports the metadata of <code>st_obj</code> to a CSV file.</li>
+<li>Return Value: Returns the updated <code>st_obj</code> containing the clustering results.</li>
+</ol>
+</div>
+<div id="an-example-2" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> An example:<a href="st-pipeline.html#an-example-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_Clustering(
+            st_obj = st_obj,
+            output.dir = &#39;.&#39;,
+            normalization.method = &#39;SCTransform&#39;,
+            npcs = 50,
+            pcs.used = 1:10,
+            resolution = 0.8,
+            verbose = FALSE
+        )</code></pre>
+</div>
+<div id="outputs-2" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Outputs:<a href="st-pipeline.html#outputs-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing the results of clustering.
+<center class="half">
+<img src="figures/step3/cluster_spatial.png" width="20%"/>
+<img src="figures/step3/cluster_UMAP.png" width="20%"/>
+<img src="figures/step3/cluster_tSNE.png" width="20%"/>
+</center></li>
+<li>SeuratObject in rds format.</li>
+</ul>
+</div>
+</div>
+<div id="step-4.-degs" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Step 4. DEGs<a href="st-pipeline.html#step-4.-degs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Find_DEGs</code> function is designed to identify differentially expressed genes (DEGs) in spatial transcriptomics data. It performs differential expression analysis based on clustering results, visualizes the top markers, and saves the results to <code>output.dir</code>.</p>
+<div id="function-arguments-3" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input spatial transcriptomics object containing the data for DEG analysis.</li>
+<li><code>output.dir</code>: The directory where output files will be saved. Default is the current directory (‘.’).</li>
+<li><code>ident.label</code>: The metadata label used for identifying clusters. Default is <code>'seurat_clusters'</code>.</li>
+<li><code>only.pos</code>: A logical flag to include only positive markers. Default is TRUE.</li>
+<li><code>min.pct</code>: The minimum fraction of cells expressing the gene in either cluster. Default is <code>0.25</code>.</li>
+<li><code>logfc.threshold:</code> The log fold change threshold for considering a gene differentially expressed. Default is <code>0.25</code>.</li>
+<li><code>test.use</code>: The statistical test to use for differential expression analysis. Default is <code>'wilcox'</code>.</li>
+<li><code>verbose</code>: A logical flag to print progress messages. Default is FALSE.</li>
+</ul>
+</div>
+<div id="function-behavior-2" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Set Identifiers: Sets the cluster identifiers in the spatial transcriptomics object (<code>st_obj</code>) based on the specified <code>ident.label</code>.</li>
+<li>Find Differentially Expressed Genes (DEGs): Performs differential expression analysis using the specified parameters (<code>only.pos</code>, <code>min.pct</code>, <code>logfc.threshold</code>, <code>test.use</code>).</li>
+<li>Top Marker Genes: Selects the top 5 marker genes for each cluster based on the highest average log fold change.</li>
+<li>Visualization: Generates a dot plot for the top DEGs and saves the plot as an image in the specified directory.</li>
+<li>Saving Results: Saves the DEG results as a CSV file.</li>
+<li>Return Value: Returns the data frame containing the identified DEGs.</li>
+</ol>
+</div>
+<div id="an-example-3" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> An example:<a href="st-pipeline.html#an-example-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st.markers &lt;- st_Find_DEGs(
+            st_obj = st_obj,
+            output.dir = &#39;.&#39;,
+            ident.label = &#39;seurat_clusters&#39;,
+            only.pos = TRUE,
+            min.pct = 0.25,
+            logfc.threshold = 0.25,
+            test.use = &#39;wilcox&#39;,
+            verbose = FALSE
+        )</code></pre>
+</div>
+<div id="outputs-3" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Outputs:<a href="st-pipeline.html#outputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Dot plots showing markers.
+<center class="half">
+<img src="figures/step4/DEGs_dot.png" width="40%"/>
+</center></li>
+<li>CSV file containing the information of markers.</li>
+</ul>
+</div>
+</div>
+<div id="step-5.-spatially-variable-features" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Step 5. Spatially variable features<a href="st-pipeline.html#step-5.-spatially-variable-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_SpatiallyVariableFeatures</code> function identifies and visualizes spatially variable features (SVFs) in spatial transcriptomics data. It integrates the identification of spatially variable features using a specified method, saves the results to a directory, and creates visualizations of the top spatially variable features.</p>
+<div id="function-arguments-4" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input spatial transcriptomics object containing the data for analysis.</li>
+<li><code>output.dir</code>: The directory where output files will be saved. Default is the current directory.</li>
+<li><code>assay</code>: The assay to be used for finding spatially variable features. Default is <code>'SCT'</code>.</li>
+<li><code>selection.method</code>: The method used for selecting spatially variable features. Default is <code>'moransi'</code>.</li>
+<li><code>n.top.show</code>: The number of top spatially variable features to visualize. Default is <code>10</code>.</li>
+<li><code>n.col</code>: The number of columns for the visualization grid. Default is <code>5</code>.</li>
+<li><code>verbose</code>: A logical flag to print progress messages. Default is <code>FALSE</code>.</li>
+</ul>
+</div>
+<div id="function-behavior-3" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Identify Spatially Variable Features: Identifies spatially variable features using the specified method and assay. Suppresses warnings during the process.</li>
+<li>Save Metadata: Extracts metadata features and saves them as a CSV file in <code>output.dir</code>.</li>
+<li>Visualization: Selects the top <code>n.top.show</code> spatially variable features. Generates and saves a spatial feature plot of these features in the specified directory.</li>
+<li>Return Value: Returns the updated <code>st_obj</code> containing the identified spatially variable features.</li>
+</ol>
+</div>
+<div id="an-example-4" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> An example:<a href="st-pipeline.html#an-example-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_SpatiallyVariableFeatures(
+            st_obj = st_obj,
+            output.dir = &#39;.&#39;,
+            assay = st_obj@active.assay,
+            selection.method = &#39;moransi&#39;,
+            n.top.show = 10,
+            n.col = 5,
+            verbose = FALSE
+        )</code></pre>
+</div>
+<div id="outputs-4" class="section level3 hasAnchor" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Outputs:<a href="st-pipeline.html#outputs-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing SVFs.
+<center class="half">
+<img src="figures/step5/SpatiallyVariableFeatures.png" width="40%"/>
+</center></li>
+<li>CSV file containing the information of SVFs.</li>
+</ul>
+</div>
+</div>
+<div id="step-6.-spatial-interaction" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Step 6. Spatial interaction<a href="st-pipeline.html#step-6.-spatial-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Interaction</code> function is used to identify and visualize interactions between clusters based on spatial transcriptomics data. It utilizes <a href="https://github.com/zcang/COMMOT">Commot</a> to analyze spatial interactions, identify pathway activities, and assess the strength and significance of interactions.</p>
+<div id="function-arguments-5" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_data_path</code>: Path to the spatial transcriptomics data.</li>
+<li><code>metadata_path</code>: Path to the metadata associated with the spatial transcriptomics data.</li>
+<li><code>library_id</code>: Identifier for the spatial transcriptomics library. Default is <code>'Hema_ST'</code>.</li>
+<li><code>label_key</code>: Key in the metadata to identify cell clusters. Default is <code>'seurat_clusters'</code>.</li>
+<li><code>save_path</code>: The directory where output files will be saved. Default is the current directory.</li>
+<li><code>species</code>: The species of the spatial transcriptomics data. Default is <code>'human'</code>.</li>
+<li><code>signaling_type</code>: Type of signaling interactions to consider. Default is <code>'Secreted Signaling'</code>.</li>
+<li><code>database</code>: Database to be used for the analysis. Default is <code>'CellChat'</code>.</li>
+<li><code>min_cell_pct</code>: Minimum percentage of cells to consider for interaction analysis. Default is <code>0.05</code>.</li>
+<li><code>dis_thr</code>: Distance threshold for defining interactions. Default is <code>500</code>.</li>
+<li><code>n_permutations</code>: Number of permutations for assessing significance. Default is <code>100</code>.</li>
+<li><code>pythonPath</code>: The path to the Python environment containing <code>Commot</code> to use for the analysis. Default is ‘.’.</li>
+</ul>
+</div>
+<div id="function-behavior-4" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><code>Commot</code> Analysis: Uses <code>Commot</code> to perform interaction analysis, identifying interactions within and between clusters.</li>
+<li>Visualization: Generates visualizations of pathway interactions and interactions between ligand-receptors (LRs) within and between clusters, and saves them in <code>save_path</code>.</li>
+</ol>
+</div>
+<div id="an-example-5" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> An example:<a href="st-pipeline.html#an-example-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_Interaction(
+            st_data_path = &#39;path/to/data&#39;,
+            metadata_path = &#39;path/to/metadata&#39;,
+            library_id = &#39;Hema_ST&#39;,
+            label_key = &#39;seurat_clusters&#39;,
+            save_path = &#39;.&#39;,
+            species = &#39;human&#39;,
+            signaling_type = &#39;Secreted Signaling&#39;,
+            database = &#39;CellChat&#39;,
+            min_cell_pct = 0.05,
+            dis_thr = 500,
+            n_permutations = 100,
+            pythonPath = &#39;path/to/python&#39;
+        )</code></pre>
+</div>
+<div id="outputs-5" class="section level3 hasAnchor" number="5.6.4">
+<h3><span class="header-section-number">5.6.4</span> Outputs:<a href="st-pipeline.html#outputs-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Dot plot showing pathway interaction between and within clusters.
+<center class="half">
+<img src="figures/step6/Pathway_interaction_between_Dotplot.png" width="60%"/>
+</center>
+<center class="half">
+<img src="figures/step6/Pathway_interaction_within_Dotplot.png" width="20%"/>
+</center></li>
+<li>Dot plot showing LRs interaction between and within clusters.
+<center class="half">
+<img src="figures/step6/LR_interaction_between_Dotplot.png" width="60%"/>
+</center>
+<center class="half">
+<img src="figures/step6/LR_interaction_within_Dotplot.png" width="20%"/>
+</center></li>
+<li>The information of each LR and pathway.</li>
+</ul>
+</div>
+</div>
+<div id="step-7.-cnv-analysis" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Step 7. CNV analysis<a href="st-pipeline.html#step-7.-cnv-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_CNV</code> function identifies and visualizes copy number variations (CNVs) in spatial transcriptomics data. It uses <a href="https://github.com/navinlabcode/copykat">CopyKAT</a> to perform the CNV analysis, saves the results, and generates visual representations of CNV states.</p>
+<div id="function-arguments-6" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input spatial transcriptomics object containing the data for analysis.</li>
+<li><code>save_path</code>: The directory where output files will be saved.</li>
+<li><code>assay</code>: The assay to be used for CNV analysis. Default is <code>'Spatial'</code>.</li>
+<li><code>LOW.DR</code>: The lower threshold for the dropout rate in CopyKAT. Default is <code>0.05</code>.</li>
+<li><code>UP.DR</code>: The upper threshold for the dropout rate in CopyKAT. Default is <code>0.1</code>.</li>
+<li><code>win.size</code>: The window size for the CNV analysis. Default is <code>25</code>.</li>
+<li><code>distance</code>: The distance metric to be used for the analysis. Default is <code>"euclidean"</code>.</li>
+<li><code>genome</code>: The genome version to be used, ‘hg20’ or ‘mm10’. Default is <code>"hg20"</code>.</li>
+<li><code>n.cores</code>: The number of cores to be used for parallel processing. Default is <code>1</code>.</li>
+<li><code>species</code>: The species of the spatial transcriptomics data. Default is <code>'human'</code>.</li>
+</ul>
+</div>
+<div id="function-behavior-5" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>CopyKAT Analysis: Runs <code>CopyKAT</code> pipeline to perform CNV analysis using the provided parameters.</li>
+<li>Saving Results: Saves the CopyKAT results as an RDS file.</li>
+<li>Plotting: Generates plots of the CNV states and saves them in <code>save_path</code>.</li>
+<li>Updating Metadata: Updates the spatial transcriptomics object with CNV state metadata.</li>
+<li>Return Value: Returns the updated <code>st_obj</code> containing the CNV state information.</li>
+</ol>
+</div>
+<div id="an-example-6" class="section level3 hasAnchor" number="5.7.3">
+<h3><span class="header-section-number">5.7.3</span> An example:<a href="st-pipeline.html#an-example-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_CNV(
+            st_obj = st_obj,
+            save_path = &#39;.&#39;,
+            assay = &#39;Spatial&#39;,
+            LOW.DR = 0.05,
+            UP.DR = 0.1,
+            win.size = 25,
+            distance = &quot;euclidean&quot;,
+            genome = &#39;hg20&#39;,
+            n.cores = 1,
+            species = &#39;human&#39;
+        )</code></pre>
+</div>
+<div id="outputs-6" class="section level3 hasAnchor" number="5.7.4">
+<h3><span class="header-section-number">5.7.4</span> Outputs:<a href="st-pipeline.html#outputs-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing the predicted CNV states.
+<center class="half">
+<img src="figures/step7/CNV_Spatial.png" width="30%"/>
+</center></li>
+<li>Figures showing the CNV heatmap.
+<center class="half">
+<img src="figures/step7/CNV_heatmap.png" width="30%"/>
+</center></li>
+<li>rds files of results of copykat.</li>
+</ul>
+</div>
+</div>
+<div id="step-8.-deconvolution" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Step 8. Deconvolution<a href="st-pipeline.html#step-8.-deconvolution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Deconvolution</code> function aims to perform spatial deconvolution analysis on spatial transcriptomics data to estimate the cell-type composition and abundance in different regions. The function utilizes <a href="https://github.com/BayraktarLab/cell2location">cell2location</a> to infer cell-type abundance and spatial distributions, allowing for the visualization and interpretation of spatially resolved cell populations within the tissue.</p>
+<div id="function-arguments-7" class="section level3 hasAnchor" number="5.8.1">
+<h3><span class="header-section-number">5.8.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st.data.dir</code>: Path to the spatial transcriptomics data.</li>
+<li><code>sc.h5ad.dir</code>: Path to the single-cell RNA-seq data in h5ad format. Default is <code>NULL</code>.</li>
+<li><code>library_id</code>: Identifier for the spatial transcriptomics library. Default is <code>'Hema_ST'</code>.</li>
+<li><code>st_obj</code>: Spatial transcriptomics object containing the data for analysis. Default is <code>NULL</code>.</li>
+<li><code>save_path</code>: The directory where output files will be saved. Default is <code>NULL</code>.</li>
+<li><code>sc.labels.key</code>: Key in the single-cell metadata to identify cell clusters. Default is <code>'seurat_clusters'</code>.</li>
+<li><code>species</code>: The species of the spatial transcriptomics data. Default is <code>'mouse'</code>.</li>
+<li><code>sc.max.epoch</code>: Maximum number of epochs used for single-cell deconvolution. Default is <code>1000</code>.</li>
+<li><code>st.max.epoch</code>: Maximum number of epochs used for spatial deconvolution. Default is <code>10000</code>.</li>
+<li><code>use.gpu</code>: Logical value indicating whether to use GPU for computation. Default is <code>FALSE</code>.
+<code>use.Dataset</code>: The dataset to be used for analysis, such as <code>'HematoMap'</code> or <code>'LymphNode'</code>.</li>
+<li><code>pythonPath</code>: The path to the Python environment containing <code>cell2location</code> to use for the analysis. Default is ‘.’.</li>
+</ul>
+</div>
+<div id="function-behavior-6" class="section level3 hasAnchor" number="5.8.2">
+<h3><span class="header-section-number">5.8.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Deconvolution Analysis: Performs the spatial deconvolution analysis using the provided spatial transcriptomics and single-cell RNA-seq data.</li>
+<li>Post-Analysis Processing: Processes the deconvolution results and visualizes the spatial distribution of inferred cell types within the tissue.</li>
+<li>Returning Results: If a Seurat object is provided, the updated Seurat object with cell type information is returned.</li>
+</ol>
+</div>
+<div id="an-example-7" class="section level3 hasAnchor" number="5.8.3">
+<h3><span class="header-section-number">5.8.3</span> An example:<a href="st-pipeline.html#an-example-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_Deconvolution(
+            st.data.dir = &#39;path/to/data&#39;,
+            library_id = &#39;Hema_ST&#39;,
+            sc.h5ad.dir = NULL,
+            st_obj = st_obj,
+            save_path = &#39;.&#39;,
+            sc.labels.key = &#39;seurat_clusters&#39;,
+            species = &#39;human&#39;,
+            sc.max.epoch = 1000,
+            st.max.epoch = 10000,
+            use.gpu = FALSE,
+            use.Dataset = &#39;LymphNode&#39;,
+            pythonPath = &#39;path/to/python&#39;
+        )</code></pre>
+</div>
+<div id="outputs-7" class="section level3 hasAnchor" number="5.8.4">
+<h3><span class="header-section-number">5.8.4</span> Outputs:<a href="st-pipeline.html#outputs-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing the predicted abundance of each cell-type.
+<center class="half">
+<img src="figures/step8/Cell2loc_total.png" width="30%"/>
+</center></li>
+<li>The parameters of trained cell2location model.</li>
+</ul>
+</div>
+</div>
+<div id="step-9.-cell-cycle" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Step 9. Cell cycle<a href="st-pipeline.html#step-9.-cell-cycle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_Cell_cycle</code> function is used to assess the cell cycle phase scores in spatial transcriptomics data. It calculates S phase and G2M phase scores based on the expression of designated cell cycle-related genes and visualizes these scores in spatial and dimensionality-reduced plots.</p>
+<div id="function-arguments-8" class="section level3 hasAnchor" number="5.9.1">
+<h3><span class="header-section-number">5.9.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input Seurat object containing the data for analysis.</li>
+<li><code>save_path</code>: The directory where the output images will be saved. Default is the current directory.</li>
+<li><code>s.features</code>: A list of genes associated with the S phase. Default is NULL (using genes from <a href="https://satijalab.org/seurat/articles/cell_cycle_vignette.html">Seurat</a>).</li>
+<li><code>g2m.features</code>: A list of genes associated with the G2M phase. Default is NULL (using genes from <a href="https://satijalab.org/seurat/articles/cell_cycle_vignette.html">Seurat</a>).</li>
+<li><code>species</code>: The species of the spatial transcriptomics data. Default is <code>'human'</code>.</li>
+<li><code>FeatureColors.bi</code>: A color palette for visualization. Default is a two-color ramp palette.</li>
+</ul>
+</div>
+<div id="function-behavior-7" class="section level3 hasAnchor" number="5.9.2">
+<h3><span class="header-section-number">5.9.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Gene Feature Assignment: Assigns S phase and G2M phase gene lists based on the specified species or provided input.</li>
+<li>Cell Cycle Scoring: Calculates the S phase and G2M phase scores in the data.</li>
+<li>Spatial Visualization: Generates spatial feature plots to visualize the S phase and G2M phase scores using the specified color palette and saves the plots as images.</li>
+<li>Dimensionality-Reduced Plot Visualization: If UMAP or tSNE dimensionality reduction is available in the <code>st_obj</code>, feature plots of the S phase and G2M phase scores are generated in the reduced space and saved as images.</li>
+<li>Return Value: Returns the updated <code>st_obj</code> containing the cell cycle phase scores.</li>
+</ol>
+</div>
+<div id="an-example-8" class="section level3 hasAnchor" number="5.9.3">
+<h3><span class="header-section-number">5.9.3</span> An example:<a href="st-pipeline.html#an-example-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>st_obj &lt;- st_Cell_cycle(
+            st_obj = st_obj,
+            save_path = &#39;.&#39;,
+            s.features = NULL,
+            g2m.features = NULL,
+            species = &#39;human&#39;,
+            FeatureColors.bi = colorRampPalette(colors = rev(x = brewer.pal(n = 11, name = &#39;RdYlBu&#39;)))
+        )</code></pre>
+</div>
+<div id="outputs-8" class="section level3 hasAnchor" number="5.9.4">
+<h3><span class="header-section-number">5.9.4</span> Outputs:<a href="st-pipeline.html#outputs-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing S scores.
+<center class="half">
+<img src="figures/step9/S_Score_spatial.png" width="20%"/>
+<img src="figures/step9/S_Score_UMAP.png" width="20%"/>
+<img src="figures/step9/S_Score_TSNE.png" width="20%"/>
+</center></li>
+<li>Figures showing S scores.
+<center class="half">
+<img src="figures/step9/G2M_Score_spatial.png" width="20%"/>
+<img src="figures/step9/G2M_Score_UMAP.png" width="20%"/>
+<img src="figures/step9/G2M_Score_TSNE.png" width="20%"/>
+</center></li>
+</ul>
+</div>
+</div>
+<div id="step-10.-niche-analysis" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Step 10. Niche analysis<a href="st-pipeline.html#step-10.-niche-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>st_NicheAnalysis</code> function is designed to perform niche analysis on spatial transcriptomics data, enabling the exploration of spatial niches or microenvironments within the tissue. The function encompasses co-occurrence analysis, niche clustering, and niche interaction analysis to uncover the spatial relationships and characteristics of different cell populations or features.</p>
+<div id="function-arguments-9" class="section level3 hasAnchor" number="5.10.1">
+<h3><span class="header-section-number">5.10.1</span> Function arguments:<a href="st-pipeline.html#function-arguments-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>st_obj</code>: The input SeuratObject containing the spatial transcriptomics data for analysis.</li>
+<li><code>features</code>: A vector of features representing features (for example, cell types from deconvolution) for niche analysis.</li>
+<li><code>save_path</code>: The directory where the analysis results and visualizations will be saved. Default is the current directory.</li>
+<li><code>coexistence.method</code>: The method for co-occurrence analysis, accepting <code>'correlation'</code> or <code>'Wasserstein'</code>. Default is <code>'correlation'</code>.</li>
+<li><code>kmeans.n</code>: The number of clusters for niche clustering. Default is <code>4</code>.</li>
+<li><code>st_data_path</code>: A path containing the ‘spatial’ file and ‘filtered_feature_bc_matrix.h5’ file, required for niche interaction visualization.</li>
+<li><code>slice</code>: The slice to be used for analysis. Default is <code>'slice1'</code>.</li>
+<li><code>species</code>: The species of the sample data. Default is <code>'mouse'</code>.</li>
+<li><code>pythonPath</code>: The path to the Python environment containing <code>Commot</code> to use for the analysis. Default is ‘.’.</li>
+</ul>
+</div>
+<div id="function-behavior-8" class="section level3 hasAnchor" number="5.10.2">
+<h3><span class="header-section-number">5.10.2</span> Function behavior:<a href="st-pipeline.html#function-behavior-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Co-occurrence Score Calculation: Calculates the co-occurrence scores between the specified features using the chosen coexistence method (‘correlation’ or ‘Wasserstein’).</li>
+<li>Niche Clustering: Utilizes k-means clustering to identify distinct spatial niches based on the expression profiles of the selected features and visualizes the clustering results.</li>
+<li>Niche Interaction Visualization: If the <code>st_data_path</code> is provided, performs niche interaction visualization using <code>Commot</code>, which is based on the provided spatial transcriptomics data and generates visualizations of niche interactions within the tissue.</li>
+<li>Return Value: Returns the updated <code>st_obj</code> with niche analysis results and visualizations.</li>
+</ol>
+</div>
+<div id="an-example-9" class="section level3 hasAnchor" number="5.10.3">
+<h3><span class="header-section-number">5.10.3</span> An example:<a href="st-pipeline.html#an-example-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>tmp &lt;- read.csv(&#39;path/to/cell2loc_res.csv&#39;,
+                row.names = 1)
+features &lt;- colnames(tmp)
+
+if(!all(features %in% names(st_obj@meta.data))){
+    common.barcodes &lt;- intersect(colnames(st_obj), rownames(tmp))
+    tmp &lt;- tmp[common.barcodes, ]
+    st_obj &lt;- st_obj[, common.barcodes]
+    st_obj &lt;- AddMetaData(st_obj,
+                          metadata = tmp)
+}
+
+st_obj &lt;- st_NicheAnalysis(
+    st_obj,
+    features = features,
+    save_path = &#39;.&#39;,
+    coexistence.method = &#39;correlation&#39;,
+    kmeans.n = 4,
+    st_data_path = &#39;path/to/data&#39;,
+    slice = `slice1`,
+    species = &#39;human&#39;,
+    condaenv = &#39;path/to/python&#39;
+)</code></pre>
+</div>
+<div id="outputs-9" class="section level3 hasAnchor" number="5.10.4">
+<h3><span class="header-section-number">5.10.4</span> Outputs:<a href="st-pipeline.html#outputs-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Figures showing the co-existence results.
+<center class="half">
+<img src="figures/step10/Coexistence.png" width="30%"/>
+</center></li>
+<li>Figures showing the spatial distribution of each niche.
+<center class="half">
+<img src="figures/step10/niche_spatial.png" width="20%"/>
+</center></li>
+<li>Figures showing the composition of each niche.
+<center class="half">
+<img src="figures/step10/niche_features.png" width="20%"/>
+</center></li>
+<li>Figures showing the results of interactions using <code>Commot</code>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-by-step-scrna-seq-pipeline.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/help_st.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

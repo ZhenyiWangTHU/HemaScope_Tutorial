@@ -1,0 +1,196 @@
+# Installation
+
+## Install R and python
+
+-   Create a new conda environment,install R 4.3.3 and python 3.11.4
+
+```         
+conda create --name HemaScopeR_env
+conda activate HemaScopeR_env
+conda install R-base=4.3.3
+conda install python=3.11.4
+```
+
+## Install required R-packages
+
+-   install high-priority packages
+
+R:
+
+```         
+install.packages("BiocManager",version="1.30.23")
+
+BiocManager::install("ComplexHeatmap")     
+BiocManager::install("scmap")
+```
+
+Conda:
+
+```         
+ conda config --add channels bioconda
+ conda install -c conda-forge r-devtools=2.4.5      
+ conda install -c conda-forge r-Seurat=4.3.0.1       
+ conda install -c conda-forge r-Rfast2=0.1.5.1      
+ conda install -c conda-forge r-hdf5r=1.3.10
+ conda install pwwang::r-seuratwrappers
+```
+
+-   install required packages from cran
+
+```         
+remotes::install_version("shiny", version = "1.7.5")
+remotes::install_version("textshaping", version = "0.3.6")
+remotes::install_version("shinyjs", version = "2.1.0")
+remotes::install_version("phateR", version = "1.0.7")
+remotes::install_version("plyr", version = "1.8.8")
+remotes::install_version("dplyr", version = "1.1.2")
+remotes::install_version("ggpubr", version = "0.6.0")
+remotes::install_version("viridis", version = "0.6.4")
+remotes::install_version("pheatmap", version = "1.0.12")
+remotes::install_version("feather", version = "0.3.5")
+remotes::install_version("foreach", version = "1.5.2")
+remotes::install_version("doParallel", version = "1.0.17")
+remotes::install_version("RColorBrewer", version = "1.1-3")
+remotes::install_version("gelnet", version = "1.2.1")
+remotes::install_version("ggplot2", version = "3.4.4")
+remotes::install_version("parallelDist", version = "0.2.6")
+remotes::install_version("patchwork", version = "1.1.3")
+remotes::install_version("markdown", version = "1.10")
+remotes::install_version("kableExtra", version = "1.3.4")
+remotes::install_version("transport", version = "0.14-6")
+```
+
+-   install required packages from BiocManager(Give every "Proceed?" a "y")
+
+```         
+conda install -c bioconda bioconductor-monocle=2.28.0
+conda install -c bioconda bioconductor-slingshot=2.8.0
+conda install -c bioconda bioconductor-GSVA=1.48.2
+conda install -c bioconda bioconductor-limma=3.56.2
+conda install -c bioconda bioconductor-org.Mm.eg.db=3.17.0
+conda install -c bioconda bioconductor-org.Hs.eg.db=3.17.0
+conda install -c bioconda bioconductor-scran=1.28.1
+conda install -c bioconda bioconductor-AUCell=1.22.0
+conda install -c bioconda bioconductor-RcisTarget=1.20.0
+conda install -c bioconda bioconductor-GENIE3=1.24.0
+conda install -c bioconda bioconductor-clusterProfiler=4.8.3
+conda install -c bioconda bioconductor-biomaRt=2.56.1
+```
+
+-   install required packages from GitHub
+
+tips:
+
+Sometimes network connection issues may occur, resulting in an error message indicating that GitHub cannot be connected. Please try installing again when the network conditions improve.
+
+Usage limitations: Sometimes an API rate limit error occurs, and a GitHub token is needed to provide the GitHub API rate limit. The steps to resolve this are as follows: Register for an account or log in to an existing account on the GitHub website. Then click on your profile picture in the top right corner, go to the dropdown menu and select "Settings." Next, find "Developer settings" and click on it, then find "Personal access tokens (classic)." Click on it, then click "Create new token (classic)." Create a new token by first naming it anything you like. Then choose the expiration time for the token. Finally, check the "repo" box; the token will be used to download code repositories from GitHub. Click "Generate token." Copy the generated token password.
+
+After that, set the token in the environment variable in R. Since we are using conda, enter R by typing R in the terminal. Then, enter the command: usethis::edit_r_environ(). This will open a file. Press the i key to edit. Paste the token you copied into the code area as follows: GITHUB_TOKEN="your_token".
+
+Then press Esc, type :wq! (force save). After that, you need to exit Linux and re-enter R. Close and reopen the terminal to apply the environment variable. Reopen Linux, activate the conda environment, and enter R again.
+
+R:
+
+```         
+devtools::install_github("jinworks/CellChat")
+devtools::install_github("aertslab/SCENIC")
+devtools::install_github("pzhulab/abcCellmap")
+devtools::install_github("navinlabcode/copykat")
+remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
+remotes::install_github("mojaveazure/seurat-disk")
+```
+
+conda:
+
+```         
+conda install -c bioconda r-velocyto.r=0.6
+```
+
+-   Installed R packages with version
+
+```         
+Bioconductor 3.18 (BiocManager 1.30.23)
+Devtools 2.4.5
+Matrix 1.6-5
+shiny 1.7.5
+textshaping 0.3.6
+shinyjs 2.1.0
+Seurat 4.3.0.1
+phateR 1.0.7
+DoubletFinder 2.0.4
+monocle 2.28.0
+slingshot 2.8.0
+GSVA 1.48.2      #原1.48.3
+limma 3.56.2
+plyr 1.8.8
+dplyr 1.1.2
+org.Mm.eg.db 3.17.0
+org.Hs.eg.db 3.17.0
+CellChat 2.1.2   #原1.6.1
+velocyto.R 0.6
+SeuratWrappers 0.3.1
+stringr 1.5.1    #原1.5.0
+scran 1.28.1     #原1.28.2
+ggpubr 0.6.0
+viridis 0.6.4
+pheatmap 1.0.12
+parallel 4.3.3
+reticulate 1.38.0   #原1.31
+SCENIC 1.3.1
+feather 0.3.5
+AUCell 1.22.0
+RcisTarget 1.20.0
+foreach 1.5.2
+doParallel 1.0.17
+clusterProfiler 4.8.1   #原4.8.3
+RColorBrewer 1.1-3
+Rfast2 0.1.5.1
+SeuratDisk 0.0.0.9021  #原0.0.0.9020
+abcCellmap 0.1.0 
+biomaRt 2.56.1
+copykat 1.1.0
+gelnet 1.2.1
+ggplot2 3.4.4
+parallelDist 0.2.6
+patchwork 1.1.3
+markdown 1.10
+GENIE3 1.24.0
+```
+
+## Install required Python-packages
+
+-   upgrade pip and set mirrors
+
+```         
+python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.extra-index-url http://mirrors.aliyun.com/pypi/simple/
+```
+
+-   install required packages
+
+```         
+pip install numpy==1.23.5
+pip install pandas==2.2.2
+pip install matplotlib==3.5.2
+pip install scvelo==0.2.5
+pip install arboreto==0.1.6
+pip install pot==0.9.1
+pip install anndata==0.9.2
+pip install scanpy==1.9.4
+pip install scipy==1.11.2
+pip install seaborn==0.12.2
+pip install commot==0.0.3
+pip install scvi-tools==1.0.3
+pip install cell2location==0.1.3 
+#import cell2location:2 warnings
+pip install phate==1.0.11
+pip install jax==0.4.20
+pip install jaxlib==0.4.20
+```
+
+## Install HemaScopeR
+
+```         
+devtools::install_github(repo="ZhenyiWangTHU/HemaScopeR", dep = FALSE)
+```
