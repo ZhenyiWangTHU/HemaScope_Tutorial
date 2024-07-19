@@ -1,0 +1,14 @@
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: ""
+
+#chapters:
+rmd_files:
+ - index.Rmd
+ - HemaScope_installation_tutorial.Rmd
+ - integrated_scRNA_seq_pipeline.Rmd
+ - step_by_step_scRNA_seq_pipeline.Rmd
+ - step_by_step_st_seq_pipeline.Rmd
+# - shiny_usage.Rmd
+# - HemaScopeCloud_usage.Rmd
