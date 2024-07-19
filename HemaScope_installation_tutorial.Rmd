@@ -1,86 +1,100 @@
 # Installation
 
-## Install R and python
-
--   Create a new conda environment,install R 4.3.3 and python 3.11.4
+## Create a new conda environment and activate it
 
 ```
-conda create --name HemaScopeR_env
-conda activate HemaScopeR_env
-conda config --env --add channels bioconda
-conda config --env --add channels conda-forge
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda create --name HemaScope_env
+conda activate HemaScope_env
+```
+
+## Set the channels in conda 
+
+```
+# Add the default channel
+conda config --add channels defaults
+
+# Add default channel URLs
+conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+
+# Add custom channels
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch-lts
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/simpleitk
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/deepmodeling
+
+# Set to show channel URLs
+conda config --set show_channel_urls true
+```
+
+## Install R and python
+
+- R 4.3.3 and python 3.11.4
+
+```
 conda install R-base=4.3.3
 conda install python=3.11.4
 ```
 
 ## Install required R-packages
 
--   install high-priority packages
-
-R:
+- From conda
 
 ```         
-install.packages("BiocManager",version="1.30.23")
-
-BiocManager::install("ComplexHeatmap")     
-BiocManager::install("scmap")
-```
-
-Conda:
-
-```         
- conda config --add channels bioconda
- conda install -c conda-forge r-devtools=2.4.5      
- conda install -c conda-forge r-Seurat=4.3.0.1       
- conda install -c conda-forge r-Rfast2=0.1.5.1      
- conda install -c conda-forge r-hdf5r=1.3.10
- conda install pwwang::r-seuratwrappers
-```
-
--   install required packages from cran
-
-```         
-remotes::install_version("shiny", version = "1.7.5")
-remotes::install_version("textshaping", version = "0.3.6")
-remotes::install_version("shinyjs", version = "2.1.0")
-remotes::install_version("phateR", version = "1.0.7")
-remotes::install_version("plyr", version = "1.8.8")
-remotes::install_version("dplyr", version = "1.1.2")
-remotes::install_version("ggpubr", version = "0.6.0")
-remotes::install_version("viridis", version = "0.6.4")
-remotes::install_version("pheatmap", version = "1.0.12")
-remotes::install_version("feather", version = "0.3.5")
-remotes::install_version("foreach", version = "1.5.2")
-remotes::install_version("doParallel", version = "1.0.17")
-remotes::install_version("RColorBrewer", version = "1.1-3")
-remotes::install_version("gelnet", version = "1.2.1")
-remotes::install_version("ggplot2", version = "3.4.4")
-remotes::install_version("parallelDist", version = "0.2.6")
-remotes::install_version("patchwork", version = "1.1.3")
-remotes::install_version("markdown", version = "1.10")
-remotes::install_version("kableExtra", version = "1.3.4")
-remotes::install_version("transport", version = "0.14-6")
-```
-
--   install required packages from BiocManager(Give every "Proceed?" a "y")
-
-```         
+conda install -c conda-forge r-devtools=2.4.5      
+conda install -c conda-forge r-Seurat=4.3.0.1       
+conda install -c conda-forge r-Rfast2=0.1.5.1      
+conda install -c conda-forge r-hdf5r=1.3.10
+conda install -c conda-forge r-ggpubr=0.6.0
+conda install pwwang::r-seuratwrappers
 conda install -c bioconda bioconductor-monocle=2.28.0
 conda install -c bioconda bioconductor-slingshot=2.8.0
 conda install -c bioconda bioconductor-GSVA=1.48.2
-conda install -c bioconda bioconductor-limma=3.56.2
 conda install -c bioconda bioconductor-org.Mm.eg.db=3.17.0
 conda install -c bioconda bioconductor-org.Hs.eg.db=3.17.0
 conda install -c bioconda bioconductor-scran=1.28.1
 conda install -c bioconda bioconductor-AUCell=1.22.0
 conda install -c bioconda bioconductor-RcisTarget=1.20.0
 conda install -c bioconda bioconductor-GENIE3=1.24.0
-conda install -c bioconda bioconductor-clusterProfiler=4.8.3
 conda install -c bioconda bioconductor-biomaRt=2.56.1
+conda install -c bioconda r-velocyto.r=0.6
+#conda install -c bioconda bioconductor-limma=3.56.2
+```
+- Enter the R language environment
+We suggest users do not manually update any already installed R packages during the installation of the following R packages.
+```
+R
+```
+- From BiocManager
+
+```  
+# BiocManager(version = "1.30.23") should already be installed as a dependency of r-seuratwrappers. 
+# If it is not installed, please run the following code to install it. 
+# install.packages("BiocManager",version="1.30.23")
+BiocManager::install("ComplexHeatmap")     
+BiocManager::install("scmap")
+BiocManager::install("clusterProfiler")
 ```
 
--   install required packages from GitHub
+- From CRAN
+
+```         
+remotes::install_version("shinyjs", version = "2.1.0")
+remotes::install_version("phateR", version = "1.0.7")
+remotes::install_version("gelnet", version = "1.2.1")
+remotes::install_version("parallelDist", version = "0.2.6")
+remotes::install_version("kableExtra", version = "1.3.4")
+remotes::install_version("transport", version = "0.14-6")
+remotes::install_version("feather", version = "0.3.5")
+remotes::install_version("markdown", version = "1.10")
+```
+
+- From GitHub
 
 tips:
 
@@ -92,72 +106,24 @@ After that, set the token in the environment variable in R. Since we are using c
 
 Then press Esc, type :wq! (force save). After that, you need to exit Linux and re-enter R. Close and reopen the terminal to apply the environment variable. Reopen Linux, activate the conda environment, and enter R again.
 
-R:
-
 ```         
-devtools::install_github("jinworks/CellChat")
-devtools::install_github("aertslab/SCENIC")
-devtools::install_github("pzhulab/abcCellmap")
-devtools::install_github("navinlabcode/copykat")
-remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
-remotes::install_github("mojaveazure/seurat-disk")
+devtools::install_github("sqjin/CellChat@9e1e605")
+devtools::install_github("aertslab/SCENIC@fde9774")
+devtools::install_github("pzhulab/abcCellmap@f44c14b")
+devtools::install_github("navinlabcode/copykat@d7d6569")
+devtools::install_github('chris-mcginnis-ucsf/DoubletFinder@8c7f76e')
+devtools::install_github("mojaveazure/seurat-disk@877d4e1")
 ```
 
-conda:
+- Install HemaScopeR from github
 
 ```         
-conda install -c bioconda r-velocyto.r=0.6
+devtools::install_github(repo="ZhenyiWangTHU/HemaScopeR", dep = FALSE)
 ```
 
--   Installed R packages with version
-
-```         
-Bioconductor 3.18 (BiocManager 1.30.23)
-Devtools 2.4.5
-Matrix 1.6-5
-shiny 1.7.5
-textshaping 0.3.6
-shinyjs 2.1.0
-Seurat 4.3.0.1
-phateR 1.0.7
-DoubletFinder 2.0.4
-monocle 2.28.0
-slingshot 2.8.0
-GSVA 1.48.2      #原1.48.3
-limma 3.56.2
-plyr 1.8.8
-dplyr 1.1.2
-org.Mm.eg.db 3.17.0
-org.Hs.eg.db 3.17.0
-CellChat 2.1.2   #原1.6.1
-velocyto.R 0.6
-SeuratWrappers 0.3.1
-stringr 1.5.1    #原1.5.0
-scran 1.28.1     #原1.28.2
-ggpubr 0.6.0
-viridis 0.6.4
-pheatmap 1.0.12
-parallel 4.3.3
-reticulate 1.38.0   #原1.31
-SCENIC 1.3.1
-feather 0.3.5
-AUCell 1.22.0
-RcisTarget 1.20.0
-foreach 1.5.2
-doParallel 1.0.17
-clusterProfiler 4.8.1   #原4.8.3
-RColorBrewer 1.1-3
-Rfast2 0.1.5.1
-SeuratDisk 0.0.0.9021  #原0.0.0.9020
-abcCellmap 0.1.0 
-biomaRt 2.56.1
-copykat 1.1.0
-gelnet 1.2.1
-ggplot2 3.4.4
-parallelDist 0.2.6
-patchwork 1.1.3
-markdown 1.10
-GENIE3 1.24.0
+- Exist the R language environment
+```
+quit()
 ```
 
 ## Install required Python-packages
@@ -174,7 +140,7 @@ pip config set global.extra-index-url http://mirrors.aliyun.com/pypi/simple/
 
 ```         
 pip install numpy==1.23.5
-pip install pandas==2.2.2
+pip install pandas==1.3.5
 pip install matplotlib==3.5.2
 pip install scvelo==0.2.5
 pip install arboreto==0.1.6
@@ -186,14 +152,704 @@ pip install seaborn==0.12.2
 pip install commot==0.0.3
 pip install scvi-tools==1.0.3
 pip install cell2location==0.1.3 
-#import cell2location:2 warnings
 pip install phate==1.0.11
 pip install jax==0.4.20
 pip install jaxlib==0.4.20
 ```
 
-## Install HemaScopeR
-
+## The installed packages with versions
+- R packages with versions
 ```         
-devtools::install_github(repo="ZhenyiWangTHU/HemaScopeR", dep = FALSE)
+Package	Version
+------- -------
+abcCellmap	0.1.0
+abind	1.4-5
+annotate	1.78.0
+AnnotationDbi	1.64.1
+ape	5.8
+aplot	0.2.3
+arrow	17.0.0
+askpass	1.2.0
+assertthat	0.2.1
+AUCell	1.22.0
+backports	1.5.0
+base	4.3.3
+base64enc	0.1-3
+beachmat	2.16.0
+BH	1.84.0-0
+Biobase	2.60.0
+BiocFileCache	2.8.0
+BiocGenerics	0.46.0
+BiocManager	1.30.23
+BiocNeighbors	1.18.0
+BiocParallel	1.34.2
+BiocSingular	1.16.0
+BiocVersion	3.18.1
+biocViews	1.68.1
+biomaRt	2.56.1
+Biostrings	2.68.1
+bit	4.0.5
+bit64	4.0.5
+bitops	1.0-7
+blob	1.2.4
+bluster	1.10.0
+boot	1.3-30
+brew	1.0-10
+brio	1.1.5
+broom	1.0.6
+bslib	0.7.0
+cachem	1.1.0
+callr	3.7.6
+car	3.1-2
+carData	3.0-5
+caret	6.0-94
+caTools	1.18.2
+CellChat	1.5.0
+cellranger	1.1.0
+circlize	0.4.16
+class	7.3-22
+cli	3.6.3
+clipr	0.8.0
+clock	0.7.0
+clue	0.3-65
+cluster	2.1.6
+clusterProfiler	4.10.1
+coda	0.19-4.1
+codetools	0.2-20
+colorspace	2.1-0
+combinat	0.0-8
+commonmark	1.9.1
+compiler	4.3.3
+ComplexHeatmap	2.18.0
+conquer	1.3.3
+copykat	1.1.0
+corrplot	0.92
+cowplot	1.1.3
+cpp11	0.4.7
+crayon	1.5.3
+credentials	2.0.1
+crosstalk	1.2.1
+curl	5.2.1
+data.table	1.15.4
+datasets	4.3.3
+DBI	1.2.3
+dbplyr	2.5.0
+DDRTree	0.1.5
+DelayedArray	0.26.6
+DelayedMatrixStats	1.22.1
+deldir	2.0-4
+Deriv	4.1.3
+desc	1.4.3
+devtools	2.4.5
+diagram	1.6.5
+diffobj	0.3.5
+digest	0.6.36
+dlm	1.1-6
+doBy	4.6.22
+docopt	0.7.1
+doParallel	1.0.17
+DOSE	3.28.2
+dotCall64	1.1-1
+DoubletFinder	2.0.3
+downlit	0.4.4
+downloader	0.4
+dplyr	1.1.4
+dqrng	0.3.2
+dynamicTreeCut	1.63-1
+e1071	1.7-14
+edgeR	3.42.4
+ellipsis	0.3.2
+enrichplot	1.22.0
+evaluate	0.24.0
+expm	0.999-9
+fansi	1.0.6
+farver	2.1.2
+fastDummies	1.7.3
+fastICA	1.2-4
+fastmap	1.2.0
+fastmatch	1.1-4
+feather	0.3.5
+fgsea	1.28.0
+fields	16.2
+filelock	1.0.3
+fitdistrplus	1.1-11
+FNN	1.1.4
+fontawesome	0.5.2
+forcats	1.0.0
+foreach	1.5.2
+foreign	0.8-87
+formatR	1.14
+fs	1.6.4
+futile.logger	1.4.3
+futile.options	1.0.1
+future	1.33.2
+future.apply	1.11.2
+gelnet	1.2.1
+generics	0.1.3
+GENIE3	1.24.0
+GenomeInfoDb	1.36.1
+GenomeInfoDbData	1.2.11
+GenomicRanges	1.52.0
+gert	2.0.1
+GetoptLong	1.0.5
+ggalluvial	0.12.5
+ggforce	0.4.2
+ggfun	0.1.5
+ggnetwork	0.5.13
+ggnewscale	0.4.10
+ggplot2	3.5.1
+ggplotify	0.1.2
+ggpubr	0.6.0
+ggraph	2.2.1
+ggrepel	0.9.5
+ggridges	0.5.6
+ggsci	3.2.0
+ggsignif	0.6.4
+ggtree	3.10.1
+gh	1.4.1
+gitcreds	0.1.2
+GlobalOptions	0.1.2
+globals	0.16.3
+glue	1.7.0
+GO.db	3.18.0
+goftest	1.2-3
+googleVis	0.7.3
+GOSemSim	2.28.1
+gower	1.0.1
+gplots	3.1.3.1
+graph	1.78.0
+graphics	4.3.3
+graphlayouts	1.1.1
+grDevices	4.3.3
+grid	4.3.3
+gridBase	0.4-7
+gridExtra	2.3
+gridGraphics	0.5-1
+GSEABase	1.62.0
+gson	0.1.0
+GSVA	1.48.2
+gtable	0.3.5
+gtools	3.9.5
+hardhat	1.4.0
+haven	2.5.4
+HDF5Array	1.28.1
+hdf5r	1.3.10
+HDO.db	0.99.1
+HemaScopeR	1.0.0
+here	1.0.1
+hexbin	1.28.3
+highr	0.11
+hms	1.1.3
+HSMMSingleCell	1.20.0
+htmltools	0.5.8.1
+htmlwidgets	1.6.4
+httpuv	1.6.15
+httr	1.4.7
+httr2	1.0.2
+ica	1.0-3
+igraph	2.0.3
+ini	0.3.1
+ipred	0.9-14
+IRanges	2.34.1
+irlba	2.3.5.1
+isoband	0.2.7
+iterators	1.0.14
+jquerylib	0.1.4
+jsonlite	1.8.8
+kableExtra	1.3.4
+KEGGREST	1.40.0
+kernlab	0.9-32
+KernSmooth	2.23-24
+knitr	1.48
+labeling	0.4.3
+lambda.r	1.2.4
+later	1.3.2
+lattice	0.22-6
+lava	1.7.3
+lazyeval	0.2.2
+leiden	0.4.3.1
+leidenbase	0.1.27
+lifecycle	1.0.4
+limma	3.56.2
+listenv	0.9.1
+lme4	1.1-35.5
+lmtest	0.9-40
+locfit	1.5-9.9
+lsei	1.3-0
+lubridate	1.9.3
+magrittr	2.0.3
+maps	3.4.2
+maptools	1.1-8
+markdown	1.1
+MASS	7.3-60.0.1
+Matrix	1.6-5
+MatrixGenerics	1.12.2
+MatrixModels	0.5-3
+matrixStats	1.3.0
+mcmc	0.9-8
+MCMCpack	1.7-0
+memoise	2.0.1
+metapod	1.8.0
+methods	4.3.3
+mgcv	1.9-1
+microbenchmark	1.4.10
+mime	0.12
+miniUI	0.1.1.1
+minqa	1.2.7
+mixtools	2.0.0
+ModelMetrics	1.2.2.2
+modelr	0.1.11
+monocle	2.28.0
+munsell	0.5.1
+network	1.18.2
+nlme	3.1-165
+nloptr	2.0.3
+NMF	0.27
+nnet	7.3-19
+npsurv	0.5-0
+numDeriv	2016.8-1.1
+openssl	2.2.0
+org.Hs.eg.db	3.17.0
+org.Mm.eg.db	3.17.0
+parallel	4.3.3
+parallelDist	0.2.6
+parallelly	1.37.1
+patchwork	1.2.0
+pbapply	1.7-2
+pbkrtest	0.5.2
+pcaMethods	1.92.0
+phateR	1.0.7
+pheatmap	1.0.12
+pillar	1.9.0
+pkgbuild	1.4.4
+pkgconfig	2.0.3
+pkgdown	2.1.0
+pkgload	1.3.4
+plogr	0.2.0
+plotly	4.10.4
+plyr	1.8.9
+png	0.1-8
+polyclip	1.10-6
+polynom	1.4-1
+praise	1.0.0
+prettyunits	1.2.0
+princurve	2.1.6
+pROC	1.18.5
+processx	3.8.4
+prodlim	2024.06.25
+profvis	0.3.8
+progress	1.2.3
+progressr	0.14.0
+promises	1.3.0
+proxy	0.4-27
+ps	1.7.7
+purrr	1.0.2
+qlcMatrix	0.9.8
+quantreg	5.98
+qvalue	2.34.0
+R.methodsS3	1.8.2
+R.oo	1.26.0
+R.utils	2.12.3
+R6	2.5.1
+ragg	1.3.2
+randomForest	4.7-1.1
+RANN	2.6.1
+rappdirs	0.3.3
+RBGL	1.76.0
+RcisTarget	1.20.0
+rcmdcheck	1.4.0
+RColorBrewer	1.1-3
+Rcpp	1.0.13
+RcppAnnoy	0.0.22
+RcppArmadillo	14.0.0-1
+RcppEigen	0.3.4.0.0
+RcppGSL	0.3.13
+RcppHNSW	0.6.0
+RcppParallel	5.1.6
+RcppProgress	0.4.2
+RcppTOML	0.2.2
+RcppZiggurat	0.1.6
+RCurl	1.98-1.16
+readr	2.1.5
+readxl	1.4.3
+recipes	1.1.0
+registry	0.5-1
+rematch	2.0.0
+rematch2	2.1.2
+remotes	2.5.0
+reshape2	1.4.4
+reticulate	1.38.0
+Rfast	2.1.0
+Rfast2	0.1.5.1
+rhdf5	2.44.0
+rhdf5filters	1.12.1
+Rhdf5lib	1.22.0
+rio	1.1.1
+rjson	0.2.21
+rlang	1.1.4
+rmarkdown	2.27
+rngtools	1.5.2
+ROCR	1.0-11
+roxygen2	7.3.2
+rpart	4.1.23
+rprojroot	2.0.4
+RSpectra	0.16-2
+RSQLite	2.3.7
+rstatix	0.7.2
+rstudioapi	0.16.0
+rsvd	1.0.5
+Rtsne	0.17
+RUnit	0.4.33
+rversions	2.1.2
+rvest	1.0.4
+S4Arrays	1.0.4
+S4Vectors	0.38.1
+sass	0.4.9
+ScaledMatrix	1.8.1
+scales	1.3.0
+scattermore	1.2
+scatterpie	0.2.3
+SCENIC	1.3.0
+scmap	1.24.0
+scran	1.28.1
+sctransform	0.4.1
+scuttle	1.10.1
+segmented	2.1-0
+selectr	0.4-2
+sessioninfo	1.2.2
+Seurat	4.3.0.1
+SeuratDisk	0.0.0.9021
+SeuratObject	5.0.2
+SeuratWrappers	0.3.1
+shadowtext	0.1.4
+shape	1.4.6.1
+shiny	1.8.1.1
+shinyjs	2.1.0
+SingleCellExperiment	1.22.0
+sitmo	2.0.2
+slam	0.1-51
+slingshot	2.8.0
+sna	2.7-2
+snow	0.4-4
+sourcetools	0.1.7-1
+sp	2.1-4
+spam	2.10-0
+SparseM	1.84
+sparseMatrixStats	1.12.2
+sparsesvd	0.2-2
+spatstat.data	3.1-2
+spatstat.explore	3.2-6
+spatstat.geom	3.2-9
+spatstat.random	3.2-3
+spatstat.sparse	3.1-0
+spatstat.univar	3.0-0
+spatstat.utils	3.0-5
+splines	4.3.3
+SQUAREM	2021.1
+statmod	1.5.0
+statnet.common	4.9.0
+stats	4.3.3
+stats4	4.3.3
+stringi	1.8.4
+stringr	1.5.1
+SummarizedExperiment	1.30.2
+survival	3.7-0
+svglite	2.1.3
+sys	3.4.2
+systemfonts	1.1.0
+tcltk	4.3.3
+tensor	1.5
+testthat	3.2.1.1
+textshaping	0.3.7
+tibble	3.2.1
+tidygraph	1.3.1
+tidyr	1.3.1
+tidyselect	1.2.1
+tidytree	0.4.6
+timechange	0.3.0
+timeDate	4032.109
+tinytex	0.51
+tools	4.3.3
+TrajectoryUtils	1.8.0
+transport	0.14-6
+treeio	1.26.0
+tweenr	2.0.3
+tzdb	0.4.0
+urlchecker	1.0.1
+usethis	2.2.3
+utf8	1.2.4
+utils	4.3.3
+uwot	0.1.16
+vctrs	0.6.5
+velocyto.R	0.6
+VGAM	1.1-11
+viridis	0.6.5
+viridisLite	0.4.2
+vroom	1.6.5
+waldo	0.5.2
+webshot	0.5.5
+whisker	0.4.1
+withr	3.0.0
+writexl	1.5.0
+xfun	0.46
+XML	3.99-0.17
+xml2	1.3.6
+xopen	1.0.1
+xtable	1.8-4
+XVector	0.40.0
+yaml	2.3.9
+yulab.utils	0.1.4
+zip	2.3.1
+zlibbioc	1.46.0
+zoo	1.8-12
+```
+- Python packages with versions
+```
+Package                  Version
+------------------------ --------------
+absl-py                  2.1.0
+access                   1.1.9
+affine                   2.4.0
+aiohttp                  3.9.5
+aiosignal                1.3.1
+anndata                  0.10.8
+annotated-types          0.7.0
+anyio                    4.4.0
+arboreto                 0.1.6
+argcomplete              3.4.0
+array_api_compat         1.7.1
+arrow                    1.3.0
+attrs                    23.2.0
+backoff                  2.2.1
+beautifulsoup4           4.12.3
+blessed                  1.20.0
+bokeh                    3.5.0
+boto3                    1.34.145
+botocore                 1.34.145
+cell2location            0.1.3
+certifi                  2024.7.4
+charset-normalizer       3.3.2
+chex                     0.1.7
+click                    8.1.7
+click-plugins            1.1.1
+cligj                    0.7.2
+cloudpickle              3.0.0
+commot                   0.0.3
+contextlib2              21.6.0
+contourpy                1.2.1
+croniter                 1.4.1
+cycler                   0.12.1
+dask                     2024.7.0
+dask-expr                1.1.8
+dateutils                0.6.12
+decorator                4.4.2
+deepdiff                 7.0.1
+Deprecated               1.2.14
+deprecation              2.1.0
+distributed              2024.7.0
+dm-tree                  0.1.8
+dnspython                2.6.1
+docrep                   0.3.2
+editor                   1.6.6
+email_validator          2.2.0
+esda                     2.4.3
+etils                    1.9.2
+fastapi                  0.111.1
+fastapi-cli              0.0.4
+filelock                 3.15.4
+fiona                    1.9.6
+flax                     0.8.5
+fonttools                4.53.1
+frozenlist               1.4.1
+fsspec                   2024.6.1
+future                   1.0.0
+gensim                   4.3.3
+geopandas                0.13.2
+giddy                    2.3.5
+graphtools               1.5.3
+h11                      0.14.0
+h5py                     3.11.0
+httpcore                 1.0.5
+httptools                0.6.1
+httpx                    0.27.0
+idna                     3.7
+igraph                   0.11.6
+importlib_metadata       8.0.0
+importlib_resources      6.4.0
+inequality               1.0.0
+inquirer                 3.3.0
+itsdangerous             2.2.0
+jax                      0.4.20
+jaxlib                   0.4.20
+Jinja2                   3.1.4
+jmespath                 1.0.1
+joblib                   1.4.2
+karateclub               1.3.3
+kiwisolver               1.4.5
+legacy-api-wrap          1.4
+leidenalg                0.10.2
+Levenshtein              0.25.1
+libpysal                 4.7.0
+lightning                2.0.9.post0
+lightning-cloud          0.5.70
+lightning-utilities      0.11.5
+llvmlite                 0.43.0
+locket                   1.0.0
+loompy                   3.0.7
+lz4                      4.3.3
+mapclassify              2.6.0
+markdown-it-py           3.0.0
+MarkupSafe               2.1.5
+matplotlib               3.8.4
+mdurl                    0.1.2
+mgwr                     2.2.1
+ml_collections           0.1.1
+ml-dtypes                0.4.0
+momepy                   0.6.0
+mpmath                   1.3.0
+msgpack                  1.0.8
+mudata                   0.2.4
+multidict                6.0.5
+multipledispatch         1.0.0
+natsort                  8.4.0
+nest-asyncio             1.6.0
+networkx                 2.6.3
+numba                    0.60.0
+numpy                    1.23.5
+numpy-groupies           0.11.1
+numpyro                  0.15.1
+nvidia-cublas-cu12       12.1.3.1
+nvidia-cuda-cupti-cu12   12.1.105
+nvidia-cuda-nvrtc-cu12   12.1.105
+nvidia-cuda-runtime-cu12 12.1.105
+nvidia-cudnn-cu12        8.9.2.26
+nvidia-cufft-cu12        11.0.2.54
+nvidia-curand-cu12       10.3.2.106
+nvidia-cusolver-cu12     11.4.5.107
+nvidia-cusparse-cu12     12.1.0.106
+nvidia-nccl-cu12         2.20.5
+nvidia-nvjitlink-cu12    12.5.82
+nvidia-nvtx-cu12         12.1.105
+opencv-python            4.10.0.84
+opt-einsum               3.3.0
+optax                    0.2.1
+orbax-checkpoint         0.5.21
+ordered-set              4.1.0
+packaging                24.1
+pandas                   1.3.5
+partd                    1.4.2
+patsy                    0.5.6
+phate                    1.0.11
+pillow                   10.4.0
+pip                      24.1.2
+platformdirs             4.2.2
+plotly                   5.22.0
+pointpats                2.4.0
+POT                      0.9.1
+protobuf                 5.27.2
+psutil                   6.0.0
+PuLP                     2.9.0
+pyarrow                  17.0.0
+pyarrow-hotfix           0.6
+pydantic                 2.1.1
+pydantic_core            2.4.0
+Pygments                 2.18.0
+PyGSP                    0.5.1
+PyJWT                    2.8.0
+pynndescent              0.5.13
+pyparsing                3.1.2
+pyproj                   3.6.1
+pyro-api                 0.1.2
+pyro-ppl                 1.9.1
+pysal                    24.1
+python-dateutil          2.9.0.post0
+python-dotenv            1.0.1
+python-igraph            0.11.6
+python-Levenshtein       0.25.1
+python-louvain           0.16
+python-multipart         0.0.9
+pytorch-lightning        2.3.3
+pytz                     2024.1
+PyYAML                   6.0.1
+quantecon                0.7.2
+rapidfuzz                3.9.4
+rasterio                 1.3.10
+rasterstats              0.19.0
+readchar                 4.1.0
+requests                 2.32.3
+rich                     13.7.1
+Rtree                    1.3.0
+runs                     1.2.2
+s_gd2                    1.8.1
+s3transfer               0.10.2
+scanpy                   1.9.4
+scikit-learn             1.5.1
+scipy                    1.11.2
+scprep                   1.2.3
+scvelo                   0.2.5
+scvi-tools               1.0.3
+seaborn                  0.12.2
+segregation              2.5
+session_info             1.0.0
+setuptools               71.0.1
+shapely                  2.0.5
+shellingham              1.5.4
+simplejson               3.19.2
+six                      1.16.0
+smart-open               7.0.4
+sniffio                  1.3.1
+snuggs                   1.4.7
+sortedcontainers         2.4.0
+soupsieve                2.5
+spaghetti                1.7.4
+sparse                   0.15.4
+spglm                    1.0.8
+spint                    1.0.7
+splot                    1.1.5.post1
+spopt                    0.5.0
+spreg                    1.4
+spvcm                    0.3.0
+starlette                0.37.2
+starsessions             1.3.0
+statsmodels              0.14.1
+stdlib-list              0.10.0
+sympy                    1.13.1
+tasklogger               1.2.0
+tblib                    3.0.0
+tenacity                 8.5.0
+tensorstore              0.1.63
+texttable                1.7.0
+threadpoolctl            3.5.0
+tobler                   0.11.2
+toml                     0.10.2
+tomlkit                  0.13.0
+toolz                    0.12.1
+torch                    2.3.1
+torchmetrics             1.4.0.post0
+tornado                  6.4.1
+tqdm                     4.66.4
+traitlets                5.14.3
+triton                   2.3.1
+typer                    0.12.3
+types-python-dateutil    2.9.0.20240316
+typing_extensions        4.12.2
+tzdata                   2024.1
+umap-learn               0.5.6
+urllib3                  2.2.2
+uvicorn                  0.30.1
+uvloop                   0.19.0
+watchfiles               0.22.0
+wcwidth                  0.2.13
+websocket-client         1.8.0
+websockets               12.0
+wheel                    0.43.0
+wrapt                    1.16.0
+xarray                   2024.6.0
+xmltodict                0.13.0
+xmod                     1.8.1
+xyzservices              2024.6.0
+yarl                     1.9.4
+yq                       3.4.3
+zict                     3.0.0
+zipp                     3.19.2
 ```
