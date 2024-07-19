@@ -1,6 +1,6 @@
 --- 
 title: "HemaScope Tutorial"
-author: "Zhenyi Wang, Yuxin Miao, and Junyi Zhang"
+author: "HemaScope team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
