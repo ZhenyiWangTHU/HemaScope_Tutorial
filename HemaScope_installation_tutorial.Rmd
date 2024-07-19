@@ -4,9 +4,12 @@
 
 -   Create a new conda environment,install R 4.3.3 and python 3.11.4
 
-```         
+```
 conda create --name HemaScopeR_env
 conda activate HemaScopeR_env
+conda config --env --add channels bioconda
+conda config --env --add channels conda-forge
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda install R-base=4.3.3
 conda install python=3.11.4
 ```
