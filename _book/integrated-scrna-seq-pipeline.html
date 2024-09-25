@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-07-22" />
+<meta name="date" content="2024-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -266,205 +266,205 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Load the R packages.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="integrated-scrna-seq-pipeline.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc libraries</span></span>
-<span id="cb15-2"><a href="integrated-scrna-seq-pipeline.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
-<span id="cb15-3"><a href="integrated-scrna-seq-pipeline.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
-<span id="cb15-4"><a href="integrated-scrna-seq-pipeline.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
-<span id="cb15-5"><a href="integrated-scrna-seq-pipeline.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
-<span id="cb15-6"><a href="integrated-scrna-seq-pipeline.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
-<span id="cb15-7"><a href="integrated-scrna-seq-pipeline.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
-<span id="cb15-8"><a href="integrated-scrna-seq-pipeline.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
-<span id="cb15-9"><a href="integrated-scrna-seq-pipeline.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
-<span id="cb15-10"><a href="integrated-scrna-seq-pipeline.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb15-11"><a href="integrated-scrna-seq-pipeline.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-12"><a href="integrated-scrna-seq-pipeline.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
-<span id="cb15-13"><a href="integrated-scrna-seq-pipeline.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb15-14"><a href="integrated-scrna-seq-pipeline.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
-<span id="cb15-15"><a href="integrated-scrna-seq-pipeline.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
-<span id="cb15-16"><a href="integrated-scrna-seq-pipeline.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
-<span id="cb15-17"><a href="integrated-scrna-seq-pipeline.html#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb15-18"><a href="integrated-scrna-seq-pipeline.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb15-19"><a href="integrated-scrna-seq-pipeline.html#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb15-20"><a href="integrated-scrna-seq-pipeline.html#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb15-21"><a href="integrated-scrna-seq-pipeline.html#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb15-22"><a href="integrated-scrna-seq-pipeline.html#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb15-23"><a href="integrated-scrna-seq-pipeline.html#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb15-24"><a href="integrated-scrna-seq-pipeline.html#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
-<span id="cb15-25"><a href="integrated-scrna-seq-pipeline.html#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
-<span id="cb15-26"><a href="integrated-scrna-seq-pipeline.html#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
-<span id="cb15-27"><a href="integrated-scrna-seq-pipeline.html#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
-<span id="cb15-28"><a href="integrated-scrna-seq-pipeline.html#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
-<span id="cb15-29"><a href="integrated-scrna-seq-pipeline.html#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb15-30"><a href="integrated-scrna-seq-pipeline.html#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb15-31"><a href="integrated-scrna-seq-pipeline.html#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb15-32"><a href="integrated-scrna-seq-pipeline.html#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb15-33"><a href="integrated-scrna-seq-pipeline.html#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb15-34"><a href="integrated-scrna-seq-pipeline.html#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb15-35"><a href="integrated-scrna-seq-pipeline.html#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb15-36"><a href="integrated-scrna-seq-pipeline.html#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb15-37"><a href="integrated-scrna-seq-pipeline.html#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb15-38"><a href="integrated-scrna-seq-pipeline.html#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb15-39"><a href="integrated-scrna-seq-pipeline.html#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb15-40"><a href="integrated-scrna-seq-pipeline.html#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb15-41"><a href="integrated-scrna-seq-pipeline.html#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb15-42"><a href="integrated-scrna-seq-pipeline.html#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb15-43"><a href="integrated-scrna-seq-pipeline.html#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb15-44"><a href="integrated-scrna-seq-pipeline.html#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb15-45"><a href="integrated-scrna-seq-pipeline.html#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># getpot</span></span>
-<span id="cb15-46"><a href="integrated-scrna-seq-pipeline.html#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb15-47"><a href="integrated-scrna-seq-pipeline.html#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb15-48"><a href="integrated-scrna-seq-pipeline.html#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
-<span id="cb15-49"><a href="integrated-scrna-seq-pipeline.html#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="integrated-scrna-seq-pipeline.html#cb15-1" tabindex="-1"></a><span class="co"># sc libraries</span></span>
+<span id="cb15-2"><a href="integrated-scrna-seq-pipeline.html#cb15-2" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb15-3"><a href="integrated-scrna-seq-pipeline.html#cb15-3" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
+<span id="cb15-4"><a href="integrated-scrna-seq-pipeline.html#cb15-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
+<span id="cb15-5"><a href="integrated-scrna-seq-pipeline.html#cb15-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
+<span id="cb15-6"><a href="integrated-scrna-seq-pipeline.html#cb15-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
+<span id="cb15-7"><a href="integrated-scrna-seq-pipeline.html#cb15-7" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
+<span id="cb15-8"><a href="integrated-scrna-seq-pipeline.html#cb15-8" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb15-9"><a href="integrated-scrna-seq-pipeline.html#cb15-9" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb15-10"><a href="integrated-scrna-seq-pipeline.html#cb15-10" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb15-11"><a href="integrated-scrna-seq-pipeline.html#cb15-11" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-12"><a href="integrated-scrna-seq-pipeline.html#cb15-12" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb15-13"><a href="integrated-scrna-seq-pipeline.html#cb15-13" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb15-14"><a href="integrated-scrna-seq-pipeline.html#cb15-14" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb15-15"><a href="integrated-scrna-seq-pipeline.html#cb15-15" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb15-16"><a href="integrated-scrna-seq-pipeline.html#cb15-16" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb15-17"><a href="integrated-scrna-seq-pipeline.html#cb15-17" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb15-18"><a href="integrated-scrna-seq-pipeline.html#cb15-18" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb15-19"><a href="integrated-scrna-seq-pipeline.html#cb15-19" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb15-20"><a href="integrated-scrna-seq-pipeline.html#cb15-20" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb15-21"><a href="integrated-scrna-seq-pipeline.html#cb15-21" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb15-22"><a href="integrated-scrna-seq-pipeline.html#cb15-22" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb15-23"><a href="integrated-scrna-seq-pipeline.html#cb15-23" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb15-24"><a href="integrated-scrna-seq-pipeline.html#cb15-24" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb15-25"><a href="integrated-scrna-seq-pipeline.html#cb15-25" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb15-26"><a href="integrated-scrna-seq-pipeline.html#cb15-26" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb15-27"><a href="integrated-scrna-seq-pipeline.html#cb15-27" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb15-28"><a href="integrated-scrna-seq-pipeline.html#cb15-28" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb15-29"><a href="integrated-scrna-seq-pipeline.html#cb15-29" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb15-30"><a href="integrated-scrna-seq-pipeline.html#cb15-30" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb15-31"><a href="integrated-scrna-seq-pipeline.html#cb15-31" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb15-32"><a href="integrated-scrna-seq-pipeline.html#cb15-32" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
+<span id="cb15-33"><a href="integrated-scrna-seq-pipeline.html#cb15-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb15-34"><a href="integrated-scrna-seq-pipeline.html#cb15-34" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb15-35"><a href="integrated-scrna-seq-pipeline.html#cb15-35" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb15-36"><a href="integrated-scrna-seq-pipeline.html#cb15-36" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb15-37"><a href="integrated-scrna-seq-pipeline.html#cb15-37" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb15-38"><a href="integrated-scrna-seq-pipeline.html#cb15-38" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb15-39"><a href="integrated-scrna-seq-pipeline.html#cb15-39" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb15-40"><a href="integrated-scrna-seq-pipeline.html#cb15-40" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb15-41"><a href="integrated-scrna-seq-pipeline.html#cb15-41" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-42"><a href="integrated-scrna-seq-pipeline.html#cb15-42" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb15-43"><a href="integrated-scrna-seq-pipeline.html#cb15-43" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb15-44"><a href="integrated-scrna-seq-pipeline.html#cb15-44" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb15-45"><a href="integrated-scrna-seq-pipeline.html#cb15-45" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb15-46"><a href="integrated-scrna-seq-pipeline.html#cb15-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb15-47"><a href="integrated-scrna-seq-pipeline.html#cb15-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb15-48"><a href="integrated-scrna-seq-pipeline.html#cb15-48" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb15-49"><a href="integrated-scrna-seq-pipeline.html#cb15-49" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <ul>
 <li>Run the integrated scRNA-seq pipeline.</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="integrated-scrna-seq-pipeline.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scRNASeq_10x_pipeline</span>(</span>
-<span id="cb16-2"><a href="integrated-scrna-seq-pipeline.html#cb16-2" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># input and output</span></span>
-<span id="cb16-3"><a href="integrated-scrna-seq-pipeline.html#cb16-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">input.data.dirs =</span> <span class="fu">c</span>(<span class="st">&#39;./SRR7881399/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-4"><a href="integrated-scrna-seq-pipeline.html#cb16-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881400/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-5"><a href="integrated-scrna-seq-pipeline.html#cb16-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881401/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-6"><a href="integrated-scrna-seq-pipeline.html#cb16-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881402/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-7"><a href="integrated-scrna-seq-pipeline.html#cb16-7" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881403/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-8"><a href="integrated-scrna-seq-pipeline.html#cb16-8" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881404/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-9"><a href="integrated-scrna-seq-pipeline.html#cb16-9" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881405/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-10"><a href="integrated-scrna-seq-pipeline.html#cb16-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881406/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-11"><a href="integrated-scrna-seq-pipeline.html#cb16-11" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881407/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-12"><a href="integrated-scrna-seq-pipeline.html#cb16-12" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881408/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-13"><a href="integrated-scrna-seq-pipeline.html#cb16-13" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881409/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-14"><a href="integrated-scrna-seq-pipeline.html#cb16-14" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881410/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-15"><a href="integrated-scrna-seq-pipeline.html#cb16-15" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881411/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-16"><a href="integrated-scrna-seq-pipeline.html#cb16-16" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881412/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-17"><a href="integrated-scrna-seq-pipeline.html#cb16-17" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881413/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-18"><a href="integrated-scrna-seq-pipeline.html#cb16-18" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881414/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-19"><a href="integrated-scrna-seq-pipeline.html#cb16-19" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881415/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-20"><a href="integrated-scrna-seq-pipeline.html#cb16-20" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881416/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-21"><a href="integrated-scrna-seq-pipeline.html#cb16-21" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881417/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-22"><a href="integrated-scrna-seq-pipeline.html#cb16-22" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881418/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-23"><a href="integrated-scrna-seq-pipeline.html#cb16-23" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881419/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-24"><a href="integrated-scrna-seq-pipeline.html#cb16-24" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881420/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-25"><a href="integrated-scrna-seq-pipeline.html#cb16-25" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881421/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-26"><a href="integrated-scrna-seq-pipeline.html#cb16-26" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881422/outs/filtered_feature_bc_matrix&#39;</span>,</span>
-<span id="cb16-27"><a href="integrated-scrna-seq-pipeline.html#cb16-27" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881423/outs/filtered_feature_bc_matrix&#39;</span>),</span>
-<span id="cb16-28"><a href="integrated-scrna-seq-pipeline.html#cb16-28" aria-hidden="true" tabindex="-1"></a>                     <span class="at">project.names =</span> <span class="fu">c</span>(  <span class="st">&#39;SRR7881399&#39;</span>,</span>
-<span id="cb16-29"><a href="integrated-scrna-seq-pipeline.html#cb16-29" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881400&#39;</span>,</span>
-<span id="cb16-30"><a href="integrated-scrna-seq-pipeline.html#cb16-30" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881401&#39;</span>,</span>
-<span id="cb16-31"><a href="integrated-scrna-seq-pipeline.html#cb16-31" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881402&#39;</span>,</span>
-<span id="cb16-32"><a href="integrated-scrna-seq-pipeline.html#cb16-32" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881403&#39;</span>,</span>
-<span id="cb16-33"><a href="integrated-scrna-seq-pipeline.html#cb16-33" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881404&#39;</span>,</span>
-<span id="cb16-34"><a href="integrated-scrna-seq-pipeline.html#cb16-34" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881405&#39;</span>,</span>
-<span id="cb16-35"><a href="integrated-scrna-seq-pipeline.html#cb16-35" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881406&#39;</span>,</span>
-<span id="cb16-36"><a href="integrated-scrna-seq-pipeline.html#cb16-36" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881407&#39;</span>,</span>
-<span id="cb16-37"><a href="integrated-scrna-seq-pipeline.html#cb16-37" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881408&#39;</span>,</span>
-<span id="cb16-38"><a href="integrated-scrna-seq-pipeline.html#cb16-38" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881409&#39;</span>,</span>
-<span id="cb16-39"><a href="integrated-scrna-seq-pipeline.html#cb16-39" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881410&#39;</span>,</span>
-<span id="cb16-40"><a href="integrated-scrna-seq-pipeline.html#cb16-40" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881411&#39;</span>,</span>
-<span id="cb16-41"><a href="integrated-scrna-seq-pipeline.html#cb16-41" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881412&#39;</span>,</span>
-<span id="cb16-42"><a href="integrated-scrna-seq-pipeline.html#cb16-42" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881413&#39;</span>,</span>
-<span id="cb16-43"><a href="integrated-scrna-seq-pipeline.html#cb16-43" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881414&#39;</span>,</span>
-<span id="cb16-44"><a href="integrated-scrna-seq-pipeline.html#cb16-44" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881415&#39;</span>,</span>
-<span id="cb16-45"><a href="integrated-scrna-seq-pipeline.html#cb16-45" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881416&#39;</span>,</span>
-<span id="cb16-46"><a href="integrated-scrna-seq-pipeline.html#cb16-46" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881417&#39;</span>,</span>
-<span id="cb16-47"><a href="integrated-scrna-seq-pipeline.html#cb16-47" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881418&#39;</span>,</span>
-<span id="cb16-48"><a href="integrated-scrna-seq-pipeline.html#cb16-48" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881419&#39;</span>,</span>
-<span id="cb16-49"><a href="integrated-scrna-seq-pipeline.html#cb16-49" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881420&#39;</span>,</span>
-<span id="cb16-50"><a href="integrated-scrna-seq-pipeline.html#cb16-50" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881421&#39;</span>,</span>
-<span id="cb16-51"><a href="integrated-scrna-seq-pipeline.html#cb16-51" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881422&#39;</span>,</span>
-<span id="cb16-52"><a href="integrated-scrna-seq-pipeline.html#cb16-52" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881423&#39;</span>), </span>
-<span id="cb16-53"><a href="integrated-scrna-seq-pipeline.html#cb16-53" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output.dir =</span> <span class="st">&#39;./output/&#39;</span>,</span>
-<span id="cb16-54"><a href="integrated-scrna-seq-pipeline.html#cb16-54" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pythonPath =</span> <span class="st">&#39;/home/anaconda3/envs/HemaScopeR/bin/python&#39;</span>,</span>
-<span id="cb16-55"><a href="integrated-scrna-seq-pipeline.html#cb16-55" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># quality control and preprocessing</span></span>
-<span id="cb16-56"><a href="integrated-scrna-seq-pipeline.html#cb16-56" aria-hidden="true" tabindex="-1"></a>                     <span class="at">gene.column =</span> <span class="dv">2</span>,</span>
-<span id="cb16-57"><a href="integrated-scrna-seq-pipeline.html#cb16-57" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.cells =</span> <span class="dv">10</span>,</span>
-<span id="cb16-58"><a href="integrated-scrna-seq-pipeline.html#cb16-58" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.feature =</span> <span class="dv">200</span>,</span>
-<span id="cb16-59"><a href="integrated-scrna-seq-pipeline.html#cb16-59" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mt.pattern =</span> <span class="st">&#39;^MT-&#39;</span>,</span>
-<span id="cb16-60"><a href="integrated-scrna-seq-pipeline.html#cb16-60" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nFeature_RNA.limit =</span> <span class="dv">200</span>,</span>
-<span id="cb16-61"><a href="integrated-scrna-seq-pipeline.html#cb16-61" aria-hidden="true" tabindex="-1"></a>                     <span class="at">percent.mt.limit =</span> <span class="dv">20</span>,</span>
-<span id="cb16-62"><a href="integrated-scrna-seq-pipeline.html#cb16-62" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scale.factor =</span> <span class="dv">10000</span>,</span>
-<span id="cb16-63"><a href="integrated-scrna-seq-pipeline.html#cb16-63" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nfeatures =</span> <span class="dv">3000</span>,</span>
-<span id="cb16-64"><a href="integrated-scrna-seq-pipeline.html#cb16-64" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ndims =</span> <span class="dv">50</span>,</span>
-<span id="cb16-65"><a href="integrated-scrna-seq-pipeline.html#cb16-65" aria-hidden="true" tabindex="-1"></a>                     <span class="at">vars.to.regress =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-66"><a href="integrated-scrna-seq-pipeline.html#cb16-66" aria-hidden="true" tabindex="-1"></a>                     <span class="at">PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>,</span>
-<span id="cb16-67"><a href="integrated-scrna-seq-pipeline.html#cb16-67" aria-hidden="true" tabindex="-1"></a>                     <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
-<span id="cb16-68"><a href="integrated-scrna-seq-pipeline.html#cb16-68" aria-hidden="true" tabindex="-1"></a>                     <span class="at">n.neighbors =</span> <span class="dv">50</span>,</span>
-<span id="cb16-69"><a href="integrated-scrna-seq-pipeline.html#cb16-69" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># remove doublets</span></span>
-<span id="cb16-70"><a href="integrated-scrna-seq-pipeline.html#cb16-70" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublet.percentage =</span> <span class="fl">0.04</span>,</span>
-<span id="cb16-71"><a href="integrated-scrna-seq-pipeline.html#cb16-71" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
-<span id="cb16-72"><a href="integrated-scrna-seq-pipeline.html#cb16-72" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pN =</span> <span class="fl">0.25</span>,</span>
-<span id="cb16-73"><a href="integrated-scrna-seq-pipeline.html#cb16-73" aria-hidden="true" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pK =</span> <span class="fl">0.1</span>,</span>
-<span id="cb16-74"><a href="integrated-scrna-seq-pipeline.html#cb16-74" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># phateR</span></span>
-<span id="cb16-75"><a href="integrated-scrna-seq-pipeline.html#cb16-75" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.knn =</span> <span class="dv">50</span>,</span>
-<span id="cb16-76"><a href="integrated-scrna-seq-pipeline.html#cb16-76" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.npca =</span> <span class="dv">20</span>,</span>
-<span id="cb16-77"><a href="integrated-scrna-seq-pipeline.html#cb16-77" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.t =</span> <span class="dv">10</span>,</span>
-<span id="cb16-78"><a href="integrated-scrna-seq-pipeline.html#cb16-78" aria-hidden="true" tabindex="-1"></a>                     <span class="at">phate.ndim =</span> <span class="dv">2</span>,</span>
-<span id="cb16-79"><a href="integrated-scrna-seq-pipeline.html#cb16-79" aria-hidden="true" tabindex="-1"></a>                     <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb16-80"><a href="integrated-scrna-seq-pipeline.html#cb16-80" aria-hidden="true" tabindex="-1"></a>                     <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
-<span id="cb16-81"><a href="integrated-scrna-seq-pipeline.html#cb16-81" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># visualization</span></span>
-<span id="cb16-82"><a href="integrated-scrna-seq-pipeline.html#cb16-82" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeOrders =</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">22</span>),</span>
-<span id="cb16-83"><a href="integrated-scrna-seq-pipeline.html#cb16-83" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeColors =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-84"><a href="integrated-scrna-seq-pipeline.html#cb16-84" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Org =</span> <span class="st">&#39;hsa&#39;</span>,</span>
-<span id="cb16-85"><a href="integrated-scrna-seq-pipeline.html#cb16-85" aria-hidden="true" tabindex="-1"></a>                     <span class="at">loom.files.path =</span> <span class="fu">c</span>( <span class="st">&#39;./SRR7881399/velocyto/SRR7881399.loom&#39;</span>,</span>
-<span id="cb16-86"><a href="integrated-scrna-seq-pipeline.html#cb16-86" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881400/velocyto/SRR7881400.loom&#39;</span>,</span>
-<span id="cb16-87"><a href="integrated-scrna-seq-pipeline.html#cb16-87" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881401/velocyto/SRR7881401.loom&#39;</span>,</span>
-<span id="cb16-88"><a href="integrated-scrna-seq-pipeline.html#cb16-88" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881402/velocyto/SRR7881402.loom&#39;</span>,</span>
-<span id="cb16-89"><a href="integrated-scrna-seq-pipeline.html#cb16-89" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881403/velocyto/SRR7881403.loom&#39;</span>,</span>
-<span id="cb16-90"><a href="integrated-scrna-seq-pipeline.html#cb16-90" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881404/velocyto/SRR7881404.loom&#39;</span>,</span>
-<span id="cb16-91"><a href="integrated-scrna-seq-pipeline.html#cb16-91" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881405/velocyto/SRR7881405.loom&#39;</span>,</span>
-<span id="cb16-92"><a href="integrated-scrna-seq-pipeline.html#cb16-92" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881406/velocyto/SRR7881406.loom&#39;</span>,</span>
-<span id="cb16-93"><a href="integrated-scrna-seq-pipeline.html#cb16-93" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881407/velocyto/SRR7881407.loom&#39;</span>,</span>
-<span id="cb16-94"><a href="integrated-scrna-seq-pipeline.html#cb16-94" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881408/velocyto/SRR7881408.loom&#39;</span>,</span>
-<span id="cb16-95"><a href="integrated-scrna-seq-pipeline.html#cb16-95" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881409/velocyto/SRR7881409.loom&#39;</span>,</span>
-<span id="cb16-96"><a href="integrated-scrna-seq-pipeline.html#cb16-96" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881410/velocyto/SRR7881410.loom&#39;</span>,</span>
-<span id="cb16-97"><a href="integrated-scrna-seq-pipeline.html#cb16-97" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881411/velocyto/SRR7881411.loom&#39;</span>,</span>
-<span id="cb16-98"><a href="integrated-scrna-seq-pipeline.html#cb16-98" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881412/velocyto/SRR7881412.loom&#39;</span>,</span>
-<span id="cb16-99"><a href="integrated-scrna-seq-pipeline.html#cb16-99" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881413/velocyto/SRR7881413.loom&#39;</span>,</span>
-<span id="cb16-100"><a href="integrated-scrna-seq-pipeline.html#cb16-100" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881414/velocyto/SRR7881414.loom&#39;</span>,</span>
-<span id="cb16-101"><a href="integrated-scrna-seq-pipeline.html#cb16-101" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881415/velocyto/SRR7881415.loom&#39;</span>,</span>
-<span id="cb16-102"><a href="integrated-scrna-seq-pipeline.html#cb16-102" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881416/velocyto/SRR7881416.loom&#39;</span>,</span>
-<span id="cb16-103"><a href="integrated-scrna-seq-pipeline.html#cb16-103" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881417/velocyto/SRR7881417.loom&#39;</span>,</span>
-<span id="cb16-104"><a href="integrated-scrna-seq-pipeline.html#cb16-104" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881418/velocyto/SRR7881418.loom&#39;</span>,</span>
-<span id="cb16-105"><a href="integrated-scrna-seq-pipeline.html#cb16-105" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881419/velocyto/SRR7881419.loom&#39;</span>,</span>
-<span id="cb16-106"><a href="integrated-scrna-seq-pipeline.html#cb16-106" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881420/velocyto/SRR7881420.loom&#39;</span>,</span>
-<span id="cb16-107"><a href="integrated-scrna-seq-pipeline.html#cb16-107" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881421/velocyto/SRR7881421.loom&#39;</span>,</span>
-<span id="cb16-108"><a href="integrated-scrna-seq-pipeline.html#cb16-108" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881422/velocyto/SRR7881422.loom&#39;</span>,</span>
-<span id="cb16-109"><a href="integrated-scrna-seq-pipeline.html#cb16-109" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881423/velocyto/SRR7881423.loom&#39;</span>),</span>
-<span id="cb16-110"><a href="integrated-scrna-seq-pipeline.html#cb16-110" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># cell cycle</span></span>
-<span id="cb16-111"><a href="integrated-scrna-seq-pipeline.html#cb16-111" aria-hidden="true" tabindex="-1"></a>                     <span class="at">cellcycleCutoff =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-112"><a href="integrated-scrna-seq-pipeline.html#cb16-112" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># cell chat</span></span>
-<span id="cb16-113"><a href="integrated-scrna-seq-pipeline.html#cb16-113" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sorting =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb16-114"><a href="integrated-scrna-seq-pipeline.html#cb16-114" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncores =</span> <span class="dv">10</span>,</span>
-<span id="cb16-115"><a href="integrated-scrna-seq-pipeline.html#cb16-115" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># Verbose = FALSE,</span></span>
-<span id="cb16-116"><a href="integrated-scrna-seq-pipeline.html#cb16-116" aria-hidden="true" tabindex="-1"></a>                     <span class="co"># activeEachStep</span></span>
-<span id="cb16-117"><a href="integrated-scrna-seq-pipeline.html#cb16-117" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Whether_load_previous_results =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb16-118"><a href="integrated-scrna-seq-pipeline.html#cb16-118" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step1_Input_Data =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-119"><a href="integrated-scrna-seq-pipeline.html#cb16-119" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step1_Input_Data.type =</span> <span class="st">&#39;cellranger-count&#39;</span>,</span>
-<span id="cb16-120"><a href="integrated-scrna-seq-pipeline.html#cb16-120" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-121"><a href="integrated-scrna-seq-pipeline.html#cb16-121" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveBatches =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-122"><a href="integrated-scrna-seq-pipeline.html#cb16-122" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveDoublets =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-123"><a href="integrated-scrna-seq-pipeline.html#cb16-123" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-124"><a href="integrated-scrna-seq-pipeline.html#cb16-124" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Identify_Cell_Types =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-125"><a href="integrated-scrna-seq-pipeline.html#cb16-125" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Use_Which_Labels =</span> <span class="st">&#39;clustering&#39;</span>,</span>
-<span id="cb16-126"><a href="integrated-scrna-seq-pipeline.html#cb16-126" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Cluster_Labels =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-127"><a href="integrated-scrna-seq-pipeline.html#cb16-127" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_Changed_Labels =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-128"><a href="integrated-scrna-seq-pipeline.html#cb16-128" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step4_run_sc_CNV =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-129"><a href="integrated-scrna-seq-pipeline.html#cb16-129" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step5_Visualization =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-130"><a href="integrated-scrna-seq-pipeline.html#cb16-130" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step6_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-131"><a href="integrated-scrna-seq-pipeline.html#cb16-131" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step7_Assign_Cell_Cycle =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-132"><a href="integrated-scrna-seq-pipeline.html#cb16-132" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step8_Calculate_Heterogeneity =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-133"><a href="integrated-scrna-seq-pipeline.html#cb16-133" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step9_Violin_Plot_for_Marker_Genes =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-134"><a href="integrated-scrna-seq-pipeline.html#cb16-134" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step10_Calculate_Lineage_Scores =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-135"><a href="integrated-scrna-seq-pipeline.html#cb16-135" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-136"><a href="integrated-scrna-seq-pipeline.html#cb16-136" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.cellType.features=</span><span class="cn">TRUE</span>,</span>
-<span id="cb16-137"><a href="integrated-scrna-seq-pipeline.html#cb16-137" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.diff.features=</span><span class="cn">FALSE</span>,</span>
-<span id="cb16-138"><a href="integrated-scrna-seq-pipeline.html#cb16-138" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step11_GSVA.comparison.design=</span><span class="cn">NULL</span>,</span>
-<span id="cb16-139"><a href="integrated-scrna-seq-pipeline.html#cb16-139" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-140"><a href="integrated-scrna-seq-pipeline.html#cb16-140" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.clusters =</span> <span class="fu">c</span>(<span class="st">&#39;3&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;9&#39;</span>,<span class="st">&#39;10&#39;</span>,<span class="st">&#39;11&#39;</span>,<span class="st">&#39;14&#39;</span>,<span class="st">&#39;15&#39;</span>,<span class="st">&#39;19&#39;</span>), </span>
-<span id="cb16-141"><a href="integrated-scrna-seq-pipeline.html#cb16-141" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.monocle =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-142"><a href="integrated-scrna-seq-pipeline.html#cb16-142" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.slingshot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-143"><a href="integrated-scrna-seq-pipeline.html#cb16-143" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.scVelo =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-144"><a href="integrated-scrna-seq-pipeline.html#cb16-144" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step13_TF_Analysis =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-145"><a href="integrated-scrna-seq-pipeline.html#cb16-145" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step14_Cell_Cell_Interaction =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-146"><a href="integrated-scrna-seq-pipeline.html#cb16-146" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Step15_Generate_the_Report =</span> <span class="cn">TRUE</span></span>
-<span id="cb16-147"><a href="integrated-scrna-seq-pipeline.html#cb16-147" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="integrated-scrna-seq-pipeline.html#cb16-1" tabindex="-1"></a><span class="fu">scRNASeq_10x_pipeline</span>(</span>
+<span id="cb16-2"><a href="integrated-scrna-seq-pipeline.html#cb16-2" tabindex="-1"></a>                     <span class="co"># input and output</span></span>
+<span id="cb16-3"><a href="integrated-scrna-seq-pipeline.html#cb16-3" tabindex="-1"></a>                     <span class="at">input.data.dirs =</span> <span class="fu">c</span>(<span class="st">&#39;./SRR7881399/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-4"><a href="integrated-scrna-seq-pipeline.html#cb16-4" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881400/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-5"><a href="integrated-scrna-seq-pipeline.html#cb16-5" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881401/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-6"><a href="integrated-scrna-seq-pipeline.html#cb16-6" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881402/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-7"><a href="integrated-scrna-seq-pipeline.html#cb16-7" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881403/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-8"><a href="integrated-scrna-seq-pipeline.html#cb16-8" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881404/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-9"><a href="integrated-scrna-seq-pipeline.html#cb16-9" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881405/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-10"><a href="integrated-scrna-seq-pipeline.html#cb16-10" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881406/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-11"><a href="integrated-scrna-seq-pipeline.html#cb16-11" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881407/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-12"><a href="integrated-scrna-seq-pipeline.html#cb16-12" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881408/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-13"><a href="integrated-scrna-seq-pipeline.html#cb16-13" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881409/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-14"><a href="integrated-scrna-seq-pipeline.html#cb16-14" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881410/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-15"><a href="integrated-scrna-seq-pipeline.html#cb16-15" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881411/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-16"><a href="integrated-scrna-seq-pipeline.html#cb16-16" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881412/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-17"><a href="integrated-scrna-seq-pipeline.html#cb16-17" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881413/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-18"><a href="integrated-scrna-seq-pipeline.html#cb16-18" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881414/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-19"><a href="integrated-scrna-seq-pipeline.html#cb16-19" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881415/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-20"><a href="integrated-scrna-seq-pipeline.html#cb16-20" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881416/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-21"><a href="integrated-scrna-seq-pipeline.html#cb16-21" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881417/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-22"><a href="integrated-scrna-seq-pipeline.html#cb16-22" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881418/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-23"><a href="integrated-scrna-seq-pipeline.html#cb16-23" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881419/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-24"><a href="integrated-scrna-seq-pipeline.html#cb16-24" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881420/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-25"><a href="integrated-scrna-seq-pipeline.html#cb16-25" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881421/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-26"><a href="integrated-scrna-seq-pipeline.html#cb16-26" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881422/outs/filtered_feature_bc_matrix&#39;</span>,</span>
+<span id="cb16-27"><a href="integrated-scrna-seq-pipeline.html#cb16-27" tabindex="-1"></a>                                         <span class="st">&#39;./SRR7881423/outs/filtered_feature_bc_matrix&#39;</span>),</span>
+<span id="cb16-28"><a href="integrated-scrna-seq-pipeline.html#cb16-28" tabindex="-1"></a>                     <span class="at">project.names =</span> <span class="fu">c</span>(  <span class="st">&#39;SRR7881399&#39;</span>,</span>
+<span id="cb16-29"><a href="integrated-scrna-seq-pipeline.html#cb16-29" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881400&#39;</span>,</span>
+<span id="cb16-30"><a href="integrated-scrna-seq-pipeline.html#cb16-30" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881401&#39;</span>,</span>
+<span id="cb16-31"><a href="integrated-scrna-seq-pipeline.html#cb16-31" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881402&#39;</span>,</span>
+<span id="cb16-32"><a href="integrated-scrna-seq-pipeline.html#cb16-32" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881403&#39;</span>,</span>
+<span id="cb16-33"><a href="integrated-scrna-seq-pipeline.html#cb16-33" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881404&#39;</span>,</span>
+<span id="cb16-34"><a href="integrated-scrna-seq-pipeline.html#cb16-34" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881405&#39;</span>,</span>
+<span id="cb16-35"><a href="integrated-scrna-seq-pipeline.html#cb16-35" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881406&#39;</span>,</span>
+<span id="cb16-36"><a href="integrated-scrna-seq-pipeline.html#cb16-36" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881407&#39;</span>,</span>
+<span id="cb16-37"><a href="integrated-scrna-seq-pipeline.html#cb16-37" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881408&#39;</span>,</span>
+<span id="cb16-38"><a href="integrated-scrna-seq-pipeline.html#cb16-38" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881409&#39;</span>,</span>
+<span id="cb16-39"><a href="integrated-scrna-seq-pipeline.html#cb16-39" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881410&#39;</span>,</span>
+<span id="cb16-40"><a href="integrated-scrna-seq-pipeline.html#cb16-40" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881411&#39;</span>,</span>
+<span id="cb16-41"><a href="integrated-scrna-seq-pipeline.html#cb16-41" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881412&#39;</span>,</span>
+<span id="cb16-42"><a href="integrated-scrna-seq-pipeline.html#cb16-42" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881413&#39;</span>,</span>
+<span id="cb16-43"><a href="integrated-scrna-seq-pipeline.html#cb16-43" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881414&#39;</span>,</span>
+<span id="cb16-44"><a href="integrated-scrna-seq-pipeline.html#cb16-44" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881415&#39;</span>,</span>
+<span id="cb16-45"><a href="integrated-scrna-seq-pipeline.html#cb16-45" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881416&#39;</span>,</span>
+<span id="cb16-46"><a href="integrated-scrna-seq-pipeline.html#cb16-46" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881417&#39;</span>,</span>
+<span id="cb16-47"><a href="integrated-scrna-seq-pipeline.html#cb16-47" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881418&#39;</span>,</span>
+<span id="cb16-48"><a href="integrated-scrna-seq-pipeline.html#cb16-48" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881419&#39;</span>,</span>
+<span id="cb16-49"><a href="integrated-scrna-seq-pipeline.html#cb16-49" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881420&#39;</span>,</span>
+<span id="cb16-50"><a href="integrated-scrna-seq-pipeline.html#cb16-50" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881421&#39;</span>,</span>
+<span id="cb16-51"><a href="integrated-scrna-seq-pipeline.html#cb16-51" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881422&#39;</span>,</span>
+<span id="cb16-52"><a href="integrated-scrna-seq-pipeline.html#cb16-52" tabindex="-1"></a>                                         <span class="st">&#39;SRR7881423&#39;</span>), </span>
+<span id="cb16-53"><a href="integrated-scrna-seq-pipeline.html#cb16-53" tabindex="-1"></a>                     <span class="at">output.dir =</span> <span class="st">&#39;./output/&#39;</span>,</span>
+<span id="cb16-54"><a href="integrated-scrna-seq-pipeline.html#cb16-54" tabindex="-1"></a>                     <span class="at">pythonPath =</span> <span class="st">&#39;/home/anaconda3/envs/HemaScopeR/bin/python&#39;</span>,</span>
+<span id="cb16-55"><a href="integrated-scrna-seq-pipeline.html#cb16-55" tabindex="-1"></a>                     <span class="co"># quality control and preprocessing</span></span>
+<span id="cb16-56"><a href="integrated-scrna-seq-pipeline.html#cb16-56" tabindex="-1"></a>                     <span class="at">gene.column =</span> <span class="dv">2</span>,</span>
+<span id="cb16-57"><a href="integrated-scrna-seq-pipeline.html#cb16-57" tabindex="-1"></a>                     <span class="at">min.cells =</span> <span class="dv">10</span>,</span>
+<span id="cb16-58"><a href="integrated-scrna-seq-pipeline.html#cb16-58" tabindex="-1"></a>                     <span class="at">min.feature =</span> <span class="dv">200</span>,</span>
+<span id="cb16-59"><a href="integrated-scrna-seq-pipeline.html#cb16-59" tabindex="-1"></a>                     <span class="at">mt.pattern =</span> <span class="st">&#39;^MT-&#39;</span>,</span>
+<span id="cb16-60"><a href="integrated-scrna-seq-pipeline.html#cb16-60" tabindex="-1"></a>                     <span class="at">nFeature_RNA.limit =</span> <span class="dv">200</span>,</span>
+<span id="cb16-61"><a href="integrated-scrna-seq-pipeline.html#cb16-61" tabindex="-1"></a>                     <span class="at">percent.mt.limit =</span> <span class="dv">20</span>,</span>
+<span id="cb16-62"><a href="integrated-scrna-seq-pipeline.html#cb16-62" tabindex="-1"></a>                     <span class="at">scale.factor =</span> <span class="dv">10000</span>,</span>
+<span id="cb16-63"><a href="integrated-scrna-seq-pipeline.html#cb16-63" tabindex="-1"></a>                     <span class="at">nfeatures =</span> <span class="dv">3000</span>,</span>
+<span id="cb16-64"><a href="integrated-scrna-seq-pipeline.html#cb16-64" tabindex="-1"></a>                     <span class="at">ndims =</span> <span class="dv">50</span>,</span>
+<span id="cb16-65"><a href="integrated-scrna-seq-pipeline.html#cb16-65" tabindex="-1"></a>                     <span class="at">vars.to.regress =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-66"><a href="integrated-scrna-seq-pipeline.html#cb16-66" tabindex="-1"></a>                     <span class="at">PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>,</span>
+<span id="cb16-67"><a href="integrated-scrna-seq-pipeline.html#cb16-67" tabindex="-1"></a>                     <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
+<span id="cb16-68"><a href="integrated-scrna-seq-pipeline.html#cb16-68" tabindex="-1"></a>                     <span class="at">n.neighbors =</span> <span class="dv">50</span>,</span>
+<span id="cb16-69"><a href="integrated-scrna-seq-pipeline.html#cb16-69" tabindex="-1"></a>                     <span class="co"># remove doublets</span></span>
+<span id="cb16-70"><a href="integrated-scrna-seq-pipeline.html#cb16-70" tabindex="-1"></a>                     <span class="at">doublet.percentage =</span> <span class="fl">0.04</span>,</span>
+<span id="cb16-71"><a href="integrated-scrna-seq-pipeline.html#cb16-71" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.PCs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
+<span id="cb16-72"><a href="integrated-scrna-seq-pipeline.html#cb16-72" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pN =</span> <span class="fl">0.25</span>,</span>
+<span id="cb16-73"><a href="integrated-scrna-seq-pipeline.html#cb16-73" tabindex="-1"></a>                     <span class="at">doublerFinderwraper.pK =</span> <span class="fl">0.1</span>,</span>
+<span id="cb16-74"><a href="integrated-scrna-seq-pipeline.html#cb16-74" tabindex="-1"></a>                     <span class="co"># phateR</span></span>
+<span id="cb16-75"><a href="integrated-scrna-seq-pipeline.html#cb16-75" tabindex="-1"></a>                     <span class="at">phate.knn =</span> <span class="dv">50</span>,</span>
+<span id="cb16-76"><a href="integrated-scrna-seq-pipeline.html#cb16-76" tabindex="-1"></a>                     <span class="at">phate.npca =</span> <span class="dv">20</span>,</span>
+<span id="cb16-77"><a href="integrated-scrna-seq-pipeline.html#cb16-77" tabindex="-1"></a>                     <span class="at">phate.t =</span> <span class="dv">10</span>,</span>
+<span id="cb16-78"><a href="integrated-scrna-seq-pipeline.html#cb16-78" tabindex="-1"></a>                     <span class="at">phate.ndim =</span> <span class="dv">2</span>,</span>
+<span id="cb16-79"><a href="integrated-scrna-seq-pipeline.html#cb16-79" tabindex="-1"></a>                     <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb16-80"><a href="integrated-scrna-seq-pipeline.html#cb16-80" tabindex="-1"></a>                     <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
+<span id="cb16-81"><a href="integrated-scrna-seq-pipeline.html#cb16-81" tabindex="-1"></a>                     <span class="co"># visualization</span></span>
+<span id="cb16-82"><a href="integrated-scrna-seq-pipeline.html#cb16-82" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeOrders =</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">22</span>),</span>
+<span id="cb16-83"><a href="integrated-scrna-seq-pipeline.html#cb16-83" tabindex="-1"></a>                     <span class="at">ViolinPlot.cellTypeColors =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-84"><a href="integrated-scrna-seq-pipeline.html#cb16-84" tabindex="-1"></a>                     <span class="at">Org =</span> <span class="st">&#39;hsa&#39;</span>,</span>
+<span id="cb16-85"><a href="integrated-scrna-seq-pipeline.html#cb16-85" tabindex="-1"></a>                     <span class="at">loom.files.path =</span> <span class="fu">c</span>( <span class="st">&#39;./SRR7881399/velocyto/SRR7881399.loom&#39;</span>,</span>
+<span id="cb16-86"><a href="integrated-scrna-seq-pipeline.html#cb16-86" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881400/velocyto/SRR7881400.loom&#39;</span>,</span>
+<span id="cb16-87"><a href="integrated-scrna-seq-pipeline.html#cb16-87" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881401/velocyto/SRR7881401.loom&#39;</span>,</span>
+<span id="cb16-88"><a href="integrated-scrna-seq-pipeline.html#cb16-88" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881402/velocyto/SRR7881402.loom&#39;</span>,</span>
+<span id="cb16-89"><a href="integrated-scrna-seq-pipeline.html#cb16-89" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881403/velocyto/SRR7881403.loom&#39;</span>,</span>
+<span id="cb16-90"><a href="integrated-scrna-seq-pipeline.html#cb16-90" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881404/velocyto/SRR7881404.loom&#39;</span>,</span>
+<span id="cb16-91"><a href="integrated-scrna-seq-pipeline.html#cb16-91" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881405/velocyto/SRR7881405.loom&#39;</span>,</span>
+<span id="cb16-92"><a href="integrated-scrna-seq-pipeline.html#cb16-92" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881406/velocyto/SRR7881406.loom&#39;</span>,</span>
+<span id="cb16-93"><a href="integrated-scrna-seq-pipeline.html#cb16-93" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881407/velocyto/SRR7881407.loom&#39;</span>,</span>
+<span id="cb16-94"><a href="integrated-scrna-seq-pipeline.html#cb16-94" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881408/velocyto/SRR7881408.loom&#39;</span>,</span>
+<span id="cb16-95"><a href="integrated-scrna-seq-pipeline.html#cb16-95" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881409/velocyto/SRR7881409.loom&#39;</span>,</span>
+<span id="cb16-96"><a href="integrated-scrna-seq-pipeline.html#cb16-96" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881410/velocyto/SRR7881410.loom&#39;</span>,</span>
+<span id="cb16-97"><a href="integrated-scrna-seq-pipeline.html#cb16-97" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881411/velocyto/SRR7881411.loom&#39;</span>,</span>
+<span id="cb16-98"><a href="integrated-scrna-seq-pipeline.html#cb16-98" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881412/velocyto/SRR7881412.loom&#39;</span>,</span>
+<span id="cb16-99"><a href="integrated-scrna-seq-pipeline.html#cb16-99" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881413/velocyto/SRR7881413.loom&#39;</span>,</span>
+<span id="cb16-100"><a href="integrated-scrna-seq-pipeline.html#cb16-100" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881414/velocyto/SRR7881414.loom&#39;</span>,</span>
+<span id="cb16-101"><a href="integrated-scrna-seq-pipeline.html#cb16-101" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881415/velocyto/SRR7881415.loom&#39;</span>,</span>
+<span id="cb16-102"><a href="integrated-scrna-seq-pipeline.html#cb16-102" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881416/velocyto/SRR7881416.loom&#39;</span>,</span>
+<span id="cb16-103"><a href="integrated-scrna-seq-pipeline.html#cb16-103" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881417/velocyto/SRR7881417.loom&#39;</span>,</span>
+<span id="cb16-104"><a href="integrated-scrna-seq-pipeline.html#cb16-104" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881418/velocyto/SRR7881418.loom&#39;</span>,</span>
+<span id="cb16-105"><a href="integrated-scrna-seq-pipeline.html#cb16-105" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881419/velocyto/SRR7881419.loom&#39;</span>,</span>
+<span id="cb16-106"><a href="integrated-scrna-seq-pipeline.html#cb16-106" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881420/velocyto/SRR7881420.loom&#39;</span>,</span>
+<span id="cb16-107"><a href="integrated-scrna-seq-pipeline.html#cb16-107" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881421/velocyto/SRR7881421.loom&#39;</span>,</span>
+<span id="cb16-108"><a href="integrated-scrna-seq-pipeline.html#cb16-108" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881422/velocyto/SRR7881422.loom&#39;</span>,</span>
+<span id="cb16-109"><a href="integrated-scrna-seq-pipeline.html#cb16-109" tabindex="-1"></a>                                          <span class="st">&#39;./SRR7881423/velocyto/SRR7881423.loom&#39;</span>),</span>
+<span id="cb16-110"><a href="integrated-scrna-seq-pipeline.html#cb16-110" tabindex="-1"></a>                     <span class="co"># cell cycle</span></span>
+<span id="cb16-111"><a href="integrated-scrna-seq-pipeline.html#cb16-111" tabindex="-1"></a>                     <span class="at">cellcycleCutoff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-112"><a href="integrated-scrna-seq-pipeline.html#cb16-112" tabindex="-1"></a>                     <span class="co"># cell chat</span></span>
+<span id="cb16-113"><a href="integrated-scrna-seq-pipeline.html#cb16-113" tabindex="-1"></a>                     <span class="at">sorting =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-114"><a href="integrated-scrna-seq-pipeline.html#cb16-114" tabindex="-1"></a>                     <span class="at">ncores =</span> <span class="dv">10</span>,</span>
+<span id="cb16-115"><a href="integrated-scrna-seq-pipeline.html#cb16-115" tabindex="-1"></a>                     <span class="co"># Verbose = FALSE,</span></span>
+<span id="cb16-116"><a href="integrated-scrna-seq-pipeline.html#cb16-116" tabindex="-1"></a>                     <span class="co"># activeEachStep</span></span>
+<span id="cb16-117"><a href="integrated-scrna-seq-pipeline.html#cb16-117" tabindex="-1"></a>                     <span class="at">Whether_load_previous_results =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-118"><a href="integrated-scrna-seq-pipeline.html#cb16-118" tabindex="-1"></a>                     <span class="at">Step1_Input_Data =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-119"><a href="integrated-scrna-seq-pipeline.html#cb16-119" tabindex="-1"></a>                     <span class="at">Step1_Input_Data.type =</span> <span class="st">&#39;cellranger-count&#39;</span>,</span>
+<span id="cb16-120"><a href="integrated-scrna-seq-pipeline.html#cb16-120" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-121"><a href="integrated-scrna-seq-pipeline.html#cb16-121" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveBatches =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-122"><a href="integrated-scrna-seq-pipeline.html#cb16-122" tabindex="-1"></a>                     <span class="at">Step2_Quality_Control.RemoveDoublets =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-123"><a href="integrated-scrna-seq-pipeline.html#cb16-123" tabindex="-1"></a>                     <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-124"><a href="integrated-scrna-seq-pipeline.html#cb16-124" tabindex="-1"></a>                     <span class="at">Step4_Identify_Cell_Types =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-125"><a href="integrated-scrna-seq-pipeline.html#cb16-125" tabindex="-1"></a>                     <span class="at">Step4_Use_Which_Labels =</span> <span class="st">&#39;clustering&#39;</span>,</span>
+<span id="cb16-126"><a href="integrated-scrna-seq-pipeline.html#cb16-126" tabindex="-1"></a>                     <span class="at">Step4_Cluster_Labels =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-127"><a href="integrated-scrna-seq-pipeline.html#cb16-127" tabindex="-1"></a>                     <span class="at">Step4_Changed_Labels =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-128"><a href="integrated-scrna-seq-pipeline.html#cb16-128" tabindex="-1"></a>                     <span class="at">Step4_run_sc_CNV =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-129"><a href="integrated-scrna-seq-pipeline.html#cb16-129" tabindex="-1"></a>                     <span class="at">Step5_Visualization =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-130"><a href="integrated-scrna-seq-pipeline.html#cb16-130" tabindex="-1"></a>                     <span class="at">Step6_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-131"><a href="integrated-scrna-seq-pipeline.html#cb16-131" tabindex="-1"></a>                     <span class="at">Step7_Assign_Cell_Cycle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-132"><a href="integrated-scrna-seq-pipeline.html#cb16-132" tabindex="-1"></a>                     <span class="at">Step8_Calculate_Heterogeneity =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-133"><a href="integrated-scrna-seq-pipeline.html#cb16-133" tabindex="-1"></a>                     <span class="at">Step9_Violin_Plot_for_Marker_Genes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-134"><a href="integrated-scrna-seq-pipeline.html#cb16-134" tabindex="-1"></a>                     <span class="at">Step10_Calculate_Lineage_Scores =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-135"><a href="integrated-scrna-seq-pipeline.html#cb16-135" tabindex="-1"></a>                     <span class="at">Step11_GSVA =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-136"><a href="integrated-scrna-seq-pipeline.html#cb16-136" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.cellType.features=</span><span class="cn">TRUE</span>,</span>
+<span id="cb16-137"><a href="integrated-scrna-seq-pipeline.html#cb16-137" tabindex="-1"></a>                     <span class="at">Step11_GSVA.identify.diff.features=</span><span class="cn">FALSE</span>,</span>
+<span id="cb16-138"><a href="integrated-scrna-seq-pipeline.html#cb16-138" tabindex="-1"></a>                     <span class="at">Step11_GSVA.comparison.design=</span><span class="cn">NULL</span>,</span>
+<span id="cb16-139"><a href="integrated-scrna-seq-pipeline.html#cb16-139" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-140"><a href="integrated-scrna-seq-pipeline.html#cb16-140" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.clusters =</span> <span class="fu">c</span>(<span class="st">&#39;3&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;9&#39;</span>,<span class="st">&#39;10&#39;</span>,<span class="st">&#39;11&#39;</span>,<span class="st">&#39;14&#39;</span>,<span class="st">&#39;15&#39;</span>,<span class="st">&#39;19&#39;</span>), </span>
+<span id="cb16-141"><a href="integrated-scrna-seq-pipeline.html#cb16-141" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.monocle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-142"><a href="integrated-scrna-seq-pipeline.html#cb16-142" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.slingshot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-143"><a href="integrated-scrna-seq-pipeline.html#cb16-143" tabindex="-1"></a>                     <span class="at">Step12_Construct_Trajectories.scVelo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-144"><a href="integrated-scrna-seq-pipeline.html#cb16-144" tabindex="-1"></a>                     <span class="at">Step13_TF_Analysis =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-145"><a href="integrated-scrna-seq-pipeline.html#cb16-145" tabindex="-1"></a>                     <span class="at">Step14_Cell_Cell_Interaction =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-146"><a href="integrated-scrna-seq-pipeline.html#cb16-146" tabindex="-1"></a>                     <span class="at">Step15_Generate_the_Report =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-147"><a href="integrated-scrna-seq-pipeline.html#cb16-147" tabindex="-1"></a>        )</span></code></pre></div>
 
 </div>
             </section>

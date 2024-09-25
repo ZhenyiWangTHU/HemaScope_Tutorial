@@ -1,0 +1,16 @@
+h1:step-by-step-scrna-seq-pipeline Step-by-step scRNA-seq Pipeline
+h2:step-1.-load-the-r-packages-and-the-input-data Step 1. Load the R packages and the input data
+h2:step-2.-quality-control Step 2. Quality Control
+h2:step-3.-clustering Step 3. Clustering
+h2:step-4.-identify-cell-types Step 4. Identify Cell Types
+h2:step-5.-visualization Step 5. Visualization
+h2:step-6.-find-degs Step 6. Find DEGs
+h2:step-7.-assign-cell-cycles Step 7. Assign Cell Cycles
+h2:step-8.-calculate-heterogeneity Step 8. Calculate Heterogeneity
+h2:step-9.-violin-plot-for-marker-genes Step 9. Violin Plot for Marker Genes
+h2:step-10.-calculate-lineage-scores Step 10. Calculate Lineage Scores
+h2:step-11.-gsva Step 11. GSVA
+h2:step-12.-construct-trajectories Step 12. Construct Trajectories
+h2:step-13.-tf-analysis Step 13. TF Analysis
+h2:step-14.-cell-cell-interaction Step 14. Cell-Cell Interaction
+
