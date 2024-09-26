@@ -80,6 +80,8 @@ R
 BiocManager::install("ComplexHeatmap")     
 BiocManager::install("scmap")
 BiocManager::install("clusterProfiler")
+install.packages("doMC")
+install.packages("doRNG")
 ```
 
 - From CRAN
@@ -112,7 +114,8 @@ After that, set the token in the environment variable in R. Since we are using c
 Then press Esc, type :wq! (force save). After that, you need to exit Linux and re-enter R. Close and reopen the terminal to apply the environment variable. Reopen Linux, activate the conda environment, and enter R again.
 
 ```         
-devtools::install_github("sqjin/CellChat@9e1e605")
+devtools::install_github("sqjin/CellChat")
+devtools::install_github("immunogenomics/presto")
 devtools::install_github("aertslab/SCENIC@fde9774")
 devtools::install_github("pzhulab/abcCellmap@f44c14b")
 devtools::install_github("navinlabcode/copykat@d7d6569")
@@ -144,7 +147,7 @@ pip config set global.extra-index-url http://mirrors.aliyun.com/pypi/simple/
 -   Install required packages
 
 ```         
-pip install stereopy==1.3.1 anndata==0.9.2 arboreto==0.1.6 cell2location==0.1.3 commot==0.0.3 karateclub==1.2.2 matplotlib==3.7.1 networkx==3.1 numpy==1.23.5 pandas==1.5.3 phate==1.0.11 pot==0.9.1 scanpy==1.9.6 scipy==1.10.1 scvelo==0.3.2 scvi-tools==0.20.3 seaborn==0.12.2
+pip install stereopy==1.3.1 anndata==0.9.2 arboreto==0.1.6 cell2location==0.1.3 commot==0.0.3 karateclub==1.2.2 matplotlib==3.7.1 networkx==3.1 numpy==1.23.5 pandas==1.5.3 phate==1.0.11 pot==0.9.1 scanpy==1.9.6 scipy==1.10.1 scvelo==0.3.2 scvi-tools==0.20.3 seaborn==0.12.2 distributed==2024.2.1 dask-expr==0.5.3
 ```
 
 ## The installed packages with versions
@@ -194,7 +197,7 @@ car	3.1-2
 carData	3.0-5
 caret	6.0-94
 caTools	1.18.2
-CellChat	1.5.0
+CellChat	2.0.1
 cellranger	1.1.0
 circlize	0.4.16
 class	7.3-22
@@ -235,6 +238,8 @@ diagram	1.6.5
 diffobj	0.3.5
 digest	0.6.36
 dlm	1.1-6
+doMC 1.3.8
+doRNG 1.8.6
 doBy	4.6.22
 docopt	0.7.1
 doParallel	1.0.17
@@ -422,6 +427,7 @@ png	0.1-8
 polyclip	1.10-6
 polynom	1.4-1
 praise	1.0.0
+presto 1.0.0
 prettyunits	1.2.0
 princurve	2.1.6
 pROC	1.18.5
@@ -633,13 +639,13 @@ contourpy                1.2.1
 croniter                 1.4.1
 cycler                   0.12.1
 dask                     2024.7.0
-dask-expr                1.1.8
+dask-expr                0.5.3
 dateutils                0.6.12
 decorator                4.4.2
 deepdiff                 7.0.1
 Deprecated               1.2.14
 deprecation              2.1.0
-distributed              2024.7.0
+distributed              2024.2.1
 dm-tree                  0.1.8
 dnspython                2.6.1
 docrep                   0.3.2
