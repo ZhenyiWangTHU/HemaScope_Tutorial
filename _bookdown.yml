@@ -6,9 +6,11 @@ language:
 #chapters:
 rmd_files:
  - index.Rmd
- - HemaScope_installation_tutorial.Rmd
- - integrated_scRNA_seq_pipeline.Rmd
- - step_by_step_scRNA_seq_pipeline.Rmd
- - step_by_step_st_seq_pipeline.Rmd
+ - 01-HemaScope_installation_tutorial.Rmd
+ - 02-integrated_scRNA_seq_pipeline.Rmd
+ - 03-step_by_step_scRNA_seq_pipeline.Rmd
+ - 04-integrated_ST_pipeline.Rmd
+ - 05-step_by_step_st_seq_pipeline.Rmd
+ - 06-step_by_step_shiny.Rmd
 # - shiny_usage.Rmd
 # - HemaScopeCloud_usage.Rmd
