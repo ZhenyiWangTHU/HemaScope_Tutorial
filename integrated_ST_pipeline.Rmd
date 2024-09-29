@@ -1,0 +1,292 @@
+# Integrated ST pipeline
+
+- Load the R packages.
+
+```{R, eval=FALSE}
+# sc libraries
+library(Seurat)
+library(phateR)
+library(DoubletFinder)
+library(monocle)
+library(slingshot)
+library(URD)
+library(GSVA)
+library(limma)
+library(plyr)
+library(dplyr)
+library(org.Mm.eg.db)
+library(org.Hs.eg.db)
+library(CellChat)
+library(velocyto.R)
+library(SeuratWrappers)
+library(stringr)
+library(scran)
+library(ggpubr)
+library(viridis)
+library(pheatmap)
+library(parallel)
+library(reticulate)
+library(SCENIC)
+library(feather)
+library(AUCell)
+library(RcisTarget)
+library(Matrix)
+library(foreach)
+library(doParallel)
+library(clusterProfiler)
+library(OpenXGR)
+# st libraries
+library(RColorBrewer)
+library(Rfast2)
+library(SeuratDisk)
+library(abcCellmap)
+library(biomaRt)
+library(copykat)
+library(gelnet)
+library(ggplot2)
+library(parallelDist)
+library(patchwork)
+library(markdown)
+# getpot
+library(getopt)
+library(tools)
+# HemaScopeR
+library(HemaScopeR)
+```
+
+## For 10X Visium data
+
+- Run the integrated 10X Visium pipeline.
+
+```{R, eval=FALSE}
+st_10x_visium_pipeline(
+        input.data.dir = 'path/to/data',
+        output.dir = '.',
+        sampleName = 'Hema_ST',
+
+        # For Step1 Loading
+        rds.file = FALSE,
+        filename = "filtered_feature_bc_matrix.h5",
+        assay = "Spatial",
+        slice = "slice1",
+        filter.matrix = TRUE,
+        to.upper = FALSE,
+
+        # For Step2 QC
+        Step2_QC = TRUE,
+        min.gene = 200,
+        min.nUMI = 500,
+        max.gene = Inf,
+        max.nUMI = Inf,
+        min.spot = 0,
+        bool.remove.mito = FALSE,
+        species = 'mouse', # 'human' or 'mosue'
+
+        # For Step3 Clustering
+        Step3_Clustering = TRUE,
+        normalization.method = 'SCTransform',
+        npcs = 50,
+        pcs.used = 1:10,
+        resolution = 0.8,
+
+        # For Step4 Find DEGs
+        Step4_Find_DEGs = TRUE,
+        only.pos = TRUE,
+        min.pct = 0.25,
+        logfc.threshold = 0.25,
+        test.use = 'wilcox',
+
+        # For Step5 SVF
+        Step5_SVFs = TRUE,
+        selection.method = 'moransi',
+        n.top.show = 10,
+        n.col.show = 5,
+
+        # For Step6 Interaction
+        Step6_Interaction = TRUE,
+        commot.signaling_type = 'Secreted Signaling',
+        commot.database = 'CellChat',
+        commot.min_cell_pct = 0.05,
+        commot.dis_thr = 500,
+        commot.n_permutations = 100,
+
+        # For Step7 CNV analysis
+        Step7_CNV = TRUE,
+        copykat.genome = NULL,
+        copykat.LOW.DR = 0.05,
+        copykat.UP.DR = 0.1,
+        copykat.win.size = 25,
+        copykat.distance = "euclidean",
+        copykat.n.cores = 1,
+
+        # For Step8 Deconvolution
+        Step8_Deconvolution = TRUE,
+        cell2loc.sc.h5ad.dir = NULL,
+        cell2loc.sc.max.epoch = 1000,
+        cell2loc.st.max.epoch = 10000,
+        cell2loc.use.gpu = TRUE,
+        cell2loc.use.dataset = 'LymphNode',
+
+        # For Step9 Cellcycle
+        Step9_Cellcycle = TRUE,
+        s.features = NULL,
+        g2m.features = NULL,
+
+        # For Step10 Nich
+        Step10_Niche = TRUE,
+        coexistence.method = 'correlation',
+        Niche.cluster.n = 4,
+
+        # settings
+        pythonPath = 'path/to/python',
+        verbose = FALSE,
+        genReport = TRUE
+)
+
+```
+
+## For MERFISH data
+
+- Run the integrated MERFISH pipeline.
+
+```{R,eval=FALSE}
+st_MERFISH_pipeline(
+        input.data.dir,
+        output.dir,
+        sampleName = 'Hema_MERFISH',
+        fov = 'fov',
+        tech = 'Vizgen',
+        
+        # For Step1 Loading
+        rds.file = FALSE,
+        assay = NULL,
+        Vizgen.z = 3L, 
+        Akoya.type = 'inform',
+        
+        # For Step2 QC
+        Step2_QC = TRUE,
+        min.gene = 20,
+        min.nUMI = 50,
+        max.gene = Inf,
+        max.nUMI = Inf,
+        min.spot = 0,
+        bool.remove.mito = FALSE,
+        species = 'mouse', # 'human' or 'mosue'
+        
+        # For Step3 Clustering
+        Step3_Clustering = TRUE,
+        normalization.method = 'SCTransform',
+        npcs = 50,
+        pcs.used = 1:10,
+        resolution = 0.4,
+        
+        # For Step4 Find DEGs
+        Step4_Find_DEGs = TRUE,
+        only.pos = TRUE,
+        min.pct = 0.25,
+        logfc.threshold = 0.25,
+        test.use = 'wilcox',
+        
+        # For Step5 SVF
+        Step5_SVFs = TRUE,
+        selection.method = 'moransi',
+        n.top.show = 10,
+        n.col.show = 5,
+        
+        # For Step6 Interaction
+        Step6_Interaction = TRUE,
+        h5ad_path = NULL,
+        counts_path = NULL,
+        coordinates_path = NULL,
+        coordinates_index_col = 0,
+        counts_transpose = TRUE,
+        commot.signaling_type = 'Secreted Signaling',
+        commot.database = 'CellChat',
+        commot.min_cell_pct = 0.05,
+        commot.dis_thr = 500,
+        commot.n_permutations = 100,
+        
+        # For Step7 Cellcycle
+        Step7_Cellcycle = TRUE,
+        s.features = NULL,
+        g2m.features = NULL,
+        
+        verbose = FALSE,
+        pythonPath = NULL
+)
+```
+
+## For stereo-seq data
+
+- Run the integrated stereo-seq pipeline.
+
+```{R,eval=FALSE}
+st_stereo_pipeline(
+        input.data.dir,
+        output.dir,
+        sampleName = 'Hema_stereo',
+
+        # For Step1 Loading
+        data_type = 'gem',
+        sep = '\t',
+        bin_type = 'bins',
+        bin_size = 100,
+        spot_diameter = 80,
+        is_sparse = TRUE,
+        gene_list = NULL,
+        region = NULL,
+        assay = 'Spatial',
+
+        # For Step2 QC
+        Step2_QC = TRUE,
+        min.gene = 20,
+        min.nUMI = 50,
+        max.gene = Inf,
+        max.nUMI = Inf,
+        min.spot = 0,
+        bool.remove.mito = FALSE,
+        species = 'mouse', # 'human' or 'mosue'
+
+        # For Step3 Clustering
+        Step3_Clustering = TRUE,
+        normalization.method = 'SCTransform',
+        npcs = 50,
+        pcs.used = 1:10,
+        resolution = 0.1,
+        max.n.cluster = 30,
+
+        # For Step4 Find DEGs
+        Step4_Find_DEGs = TRUE,
+        only.pos = TRUE,
+        min.pct = 0.25,
+        logfc.threshold = 0.25,
+        test.use = 'wilcox',
+
+        # For Step5 SVF
+        Step5_SVFs = TRUE,
+        selection.method = 'moransi',
+        n.top.show = 10,
+        n.col.show = 5,
+
+        # For Step6 Interaction
+        Step6_Interaction = TRUE,
+        h5ad_path = NULL,
+        counts_path = NULL,
+        coordinates_path = NULL,
+        coordinates_index_col = 0,
+        counts_transpose = TRUE,
+        commot.signaling_type = 'Secreted Signaling',
+        commot.database = 'CellChat',
+        commot.min_cell_pct = 0.05,
+        commot.dis_thr = 500,
+        commot.n_permutations = 100,
+
+        # For Step7 Cellcycle
+        Step7_Cellcycle = TRUE,
+        s.features = NULL,
+        g2m.features = NULL,
+
+        verbose = FALSE,
+        pythonPath = NULL
+)
+```
