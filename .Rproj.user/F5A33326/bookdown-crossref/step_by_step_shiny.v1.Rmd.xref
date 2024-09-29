@@ -1,0 +1,34 @@
+h1:step-by-step-shiny Step-by-step shiny
+h2:step-1.-enter-r-and-get-the-path-of-the-installed-r-packages Step 1. Enter R and get the path of the installed R packages
+h2:step-2.-load-the-r-packages-and-the-input-data Step 2. Load the R packages and the input data
+h2:step-3.-start-hemascopeshiny Step 3. Start HemaScopeShiny
+h2:step-4.-use-hemascopeshiny-via-the-gui Step 4. Use HemaScopeShiny via the GUI
+h3:scrna-seq-pipeline scRNA-seq pipeline
+h4:step-1-scrna-seq-pipeline.-input-data Step 1 (scRNA-seq pipeline). Input Data
+h4:step-2-scrna-seq-pipeline.-quality-control Step 2 (scRNA-seq pipeline). Quality Control
+h4:step-3-scrna-seq-pipeline.-clustering Step 3 (scRNA-seq pipeline). Clustering
+h4:step-4-scrna-seq-pipeline.-identify-cell-types Step 4 (scRNA-seq pipeline). Identify Cell Types
+h4:step-5-scrna-seq-pipeline.-visualization Step 5 (scRNA-seq pipeline). Visualization
+h4:step-6-scrna-seq-pipeline.-find-differential-genes Step 6 (scRNA-seq pipeline). Find Differential Genes
+h4:step-7-scrna-seq-pipeline.-assign-cell-cycles Step 7 (scRNA-seq pipeline). Assign Cell Cycles
+h4:step-8-scrna-seq-pipeline.-calculate-heterogeneity Step 8 (scRNA-seq pipeline). Calculate Heterogeneity
+h4:step-9-scrna-seq-pipeline.-violin-plot-for-marker-genes Step 9 (scRNA-seq pipeline). Violin Plot for Marker Genes
+h4:step-10-scrna-seq-pipeline.-calculate-lineage-scores Step 10 (scRNA-seq pipeline). Calculate Lineage Scores
+h4:step-11-scrna-seq-pipeline.-gsva Step 11 (scRNA-seq pipeline). GSVA
+h4:step-12-scrna-seq-pipeline.-construct-trajectories Step 12 (scRNA-seq pipeline). Construct Trajectories
+h4:step-13-scrna-seq-pipeline.-transcription-factors-analysis Step 13 (scRNA-seq pipeline). Transcription Factors Analysis
+h4:step-14-scrna-seq-pipeline.-cell-cell-interaction Step 14 (scRNA-seq pipeline). Cell-Cell Interaction
+h4:step-15-scrna-seq-pipeline.-generate-the-report Step 15 (scRNA-seq pipeline). Generate the Report
+h3:st-pipeline ST-pipeline
+h4:step-1-st-seq-pipeline.-input-data Step 1 (st-seq pipeline). Input Data
+h4:step-2-st-seq-pipeline.-quality-control Step 2 (st-seq pipeline). Quality Control
+h4:step-3-st-seq-pipeline.-clustering Step 3 (st-seq pipeline). Clustering
+h4:step-4-st-seq-pipeline.-find-differential-genes Step 4 (st-seq pipeline). Find Differential Genes
+h4:step-5-st-seq-pipeline.-spatially-variable-features Step 5 (st-seq pipeline). Spatially variable features
+h4:step-6-st-seq-pipeline.-spatial-interaction Step 6 (st-seq pipeline). Spatial interaction
+h4:step-7-st-seq-pipeline.-cnv-analysis Step 7 (st-seq pipeline). CNV analysis
+h4:step-8-st-seq-pipeline.-deconvolution Step 8 (st-seq pipeline). Deconvolution
+h4:step-9-st-seq-pipeline.-cell-cycle-analysis Step 9 (st-seq pipeline). Cell cycle analysis
+h4:step-10-st-seq-pipeline.-niche-analysis Step 10 (st-seq pipeline). Niche analysis
+h4:step-11-st-seq-pipeline.-generate-the-report Step 11 (st-seq pipeline). Generate the Report
+

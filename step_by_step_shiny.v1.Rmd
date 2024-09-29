@@ -1,38 +1,5 @@
 # Step-by-step shiny
 
-#You can run shiny on Linux or on the Rstudio web page
-#Run shiny on Linux
-- Enter Linux, activate the HemaScope environment,install radian package then you can enter the R environment on Linux and run shiny code
-```{R,eval=FALSE}
-pip install -U radian
-raian
-```
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/radian.png")
-```
--You can see "r$>" . It menns you enter R environment on Linux
-Put all the shiny code in the APP.R file. APP.R.The the code structure is as follows
-```{R,eval=FALSE}
-library(xxx) #library all packages in tutorial
-The codes of UI
-The codes of server
-shinyAPP(ui,server)
-```
--Then you can run shiny code
-```{R,eval=FALSE}
-setwd() #The path where APP.R is located
-shiny::runApp(appDir = getwd(),host = "10.19.28.74",launch.browser = FALSE) #host: your server IP
-```
-#You'll see a page like the one below,copy link 
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/shiny.png")
-```
-#Open the link with a browser,you can see HemaScopeR shiny home page.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/web_home.png")
-```
-
-#Run shiny on Rstudio web page
 ## Step 1. Enter R and get the path of the installed R packages
 - Enter the R environment in the Linux command line.
 ```
@@ -62,7 +29,7 @@ library(phateR)
 library(DoubletFinder)
 library(monocle)
 library(slingshot)
-#library(URD)
+library(URD)
 library(GSVA)
 library(limma)
 library(plyr)
@@ -88,9 +55,6 @@ library(foreach)
 library(doParallel)
 library(clusterProfiler)
 library(OpenXGR)
-library(presto)
-library(doMC)
-library(doRNG)
 # st libraries
 library(RColorBrewer)
 library(Rfast2)
@@ -103,8 +67,8 @@ library(ggplot2)
 library(parallelDist)
 library(patchwork)
 library(markdown)
-#getpot
-#library(getopt)
+# getpot
+library(getopt)
 library(tools)
 # HemaScope
 library(HemaScope)
@@ -120,10 +84,11 @@ shinyApp(ui,server)
 - Start interface.
 
 A UI page appears with two buttons: "Start scRNA-seq Analysis" and "Start st-seq Analysis." Users can click the corresponding button based on their needs to enter the respective analysis page.
+
 * The figure showing the start interface.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/shiny_home.png")
-```
+<center class="half">
+    <img src="./figures/shiny/Start_interface.png" width="80%"/>
+</center>
 
 - Begin a new analysis, continue the previous analysis, or return to the start interface
 
@@ -134,9 +99,9 @@ If you need to begin a new analysis of scRNA-seq or st-seq data from the first s
 Please note: users should follow the analysis steps sequentially and not skip steps. For example, analyzing steps 1, 2, and 3 and then jumping directly to step 6 is incorrect. The proper analysis sequence should be step 1, 2, 3, 4, 5, 6, ... N.
 
 * The figure showing the interface for beginning a new analysis, continuing the previous analysis, or returning to the start interface.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/shiny_UI.png")
-```
+<center class="half">
+    <img src="./figures/shiny/Begin_a_new_analysis_continue_the_previous_analysis_or_return_to_the_start_interface.png" width="80%"/>
+</center>
 
 ### scRNA-seq pipeline
 When the user clicks the "Start scRNA-seq pipeline -- Begin New Analysis" button, they will enter the single-cell analysis page. The sidebar of this page includes the following buttons:
@@ -158,9 +123,10 @@ Step 15. Generate the Report
 Back to Prior Page
 
 * The figure showing the scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_page.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline.png" width="80%"/>
+</center>
+
 Please start the analysis from step 1 and do not skip any steps. The correct analysis sequence is steps 1 through 15: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15.
 
 To return to the previous page, click "Back to Prior Page".
@@ -176,9 +142,9 @@ Choose a step you want to analyze: Select the step you want to continue analyzin
 #### Step 1 (scRNA-seq pipeline). Input Data
 
 * The figure showing the step 1 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step1.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step1.png" width="80%"/>
+</center>
 
 Enter data path: Input multiple file paths separated by semicolons, for example: /path1/file1/data1;/path2/file2/data2;/path2/file2/data3. For a single file, use: /path2/file2/data2.
 
@@ -211,9 +177,9 @@ All output files generated at each step are stored in the output directory speci
 #### Step 2 (scRNA-seq pipeline). Quality Control
 
 * The figure showing the step 2 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step2.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step2.png" width="80%"/>
+</center>
 
 nFeature_RNA.limit: Minimum number of genes detected per cell. Default value: 200
 percent.mt.limit: Threshold for filtering mitochondrial genes. Default value: 20
@@ -238,9 +204,9 @@ After a short while, the result files generated by Step 2 will be displayed on t
 #### Step 3 (scRNA-seq pipeline). Clustering
 
 * The figure showing the step 3 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step3.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step3.png" width="80%"/>
+</center>
 
 PCs for clustering (default: 1:20): Principal components used for clustering. Default value: 1:20
 n.neighbors for clustering (default: 50): k.param parameter in the FindNeighbors function. Default value: 50
@@ -253,9 +219,10 @@ After a short while, the result files generated by Step 3 will be displayed on t
 #### Step 4 (scRNA-seq pipeline). Identify Cell Types
 
 * The figure showing the step 4 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step4.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step4.png" width="80%"/>
+</center>
+
 Choose organism: 'hsa' for human, 'mmu' for mouse
 Choose Labels: Cell labels, default value: clustering
 Run CNV: TRUE if copy number variation (CNV) analysis is to be performed
@@ -268,9 +235,9 @@ After a short while, the result files generated by Step 4 will be displayed on t
 #### Step 5 (scRNA-seq pipeline). Visualization
 
 * The figure showing the step 5 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step5.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step5.png" width="80%"/>
+</center>
 
 Nearest neighbors for PhateR analysis (default: 50): phate.knn parameter, the number of nearest neighbors to consider in the PhateR algorithm. Default value: 50
 Principal components for PhateR (default: 20): phate.npca parameter, the number of principal components to use in the PhateR algorithm. Default value: 20
@@ -284,9 +251,10 @@ After a short while, the result files generated by Step 5 will be displayed on t
 #### Step 6 (scRNA-seq pipeline). Find Differential Genes
 
 * The figure showing the step 6 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step6.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step6.png" width="80%"/>
+</center>
+
 Minimum gene percentage for differential detection (default: 0.25): The minimum fraction of cells expressing a gene in any cluster. Default value: 0.25
 Log-fold threshold for gene analysis (default: 0.25): The log-fold change threshold for differential gene expression analysis. Default value: 0.25
 
@@ -297,9 +265,10 @@ After a short while, the result files generated by Step 6 will be displayed on t
 #### Step 7 (scRNA-seq pipeline). Assign Cell Cycles
 
 * The figure showing the step 7 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step7.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step7.png" width="80%"/>
+</center>
+
 Define cell cycle cutoff (default: NULL): The cutoff value used to distinguish between cycling and non-cycling cells. Default value: NULL
 
 Click the "Run Step 7" button to start the process. After clicking the "Run Step 7" button, please do not interact with other parameters or buttons on the page. Once the process is complete, a "Step 7 completed" message will appear.
@@ -309,9 +278,10 @@ After a short while, the result files generated by Step 7 will be displayed on t
 #### Step 8 (scRNA-seq pipeline). Calculate Heterogeneity
 
 * The figure showing the step 8 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step8.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step8.png" width="80%"/>
+</center>
+
 Order cell types: The order of cell types for visualization. If not provided, the function will use the unique cell types from the input cell_types_groups. Default value: NULL
 
 Click the "Run Step 8" button to start the process. After clicking the "Run Step 8" button, please do not interact with other parameters or buttons on the page. Once the process is complete, a "Step 8 completed" message will appear.
@@ -321,9 +291,10 @@ After a short while, the result files generated by Step 8 will be displayed on t
 #### Step 9 (scRNA-seq pipeline). Violin Plot for Marker Genes
 
 * The figure showing the step 9 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step9.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step9.png" width="80%"/>
+</center>
+
 Enter marker genes for violin plot (separate by ','): The marker genes for the violin plot. Default value is the built-in marker genes: NULL.
 
 Set the hexadecimal codes of colors for cell types (separate by ','): Specify the colors for cell types. The default is the color palette: NULL.
@@ -335,9 +306,9 @@ After a short while, the result files generated by Step 9 will be displayed on t
 #### Step 10 (scRNA-seq pipeline). Calculate Lineage Scores
 
 * The figure showing the step 10 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step10.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step10.png" width="80%"/>
+</center>
 
 The gene sets for calculating lineage scores: The gene sets used for calculating lineage scores. The default is the color palette: NULL.
 
@@ -352,9 +323,9 @@ After a short while, the result files generated by Step 10 will be displayed on 
 #### Step 11 (scRNA-seq pipeline). GSVA
 
 * The figure showing the step 11 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step11.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step11.png" width="80%"/>
+</center>
 
 Option to identify cell type-specific GSVA terms: Whether to identify cell type-specific GSVA terms. Default value: TRUE.
 
@@ -367,9 +338,9 @@ After a short while, the result files generated by Step 11 will be displayed on 
 #### Step 12 (scRNA-seq pipeline). Construct Trajectories
 
 * The figure showing the step 12 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step12.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step12.png" width="80%"/>
+</center>
 
 Set the cell types for constructing trajectories: The cell types to be used for trajectory analysis. Different cell types should be separated by commas. Default value: "all."
 
@@ -388,9 +359,9 @@ After a short while, the result files generated by Step 12 will be displayed on 
 #### Step 13 (scRNA-seq pipeline). Transcription Factors Analysis
 
 * The figure showing the step 13 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step13.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step13.png" width="80%"/>
+</center>
 
 Set the hexadecimal codes of colors for cell types: Colors used for visualizing cell types. Default value: NULL (color palette).
 
@@ -403,9 +374,9 @@ After a short while, the result files generated by Step 13 will be displayed on 
 #### Step 14 (scRNA-seq pipeline). Cell-Cell Interaction
 
 * The figure showing the step 14 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step14.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step14.png" width="80%"/>
+</center>
 
 
 The cell groups were sorted: Whether to consider the size (number) of cell groups in the cell communication analysis. Default value: TRUE.
@@ -417,9 +388,9 @@ After a short while, the result files generated by Step 14 will be displayed on 
 #### Step 15 (scRNA-seq pipeline). Generate the Report
 
 * The figure showing the step 15 of scRNA-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/sc_shiny_images/sc_step15.png")
-```
+<center class="half">
+    <img src="./figures/shiny/scRNA_seq_pipeline_step15.png" width="80%"/>
+</center>
 
 Click "Run Step 15" to generate the analysis report.
 
@@ -457,9 +428,9 @@ Choose a step you want to analyze: Select the step you want to continue analyzin
 #### Step 1 (st-seq pipeline). Input Data
 
 * The figure showing the step 1 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step1.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step1.png" width="80%"/>
+</center>
 
 Enter data path: The directory where the input data is stored. The input data should be 10X Visium spatial transcriptomics data. Only one dataset can be input at a time; unlike single-cell data, multiple datasets cannot be entered simultaneously.
 
@@ -485,9 +456,9 @@ The result files generated for each step are stored in the output path specified
 #### Step 2 (st-seq pipeline). Quality Control
 
 * The figure showing the step 2 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step2.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step2.png" width="80%"/>
+</center>
 
 min.gene (default: 200): Specifies the minimum number of genes detected in a spot. The default value is 200.
 
@@ -508,9 +479,9 @@ Click "Run Step2" to proceed. After clicking the "Run Step2" button, please do n
 #### Step 3 (st-seq pipeline). Clustering
 
 * The figure showing the step 3 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step3.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step3.png" width="80%"/>
+</center>
 
 normalization.method (default: 'SCTransform'): The method for data normalization. The default value is 'SCTransform'.
 
@@ -525,9 +496,9 @@ Click "Run Step3" to proceed. After clicking the "Run Step3" button, please do n
 #### Step 4 (st-seq pipeline). Find Differential Genes
 
 * The figure showing the step 4 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step4.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step4.png" width="80%"/>
+</center>
 
 only.pos: A logical flag to include only positive markers. The default value is TRUE.
 
@@ -542,9 +513,9 @@ Click "Run Step4" to proceed. After clicking the "Run Step4" button, please do n
 #### Step 5 (st-seq pipeline). Spatially variable features
 
 * The figure showing the step 5 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step5.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step5.png" width="80%"/>
+</center>
 
 selection.method (default: 'moransi'): The method used for selecting spatially variable features. The default value is 'moransi'.
 
@@ -557,9 +528,9 @@ Click "Run Step5" to proceed. After clicking the "Run Step5" button, please do n
 #### Step 6 (st-seq pipeline). Spatial interaction
 
 * The figure showing the step 6 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step6.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step6.png" width="80%"/>
+</center>
 
 commot.signaling_type (default: 'Secreted Signaling'): The type of signaling interaction to consider. The default value is 'Secreted Signaling'.
 
@@ -576,9 +547,9 @@ Click "Run Step6" to proceed. After clicking the "Run Step6" button, please do n
 #### Step 7 (st-seq pipeline). CNV analysis
 
 * The figure showing the step 7 of st-seq pipeline.
-```{R,echo=FALSE}
-knitr::include_graphics(path="./image/st_shiny_images/st_step7.png")
-```
+<center class="half">
+    <img src="./figures/shiny/st_seq_pipeline_step7.png" width="80%"/>
+</center>
 
 copykat.genome (default: 'NULL'): The genome version used, either 'hg20' or 'mm10'. The default value is "hg20".
 
