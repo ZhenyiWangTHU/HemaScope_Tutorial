@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Step-by-step shiny | HemaScope Tutorial</title>
+  <meta name="description" content="This is the tutorial for HemaScope." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Step-by-step shiny | HemaScope Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the tutorial for HemaScope." />
+  <meta name="github-repo" content="https://github.com/ZhenyiWangTHU/HemaScopeR/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Step-by-step shiny | HemaScope Tutorial" />
+  
+  <meta name="twitter:description" content="This is the tutorial for HemaScope." />
+  
+
+<meta name="author" content="HemaScope team" />
+
+
+<meta name="date" content="2024-09-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="stey-by-step-st-seq-pipeline.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">HemaScope</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#create-a-new-conda-environment-and-activate-it"><i class="fa fa-check"></i><b>2.1</b> Create a new conda environment and activate it</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#set-the-channels-in-conda"><i class="fa fa-check"></i><b>2.2</b> Set the channels in conda</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Install R and python</a></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.4</b> Install required R-packages</a></li>
+<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#install-required-python-packages"><i class="fa fa-check"></i><b>2.5</b> Install required Python-packages</a></li>
+<li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#the-installed-packages-with-versions"><i class="fa fa-check"></i><b>2.6</b> The installed packages with versions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>4</b> Step-by-step scRNA-seq Pipeline</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>4.1</b> Step 1. Load the R packages and the input data</a></li>
+<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.2</b> Step 2. Quality Control</a></li>
+<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.3</b> Step 3. Clustering</a></li>
+<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.4</b> Step 4. Identify Cell Types</a></li>
+<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.5</b> Step 5. Visualization</a></li>
+<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.6</b> Step 6. Find DEGs</a></li>
+<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.7</b> Step 7. Assign Cell Cycles</a></li>
+<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.8</b> Step 8. Calculate Heterogeneity</a></li>
+<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.9</b> Step 9. Violin Plot for Marker Genes</a></li>
+<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.10</b> Step 10. Calculate Lineage Scores</a></li>
+<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.11</b> Step 11. GSVA</a></li>
+<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.12</b> Step 12. Construct Trajectories</a></li>
+<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.13</b> Step 13. TF Analysis</a></li>
+<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.14</b> Step 14. Cell-Cell Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html"><i class="fa fa-check"></i><b>5</b> Integrated ST pipeline</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-10x-visium-data"><i class="fa fa-check"></i><b>5.1</b> For 10X Visium data</a></li>
+<li class="chapter" data-level="5.2" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-merfish-data"><i class="fa fa-check"></i><b>5.2</b> For MERFISH data</a></li>
+<li class="chapter" data-level="5.3" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-stereo-seq-data"><i class="fa fa-check"></i><b>5.3</b> For stereo-seq data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html"><i class="fa fa-check"></i><b>6</b> Stey-by-step st-seq pipeline</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading"><i class="fa fa-check"></i><b>6.1</b> Step 1. Data loading</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>6.1.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.1.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#funciton-behavior"><i class="fa fa-check"></i><b>6.1.2</b> Funciton behavior:</a></li>
+<li class="chapter" data-level="6.1.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example"><i class="fa fa-check"></i><b>6.1.3</b> An example:</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs"><i class="fa fa-check"></i><b>6.1.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>6.2</b> Step 2. QC</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>6.2.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-1"><i class="fa fa-check"></i><b>6.2.3</b> An example:</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>6.2.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-3.-clustering-1"><i class="fa fa-check"></i><b>6.3</b> Step 3. Clustering</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>6.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-1"><i class="fa fa-check"></i><b>6.3.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-2"><i class="fa fa-check"></i><b>6.3.3</b> An example:</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>6.3.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-4.-degs"><i class="fa fa-check"></i><b>6.4</b> Step 4. DEGs</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>6.4.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.4.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-2"><i class="fa fa-check"></i><b>6.4.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.4.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-3"><i class="fa fa-check"></i><b>6.4.3</b> An example:</a></li>
+<li class="chapter" data-level="6.4.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>6.4.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-5.-spatially-variable-features"><i class="fa fa-check"></i><b>6.5</b> Step 5. Spatially variable features</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>6.5.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.5.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-3"><i class="fa fa-check"></i><b>6.5.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.5.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-4"><i class="fa fa-check"></i><b>6.5.3</b> An example:</a></li>
+<li class="chapter" data-level="6.5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>6.5.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-6.-spatial-interaction"><i class="fa fa-check"></i><b>6.6</b> Step 6. Spatial interaction</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>6.6.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-4"><i class="fa fa-check"></i><b>6.6.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-5"><i class="fa fa-check"></i><b>6.6.3</b> An example:</a></li>
+<li class="chapter" data-level="6.6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>6.6.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-7.-cnv-analysis"><i class="fa fa-check"></i><b>6.7</b> Step 7. CNV analysis</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-6"><i class="fa fa-check"></i><b>6.7.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.7.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-5"><i class="fa fa-check"></i><b>6.7.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.7.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-6"><i class="fa fa-check"></i><b>6.7.3</b> An example:</a></li>
+<li class="chapter" data-level="6.7.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>6.7.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-8.-deconvolution"><i class="fa fa-check"></i><b>6.8</b> Step 8. Deconvolution</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-7"><i class="fa fa-check"></i><b>6.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.8.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-6"><i class="fa fa-check"></i><b>6.8.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.8.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-7"><i class="fa fa-check"></i><b>6.8.3</b> An example:</a></li>
+<li class="chapter" data-level="6.8.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>6.8.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-9.-cell-cycle"><i class="fa fa-check"></i><b>6.9</b> Step 9. Cell cycle</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-8"><i class="fa fa-check"></i><b>6.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.9.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-7"><i class="fa fa-check"></i><b>6.9.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.9.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-8"><i class="fa fa-check"></i><b>6.9.3</b> An example:</a></li>
+<li class="chapter" data-level="6.9.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>6.9.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-10.-niche-analysis"><i class="fa fa-check"></i><b>6.10</b> Step 10. Niche analysis</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>6.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.10.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-8"><i class="fa fa-check"></i><b>6.10.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.10.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-9"><i class="fa fa-check"></i><b>6.10.3</b> An example:</a></li>
+<li class="chapter" data-level="6.10.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>6.10.4</b> Outputs:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html"><i class="fa fa-check"></i><b>7</b> Step-by-step shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>7.1</b> Step 2. Load the R packages and the input data</a></li>
+<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny"><i class="fa fa-check"></i><b>7.2</b> Step 3. Start HemaScopeShiny</a></li>
+<li class="chapter" data-level="7.3" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.3</b> Step 4. Use HemaScopeShiny via the GUI</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#scrna-seq-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HemaScope Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="step-by-step-shiny" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Step-by-step shiny<a href="step-by-step-shiny.html#step-by-step-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>#You can run shiny on Linux or on the Rstudio web page
+#Run shiny on Linux
+- Enter Linux, activate the HemaScope environment,install radian package then you can enter the R environment on Linux and run shiny code</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="step-by-step-shiny.html#cb97-1" tabindex="-1"></a>pip install <span class="sc">-</span>U radian</span>
+<span id="cb97-2"><a href="step-by-step-shiny.html#cb97-2" tabindex="-1"></a>raian</span></code></pre></div>
+<p><img src="image/radian.png" /><!-- -->
+-You can see “r$&gt;” . It menns you enter R environment on Linux
+Put all the shiny code in the APP.R file. APP.R.The the code structure is as follows</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="step-by-step-shiny.html#cb98-1" tabindex="-1"></a><span class="fu">library</span>(xxx) <span class="co">#library all packages in tutorial</span></span>
+<span id="cb98-2"><a href="step-by-step-shiny.html#cb98-2" tabindex="-1"></a>The codes of UI</span>
+<span id="cb98-3"><a href="step-by-step-shiny.html#cb98-3" tabindex="-1"></a>The codes of server</span>
+<span id="cb98-4"><a href="step-by-step-shiny.html#cb98-4" tabindex="-1"></a><span class="fu">shinyAPP</span>(ui,server)</span></code></pre></div>
+<p>-Then you can run shiny code</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="step-by-step-shiny.html#cb99-1" tabindex="-1"></a><span class="fu">setwd</span>() <span class="co">#The path where APP.R is located</span></span>
+<span id="cb99-2"><a href="step-by-step-shiny.html#cb99-2" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="at">appDir =</span> <span class="fu">getwd</span>(),<span class="at">host =</span> <span class="st">&quot;10.19.28.74&quot;</span>,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>) <span class="co">#host: your server IP</span></span></code></pre></div>
+<p>#You’ll see a page like the one below,copy link
+<img src="image/shiny.png" /><!-- -->
+#Open the link with a browser,you can see HemaScopeR shiny home page.
+<img src="image/web_home.png" /><!-- --></p>
+<p>#Run shiny on Rstudio web page
+## Step 1. Enter R and get the path of the installed R packages
+- Enter the R environment in the Linux command line.</p>
+<pre><code>R</code></pre>
+<ul>
+<li>Get the path of the installed R packages in the R command line.</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="step-by-step-shiny.html#cb101-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<p>For example, “/An/example/of/the/path/to/installed/R/packages”</p>
+<div id="step-2.-load-the-r-packages-and-the-input-data" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Step 2. Load the R packages and the input data<a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Load the R packages.</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="step-by-step-shiny.html#cb102-1" tabindex="-1"></a><span class="fu">.libPaths</span>(<span class="st">&quot;/An/example/of/the/path/to/installed/R/packages&quot;</span>)</span>
+<span id="cb102-2"><a href="step-by-step-shiny.html#cb102-2" tabindex="-1"></a><span class="co"># Shiny</span></span>
+<span id="cb102-3"><a href="step-by-step-shiny.html#cb102-3" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb102-4"><a href="step-by-step-shiny.html#cb102-4" tabindex="-1"></a><span class="fu">library</span>(shinyjs)</span>
+<span id="cb102-5"><a href="step-by-step-shiny.html#cb102-5" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb102-6"><a href="step-by-step-shiny.html#cb102-6" tabindex="-1"></a><span class="fu">library</span>(shinyWidgets)</span>
+<span id="cb102-7"><a href="step-by-step-shiny.html#cb102-7" tabindex="-1"></a><span class="fu">library</span>(slickR)</span>
+<span id="cb102-8"><a href="step-by-step-shiny.html#cb102-8" tabindex="-1"></a><span class="co"># sc libraries</span></span>
+<span id="cb102-9"><a href="step-by-step-shiny.html#cb102-9" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb102-10"><a href="step-by-step-shiny.html#cb102-10" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
+<span id="cb102-11"><a href="step-by-step-shiny.html#cb102-11" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
+<span id="cb102-12"><a href="step-by-step-shiny.html#cb102-12" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
+<span id="cb102-13"><a href="step-by-step-shiny.html#cb102-13" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
+<span id="cb102-14"><a href="step-by-step-shiny.html#cb102-14" tabindex="-1"></a><span class="co">#library(URD)</span></span>
+<span id="cb102-15"><a href="step-by-step-shiny.html#cb102-15" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb102-16"><a href="step-by-step-shiny.html#cb102-16" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb102-17"><a href="step-by-step-shiny.html#cb102-17" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb102-18"><a href="step-by-step-shiny.html#cb102-18" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb102-19"><a href="step-by-step-shiny.html#cb102-19" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb102-20"><a href="step-by-step-shiny.html#cb102-20" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb102-21"><a href="step-by-step-shiny.html#cb102-21" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb102-22"><a href="step-by-step-shiny.html#cb102-22" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb102-23"><a href="step-by-step-shiny.html#cb102-23" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb102-24"><a href="step-by-step-shiny.html#cb102-24" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb102-25"><a href="step-by-step-shiny.html#cb102-25" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb102-26"><a href="step-by-step-shiny.html#cb102-26" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb102-27"><a href="step-by-step-shiny.html#cb102-27" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb102-28"><a href="step-by-step-shiny.html#cb102-28" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb102-29"><a href="step-by-step-shiny.html#cb102-29" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb102-30"><a href="step-by-step-shiny.html#cb102-30" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb102-31"><a href="step-by-step-shiny.html#cb102-31" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb102-32"><a href="step-by-step-shiny.html#cb102-32" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb102-33"><a href="step-by-step-shiny.html#cb102-33" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb102-34"><a href="step-by-step-shiny.html#cb102-34" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb102-35"><a href="step-by-step-shiny.html#cb102-35" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb102-36"><a href="step-by-step-shiny.html#cb102-36" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb102-37"><a href="step-by-step-shiny.html#cb102-37" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb102-38"><a href="step-by-step-shiny.html#cb102-38" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb102-39"><a href="step-by-step-shiny.html#cb102-39" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
+<span id="cb102-40"><a href="step-by-step-shiny.html#cb102-40" tabindex="-1"></a><span class="fu">library</span>(presto)</span>
+<span id="cb102-41"><a href="step-by-step-shiny.html#cb102-41" tabindex="-1"></a><span class="fu">library</span>(doMC)</span>
+<span id="cb102-42"><a href="step-by-step-shiny.html#cb102-42" tabindex="-1"></a><span class="fu">library</span>(doRNG)</span>
+<span id="cb102-43"><a href="step-by-step-shiny.html#cb102-43" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb102-44"><a href="step-by-step-shiny.html#cb102-44" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb102-45"><a href="step-by-step-shiny.html#cb102-45" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb102-46"><a href="step-by-step-shiny.html#cb102-46" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb102-47"><a href="step-by-step-shiny.html#cb102-47" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb102-48"><a href="step-by-step-shiny.html#cb102-48" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb102-49"><a href="step-by-step-shiny.html#cb102-49" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb102-50"><a href="step-by-step-shiny.html#cb102-50" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb102-51"><a href="step-by-step-shiny.html#cb102-51" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb102-52"><a href="step-by-step-shiny.html#cb102-52" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb102-53"><a href="step-by-step-shiny.html#cb102-53" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb102-54"><a href="step-by-step-shiny.html#cb102-54" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb102-55"><a href="step-by-step-shiny.html#cb102-55" tabindex="-1"></a><span class="co">#getpot</span></span>
+<span id="cb102-56"><a href="step-by-step-shiny.html#cb102-56" tabindex="-1"></a><span class="co">#library(getopt)</span></span>
+<span id="cb102-57"><a href="step-by-step-shiny.html#cb102-57" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb102-58"><a href="step-by-step-shiny.html#cb102-58" tabindex="-1"></a><span class="co"># HemaScope</span></span>
+<span id="cb102-59"><a href="step-by-step-shiny.html#cb102-59" tabindex="-1"></a><span class="fu">library</span>(HemaScope)</span></code></pre></div>
+</div>
+<div id="step-3.-start-hemascopeshiny" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Step 3. Start HemaScopeShiny<a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="step-by-step-shiny.html#cb103-1" tabindex="-1"></a><span class="fu">shinyApp</span>(ui,server)</span></code></pre></div>
+</div>
+<div id="step-4.-use-hemascopeshiny-via-the-gui" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Step 4. Use HemaScopeShiny via the GUI<a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Start interface.</li>
+</ul>
+<p>A UI page appears with two buttons: “Start scRNA-seq Analysis” and “Start st-seq Analysis.” Users can click the corresponding button based on their needs to enter the respective analysis page.
+* The figure showing the start interface.
+<img src="image/shiny_home.png" /><!-- --></p>
+<ul>
+<li>Begin a new analysis, continue the previous analysis, or return to the start interface</li>
+</ul>
+<p>When clicking the “Start scRNA-seq pipeline” or “Start ST-seq pipeline” button, you will be directed to a second page. This page contains three buttons: “Begin New Analysis,” “Continue Previous Analysis”, and “Back to Home”.</p>
+<p>If you need to begin a new analysis of scRNA-seq or st-seq data from the first step, click “Begin New Analysis”. If you have already used Shiny to complete several steps (e.g., steps 1, 2, and 3), but the analysis was interrupted during step 4 due to some unexpectedly closing, click “Continue Previous Analysis” to resume from step 4.</p>
+<p>Please note: users should follow the analysis steps sequentially and not skip steps. For example, analyzing steps 1, 2, and 3 and then jumping directly to step 6 is incorrect. The proper analysis sequence should be step 1, 2, 3, 4, 5, 6, … N.</p>
+<ul>
+<li>The figure showing the interface for beginning a new analysis, continuing the previous analysis, or returning to the start interface.
+<img src="image/shiny_UI.png" /><!-- --></li>
+</ul>
+<div id="scrna-seq-pipeline" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> scRNA-seq pipeline<a href="step-by-step-shiny.html#scrna-seq-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the user clicks the “Start scRNA-seq pipeline – Begin New Analysis” button, they will enter the single-cell analysis page. The sidebar of this page includes the following buttons:
+Step 1. Input Data
+Step 2. Quality Control
+Step 3. Clustering
+Step 4. Identify Cell Types
+Step 5. Visualization
+Step 6. Find Differential Genes
+Step 7. Assign Cell Cycles
+Step 8. Calculate Heterogeneity
+Step 9. Violin Plot for Marker Genes
+Step 10. Calculate Lineage Scores
+Step 11. GSVA
+Step 12. Construct Trajectories
+Step 13. Transcription Factors Analysis
+Step 14. Cell-Cell Interaction
+Step 15. Generate the Report
+Back to Prior Page</p>
+<ul>
+<li>The figure showing the scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_page.png" /><!-- -->
+Please start the analysis from step 1 and do not skip any steps. The correct analysis sequence is steps 1 through 15: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15.</li>
+</ul>
+<p>To return to the previous page, click “Back to Prior Page”.</p>
+<p>If Shiny unexpectedly exits during data analysis in the Begin New Analysis process (for example, while analyzing Step 5), and the analysis of Step 5 is interrupted, the user will need to restart ShinyApp(ui, server). This will bring up the Home page. The user should click the “Start scRNA-seq pipeline–Continue Previous Analysis” button, enter the Job ID displayed on the UI page during the Step 1.Input data step, and then select the step that did not complete successfully (e.g., Step 5). After entering the necessary parameters for Step 5, click “Run Step 5” to resume the analysis. Once Step 5 is completed, the user should proceed by selecting Step 6, entering the required parameters, and clicking “Run Step 6” to analyze Step 6, and so on, until all scRNA-seq steps are completed. Note that the default parameters for each step are the same as those in Begin New Analysis. After clicking “Run Step,” do not perform any other operations on the parameter page. Wait until the current step’s analysis is complete, and the results for that step will appear on the UI page.</p>
+<p>The “Start scRNA-seq pipeline–Continue Previous Analysis” page contains the following buttons:</p>
+<p>Back to Prior Page: Click to return to the previous page.
+Enter your Job ID: Enter the Job ID displayed on the page during the Begin New Analysis–Step1.Input data step.
+Choose a step you want to analyze: Select the step you want to continue analyzing.</p>
+<div id="step-1-scrna-seq-pipeline.-input-data" class="section level4 hasAnchor" number="7.3.1.1">
+<h4><span class="header-section-number">7.3.1.1</span> Step 1 (scRNA-seq pipeline). Input Data<a href="step-by-step-shiny.html#step-1-scrna-seq-pipeline.-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 1 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step1.png" /><!-- --></li>
+</ul>
+<p>Enter data path: Input multiple file paths separated by semicolons, for example: /path1/file1/data1;/path2/file2/data2;/path2/file2/data3. For a single file, use: /path2/file2/data2.</p>
+<p>Enter project name: When entering multiple files, you must also input multiple project names, separated by semicolons. The number of project names must match the number of input files. Example: projectname1;projectname2;projectname3. For a single file, use: projectname1.</p>
+<p>Enter output path: Specify the path where the results will be output. You can view the results of each step in this path. Example: /home/username/output.</p>
+<p>Enter the path of database: The path where the database is stored and it varies for each user. Example: /home/username/database.</p>
+<p>Select Data Type: There are three options: “cellranger-count”, “Seurat”, “Matrix”. Choose according to the type of input data.</p>
+<p>Gene Column (default: 2): The column where gene names are located; the default is column 2.</p>
+<p>Minimum Cells (default: 10): The minimum number of cells for filtering; the default is 10.</p>
+<p>Minimum Features (default: 200): The minimum number of genes that must be detected in each cell; the default is 200.</p>
+<p>Mt Pattern (default: ‘^MT-’): Mitochondrial pattern; for humans use ^MT-, for mice use ^mt-.</p>
+<p>After entering the above parameters, click the “LoadData” button to load the data. Once the data is successfully loaded, you will see “OK! Data dimensions” indicating that the data loading is complete, and you will be provided with a JobID. Make sure to note this JobID, as it is crucial. If HemaScopeShiny unexpectedly exits, you can click “Continue Previous Analysis”, enter the JobID, and continue loading the previous analysis results without starting from step 1 again. The JobID is very important!</p>
+<p>Please note: After clicking the “LoadData” button, do not modify any other parameters on the page.</p>
+<p>The Step 2-14 pages will consist of three sections: 1) parameter input, 2) result output file names, and 3) generated result figures.</p>
+<p>If the respective step produces result figures, they will be displayed. Users can switch between images by clicking the arrows on the left or right of the figure. If no figures are generated for the current step, a message stating “NO Figure!” will be displayed.</p>
+<p>All output files generated at each step are stored in the output directory specified by the user. The UI page will display only the file names, which can be downloaded by clicking on the file name links.</p>
+</div>
+<div id="step-2-scrna-seq-pipeline.-quality-control" class="section level4 hasAnchor" number="7.3.1.2">
+<h4><span class="header-section-number">7.3.1.2</span> Step 2 (scRNA-seq pipeline). Quality Control<a href="step-by-step-shiny.html#step-2-scrna-seq-pipeline.-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 2 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step2.png" /><!-- --></li>
+</ul>
+<p>nFeature_RNA.limit: Minimum number of genes detected per cell. Default value: 200
+percent.mt.limit: Threshold for filtering mitochondrial genes. Default value: 20
+scale.factor: Normalization factor. Default value: 10,000
+nfeatures: Number of highly variable genes. Default value: 3,000
+ndims: Number of dimensions used. Default value: 50
+vars.to.regress: Variables to regress. Default value: NULL
+PCs: Number of principal components used for clustering. Default value: 1:35
+resolution: Resolution parameter for clustering. Default value: 0.4
+n.neighbors: k.param parameter in the FindNeighbors function. Default value: 50
+doublet.percentage: Doublet rate. Default value: 0.04
+doubletFinderWrapper.PCs: Number of principal components used for doublet removal. Default value: 1:20
+doubletFinderWrapper.pN: Number of artificial doublets defined for removal. Default value: 0.25
+doubletFinderWrapper.pK: Represents the fraction of merged real artificial data. Default value: 0.1 (pK should be adjusted according to each scRNA-seq dataset)
+Step2_Quality_Control.RemoveBatches: Whether to remove detected batches. Default value: TRUE
+Step2_Quality_Control.RemoveDoublets: Whether to remove detected doublets. Default value: TRUE</p>
+<p>Click the “Run Step 2” button to start the process. After clicking the “Run Step 2” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 2 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 2 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-3-scrna-seq-pipeline.-clustering" class="section level4 hasAnchor" number="7.3.1.3">
+<h4><span class="header-section-number">7.3.1.3</span> Step 3 (scRNA-seq pipeline). Clustering<a href="step-by-step-shiny.html#step-3-scrna-seq-pipeline.-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 3 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step3.png" /><!-- --></li>
+</ul>
+<p>PCs for clustering (default: 1:20): Principal components used for clustering. Default value: 1:20
+n.neighbors for clustering (default: 50): k.param parameter in the FindNeighbors function. Default value: 50
+resolution for clustering (default: 0.4): Resolution used for clustering. Default value: 0.4</p>
+<p>Click the “Run Step 3” button to start the process. After clicking the “Run Step 3” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 3 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 3 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-4-scrna-seq-pipeline.-identify-cell-types" class="section level4 hasAnchor" number="7.3.1.4">
+<h4><span class="header-section-number">7.3.1.4</span> Step 4 (scRNA-seq pipeline). Identify Cell Types<a href="step-by-step-shiny.html#step-4-scrna-seq-pipeline.-identify-cell-types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 4 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step4.png" /><!-- -->
+Choose organism: ‘hsa’ for human, ‘mmu’ for mouse
+Choose Labels: Cell labels, default value: clustering
+Run CNV: TRUE if copy number variation (CNV) analysis is to be performed
+CPU cores for parallel processing: Number of CPU cores for parallel processing, default value: 10</li>
+</ul>
+<p>Click the “Run Step 4” button to start the process. After clicking the “Run Step 4” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 4 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 4 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-5-scrna-seq-pipeline.-visualization" class="section level4 hasAnchor" number="7.3.1.5">
+<h4><span class="header-section-number">7.3.1.5</span> Step 5 (scRNA-seq pipeline). Visualization<a href="step-by-step-shiny.html#step-5-scrna-seq-pipeline.-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 5 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step5.png" /><!-- --></li>
+</ul>
+<p>Nearest neighbors for PhateR analysis (default: 50): phate.knn parameter, the number of nearest neighbors to consider in the PhateR algorithm. Default value: 50
+Principal components for PhateR (default: 20): phate.npca parameter, the number of principal components to use in the PhateR algorithm. Default value: 20
+t parameter for PhateR (default: 10): phate.t parameter, the t value for the PhateR algorithm. Default value: 10
+Dimensions for PhateR (default: 2): phate.ndim parameter, the number of dimensions for embedding output in the PhateR algorithm. Default value: 2</p>
+<p>Click the “Run Step 5” button to start the process. After clicking the “Run Step 5” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 5 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 5 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-6-scrna-seq-pipeline.-find-differential-genes" class="section level4 hasAnchor" number="7.3.1.6">
+<h4><span class="header-section-number">7.3.1.6</span> Step 6 (scRNA-seq pipeline). Find Differential Genes<a href="step-by-step-shiny.html#step-6-scrna-seq-pipeline.-find-differential-genes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 6 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step6.png" /><!-- -->
+Minimum gene percentage for differential detection (default: 0.25): The minimum fraction of cells expressing a gene in any cluster. Default value: 0.25
+Log-fold threshold for gene analysis (default: 0.25): The log-fold change threshold for differential gene expression analysis. Default value: 0.25</li>
+</ul>
+<p>Click the “Run Step 6” button to start the process. After clicking the “Run Step 6” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 6 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 6 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-7-scrna-seq-pipeline.-assign-cell-cycles" class="section level4 hasAnchor" number="7.3.1.7">
+<h4><span class="header-section-number">7.3.1.7</span> Step 7 (scRNA-seq pipeline). Assign Cell Cycles<a href="step-by-step-shiny.html#step-7-scrna-seq-pipeline.-assign-cell-cycles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 7 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step7.png" /><!-- -->
+Define cell cycle cutoff (default: NULL): The cutoff value used to distinguish between cycling and non-cycling cells. Default value: NULL</li>
+</ul>
+<p>Click the “Run Step 7” button to start the process. After clicking the “Run Step 7” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 7 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 7 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-8-scrna-seq-pipeline.-calculate-heterogeneity" class="section level4 hasAnchor" number="7.3.1.8">
+<h4><span class="header-section-number">7.3.1.8</span> Step 8 (scRNA-seq pipeline). Calculate Heterogeneity<a href="step-by-step-shiny.html#step-8-scrna-seq-pipeline.-calculate-heterogeneity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 8 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step8.png" /><!-- -->
+Order cell types: The order of cell types for visualization. If not provided, the function will use the unique cell types from the input cell_types_groups. Default value: NULL</li>
+</ul>
+<p>Click the “Run Step 8” button to start the process. After clicking the “Run Step 8” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 8 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 8 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-9-scrna-seq-pipeline.-violin-plot-for-marker-genes" class="section level4 hasAnchor" number="7.3.1.9">
+<h4><span class="header-section-number">7.3.1.9</span> Step 9 (scRNA-seq pipeline). Violin Plot for Marker Genes<a href="step-by-step-shiny.html#step-9-scrna-seq-pipeline.-violin-plot-for-marker-genes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 9 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step9.png" /><!-- -->
+Enter marker genes for violin plot (separate by ‘,’): The marker genes for the violin plot. Default value is the built-in marker genes: NULL.</li>
+</ul>
+<p>Set the hexadecimal codes of colors for cell types (separate by ‘,’): Specify the colors for cell types. The default is the color palette: NULL.</p>
+<p>Click the “Run Step 9” button to start the process. After clicking the “Run Step 9” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 9 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 9 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-10-scrna-seq-pipeline.-calculate-lineage-scores" class="section level4 hasAnchor" number="7.3.1.10">
+<h4><span class="header-section-number">7.3.1.10</span> Step 10 (scRNA-seq pipeline). Calculate Lineage Scores<a href="step-by-step-shiny.html#step-10-scrna-seq-pipeline.-calculate-lineage-scores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 10 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step10.png" /><!-- --></li>
+</ul>
+<p>The gene sets for calculating lineage scores: The gene sets used for calculating lineage scores. The default is the color palette: NULL.</p>
+<p>The names for the lineages: The names of the lineages. Default value: NULL.</p>
+<p>The hexadecimal codes of colors for groups: Specify the colors to be used for different group annotations. The default is the color palette: NULL.</p>
+<p>Click the “Run Step 10” button to start the process. After clicking the “Run Step 10” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 10 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 10 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-11-scrna-seq-pipeline.-gsva" class="section level4 hasAnchor" number="7.3.1.11">
+<h4><span class="header-section-number">7.3.1.11</span> Step 11 (scRNA-seq pipeline). GSVA<a href="step-by-step-shiny.html#step-11-scrna-seq-pipeline.-gsva" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 11 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step11.png" /><!-- --></li>
+</ul>
+<p>Option to identify cell type-specific GSVA terms: Whether to identify cell type-specific GSVA terms. Default value: TRUE.</p>
+<p>Option to identify differential GSVA terms: Whether to identify differential GSVA terms. Default value: TRUE.</p>
+<p>Click the “Run Step 11” button to start the process. After clicking the “Run Step 11” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 11 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 11 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-12-scrna-seq-pipeline.-construct-trajectories" class="section level4 hasAnchor" number="7.3.1.12">
+<h4><span class="header-section-number">7.3.1.12</span> Step 12 (scRNA-seq pipeline). Construct Trajectories<a href="step-by-step-shiny.html#step-12-scrna-seq-pipeline.-construct-trajectories" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 12 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step12.png" /><!-- --></li>
+</ul>
+<p>Set the cell types for constructing trajectories: The cell types to be used for trajectory analysis. Different cell types should be separated by commas. Default value: “all.”</p>
+<p>Option to run monocle2: Whether to perform Monocle2 trajectory analysis. Default value: TRUE.</p>
+<p>Option to run slingshot: Whether to perform Slingshot trajectory analysis. Default value: TRUE.</p>
+<p>Option to run scVelo: Whether to perform scVelo trajectory analysis. Default value: TRUE.</p>
+<p>Enter the paths of loom files: Specify the paths to the loom files for scVelo analysis. Default value: NULL.</p>
+<p>Click the “Run Step 12” button to start the process. After clicking the “Run Step 12” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 12 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 12 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-13-scrna-seq-pipeline.-transcription-factors-analysis" class="section level4 hasAnchor" number="7.3.1.13">
+<h4><span class="header-section-number">7.3.1.13</span> Step 13 (scRNA-seq pipeline). Transcription Factors Analysis<a href="step-by-step-shiny.html#step-13-scrna-seq-pipeline.-transcription-factors-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 13 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step13.png" /><!-- --></li>
+</ul>
+<p>Set the hexadecimal codes of colors for cell types: Colors used for visualizing cell types. Default value: NULL (color palette).</p>
+<p>Set the hexadecimal codes of colors for groups: Colors used for visualizing groups. Default value: NULL (color palette).</p>
+<p>Click the “Run Step 13” button to start the process. After clicking the “Run Step 13” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 13 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 13 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-14-scrna-seq-pipeline.-cell-cell-interaction" class="section level4 hasAnchor" number="7.3.1.14">
+<h4><span class="header-section-number">7.3.1.14</span> Step 14 (scRNA-seq pipeline). Cell-Cell Interaction<a href="step-by-step-shiny.html#step-14-scrna-seq-pipeline.-cell-cell-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 14 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step14.png" /><!-- --></li>
+</ul>
+<p>The cell groups were sorted: Whether to consider the size (number) of cell groups in the cell communication analysis. Default value: TRUE.</p>
+<p>Click the “Run Step 14” button to start the process. After clicking the “Run Step 14” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 14 completed” message will appear.</p>
+<p>After a short while, the result files generated by Step 14 will be displayed on the UI page. The result files are stored in the folder specified by the user’s output.dir parameter.</p>
+</div>
+<div id="step-15-scrna-seq-pipeline.-generate-the-report" class="section level4 hasAnchor" number="7.3.1.15">
+<h4><span class="header-section-number">7.3.1.15</span> Step 15 (scRNA-seq pipeline). Generate the Report<a href="step-by-step-shiny.html#step-15-scrna-seq-pipeline.-generate-the-report" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 15 of scRNA-seq pipeline.
+<img src="image/sc_shiny_images/sc_step15.png" /><!-- --></li>
+</ul>
+<p>Click “Run Step 15” to generate the analysis report.</p>
+</div>
+</div>
+<div id="st-pipeline" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> ST-pipeline<a href="step-by-step-shiny.html#st-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the user clicks the button “Start ST-seq pipeline–Begin New Analysis,” they will be taken to the empty analysis page. The page sidebar includes the following buttons:</p>
+<p>Please start the analysis from Step 1 and do not skip any steps. The correct analysis sequence is Step 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 11.</p>
+<p>To return to the previous page, please click “Back to Prior Page.”</p>
+<p>Step 1. Input Data
+Step 2. Quality Control
+Step 3. Clustering
+Step 4. Find Differential Genes
+Step 5. Spatially Variable Features
+Step 6. Spatial Interaction
+Step 7. CNV Analysis
+Step 8. Deconvolution
+Step 9. Cell Cycle Analysis
+Step 10. Niche Analysis
+Step 11. Generate the Report
+Back to Prior Page</p>
+<p>In “Begin New Analysis,” users start analyzing data from Step1. If Shiny unexpectedly exits during the analysis process (for example, if you are analyzing Step5 and Shiny crashes, causing Step5 to fail), users need to restart Shiny by running shinyApp(ui, server). This will bring up the Home page. Users should click the “Start ST-seq pipeline–Continue Previous Analysis” button. They need to enter the JobID displayed in the UI page during the Step1.Input data step and then select the step that did not complete successfully to continue the analysis. For example, if Step5 failed, select Step5, enter the necessary parameters, and click “Run Step5” to continue the analysis. After Step5 finishes, select Step6, enter the parameters for Step6, and click “Run Step6” to analyze Step6, and so on for all subsequent steps.</p>
+<p>Please note that the default parameters for each step are the same as those in “Begin New Analysis.” After clicking “Run Step,” do not make any other changes to the parameter page. Wait until the current step completes, and the results file for the current step will appear on the UI page.</p>
+<p>The “Start ST-seq pipeline–Continue Previous Analysis” page includes the following buttons:</p>
+<p>Back to Prior Page: Click to return to the previous page.
+Enter your Job ID: Enter the JobID displayed in the “Begin New Analysis–Step1.Input data” step.
+Choose a step you want to analyze: Select the step you want to continue analyzing.</p>
+<div id="step-1-st-seq-pipeline.-input-data" class="section level4 hasAnchor" number="7.3.2.1">
+<h4><span class="header-section-number">7.3.2.1</span> Step 1 (st-seq pipeline). Input Data<a href="step-by-step-shiny.html#step-1-st-seq-pipeline.-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 1 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step1.png" /><!-- --></li>
+</ul>
+<p>Enter data path: The directory where the input data is stored. The input data should be 10X Visium spatial transcriptomics data. Only one dataset can be input at a time; unlike single-cell data, multiple datasets cannot be entered simultaneously.</p>
+<p>Enter sample name: A string for naming the sample. The default value is ‘Hema_ST’.</p>
+<p>Enter output path: The directory where processed outputs will be saved. For example: /home/username/output.</p>
+<p>Enter the path of Python: The path to the Python executable, as that in scRNA-seq pipeline.</p>
+<p>After entering the parameters above, click the “LoadData” button to load the data. Once the data is loaded, the system will provide a JobID, which should be noted. If Shiny unexpectedly exits, you can click “Continue Previous Analysis” and enter the JobID to resume loading the previous analysis results, avoiding the need to restart from Step 1. The JobID is very important!</p>
+<p>Please note: After clicking the “LoadData” button, do not make further changes to other parameters on the page.</p>
+<p>The Step 2-10 pages will have three sections:</p>
+<p>Parameter input
+Result output file names
+Generated result plots
+If a step generates result plots, they will be displayed. Users can switch between images by clicking the arrows on either side of the plot. If no result plots are generated for the current step, users will be informed with “NO Figure!”</p>
+<p>The result files generated for each step are stored in the output path specified by the user. The UI page will only display the file names, and clicking on the file name links will allow downloading the files.</p>
+</div>
+<div id="step-2-st-seq-pipeline.-quality-control" class="section level4 hasAnchor" number="7.3.2.2">
+<h4><span class="header-section-number">7.3.2.2</span> Step 2 (st-seq pipeline). Quality Control<a href="step-by-step-shiny.html#step-2-st-seq-pipeline.-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 2 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step2.png" /><!-- --></li>
+</ul>
+<p>min.gene (default: 200): Specifies the minimum number of genes detected in a spot. The default value is 200.</p>
+<p>min.nUMI (default: 500): Specifies the minimum number of nUMIs detected in a spot. The default value is 500.</p>
+<p>max.gene (default: Inf): Specifies the maximum number of genes detected in a spot. The default value is Inf (no upper limit).</p>
+<p>max.nUMI (default: Inf): Specifies the maximum number of nUMIs detected in a spot. The default value is Inf (no upper limit).</p>
+<p>min.spot (default: 0): Specifies the minimum number of spots where each gene is expressed.</p>
+<p>bool.remove.mito: Whether to remove mitochondrial genes. The default value is TRUE.</p>
+<p>species: Specifies the species: human/mouse.</p>
+<p>Click “Run Step2” to proceed. After clicking the “Run Step2” button, please do not modify any other parameters on the page. Once Step 2 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-3-st-seq-pipeline.-clustering" class="section level4 hasAnchor" number="7.3.2.3">
+<h4><span class="header-section-number">7.3.2.3</span> Step 3 (st-seq pipeline). Clustering<a href="step-by-step-shiny.html#step-3-st-seq-pipeline.-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 3 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step3.png" /><!-- --></li>
+</ul>
+<p>normalization.method (default: ‘SCTransform’): The method for data normalization. The default value is ‘SCTransform’.</p>
+<p>npcs (default: 50): The number of principal components (PCs) to use in PCA. The default value is 50.</p>
+<p>pcs.used (default: 1:10): The number of PCs used for clustering analysis. The default value is the first 10 PCs (1:10).</p>
+<p>resolution (default: 0.8): The resolution parameter for the clustering algorithm. The default value is 0.8.</p>
+<p>Click “Run Step3” to proceed. After clicking the “Run Step3” button, please do not modify any other parameters on the page. Once Step 3 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-4-st-seq-pipeline.-find-differential-genes" class="section level4 hasAnchor" number="7.3.2.4">
+<h4><span class="header-section-number">7.3.2.4</span> Step 4 (st-seq pipeline). Find Differential Genes<a href="step-by-step-shiny.html#step-4-st-seq-pipeline.-find-differential-genes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 4 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step4.png" /><!-- --></li>
+</ul>
+<p>only.pos: A logical flag to include only positive markers. The default value is TRUE.</p>
+<p>min.pct (default: 0.25): The minimum fraction of cells expressing the gene in any cluster. The default value is 0.25.</p>
+<p>logfc.threshold (default: 0.25): The log-fold change threshold for considering differentially expressed genes. The default value is 0.25.</p>
+<p>test.use (default: ‘wilcox’): The statistical test used for differential expression analysis. The default value is ‘wilcox’.</p>
+<p>Click “Run Step4” to proceed. After clicking the “Run Step4” button, please do not modify any other parameters on the page. Once Step 4 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-5-st-seq-pipeline.-spatially-variable-features" class="section level4 hasAnchor" number="7.3.2.5">
+<h4><span class="header-section-number">7.3.2.5</span> Step 5 (st-seq pipeline). Spatially variable features<a href="step-by-step-shiny.html#step-5-st-seq-pipeline.-spatially-variable-features" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 5 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step5.png" /><!-- --></li>
+</ul>
+<p>selection.method (default: ‘moransi’): The method used for selecting spatially variable features. The default value is ‘moransi’.</p>
+<p>n.top.show (default: 10): The number of top spatially variable features to visualize. The default value is 10.</p>
+<p>n.col.show (default: 5): The number of columns in the visualization grid. The default value is 5.</p>
+<p>Click “Run Step5” to proceed. After clicking the “Run Step5” button, please do not modify any other parameters on the page. Once Step 5 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-6-st-seq-pipeline.-spatial-interaction" class="section level4 hasAnchor" number="7.3.2.6">
+<h4><span class="header-section-number">7.3.2.6</span> Step 6 (st-seq pipeline). Spatial interaction<a href="step-by-step-shiny.html#step-6-st-seq-pipeline.-spatial-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 6 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step6.png" /><!-- --></li>
+</ul>
+<p>commot.signaling_type (default: ‘Secreted Signaling’): The type of signaling interaction to consider. The default value is ‘Secreted Signaling’.</p>
+<p>commot.database (default: ‘CellChat’): The database used for the analysis. The default value is ‘CellChat’.</p>
+<p>commot.min_cell_pct (default: 0.05): The minimum cell percentage to consider in interaction analysis. The default value is 0.05.</p>
+<p>commot.dis_thr (default: 500): The distance threshold used to define interactions. The default value is 500.</p>
+<p>commot.n_permutations (default: 100): The number of permutations used to assess significance. The default value is 100.</p>
+<p>Click “Run Step6” to proceed. After clicking the “Run Step6” button, please do not modify any other parameters on the page. Once Step 6 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-7-st-seq-pipeline.-cnv-analysis" class="section level4 hasAnchor" number="7.3.2.7">
+<h4><span class="header-section-number">7.3.2.7</span> Step 7 (st-seq pipeline). CNV analysis<a href="step-by-step-shiny.html#step-7-st-seq-pipeline.-cnv-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 7 of st-seq pipeline.
+<img src="image/st_shiny_images/st_step7.png" /><!-- --></li>
+</ul>
+<p>copykat.genome (default: ‘NULL’): The genome version used, either ‘hg20’ or ‘mm10’. The default value is “hg20”.</p>
+<p>copykat.LOW.DR (default: 0.05): The lower dropout rate threshold in CopyKAT. The default value is 0.05.</p>
+<p>copykat.UP.DR (default: 0.1): The upper dropout rate threshold in CopyKAT. The default value is 0.1.</p>
+<p>copykat.win.size (default: 25): The window size for CNV analysis. The default value is 25.</p>
+<p>copykat.distance (default: ‘euclidean’): The distance metric used for analysis. The default value is “euclidean”.</p>
+<p>copykat.n.cores (default: 1): The number of cores used for parallel processing. The default value is 1.</p>
+<p>Click “Run Step7” to proceed. After clicking the “Run Step7” button, please do not modify any other parameters on the page. Once Step 7 is completed, the result files will appear in the UI, and they will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-8-st-seq-pipeline.-deconvolution" class="section level4 hasAnchor" number="7.3.2.8">
+<h4><span class="header-section-number">7.3.2.8</span> Step 8 (st-seq pipeline). Deconvolution<a href="step-by-step-shiny.html#step-8-st-seq-pipeline.-deconvolution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 8 of st-seq pipeline.
+<center class="half">
+<img src="./figures/shiny/st_seq_pipeline_step8.png" width="80%"/>
+</center></li>
+</ul>
+<p>cell2loc.sc.h5ad.dir (default: ‘NULL’): The path to the h5ad format single-cell RNA-seq data. The default value is NULL.</p>
+<p>cell2loc.sc.max.epoch (default: 1000): The maximum number of epochs for single-cell deconvolution. The default value is 1000.</p>
+<p>cell2loc.st.max.epoch (default: 10000): The maximum number of epochs for spatial deconvolution. The default value is 10000.</p>
+<p>cell2loc.use.gpu (default: FALSE): A logical value indicating whether to use GPU for computation. The default value is FALSE.</p>
+<p>Click “Run Step8” to proceed. After clicking the “Run Step8” button, please do not modify any other parameters on the page. Once Step 8 is completed, the result files will appear in the UI and will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-9-st-seq-pipeline.-cell-cycle-analysis" class="section level4 hasAnchor" number="7.3.2.9">
+<h4><span class="header-section-number">7.3.2.9</span> Step 9 (st-seq pipeline). Cell cycle analysis<a href="step-by-step-shiny.html#step-9-st-seq-pipeline.-cell-cycle-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 9 of st-seq pipeline.
+<center class="half">
+<img src="./figures/shiny/st_seq_pipeline_step9.png" width="80%"/>
+</center></li>
+</ul>
+<p>The gene sets for calculating S phase scores (e.g. “gene1,gene2,gene3”): A list of genes associated with the S phase. The default value is NULL (uses genes from Seurat).</p>
+<p>The gene sets for calculating G2M phase scores (e.g. “gene1,gene2,gene3”): A list of genes associated with the G2M phase. The default value is NULL (uses genes from Seurat).</p>
+<p>Click “Run Step9” to proceed. After clicking the “Run Step9” button, please do not modify any other parameters on the page. Once Step 9 is completed, the result files will appear in the UI and will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-10-st-seq-pipeline.-niche-analysis" class="section level4 hasAnchor" number="7.3.2.10">
+<h4><span class="header-section-number">7.3.2.10</span> Step 10 (st-seq pipeline). Niche analysis<a href="step-by-step-shiny.html#step-10-st-seq-pipeline.-niche-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 10 of st-seq pipeline.
+<center class="half">
+<img src="./figures/shiny/st_seq_pipeline_step10.png" width="80%"/>
+</center></li>
+</ul>
+<p>Nich.cluster.n (default: 4): The number of clusters for niche clustering. The default value is 4.</p>
+<p>Click “Run Step10” to proceed. After clicking the “Run Step10” button, please do not modify any other parameters on the page. Once Step 10 is completed, the result files will appear in the UI and will be stored in the folder specified by the user in the output.dir parameter.</p>
+</div>
+<div id="step-11-st-seq-pipeline.-generate-the-report" class="section level4 hasAnchor" number="7.3.2.11">
+<h4><span class="header-section-number">7.3.2.11</span> Step 11 (st-seq pipeline). Generate the Report<a href="step-by-step-shiny.html#step-11-st-seq-pipeline.-generate-the-report" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The figure showing the step 11 of st-seq pipeline.
+<center class="half">
+<img src="./figures/shiny/st_seq_pipeline_step11.png" width="80%"/>
+</center></li>
+</ul>
+<p>Click “Run Step11” to generate the analysis report.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stey-by-step-st-seq-pipeline.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-step_by_step_shiny.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
