@@ -80,25 +80,30 @@ R
 BiocManager::install("ComplexHeatmap")     
 BiocManager::install("scmap")
 BiocManager::install("clusterProfiler")
-install.packages("doMC")
-install.packages("doRNG")
 ```
 
 - From CRAN
 
-```         
-remotes::install_version("shinyjs", version = "2.1.0")
-remotes::install_version("shiny", version = "1.8.0")
-remotes::install_version("shinyWidgets", version = "0.8.6")
-remotes::install_version("shinydashboard", version = "0.7.2")
-remotes::install_version("slickR", version = "0.6.0")
-remotes::install_version("phateR", version = "1.0.7")
-remotes::install_version("gelnet", version = "1.2.1")
-remotes::install_version("parallelDist", version = "0.2.6")
-remotes::install_version("kableExtra", version = "1.3.4")
-remotes::install_version("transport", version = "0.14-6")
-remotes::install_version("feather", version = "0.3.5")
-remotes::install_version("markdown", version = "1.13")
+```
+install.packages("doMC")
+install.packages("doRNG")
+install.packages("shinyjs")
+install.packages("shiny")
+install.packages("shinyWidgets")
+install.packages("shinydashboard")
+install.packages("slickR")
+install.packages("phateR")
+install.packages("gelnet")
+install.packages("parallelDist")
+install.packages("kableExtra")
+install.packages("transport")
+install.packages("feather")
+install.packages("markdown")
+install.packages("ggalluvial")
+install.packages("forcats")
+install.packages("mcmc")
+install.packages("MCMCpack")
+install.packages("fields")
 ```
 
 - From GitHub
