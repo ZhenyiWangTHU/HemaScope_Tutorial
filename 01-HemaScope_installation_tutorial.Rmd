@@ -34,11 +34,11 @@ conda config --set show_channel_urls true
 
 ## Install R and python
 
-- R 4.3.3 and python 3.8.19
+- R 4.3.3 and python 3.9.12
 
 ```
 conda install R-base=4.3.3
-conda install python=3.8.19
+conda install python=3.9.12
 ```
 
 ## Install required R-packages
@@ -80,6 +80,7 @@ R
 BiocManager::install("ComplexHeatmap")     
 BiocManager::install("scmap")
 BiocManager::install("clusterProfiler")
+BiocManager::install("BiocNeighbors")
 ```
 
 - From CRAN
