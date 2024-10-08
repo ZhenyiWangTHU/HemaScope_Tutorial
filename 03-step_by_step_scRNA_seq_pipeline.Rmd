@@ -8,7 +8,6 @@ library(phateR)
 library(DoubletFinder)
 library(monocle)
 library(slingshot)
-library(URD)
 library(GSVA)
 library(limma)
 library(plyr)
@@ -33,7 +32,11 @@ library(Matrix)
 library(foreach)
 library(doParallel)
 library(clusterProfiler)
+<<<<<<< Updated upstream
 library(OpenXGR)
+=======
+# st libraries
+>>>>>>> Stashed changes
 library(RColorBrewer)
 library(Rfast2)
 library(SeuratDisk)
