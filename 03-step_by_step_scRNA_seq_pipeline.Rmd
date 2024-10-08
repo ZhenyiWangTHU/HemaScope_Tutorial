@@ -1,10 +1,8 @@
 # Step-by-step scRNA-seq Pipeline
 
-## Step 1. Load the R packages and the input data
+## Before you begin
 - Load the R packages.
-
 ```{R, eval=FALSE}
-# sc libraries
 library(Seurat)
 library(phateR)
 library(DoubletFinder)
@@ -36,7 +34,6 @@ library(foreach)
 library(doParallel)
 library(clusterProfiler)
 library(OpenXGR)
-# st libraries
 library(RColorBrewer)
 library(Rfast2)
 library(SeuratDisk)
@@ -48,106 +45,73 @@ library(ggplot2)
 library(parallelDist)
 library(patchwork)
 library(markdown)
-# getpot
 library(getopt)
 library(tools)
-# HemaScopeR
 library(HemaScopeR)
 ```
 
-- Set the paths for the input data, the output results, and the Python installation.
+- Set the paths for the output results, and the Python installation.
 ```{R, eval=FALSE}
-input.data.dirs = c('./SRR7881399/outs/filtered_feature_bc_matrix',
-                    './SRR7881400/outs/filtered_feature_bc_matrix',
-                    './SRR7881401/outs/filtered_feature_bc_matrix',
-                    './SRR7881402/outs/filtered_feature_bc_matrix',
-                    './SRR7881403/outs/filtered_feature_bc_matrix',
-                    './SRR7881404/outs/filtered_feature_bc_matrix',
-                    './SRR7881405/outs/filtered_feature_bc_matrix',
-                    './SRR7881406/outs/filtered_feature_bc_matrix',
-                    './SRR7881407/outs/filtered_feature_bc_matrix',
-                    './SRR7881408/outs/filtered_feature_bc_matrix',
-                    './SRR7881409/outs/filtered_feature_bc_matrix',
-                    './SRR7881410/outs/filtered_feature_bc_matrix',
-                    './SRR7881411/outs/filtered_feature_bc_matrix',
-                    './SRR7881412/outs/filtered_feature_bc_matrix',
-                    './SRR7881413/outs/filtered_feature_bc_matrix',
-                    './SRR7881414/outs/filtered_feature_bc_matrix',
-                    './SRR7881415/outs/filtered_feature_bc_matrix',
-                    './SRR7881416/outs/filtered_feature_bc_matrix',
-                    './SRR7881417/outs/filtered_feature_bc_matrix',
-                    './SRR7881418/outs/filtered_feature_bc_matrix',
-                    './SRR7881419/outs/filtered_feature_bc_matrix',
-                    './SRR7881420/outs/filtered_feature_bc_matrix',
-                    './SRR7881421/outs/filtered_feature_bc_matrix',
-                    './SRR7881422/outs/filtered_feature_bc_matrix',
-                    './SRR7881423/outs/filtered_feature_bc_matrix')
-output.dir = './output/'
+output.dir = './output'
 pythonPath = '/home/anaconda3/envs/HemaScopeR/bin/python'
 ```
-- Set the parameters for loading the data sets.
-```{R, eval=FALSE}
-project.names = c('SRR7881399',
-                  'SRR7881400',
-                  'SRR7881401',
-                  'SRR7881402',
-                  'SRR7881403',
-                  'SRR7881404',
-                  'SRR7881405',
-                  'SRR7881406',
-                  'SRR7881407',
-                  'SRR7881408',
-                  'SRR7881409',
-                  'SRR7881410',
-                  'SRR7881411',
-                  'SRR7881412',
-                  'SRR7881413',
-                  'SRR7881414',
-                  'SRR7881415',
-                  'SRR7881416',
-                  'SRR7881417',
-                  'SRR7881418',
-                  'SRR7881419',
-                  'SRR7881420',
-                  'SRR7881421',
-                  'SRR7881422',
-                  'SRR7881423')
-gene.column = 2
-min.cells = 10
-min.feature = 200
-mt.pattern = '^MT-'
-Step1_Input_Data.type = 'cellranger-count'
-```
+
 - Create folders for saving the results of HemaScopeR analysis.
 ```{R, eval=FALSE}
 wdir <- getwd()
 
 if(is.null(pythonPath)==FALSE){ reticulate::use_python(pythonPath) }else{print('Please set the path of Python.')}
 
-if (!file.exists(paste0(output.dir, '/HemaScopeR_results/'))) {
- dir.create(paste0(output.dir, '/HemaScopeR_results/'))
+if (!file.exists(paste0(output.dir, '/HemaScopeR_results'))) {
+ dir.create(paste0(output.dir, '/HemaScopeR_results'),recursive =T)
 }
 
-output.dir <- paste0(output.dir,'/HemaScopeR_results/')
+output.dir <- paste0(output.dir,'/HemaScopeR_results')
 
 if (!file.exists(paste0(output.dir, '/RDSfiles/'))) {
  dir.create(paste0(output.dir, '/RDSfiles/'))
 }
 
+#set the path for loading previous results, if necessary
 previous_results_path <- paste0(output.dir, '/RDSfiles/')  
 # if (Whether_load_previous_results) {
 #    print('Loading the previous results...') 
 #    Load_previous_results(previous_results_path = previous_results_path)
 # }
+```
 
-# Step1. Input data-----------------------------------------------------------------------------
+## Step 1. Load the input data
 
+- Create a folder for step1
+```{R, eval=FALSE}
 print('Step1. Input data.')
 if (!file.exists(paste0(output.dir, '/Step1.Input_data/'))) {
   dir.create(paste0(output.dir, '/Step1.Input_data/'))
 }  
 ```
-- Load the data sets.
+
+- Set the parameters for loading the data sets.
+```{R, eval=FALSE}
+input.data.dirs = c('./SRR7881399/outs/filtered_feature_bc_matrix')#,
+                    #'./SRR7881400/outs/filtered_feature_bc_matrix',
+                    #'./SRR7881401/outs/filtered_feature_bc_matrix',
+                    #'./SRR7881402/outs/filtered_feature_bc_matrix',
+                    #'./SRR7881403/outs/filtered_feature_bc_matrix'
+
+project.names = c('SRR7881399')#,
+                  #'SRR7881400',
+                  #'SRR7881401',
+                  #'SRR7881402',
+                  #'SRR7881403'
+gene.column = 2
+min.cells = 10
+min.feature = 200
+mt.pattern = '^MT-' # set '^mt-' for mouse data
+Step1_Input_Data.type = 'cellranger-count'
+loom.files.path ="./SRR7881399/loom"
+```
+
+- Load the data sets
 ```{R, eval=FALSE}
 file.copy(from = input.data.dirs, to = paste0(output.dir,'/Step1.Input_data/'), recursive = TRUE)
 
@@ -214,7 +178,8 @@ if(Step1_Input_Data.type == 'cellranger-count'){
   stop('Please input data generated by the cellranger-count software, or a Seurat object, or a gene expression matrix. HemaScopeR does not support other formats of input data.')
 }
 ```
-- Save the variables.
+
+- Save the variables after executing each step, if necessary.
 ```{R, eval=FALSE}
 # Get the names of all variables in the current environment
 variable_names <- ls()
@@ -223,30 +188,45 @@ for (var_name in variable_names) {
   var <- get(var_name)  # Get the variable by its name
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }
-
 ```
 
 ## Step 2. Quality Control
-- Set the parameters for quality control.
-```{R, eval=FALSE}
-# quality control and preprocessing
-nFeature_RNA.limit = 200
-percent.mt.limit = 20
-scale.factor = 10000
-nfeatures = 3000
-ndims = 50
-vars.to.regress = NULL
-PCs = 1:35
-resolution = 0.4
-n.neighbors = 50
-# remove doublets
-doublet.percentage = 0.04
-doublerFinderwraper.PCs = 1:20
-doublerFinderwraper.pN = 0.25
-doublerFinderwraper.pK = 0.1
-Step2_Quality_Control.RemoveBatches = TRUE
-Step2_Quality_Control.RemoveDoublets = TRUE
-```
+
+In this step, the following quality control steps will be performed: 
+
+1. Normalize data using the LogNormalize method.
+
+2. Find variable features using the vst method.
+
+3. Scale data using the identified variable features and specified variables to regress out.
+
+4. Perform principal component analysis (PCA) on the scaled data.
+
+5. Find K nearest neighbors based on PCA dimensions.
+
+6. Perform clustering analysis based on the found neighbors.
+
+7. Optionally, remove doublets using doubletFinder.
+
+8. Optionally, integrate multiple datasets by removing batch effects.
+
+### Function arguments:
+* `nFeature_RNA.limit`: The cutoff of the minimum number of detected genes in each cell.
+* `percent.mt.limit`: The cutoff of the maximum percentage of mitochondria genes in each cell. 
+* `scale.factor`: The scale factor for the 'data' slot in the seurat object.
+* `nfeatures`: The number of selected highly variable features for down stream analysis.
+* `ndims`: The number of principle components in PCA.
+* `vars.to.regress`: Variables to regress out (previously latent.vars in RegressOut). For example, nUMI, or percent.mito. (ScaleData in Seurat)
+* `PCs`: Which dimensions to use as input features.(RunTSNE and RunUMAP in Seurat)
+* `resolution`: Value of the resolution parameter, use a value above (below) 1.0 if you want to obtain a larger (smaller) number of communities. (FindClusters in Seurat)
+* `n.neighbors`: Defines k for the k-nearest neighbor algorithm. (FindNeighbors in Seurat)
+* `percentage`: Assuming 'percentage' doublet formation rate - tailor for your dataset. The default value is 0.05. 
+* `doublerFinderwraper.PCs` Which dimensions to use as input features for doubletFinder.
+* `doublerFinderwraper.pN`: The percentage of real-artifical data for doubletFinder.
+* `doublerFinderwraper.pK`: The pK parameter controls the doublet cell detection by determining the number of nearest neighbors and influencing the calculation of pANN scores and the final cell classification results. Adjusting the pK value allows optimization of the doublet cell detection process based on specific data and analysis requirements.
+
+### codes for running step2
+
 - Create a folder for saving the results of quality control.
 ```{R, eval=FALSE}
 print('Step2. Quality control.')
@@ -254,6 +234,33 @@ if (!file.exists(paste0(output.dir, '/Step2.Quality_control/'))) {
   dir.create(paste0(output.dir, '/Step2.Quality_control/'))
 }
 ```
+
+- Set the parameters for quality control.
+```{R, eval=FALSE}
+# quality control
+nFeature_RNA.limit = 200
+percent.mt.limit = 20
+
+# preprocessing
+nfeatures = 3000
+scale.factor = 10000
+ndims = 50
+vars.to.regress = NULL
+PCs = 1:35
+resolution = 0.4
+n.neighbors = 50
+
+# removing doublets
+Step2_Quality_Control.RemoveDoublets = TRUE
+doublet.percentage = 0.04
+doublerFinderwraper.PCs = 1:20
+doublerFinderwraper.pN = 0.25
+doublerFinderwraper.pK = 0.1
+
+# removing batch effect
+Step2_Quality_Control.RemoveBatches = TRUE
+```
+
 - Run the quality control process.
 ```{R, eval=FALSE}
 if(length(input.data.dirs) > 1){
@@ -299,6 +306,7 @@ sc_object <- QC_single_scRNASeq(sc_object = sc_object,
                                 doublerFinderwraper.pK = doublerFinderwraper.pK)
 }
 ```
+
 - Save the variables.
 ```{R, eval=FALSE}
 # Get the names of all variables in the current environment
@@ -310,13 +318,34 @@ saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save 
 }
 ```
 
-## Step 3. Clustering
-- Set the parameters for clustering.
-```{R, eval=FALSE}
-PCs = 1:35
-resolution = 0.4
-n.neighbors = 50
+### Outputs
+```{r echo=FALSE,fig.cap="Violin plots showing the nFeature, nCount and percent.mt for each sample", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step2/sc_object_nFeature_nCount_percentMt.png")
 ```
+
+```{r echo=FALSE,fig.cap="Figures showing the correlation between nFeature and nCount, as well as between nCount and percent.mt", out.width = "600px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step2/sc_object_FeatureScatters.png")
+```
+
+```{r echo=FALSE,fig.cap="Figures showing the variable features used for downstream analysis", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step2/sc_object_VariableFeaturePlot.png")
+```
+
+
+```{r echo=FALSE,fig.cap="ElbowPlot showing suitable number of PCs used for further analysis", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step2/sc_object_ElbowPlot.png")
+```
+
+```{r echo=FALSE,fig.cap="UMAP plots before (left) and after (right) batch removal", out.width = "600px" , fig.align = 'center', out.width='50%', fig.show='hold', eval=FALSE}
+#knitr::include_graphics("./sc_img/step2/datasets.before.batch.removal_umap_datasetID.png")
+#knitr::include_graphics("./sc_img/step2/datasets.after.batch.removal_umap_datasetID.png")
+```
+
+```{r echo=FALSE,fig.cap="UMAP plot showing doublets found by DoubletFinder", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step2/sc_object_findDoublets.png")
+```
+
+## Step 3. Clustering
 - Create a folder for saving the results of Louvain clustering.
 ```{R, eval=FALSE}
 print('Step3. Clustering.')
@@ -324,6 +353,14 @@ if (!file.exists(paste0(output.dir, '/Step3.Clustering/'))) {
   dir.create(paste0(output.dir, '/Step3.Clustering/'))
 }   
 ```
+
+- Set the parameters for clustering.
+```{R, eval=FALSE}
+PCs = 1:35
+resolution = 0.4
+n.neighbors = 50
+```
+
 - Run Louvian clustering.
 ```{R, eval=FALSE}
 if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){graph.name <- 'integrated_snn'}else{graph.name <- 'RNA_snn'}
@@ -359,7 +396,24 @@ for (var_name in variable_names) {
 }  
 ```
 
+```{r echo=FALSE,fig.cap="UMAP plot showing clustering results", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step3/sc_object umap_cluster.png")
+```
+
 ## Step 4. Identify Cell Types
+
+In this step, users can predict the cell types of hematopoietic cells by implementing two approaches (Scmap and Seurat) through abcCellmap packages. Cells are labeled by 43 different RNA clusters according to unsupervised clustering of single-cell transcriptional profiles, and also labeled by 32 immunophenotypic cell types. In addition, users can use Copykat to measure copy number variation (CNV)  and determine the ploidy of each cell.
+
+### codes for running abcCellmap
+
+- Create a folder for saving the results of cell type identification.
+```{R, eval=FALSE}
+print('Step4. Identify cell types automatically.')
+if (!file.exists(paste0(output.dir, '/Step4.Identify_Cell_Types/'))) {
+dir.create(paste0(output.dir, '/Step4.Identify_Cell_Types/'))
+} 
+```
+
 - Set the path for the database.
 ```{R, eval=FALSE}
 databasePath = "~/HemaScopeR/database/"
@@ -372,14 +426,8 @@ Step4_Changed_Labels = NULL
 Org = 'hsa'
 ncores = 10
 ```
-- Create a folder for saving the results of cell type identification.
-```{R, eval=FALSE}
-print('Step4. Identify cell types automatically.')
-if (!file.exists(paste0(output.dir, '/Step4.Identify_Cell_Types/'))) {
-dir.create(paste0(output.dir, '/Step4.Identify_Cell_Types/'))
-} 
-```
-- Run the cell type identification process and the copy number variation (CNV) analysis.
+
+- Run the cell type identification process.
 ```{R, eval=FALSE}
 sc_object <- run_cell_annotation(object = sc_object, 
                                assay = 'RNA', 
@@ -387,7 +435,7 @@ sc_object <- run_cell_annotation(object = sc_object,
                                output.dir = paste0(output.dir,'/Step4.Identify_Cell_Types/'))
 
 if(Org == 'hsa'){
-load(paste0(databasePath,"/HematoMap.reference.rdata"))
+load(paste0(databasePath,"/HematoMap.reference.rdata")) #the data can be downloaded via the link https://cloud.tsinghua.edu.cn/d/759fd04333274d3f9946
 if(length(intersect(rownames(HematoMap.reference), rownames(sc_object))) < 1000){
       HematoMap.reference <- RenameGenesSeurat(obj = HematoMap.reference,
                                                newnames = toupper(rownames(HematoMap.reference)),
@@ -411,7 +459,6 @@ if(sc_object@active.assay == 'integrated'){
                               PCs = PCs,
                               output.dir = paste0(output.dir, '/Step4.Identify_Cell_Types/'))
 }
-
 }
 ```
 - Set the cell labels.
@@ -461,21 +508,49 @@ var <- get(var_name)  # Get the variable by its name
 saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }  
 ```
-- Run the CNV analysis.
+
+```{r echo=FALSE,fig.cap="UMAP plots showing cell type annotation results", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step4/predicted.id.png")
+```
+
+```{r echo=FALSE,fig.cap="Immunophenotype and RNACluster label predicted by scmap", out.width = "600px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step4/predicted.scmap.Immunophenotype.png")
+knitr::include_graphics("./sc_img/step4/predicted.scmap.RNACluster.png")
+```
+
+```{r echo=FALSE,fig.cap="Immunophenotype and RNACluster label predicted by Seurat", out.width = "600px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step4/predicted.Seurat.Immunophenotype.png")
+knitr::include_graphics("./sc_img/step4/predicted.Seurat.RNACluster.png")
+```
+
+### codes for running the CNV analysis
+
 ```{R, eval=FALSE}
 sc_CNV(sc_object=sc_object,
        save_path=paste0(output.dir,'/Step4.Identify_Cell_Types/'),
        assay = 'RNA',
-       LOW.DR = 0.05,
+       LOW.DR = 0.05, #refer to the Copykat documentation for detailed explanations of the parameters
        UP.DR = 0.1,
        win.size = 25,
        distance = "euclidean",
        genome = NULL,
-       n.cores = ncores,
+       n.cores = ncores, #note: this step will take a long time, using more ncores could shorten the running time
        species = Org)
 ```
 
+```{r echo=FALSE,fig.cap="copykat heatmap", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step4/copykat_heatmap.jpeg")
+```
+
+```{r echo=FALSE,fig.cap="UMAP plot showing CNV state predicted by copykat", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step4/CNV_state.png")
+```
+
 ## Step 5. Visualization
+
+In this step, users are allowed to gain the statistical results about the numbers and proportions of cell groups, and also use three dimensional reduction methods (TSNE, UMAP, phateR) to visualize the results.
+
+### codes for peforming three dimensional reduction methods
 - Create a folder for saving the visualization results.
 ```{R, eval=FALSE}
 print('Step5. Visualization.')
@@ -483,6 +558,63 @@ if (!file.exists(paste0(output.dir, '/Step5.Visualization/'))) {
   dir.create(paste0(output.dir, '/Step5.Visualization/'))
 }
 ```
+- Perform visualization using UMAP and TSNE.
+```{R, eval=FALSE}
+# plot cell types
+pdf(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','tsne cell types.pdf'), width = 6, height = 6)
+ print(DimPlot(sc_object, reduction = "tsne", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
+dev.off()
+
+pdf(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','umap cell types.pdf'), width = 6, height = 6)
+ print(DimPlot(sc_object, reduction = "umap", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
+dev.off()
+
+png(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','tsne cell types.png'), width = 600, height = 600)
+ print(DimPlot(sc_object, reduction = "tsne", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
+dev.off()
+
+png(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','umap cell types.png'), width = 600, height = 600)
+ print(DimPlot(sc_object, reduction = "umap", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
+dev.off()    
+```
+
+```{r echo=FALSE,fig.cap="UMAP and TSNE visualization", out.width = "600px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step5/sc_object tsne cell types.png")
+knitr::include_graphics("./sc_img/step5/sc_object umap cell types.png")
+```
+
+- Set the parameters for phateR.
+```{R, eval=FALSE}
+phate.knn = 50 #The number of nearest neighbors to consider in the phateR algorithm. Default 50.
+phate.npca = 20 #The number of principal components to use in the phateR algorithm. Default 20.
+phate.t = 10 #The t-value for the phateR algorithm, which controls the level of exploration. Default 10.
+phate.ndim = 2 #The number of dimensions for the output embedding in the phateR algorithm. Default 2.
+```
+
+- Run phateR for dimensional reduction and visualization.
+```{R, eval=FALSE}
+# run phateR
+if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){
+    DefaultAssay(sc_object) <- 'integrated'
+}else{
+    DefaultAssay(sc_object) <- 'RNA'}
+
+if(!is.null(pythonPath)){
+  run_phateR(sc_object = sc_object,
+             output.dir = paste0(output.dir,'/Step5.Visualization/'),
+             pythonPath = pythonPath,
+             phate.knn = phate.knn,
+             phate.npca = phate.npca,
+             phate.t = phate.t,
+             phate.ndim = phate.ndim)     
+}
+```
+
+```{r echo=FALSE,fig.cap="phateR result", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step5/phateR.png")
+```
+
+### codes for calculating the proportions
 - The statistical results for the numbers and proportions of cell groups.
 ```{R, eval=FALSE}
 # statistical results
@@ -524,9 +656,10 @@ colnames(cluster_counts) <- c('Cell types', 'Cell counts', 'Percentages')
 
 write.csv(cluster_counts, file=paste(paste0(output.dir, '/Step5.Visualization/'), '/cell types_cell counts_percentages.csv', sep=''), quote=FALSE, row.names=FALSE)
 ```
+
 - The UMAP visualization.
 ```{R, eval=FALSE}
-pdf(paste(paste0(output.dir, '/Step5.Visualization/'), '/cell types_cell counts_percentages_umap.pdf', sep=''), width = 14, height = 6)
+pdf(paste(paste0(output.dir, '/Step5.Visualization'), '/cell types_cell counts_percentages_umap.pdf', sep=''), width = 14, height = 6)
   print(DimPlot(sc_object, 
                 reduction = "umap", 
                 group.by = paste('Total ', nrow(sc_object@meta.data), ' cells', sep=''), 
@@ -535,50 +668,7 @@ pdf(paste(paste0(output.dir, '/Step5.Visualization/'), '/cell types_cell counts_
                 raster = FALSE))
 dev.off()
 ```
-- Set the parameters for phateR.
-```{R, eval=FALSE}
-phate.knn = 50
-phate.npca = 20
-phate.t = 10
-phate.ndim = 2
-```
-- Run phateR for dimensional reduction and visualization.
-```{R, eval=FALSE}
-# run phateR
-if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){
-    DefaultAssay(sc_object) <- 'integrated'
-}else{
-    DefaultAssay(sc_object) <- 'RNA'}
 
-if(!is.null(pythonPath)){
-  run_phateR(sc_object = sc_object,
-             output.dir = paste0(output.dir,'/Step5.Visualization/'),
-             pythonPath = pythonPath,
-             phate.knn = phate.knn,
-             phate.npca = phate.npca,
-             phate.t = phate.t,
-             phate.ndim = phate.ndim)     
-}
-```
-- Perform visualization using UMAP and TSNE.
-```{R, eval=FALSE}
-# plot cell types
-pdf(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','tsne cell types.pdf'), width = 6, height = 6)
- print(DimPlot(sc_object, reduction = "tsne", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
-dev.off()
-
-pdf(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','umap cell types.pdf'), width = 6, height = 6)
- print(DimPlot(sc_object, reduction = "umap", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
-dev.off()
-
-png(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','tsne cell types.png'), width = 600, height = 600)
- print(DimPlot(sc_object, reduction = "tsne", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
-dev.off()
-
-png(paste0(paste0(output.dir,'/Step5.Visualization/'), '/sc_object ','umap cell types.png'), width = 600, height = 600)
- print(DimPlot(sc_object, reduction = "umap", group.by = "ident", label = FALSE, pt.size = 0.1, raster = FALSE))
-dev.off()    
-```
 - Save the variables.
 ```{R, eval=FALSE}
 # Get the names of all variables in the current environment
@@ -590,7 +680,15 @@ for (var_name in variable_names) {
 }  
 ```
 
+```{r echo=FALSE,fig.cap="UMAP plot showing cell type and corresponding proportion", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step5/cell types_cell counts_percentages_umap.jpg")
+```
+
 ## Step 6. Find DEGs
+
+In this step, users can find DEGs (differentially expressed genes) across different cell type group using FindAllMarkers, use GPTCelltype to predict cell label, perform GO and KEGG enrichment analysis, and perform subnetwork analysis for each cell type group.
+
+### codes for finding DEGs
 - Set the parameters for identifying differentially expressed genes.
 ```{R, eval=FALSE}
 min.pct = 0.25
@@ -609,36 +707,8 @@ sc_object.markers <- FindAllMarkers(sc_object, only.pos = TRUE, min.pct = min.pc
 write.csv(sc_object.markers,
           file = paste0(paste0(output.dir, '/Step6.Find_DEGs/'),'sc_object.markerGenes.csv'),
           quote=FALSE)
-```
-- Set the parameters for GPTCelltype.
-```{R, eval=FALSE}
-your_openai_API_key = ''
-tissuename = 'human bone marrow'
-gptmodel = 'gpt-3.5'
-```
-- Use GPTCelltype to assist cell type annotation.
-```{R, eval=FALSE}
-GPT_annotation( marker.genes = sc_object.markers,
-                your_openai_API_key = your_openai_API_key,
-                tissuename = tissuename,
-                gptmodel = gptmodel,
-                output.dir = paste0(output.dir, '/Step6.Find_DEGs/'))
-```
-- Perform GO and KEGG enrichment.
-```{R, eval=FALSE}
-# GO enrichment
-if(Org=='mmu'){
-  OrgDb <- 'org.Mm.eg.db'
-}else if(Org=='hsa'){
-  OrgDb <- 'org.Hs.eg.db'
-}else{
-  stop("Org should be 'mmu' or 'hsa'.")
-}
 
-HemaScopeREnrichment(DEGs=sc_object.markers,
-                     OrgDb=OrgDb,
-                     output.dir=paste0(output.dir, '/Step6.Find_DEGs/'))
-
+# visualization
 sc_object.markers.top5 <- sc_object.markers %>% group_by(cluster) %>% top_n(n = 5, wt = avg_log2FC)
 
 pdf(paste0(paste0(output.dir, '/Step6.Find_DEGs/'), 'sc_object_markerGenesTop5.pdf'), 
@@ -655,8 +725,51 @@ png(paste0(paste0(output.dir, '/Step6.Find_DEGs/'), 'sc_object_markerGenesTop5.p
     print(DotPlot(sc_object,
             features = unique(sc_object.markers.top5$gene),
             cols=c("lightgrey",'red'))+theme(axis.text.x =element_text(angle = 45, vjust = 1, hjust = 1)))
-dev.off()  
+dev.off()
 ```
+
+```{r echo=FALSE,fig.cap="Dotplot showing marker genes of each cell type group", out.width = "600px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step6/sc_object_markerGenesTop5.png")
+```
+
+### codes for using GPTCelltype
+- Set the parameters for GPTCelltype.
+```{R, eval=FALSE}
+your_openai_API_key = ''
+tissuename = 'human bone marrow'
+gptmodel = 'gpt-3.5'
+```
+- Use GPTCelltype to assist cell type annotation.
+```{R, eval=FALSE}
+GPT_annotation( marker.genes = sc_object.markers,
+                your_openai_API_key = your_openai_API_key,
+                tissuename = tissuename,
+                gptmodel = gptmodel,
+                output.dir = paste0(output.dir, '/Step6.Find_DEGs/'))
+```
+
+### Perform GO and KEGG enrichment.
+```{R, eval=FALSE}
+# GO enrichment
+if(Org=='mmu'){
+  OrgDb <- 'org.Mm.eg.db'
+}else if(Org=='hsa'){
+  OrgDb <- 'org.Hs.eg.db'
+}else{
+  stop("Org should be 'mmu' or 'hsa'.")
+}
+
+HemaScopeREnrichment(DEGs=sc_object.markers,
+                     OrgDb=OrgDb,
+                     output.dir=paste0(output.dir, '/Step6.Find_DEGs/'))
+```
+
+```{r echo=FALSE,fig.cap="Barplot showing GO（BP）and KEGG enrichment results of each cell type group", out.width = "400px", fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step6/X0_BP_GOenrich.jpg")
+knitr::include_graphics("./sc_img/step6/X0_KEGGenrich.jpg")
+```
+
+### Perform subnetwork analysis
 - Create a folder for saving the results of gene network analysis.
 ```{R, eval=FALSE}
 if (!file.exists(paste0(output.dir, '/Step6.Find_DEGs/OpenXGR/'))) {
@@ -680,7 +793,24 @@ for (var_name in variable_names) {
 }  
 ```
 
+```{r echo=FALSE,fig.cap="Figure showing subnetwork of each cell type group identified by OpenXGR", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step6/SAG-network_cluster_1.jpg")
+```
+
 ## Step 7. Assign Cell Cycles
+
+This step assigns cell cycle phases by analyzing cell cycle-related genes and generates plots of the cell cycle analysis results. 
+
+### Function arguments:
+* `sc_object`: A Seurat object containing single-cell RNA sequencing data.
+* `counts_matrix`: The 'counts' slot in the Seurat object.
+* `data_matrix`: The 'data' slot in the Seurat object.
+* `cellcycleCutoff`: The cutoff value for distinguishing between cycling and quiescent cells. Cells with a G1G2Score below this cutoff are considered quiescent.
+* `cellTypeOrders`: The order of cell types for visualization. If not provided, the function will use the unique cell types in the input Seurat object.
+* `databasePath`: The path to the database required for the analysis.
+* `Org`: A character vector specifying the species of cell cycle genes, can be 'mmu' (mouse) or 'hsa' (human).
+
+### codes for step7
 - Create a folder for saving the results of cell cycle analysis.
 ```{R, eval=FALSE}
 print('Step7. Assign cell cycles.')
@@ -714,7 +844,26 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }  
 ```
+
+### Outputs
+```{r echo=FALSE,fig.cap="Barplot showing the proportion of different cell cycle within each cell type group", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step7/CellCycle.jpg")
+```
+
+```{r echo=FALSE,fig.cap="Density plot showing the distribution of cell cycle scores", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step7/G1G2Score.jpg")
+```
+
 ## Step 8. Calculate Heterogeneity
+
+This step quantifies cell heterogeneity by computing Spearman correlation coefficients between cells within the same cell type groups.
+
+### Function arguments:
+* `expression_matrix`: A numeric matrix representing the expression data, where rows are genes and columns are cells. The matrix should be appropriately preprocessed and filtered before using this function.
+* `cell_types_groups`: A data frame specifying cell type annotations for each cell, including cell type labels and group information.
+* `cellTypeOrders`: The order of cell types for visualization. If not provided, the function will use the unique cell types in the input cell_types_groups.
+
+### codes for step8
 - Create a folder for saving the results of heterogeneity calculation.
 ```{R, eval=FALSE}
 print('Step8. Calculate heterogeneity.')
@@ -751,7 +900,23 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 } 
 ```
+
+```{r echo=FALSE,fig.cap="Box plot showing the Spearman correlation coefficients between cells within the same cell type groups(here we take data including more samples as an example)", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step8/Heterogeneity_spearmanCorrelation.png")
+```
+
 ## Step 9. Violin Plot for Marker Genes
+
+This step generates violin plots for marker genes across different cell types.
+
+### Function arguments:
+* `dataMatrix`: A data frame or matrix representing the expression data, where rows are cells and columns are genes.
+* `features`: A character vector specifying the marker genes to plot in the violin plots.
+* `CellTypes`: A factor vector containing cell type annotations for each cell.
+* `cellTypeOrders`: A character vector specifying the order of cell types for plotting. Defaults to unique values in `CellTypes`.
+* `cellTypeColors`: A character vector specifying the colors to use for cell type groups. Defaults to a color palette.
+
+### codes for step9
 - Create a folder for saving the violin plots of marker genes.
 ```{R, eval=FALSE}
 print('Step9. Violin plot for marker genes.')
@@ -817,7 +982,27 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }  
 ```
+
+```{r echo=FALSE,fig.cap="Violin plot showing the expression of marker genes between cell type groups", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step9/combinedViolin.png")
+```
+
 ## Step 10. Calculate Lineage Scores
+
+This step calculates lineage scores for specified gene sets based on the provided expression data. It then generates a heatmap of lineage scores and a heatmap of gene expression patterns.
+
+### Function arguments:
+* `expression_matrix`: A data frame or matrix representing the expression data, where rows are cells and columns are genes.
+* `cellTypes`: A character vector specifying cell type annotations for each cell. e.g. c("HSC","HSC","HSC","MPP1","MPP2","MPP2","MPP2" ...)
+* `cellTypes_orders`: A character vector specifying the order of cell types for plotting. e.g. c("HSC","MPP1","MPP2")
+* `cellTypes_colors`: A character vector specifying the colors to use for cell type groups. e.g. c("HSC" = '#006d2c',"MPP1" = '#4292c6',"MPP2"= '#810f7c').
+* `groups`: A character vector specifying groups or clusters within each cell type.
+* `groups_orders`: A character vector specifying the order of groups or clusters for plotting.
+* `groups_colors`: A character vector specifying the colors to use for group or cluster annotations. e.g. c('group1'='#d73027','group2'='#2171b5')
+* `lineage.genelist`: A list of gene sets representing lineage markers.
+* `lineage.names`: A character vector specifying the names of the lineages.
+
+### codes for step10
 - Create a folder for saving the results of lineage score calculation.
 ```{R, eval=FALSE}
 print('Step10. Calculate lineage scores.')
@@ -879,7 +1064,32 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 } 
 ```
+
+```{r echo=FALSE,fig.cap="Heatmap showing the expression of lineage genes for each cell", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step10/lineageGenesHeatmap.png")
+```
+
+```{r echo=FALSE,fig.cap="Heatmap showing the score of lineage signatures for  each cell", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step10/lineageScoresHeatmap.png")
+```
+
 ## Step 11. GSVA
+
+This step runs GSVA analysis, which calculates enrichment scores for gene sets in each cell using the provided gene list. It also performs differential GSVA analysis between specified cell groups and generates heatmaps of the results.
+
+###  Function arguments:
+* `sc_object`: A Seurat object containing the single-cell RNA-seq data.
+* `GSVA.genelist`: A list of gene sets for GSVA analysis.
+* `GSVA.cellTypes`: A character vector specifying the cell types or labels for each cell.
+* `GSVA.cellTypes.orders`: A character vector specifying the order of cell types for visualization.
+* `GSVA.cellGroups`: A character vector specifying the cell groups or conditions for each cell.
+* `GSVA.identify.cellType.features`: Logical. If TRUE, identify cell type-specific features.
+* `GSVA.identify.diff.features`: Logical. If TRUE, identify differentially expressed features between cell groups.
+* `GSVA.comparison.design`: A list specifying the experimental design for differential GSVA analysis.
+* `OrgDB`: An organism-specific annotation database (OrgDb) for gene symbol conversion. e.g. org.Mm.eg.db or org.Hs.eg.db.
+
+
+### codes for running step11
 - Create a folder for saving the results of GSVA.
 ```{R, eval=FALSE}
 print('Step11. GSVA.')
@@ -929,7 +1139,16 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }  
 ```
+
+```{r echo=FALSE,fig.cap="GSVA Heatmap showing the enriched pathways of each cell type group", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step11/GSVA_Heatmap.png")
+```
+
 ## Step 12. Construct Trajectories
+
+In this step, users are allowed to construct trajectories using three methods including Monocle2, slingshot and scVelo.
+
+### data preparation
 - Load gene symbols and ensemble IDs.
 ```{R, eval=FALSE}
 DefaultAssay(sc_object) <- 'RNA'
@@ -980,10 +1199,34 @@ if(is.null(Step12_Construct_Trajectories.clusters)){
     countsSlot.subset <- GetAssayData(object = sc_object.subset, slot = "counts")
 }
 ```
-- Run monocle2.
-```{R, eval=FALSE}
-# monocle2
 
+### monocle2
+
+Running monocle2 involves several steps:
+
+1. Creating a Monocle cellDataSet using the provided cellData, phenoData, and featureData.
+
+2. Estimating size factors, dispersions, and detecting highly variable genes.
+
+3. Performing differential gene expression analysis to identify genes associated with cell state changes.
+
+4. Ordering cells along the inferred trajectories and reducing dimensionality.
+
+5. Generating and saving trajectory plots, including cell trajectory by "State" and by "Cell Types."
+
+####  Function arguments:
+* `cellData`: A matrix of gene expression values, where columns represent cells and rows represent genes.
+* `phenoData`: A data frame containing cell metadata, such as cell labels or other relevant information.
+* `featureData`: A data frame containing information about features (genes) in the dataset.
+* `lowerDetectionLimit`: The lower detection limit for gene expression. Genes with expression values below this limit will be treated as non-detected.
+* `expressionFamily`: The family of the expression distribution used in Monocle analysis.
+* `cellTypes`: A character vector specifying cell types or labels used for coloring in trajectory plots.
+* `monocle.orders`: A character vector specifying the order of cell types in the Monocle analysis.
+* `monocle.colors`: A character vector specifying colors for cell types in trajectory plots.
+
+
+#### codes for running monocle2
+```{R, eval=FALSE}
 phenoData <- sc_object.subset@meta.data
 featureData <- gene_metadata
 run_monocle(cellData = countsSlot.subset,
@@ -996,10 +1239,32 @@ run_monocle(cellData = countsSlot.subset,
             monocle.colors = ViolinPlot.cellTypeColors,
             output.dir = paste0(output.dir, '/Step12.Construct_trajectories/monocle2/'))
 ```
-- Run slingshot.
-```{R, eval=FALSE}
-# slingshot
 
+```{r echo=FALSE,fig.cap="Figures showing cells in different trajectory states (left) and corresponding cell type groups (right)", out.width = "400px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step12/monocle_cell_trajectory_cellTypes.png")
+knitr::include_graphics("./sc_img/step12/monocle_cell_trajectory_state.png")
+```
+
+### Slingshot
+
+Running Slingshot to infer cell trajectories and lineage relationships involves several steps:
+
+1. Constructs a Slingshot object using PCA embeddings, cell types, start clusters, and end clusters.
+
+2. Computes and plots the trajectory curves.
+
+3. Computes and plots pseudotime values along the trajectory.
+
+####  Function arguments:
+
+* `slingshot.PCAembeddings`: A matrix containing the PCA embeddings of the single-cell data, typically obtained from dimensionality reduction techniques like PCA.
+* `slingshot.cellTypes`: A character vector specifying cell types or labels for each cell.
+* `slingshot.start.clus`: A character vector specifying the initial cluster(s) from which cell trajectories should start.
+* `slingshot.end.clus`: A character vector specifying the target cluster(s) where cell trajectories should end.
+* `slingshot.colors`: A vector of colors corresponding to cell types for plotting. If not provided, default colors will be used.
+
+####  codes for running Slingshot
+```{R, eval=FALSE}
 if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){
     DefaultAssay(sc_object.subset) <- 'integrated'
 }else{
@@ -1011,11 +1276,34 @@ run_slingshot(slingshot.PCAembeddings = Embeddings(sc_object.subset, reduction =
               slingshot.colors = slingshot.colors,
               output.dir = paste0(output.dir, '/Step12.Construct_trajectories/slingshot/'))
 ```
-- Run scVelo.
+
+```{r echo=FALSE,fig.cap="Figures showing slingshot curve and infered pseudotime value", out.width = "400px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step12/slingshot_curve.png")
+knitr::include_graphics("./sc_img/step12/slingshot_pseudotime.png")
+```
+
+### scVelo
+
+scVelo is implemented in Python, and it takes a Seurat object, cell embeddings, and cell type information as input. The process of data preparation includes the following steps:
+
+1. Format the Seurat object metadata, including cell types and sample names.
+
+2. Extract the spliced, unspliced, and ambiguous count matrices from the Seurat object.
+
+3. Combine the metadata and cell embeddings.
+
+4. Write the necessary input files for scVelo analysis, including cell embeddings, count matrices, and metadata.
+
+#### Function arguments:
+
+* `sc_object`: A Seurat object containing the single-cell RNA-seq data.
+* `loom.files.path`: A character vector specifying the path(s) to the loom files for scVelo analysis.
+* `scvelo.reduction`: A character specifying the reduction method used for scVelo analysis (default is 'pca').
+* `scvelo.column`: A character specifying the column in the Seurat object metadata containing cell types.
+
+#### codes for running Scvelo
 ```{R, eval=FALSE}
-# scVelo
 if((!is.null(loom.files.path))&(!is.null(pythonPath))){
-    
     prepareDataForScvelo(sc_object = sc_object.subset,
                          loom.files.path = loom.files.path,
                          scvelo.reduction = 'pca',
@@ -1036,7 +1324,26 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }
 ```
+
+```{r echo=FALSE,fig.cap="Figure showing trajectory predicted by scvelo", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step12/velocity_embedding_stream.png") #用的是6.3的结果
+```
+
 ## Step 13. TF Analysis
+
+This step runs SCENIC (Single-Cell Regulatory Network Inference and Clustering) analysis, including the construction of a co-expression network, gene filtering, correlation, and the GENIE3 algorithm to infer regulatory networks.
+
+### Function arguments:
+* `countMatrix`: A matrix containing the raw counts of the single-cell RNA-seq data.
+* `cellTypes`: A character vector specifying the cell types or labels for each cell.
+* `datasetID`: A character vector specifying the dataset IDs for each cell.
+* `cellTypes_colors`: A named vector of colors for cell type visualization.
+* `cellTypes_orders`: A character vector specifying the desired order of cell types.
+* `groups_colors`: A named vector of colors for grouping visualization.
+* `groups_orders`: A character vector specifying the desired order of groups.
+* `Org`: A character vector specifying the organism ('mmu' for mouse or 'hsa' for human).
+
+### codes for running step13
 - Create folders for saving the results of TF analysis.
 ```{R, eval=FALSE}
 print('Step13. TF analysis.')
@@ -1068,7 +1375,47 @@ for (var_name in variable_names) {
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }
 ```
+
+```{r echo=FALSE,fig.cap="Heatmap showing predicted regulon activity for each cell", out.width = "800px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step13/TFs_Heatmap.png")
+```
+
+```{r echo=FALSE,fig.cap="Heatmap showing statistics of regulons", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step13/Step4_BoxplotActiveCellsRegulon.jpg")
+```
+
 ## Step 14. Cell-Cell Interaction
+
+The step takes expression data, cluster labels, and other parameters to perform cell-cell communication analysis using the CellChat package. It includes the following steps:
+
+1. Data input and preprocessing.
+
+2. Initialization of a CellChat object.
+
+3. Set the ligand-receptor interaction database based on the specified organism.
+
+4. Preprocess the expression data for cell-cell communication analysis.
+
+5. Identify overexpressed genes and interactions.
+
+6. Project data based on protein-protein interaction networks.
+
+7. Inference of cell-cell communication network.
+
+8. Visualization of the communication network.
+
+9. Systems analysis of cell-cell communication network.
+
+### Function arguments:
+* `data.input`: A matrix of expression data, where rows represent genes and columns represent cells. Row names should be in the format of gene symbols.
+* `labels`: A vector of cluster labels for each cell, corresponding to the columns of data.input.
+* `cell.orders`: A character vector specifying the order of cell types or clusters in the analysis.
+* `cell.colors`: A character vector specifying colors for cell types or clusters in the analysis.
+* `sample.names`: A vector of sample or cell names, corresponding to the columns of data.input.
+* `Org`: A string indicating the organism used in the analysis. It should be either "mmu" (mouse) or "hsa" (human).
+* `sorting`: A logical value indicating whether to consider cell population size in communication analysis.
+
+### codes for running step14
 - Create folders for saving the results of cell-cell interaction analysis.
 ```{R, eval=FALSE}
 print('Step14. Cell-cell interaction.')
@@ -1098,5 +1445,19 @@ for (var_name in variable_names) {
   var <- get(var_name)  # Get the variable by its name
   saveRDS(var, file = paste0(output.dir, '/RDSfiles/', var_name, ".rds"))  # Save as RDS with the variable's name
 }  
+```
+
+```{r echo=FALSE,fig.cap="Figures showing the interaction number and strength between each cell group", out.width = "400px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step14/circle plot of the number of interactions.jpg")
+knitr::include_graphics("./sc_img/step14/circle plot of the interaction weights or strength.jpg")
+```
+
+```{r echo=FALSE,fig.cap="Heatmap showing the strength of incoming and outgoing signals for each cell type group across various pathways.", out.width = "400px" , fig.align = 'center', out.width='50%', fig.show='hold'}
+knitr::include_graphics("./sc_img/step14/incoming signaling.jpg")
+knitr::include_graphics("./sc_img/step14/outgoing signaling.jpg")
+```
+
+```{r echo=FALSE,fig.cap="Figure showing LRs interaction between each cell type group", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step14/cell-cell communication mediated by multiple ligand-receptors.jpg")
 ```
 
