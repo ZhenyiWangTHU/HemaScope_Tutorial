@@ -105,6 +105,7 @@ install.packages("forcats")
 install.packages("mcmc")
 install.packages("MCMCpack")
 install.packages("fields")
+install.packages("getopt")
 ```
 
 - From GitHub
