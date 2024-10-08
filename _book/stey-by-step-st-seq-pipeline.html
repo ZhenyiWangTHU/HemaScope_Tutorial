@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-07" />
+<meta name="date" content="2024-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,20 +153,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
 <li class="chapter" data-level="4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>4</b> Step-by-step scRNA-seq Pipeline</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>4.1</b> Step 1. Load the R packages and the input data</a></li>
-<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.2</b> Step 2. Quality Control</a></li>
-<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.3</b> Step 3. Clustering</a></li>
-<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.4</b> Step 4. Identify Cell Types</a></li>
-<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.5</b> Step 5. Visualization</a></li>
-<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.6</b> Step 6. Find DEGs</a></li>
-<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.7</b> Step 7. Assign Cell Cycles</a></li>
-<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.8</b> Step 8. Calculate Heterogeneity</a></li>
-<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.9</b> Step 9. Violin Plot for Marker Genes</a></li>
-<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.10</b> Step 10. Calculate Lineage Scores</a></li>
-<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.11</b> Step 11. GSVA</a></li>
-<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.12</b> Step 12. Construct Trajectories</a></li>
-<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.13</b> Step 13. TF Analysis</a></li>
-<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.14</b> Step 14. Cell-Cell Interaction</a></li>
+<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#before-you-begin"><i class="fa fa-check"></i><b>4.1</b> Before you begin</a></li>
+<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-input-data"><i class="fa fa-check"></i><b>4.2</b> Step 1. Load the input data</a></li>
+<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.3</b> Step 2. Quality Control</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>4.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.3.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step2"><i class="fa fa-check"></i><b>4.3.2</b> codes for running step2</a></li>
+<li class="chapter" data-level="4.3.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#outputs"><i class="fa fa-check"></i><b>4.3.3</b> Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.4</b> Step 3. Clustering</a></li>
+<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.5</b> Step 4. Identify Cell Types</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-abccellmap"><i class="fa fa-check"></i><b>4.5.1</b> codes for running abcCellmap</a></li>
+<li class="chapter" data-level="4.5.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-the-cnv-analysis"><i class="fa fa-check"></i><b>4.5.2</b> codes for running the CNV analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.6</b> Step 5. Visualization</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-peforming-three-dimensional-reduction-methods"><i class="fa fa-check"></i><b>4.6.1</b> codes for peforming three dimensional reduction methods</a></li>
+<li class="chapter" data-level="4.6.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-calculating-the-proportions"><i class="fa fa-check"></i><b>4.6.2</b> codes for calculating the proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.7</b> Step 6. Find DEGs</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-finding-degs"><i class="fa fa-check"></i><b>4.7.1</b> codes for finding DEGs</a></li>
+<li class="chapter" data-level="4.7.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-using-gptcelltype"><i class="fa fa-check"></i><b>4.7.2</b> codes for using GPTCelltype</a></li>
+<li class="chapter" data-level="4.7.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#perform-go-and-kegg-enrichment."><i class="fa fa-check"></i><b>4.7.3</b> Perform GO and KEGG enrichment.</a></li>
+<li class="chapter" data-level="4.7.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#perform-subnetwork-analysis"><i class="fa fa-check"></i><b>4.7.4</b> Perform subnetwork analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.8</b> Step 7. Assign Cell Cycles</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>4.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.8.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step7"><i class="fa fa-check"></i><b>4.8.2</b> codes for step7</a></li>
+<li class="chapter" data-level="4.8.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>4.8.3</b> Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.9</b> Step 8. Calculate Heterogeneity</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>4.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.9.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step8"><i class="fa fa-check"></i><b>4.9.2</b> codes for step8</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.10</b> Step 9. Violin Plot for Marker Genes</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>4.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.10.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step9"><i class="fa fa-check"></i><b>4.10.2</b> codes for step9</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.11</b> Step 10. Calculate Lineage Scores</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>4.11.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.11.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step10"><i class="fa fa-check"></i><b>4.11.2</b> codes for step10</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.12</b> Step 11. GSVA</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>4.12.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.12.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step11"><i class="fa fa-check"></i><b>4.12.2</b> codes for running step11</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.13</b> Step 12. Construct Trajectories</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#data-preparation"><i class="fa fa-check"></i><b>4.13.1</b> data preparation</a></li>
+<li class="chapter" data-level="4.13.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#monocle2"><i class="fa fa-check"></i><b>4.13.2</b> monocle2</a></li>
+<li class="chapter" data-level="4.13.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#slingshot"><i class="fa fa-check"></i><b>4.13.3</b> Slingshot</a></li>
+<li class="chapter" data-level="4.13.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#scvelo"><i class="fa fa-check"></i><b>4.13.4</b> scVelo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.14</b> Step 13. TF Analysis</a>
+<ul>
+<li class="chapter" data-level="4.14.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>4.14.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.14.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step13"><i class="fa fa-check"></i><b>4.14.2</b> codes for running step13</a></li>
+</ul></li>
+<li class="chapter" data-level="4.15" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.15</b> Step 14. Cell-Cell Interaction</a>
+<ul>
+<li class="chapter" data-level="4.15.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-10"><i class="fa fa-check"></i><b>4.15.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.15.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step14"><i class="fa fa-check"></i><b>4.15.2</b> codes for running step14</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html"><i class="fa fa-check"></i><b>5</b> Integrated ST pipeline</a>
 <ul>
@@ -178,73 +233,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading"><i class="fa fa-check"></i><b>6.1</b> Step 1. Data loading</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>6.1.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.1.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-11"><i class="fa fa-check"></i><b>6.1.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#funciton-behavior"><i class="fa fa-check"></i><b>6.1.2</b> Funciton behavior:</a></li>
 <li class="chapter" data-level="6.1.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example"><i class="fa fa-check"></i><b>6.1.3</b> An example:</a></li>
-<li class="chapter" data-level="6.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs"><i class="fa fa-check"></i><b>6.1.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>6.1.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>6.2</b> Step 2. QC</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-12"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.2.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>6.2.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.2.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-1"><i class="fa fa-check"></i><b>6.2.3</b> An example:</a></li>
-<li class="chapter" data-level="6.2.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>6.2.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>6.2.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-3.-clustering-1"><i class="fa fa-check"></i><b>6.3</b> Step 3. Clustering</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>6.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.3.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-13"><i class="fa fa-check"></i><b>6.3.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.3.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-1"><i class="fa fa-check"></i><b>6.3.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.3.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-2"><i class="fa fa-check"></i><b>6.3.3</b> An example:</a></li>
-<li class="chapter" data-level="6.3.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>6.3.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>6.3.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-4.-degs"><i class="fa fa-check"></i><b>6.4</b> Step 4. DEGs</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>6.4.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.4.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-14"><i class="fa fa-check"></i><b>6.4.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.4.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-2"><i class="fa fa-check"></i><b>6.4.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.4.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-3"><i class="fa fa-check"></i><b>6.4.3</b> An example:</a></li>
-<li class="chapter" data-level="6.4.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>6.4.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.4.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>6.4.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-5.-spatially-variable-features"><i class="fa fa-check"></i><b>6.5</b> Step 5. Spatially variable features</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>6.5.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-15"><i class="fa fa-check"></i><b>6.5.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.5.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-3"><i class="fa fa-check"></i><b>6.5.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.5.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-4"><i class="fa fa-check"></i><b>6.5.3</b> An example:</a></li>
-<li class="chapter" data-level="6.5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>6.5.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>6.5.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-6.-spatial-interaction"><i class="fa fa-check"></i><b>6.6</b> Step 6. Spatial interaction</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>6.6.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-16"><i class="fa fa-check"></i><b>6.6.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-4"><i class="fa fa-check"></i><b>6.6.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-5"><i class="fa fa-check"></i><b>6.6.3</b> An example:</a></li>
-<li class="chapter" data-level="6.6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>6.6.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>6.6.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.7" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-7.-cnv-analysis"><i class="fa fa-check"></i><b>6.7</b> Step 7. CNV analysis</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-6"><i class="fa fa-check"></i><b>6.7.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.7.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-17"><i class="fa fa-check"></i><b>6.7.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.7.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-5"><i class="fa fa-check"></i><b>6.7.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.7.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-6"><i class="fa fa-check"></i><b>6.7.3</b> An example:</a></li>
-<li class="chapter" data-level="6.7.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>6.7.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.7.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>6.7.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-8.-deconvolution"><i class="fa fa-check"></i><b>6.8</b> Step 8. Deconvolution</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-7"><i class="fa fa-check"></i><b>6.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.8.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-18"><i class="fa fa-check"></i><b>6.8.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.8.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-6"><i class="fa fa-check"></i><b>6.8.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.8.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-7"><i class="fa fa-check"></i><b>6.8.3</b> An example:</a></li>
-<li class="chapter" data-level="6.8.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>6.8.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.8.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>6.8.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.9" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-9.-cell-cycle"><i class="fa fa-check"></i><b>6.9</b> Step 9. Cell cycle</a>
 <ul>
-<li class="chapter" data-level="6.9.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-8"><i class="fa fa-check"></i><b>6.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.9.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-19"><i class="fa fa-check"></i><b>6.9.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.9.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-7"><i class="fa fa-check"></i><b>6.9.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.9.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-8"><i class="fa fa-check"></i><b>6.9.3</b> An example:</a></li>
-<li class="chapter" data-level="6.9.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>6.9.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.9.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-10"><i class="fa fa-check"></i><b>6.9.4</b> Outputs:</a></li>
 </ul></li>
 <li class="chapter" data-level="6.10" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-10.-niche-analysis"><i class="fa fa-check"></i><b>6.10</b> Step 10. Niche analysis</a>
 <ul>
-<li class="chapter" data-level="6.10.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>6.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.10.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-20"><i class="fa fa-check"></i><b>6.10.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.10.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-8"><i class="fa fa-check"></i><b>6.10.2</b> Function behavior:</a></li>
 <li class="chapter" data-level="6.10.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-9"><i class="fa fa-check"></i><b>6.10.3</b> An example:</a></li>
-<li class="chapter" data-level="6.10.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>6.10.4</b> Outputs:</a></li>
+<li class="chapter" data-level="6.10.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-11"><i class="fa fa-check"></i><b>6.10.4</b> Outputs:</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html"><i class="fa fa-check"></i><b>7</b> Step-by-step shiny</a>
@@ -282,8 +337,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-1.-data-loading" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Step 1. Data loading<a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Loading_Data</code> function is designed for loading <a href="https://www.10xgenomics.com/cn/products/spatial-gene-expression">10X Visium</a> spatial transcriptomics data from <a href="https://www.10xgenomics.com/cn/support/software/space-ranger/latest">Space Ranger</a>. It will load data from <code>input.data.dir</code> and output it in the <a href="https://github.com/satijalab/seurat-object">SeuratOjbect</a> format.</p>
-<div id="function-arguments" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-11" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>input.data.dir</code>: The directory where the input data is stored.</li>
 <li><code>output.dir</code>: The directory where the processed output will be saved. If not specified, the output is saved in the current working directory. Default is ‘.’.</li>
@@ -326,8 +381,8 @@ Returns the processed Seurat object.</li>
         to.upper = FALSE
     )</code></pre>
 </div>
-<div id="outputs" class="section level3 hasAnchor" number="6.1.4">
-<h3><span class="header-section-number">6.1.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-2" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Spatial transcriptome data in rds and h5ad formats</li>
 </ul>
@@ -336,8 +391,8 @@ Returns the processed Seurat object.</li>
 <div id="step-2.-qc" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Step 2. QC<a href="stey-by-step-st-seq-pipeline.html#step-2.-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>QC_Spatial</code> function performs basic quality control on a SeuratObject containing 10X visium data and returns the filtered SeuratObject. It provides options to set thresholds for the number of genes, nUMI (unique molecular identifiers), and spots expressing each gene. It also allows for the removal of mitochondrial genes based on species.</p>
-<div id="function-arguments-1" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-12" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: A SeuratObject of 10X visium data.</li>
 <li><code>output.dir</code>: A character string specifying the path to store the results and figures. Default is the current working directory.</li>
@@ -382,8 +437,8 @@ Returns the processed Seurat object.</li>
             SpatialColors = colorRampPalette(colors = rev(x = brewer.pal(n = 11, name = &quot;Spectral&quot;)))
         )</code></pre>
 </div>
-<div id="outputs-1" class="section level3 hasAnchor" number="6.2.4">
-<h3><span class="header-section-number">6.2.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-3" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing the spatial distribution of nUMI and nGene.
 <center class="half">
@@ -414,8 +469,8 @@ Returns the processed Seurat object.</li>
 <div id="step-3.-clustering-1" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Step 3. Clustering<a href="stey-by-step-st-seq-pipeline.html#step-3.-clustering-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Clustering</code> function is designed to perform clustering analysis on spatial transcriptomics data. It integrates several key steps including data normalization, dimensionality reduction, clustering, and visualization. The function saves the results and visualizations to <code>output.dir</code>.</p>
-<div id="function-arguments-2" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-13" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input spatial transcriptomics seurat object that contains the data to be clustered.</li>
 <li><code>output.dir</code>: The directory where the output files will be saved. Default is the current directory (‘.’).</li>
@@ -449,8 +504,8 @@ Saves these plots as images in the specified directory.</li>
             verbose = FALSE
         )</code></pre>
 </div>
-<div id="outputs-2" class="section level3 hasAnchor" number="6.3.4">
-<h3><span class="header-section-number">6.3.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-4" class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing the results of clustering.
 <center class="half">
@@ -465,8 +520,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-4.-degs" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Step 4. DEGs<a href="stey-by-step-st-seq-pipeline.html#step-4.-degs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Find_DEGs</code> function is designed to identify differentially expressed genes (DEGs) in spatial transcriptomics data. It performs differential expression analysis based on clustering results, visualizes the top markers, and saves the results to <code>output.dir</code>.</p>
-<div id="function-arguments-3" class="section level3 hasAnchor" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-14" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input spatial transcriptomics object containing the data for DEG analysis.</li>
 <li><code>output.dir</code>: The directory where output files will be saved. Default is the current directory (‘.’).</li>
@@ -502,8 +557,8 @@ Saves these plots as images in the specified directory.</li>
             verbose = FALSE
         )</code></pre>
 </div>
-<div id="outputs-3" class="section level3 hasAnchor" number="6.4.4">
-<h3><span class="header-section-number">6.4.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-5" class="section level3 hasAnchor" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Dot plots showing markers.
 <center class="half">
@@ -516,8 +571,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-5.-spatially-variable-features" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> Step 5. Spatially variable features<a href="stey-by-step-st-seq-pipeline.html#step-5.-spatially-variable-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_SpatiallyVariableFeatures</code> function identifies and visualizes spatially variable features (SVFs) in spatial transcriptomics data. It integrates the identification of spatially variable features using a specified method, saves the results to a directory, and creates visualizations of the top spatially variable features.</p>
-<div id="function-arguments-4" class="section level3 hasAnchor" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-15" class="section level3 hasAnchor" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-15" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input spatial transcriptomics object containing the data for analysis.</li>
 <li><code>output.dir</code>: The directory where output files will be saved. Default is the current directory.</li>
@@ -549,8 +604,8 @@ Saves these plots as images in the specified directory.</li>
             verbose = FALSE
         )</code></pre>
 </div>
-<div id="outputs-4" class="section level3 hasAnchor" number="6.5.4">
-<h3><span class="header-section-number">6.5.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-6" class="section level3 hasAnchor" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing SVFs.
 <center class="half">
@@ -563,8 +618,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-6.-spatial-interaction" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Step 6. Spatial interaction<a href="stey-by-step-st-seq-pipeline.html#step-6.-spatial-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Interaction</code> function is used to identify and visualize interactions between clusters based on spatial transcriptomics data. It utilizes <a href="https://github.com/zcang/COMMOT">Commot</a> to analyze spatial interactions, identify pathway activities, and assess the strength and significance of interactions.</p>
-<div id="function-arguments-5" class="section level3 hasAnchor" number="6.6.1">
-<h3><span class="header-section-number">6.6.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-16" class="section level3 hasAnchor" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-16" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_data_path</code>: Path to the spatial transcriptomics data.</li>
 <li><code>metadata_path</code>: Path to the metadata associated with the spatial transcriptomics data.</li>
@@ -604,8 +659,8 @@ Saves these plots as images in the specified directory.</li>
             pythonPath = &#39;path/to/python&#39;
         )</code></pre>
 </div>
-<div id="outputs-5" class="section level3 hasAnchor" number="6.6.4">
-<h3><span class="header-section-number">6.6.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-7" class="section level3 hasAnchor" number="6.6.4">
+<h3><span class="header-section-number">6.6.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Dot plot showing pathway interaction between and within clusters.
 <center class="half">
@@ -628,8 +683,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-7.-cnv-analysis" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> Step 7. CNV analysis<a href="stey-by-step-st-seq-pipeline.html#step-7.-cnv-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_CNV</code> function identifies and visualizes copy number variations (CNVs) in spatial transcriptomics data. It uses <a href="https://github.com/navinlabcode/copykat">CopyKAT</a> to perform the CNV analysis, saves the results, and generates visual representations of CNV states.</p>
-<div id="function-arguments-6" class="section level3 hasAnchor" number="6.7.1">
-<h3><span class="header-section-number">6.7.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-17" class="section level3 hasAnchor" number="6.7.1">
+<h3><span class="header-section-number">6.7.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input spatial transcriptomics object containing the data for analysis.</li>
 <li><code>save_path</code>: The directory where output files will be saved.</li>
@@ -668,8 +723,8 @@ Saves these plots as images in the specified directory.</li>
             species = &#39;human&#39;
         )</code></pre>
 </div>
-<div id="outputs-6" class="section level3 hasAnchor" number="6.7.4">
-<h3><span class="header-section-number">6.7.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-8" class="section level3 hasAnchor" number="6.7.4">
+<h3><span class="header-section-number">6.7.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing the predicted CNV states.
 <center class="half">
@@ -686,8 +741,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-8.-deconvolution" class="section level2 hasAnchor" number="6.8">
 <h2><span class="header-section-number">6.8</span> Step 8. Deconvolution<a href="stey-by-step-st-seq-pipeline.html#step-8.-deconvolution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Deconvolution</code> function aims to perform spatial deconvolution analysis on spatial transcriptomics data to estimate the cell-type composition and abundance in different regions. The function utilizes <a href="https://github.com/BayraktarLab/cell2location">cell2location</a> to infer cell-type abundance and spatial distributions, allowing for the visualization and interpretation of spatially resolved cell populations within the tissue.</p>
-<div id="function-arguments-7" class="section level3 hasAnchor" number="6.8.1">
-<h3><span class="header-section-number">6.8.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-18" class="section level3 hasAnchor" number="6.8.1">
+<h3><span class="header-section-number">6.8.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st.data.dir</code>: Path to the spatial transcriptomics data.</li>
 <li><code>sc.h5ad.dir</code>: Path to the single-cell RNA-seq data in h5ad format. Default is <code>NULL</code>.</li>
@@ -728,8 +783,8 @@ Saves these plots as images in the specified directory.</li>
             pythonPath = &#39;path/to/python&#39;
         )</code></pre>
 </div>
-<div id="outputs-7" class="section level3 hasAnchor" number="6.8.4">
-<h3><span class="header-section-number">6.8.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-9" class="section level3 hasAnchor" number="6.8.4">
+<h3><span class="header-section-number">6.8.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing the predicted abundance of each cell-type.
 <center class="half">
@@ -742,8 +797,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-9.-cell-cycle" class="section level2 hasAnchor" number="6.9">
 <h2><span class="header-section-number">6.9</span> Step 9. Cell cycle<a href="stey-by-step-st-seq-pipeline.html#step-9.-cell-cycle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Cell_cycle</code> function is used to assess the cell cycle phase scores in spatial transcriptomics data. It calculates S phase and G2M phase scores based on the expression of designated cell cycle-related genes and visualizes these scores in spatial and dimensionality-reduced plots.</p>
-<div id="function-arguments-8" class="section level3 hasAnchor" number="6.9.1">
-<h3><span class="header-section-number">6.9.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-19" class="section level3 hasAnchor" number="6.9.1">
+<h3><span class="header-section-number">6.9.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input Seurat object containing the data for analysis.</li>
 <li><code>save_path</code>: The directory where the output images will be saved. Default is the current directory.</li>
@@ -774,8 +829,8 @@ Saves these plots as images in the specified directory.</li>
             FeatureColors.bi = colorRampPalette(colors = rev(x = brewer.pal(n = 11, name = &#39;RdYlBu&#39;)))
         )</code></pre>
 </div>
-<div id="outputs-8" class="section level3 hasAnchor" number="6.9.4">
-<h3><span class="header-section-number">6.9.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-10" class="section level3 hasAnchor" number="6.9.4">
+<h3><span class="header-section-number">6.9.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing S scores.
 <center class="half">
@@ -795,8 +850,8 @@ Saves these plots as images in the specified directory.</li>
 <div id="step-10.-niche-analysis" class="section level2 hasAnchor" number="6.10">
 <h2><span class="header-section-number">6.10</span> Step 10. Niche analysis<a href="stey-by-step-st-seq-pipeline.html#step-10.-niche-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_NicheAnalysis</code> function is designed to perform niche analysis on spatial transcriptomics data, enabling the exploration of spatial niches or microenvironments within the tissue. The function encompasses co-occurrence analysis, niche clustering, and niche interaction analysis to uncover the spatial relationships and characteristics of different cell populations or features.</p>
-<div id="function-arguments-9" class="section level3 hasAnchor" number="6.10.1">
-<h3><span class="header-section-number">6.10.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="function-arguments-20" class="section level3 hasAnchor" number="6.10.1">
+<h3><span class="header-section-number">6.10.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-20" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>st_obj</code>: The input SeuratObject containing the spatial transcriptomics data for analysis.</li>
 <li><code>features</code>: A vector of features representing features (for example, cell types from deconvolution) for niche analysis.</li>
@@ -844,8 +899,8 @@ st_obj &lt;- st_NicheAnalysis(
     condaenv = &#39;path/to/python&#39;
 )</code></pre>
 </div>
-<div id="outputs-9" class="section level3 hasAnchor" number="6.10.4">
-<h3><span class="header-section-number">6.10.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="outputs-11" class="section level3 hasAnchor" number="6.10.4">
+<h3><span class="header-section-number">6.10.4</span> Outputs:<a href="stey-by-step-st-seq-pipeline.html#outputs-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Figures showing the co-existence results.
 <center class="half">

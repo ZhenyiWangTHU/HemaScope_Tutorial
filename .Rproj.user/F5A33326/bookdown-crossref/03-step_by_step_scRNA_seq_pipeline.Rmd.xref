@@ -1,16 +1,53 @@
 h1:step-by-step-scrna-seq-pipeline Step-by-step scRNA-seq Pipeline
-h2:step-1.-load-the-r-packages-and-the-input-data Step 1. Load the R packages and the input data
+h2:before-you-begin Before you begin
+h2:step-1.-load-the-input-data Step 1. Load the input data
 h2:step-2.-quality-control Step 2. Quality Control
+h3:function-arguments Function arguments:
+h3:codes-for-running-step2 codes for running step2
+h3:outputs Outputs
 h2:step-3.-clustering Step 3. Clustering
 h2:step-4.-identify-cell-types Step 4. Identify Cell Types
+h3:codes-for-running-abccellmap codes for running abcCellmap
+h3:codes-for-running-the-cnv-analysis codes for running the CNV analysis
 h2:step-5.-visualization Step 5. Visualization
+h3:codes-for-peforming-three-dimensional-reduction-methods codes for peforming three dimensional reduction methods
+h3:codes-for-calculating-the-proportions codes for calculating the proportions
 h2:step-6.-find-degs Step 6. Find DEGs
+h3:codes-for-finding-degs codes for finding DEGs
+h3:codes-for-using-gptcelltype codes for using GPTCelltype
+h3:perform-go-and-kegg-enrichment. Perform GO and KEGG enrichment.
+h3:perform-subnetwork-analysis Perform subnetwork analysis
 h2:step-7.-assign-cell-cycles Step 7. Assign Cell Cycles
+h3:function-arguments-1 Function arguments:
+h3:codes-for-step7 codes for step7
+h3:outputs-1 Outputs
 h2:step-8.-calculate-heterogeneity Step 8. Calculate Heterogeneity
+h3:function-arguments-2 Function arguments:
+h3:codes-for-step8 codes for step8
 h2:step-9.-violin-plot-for-marker-genes Step 9. Violin Plot for Marker Genes
+h3:function-arguments-3 Function arguments:
+h3:codes-for-step9 codes for step9
 h2:step-10.-calculate-lineage-scores Step 10. Calculate Lineage Scores
+h3:function-arguments-4 Function arguments:
+h3:codes-for-step10 codes for step10
 h2:step-11.-gsva Step 11. GSVA
+h3:function-arguments-5 Function arguments:
+h3:codes-for-running-step11 codes for running step11
 h2:step-12.-construct-trajectories Step 12. Construct Trajectories
+h3:data-preparation data preparation
+h3:monocle2 monocle2
+h4:function-arguments-6 Function arguments:
+h4:codes-for-running-monocle2 codes for running monocle2
+h3:slingshot Slingshot
+h4:function-arguments-7 Function arguments:
+h4:codes-for-running-slingshot codes for running Slingshot
+h3:scvelo scVelo
+h4:function-arguments-8 Function arguments:
+h4:codes-for-running-scvelo codes for running Scvelo
 h2:step-13.-tf-analysis Step 13. TF Analysis
+h3:function-arguments-9 Function arguments:
+h3:codes-for-running-step13 codes for running step13
 h2:step-14.-cell-cell-interaction Step 14. Cell-Cell Interaction
+h3:function-arguments-10 Function arguments:
+h3:codes-for-running-step14 codes for running step14
 
