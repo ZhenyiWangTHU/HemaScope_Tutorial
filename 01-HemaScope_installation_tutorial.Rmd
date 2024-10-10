@@ -106,6 +106,7 @@ install.packages("mcmc")
 install.packages("MCMCpack")
 install.packages("fields")
 install.packages("getopt")
+install.packages("osfr")
 ```
 
 - From GitHub
@@ -128,7 +129,11 @@ devtools::install_github("pzhulab/abcCellmap@f44c14b")
 devtools::install_github("navinlabcode/copykat@d7d6569")
 devtools::install_github('chris-mcginnis-ucsf/DoubletFinder@8c7f76e')
 devtools::install_github("mojaveazure/seurat-disk@877d4e1")
+<<<<<<< Updated upstream
 devtools::install_github(c("hfang-bristol/dnet")) #or using install.packages(pkgs=c("dnet","supraHex"),repos="http://R-Forge.R-project.org", type="source")
+=======
+devtools::install_github(c("hfang-bristol/dnet"))
+>>>>>>> Stashed changes
 ```
 
 - Install HemaScopeR from github
