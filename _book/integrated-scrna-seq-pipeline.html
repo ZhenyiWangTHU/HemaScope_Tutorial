@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-10" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,6 +312,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><i class="fa fa-check"></i><b>8</b> Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#user-login"><i class="fa fa-check"></i><b>8.1</b> User Login</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#enter-the-url-in-a-web-browser"><i class="fa fa-check"></i><b>8.1.1</b> Enter the URL in a web browser:</a></li>
+<li class="chapter" data-level="8.1.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-obtain-free-computational-resources"><i class="fa fa-check"></i><b>8.1.2</b> To obtain free computational resources:</a></li>
+<li class="chapter" data-level="8.1.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-browse-hemascopecloud-without-needing-computational-resources"><i class="fa fa-check"></i><b>8.1.3</b> To browse HemaScopeCloud without needing computational resources:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#homepage"><i class="fa fa-check"></i><b>8.2</b> Homepage</a></li>
+<li class="chapter" data-level="8.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#data-page"><i class="fa fa-check"></i><b>8.3</b> Data Page</a></li>
+<li class="chapter" data-level="8.4" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#analysis-page"><i class="fa fa-check"></i><b>8.4</b> Analysis Page</a></li>
+<li class="chapter" data-level="8.5" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#projects-page"><i class="fa fa-check"></i><b>8.5</b> Projects page</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -343,49 +356,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-4"><a href="integrated-scrna-seq-pipeline.html#cb15-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
 <span id="cb15-5"><a href="integrated-scrna-seq-pipeline.html#cb15-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
 <span id="cb15-6"><a href="integrated-scrna-seq-pipeline.html#cb15-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
-<span id="cb15-7"><a href="integrated-scrna-seq-pipeline.html#cb15-7" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
-<span id="cb15-8"><a href="integrated-scrna-seq-pipeline.html#cb15-8" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
-<span id="cb15-9"><a href="integrated-scrna-seq-pipeline.html#cb15-9" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
-<span id="cb15-10"><a href="integrated-scrna-seq-pipeline.html#cb15-10" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb15-11"><a href="integrated-scrna-seq-pipeline.html#cb15-11" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-12"><a href="integrated-scrna-seq-pipeline.html#cb15-12" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
-<span id="cb15-13"><a href="integrated-scrna-seq-pipeline.html#cb15-13" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb15-14"><a href="integrated-scrna-seq-pipeline.html#cb15-14" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
-<span id="cb15-15"><a href="integrated-scrna-seq-pipeline.html#cb15-15" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
-<span id="cb15-16"><a href="integrated-scrna-seq-pipeline.html#cb15-16" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
-<span id="cb15-17"><a href="integrated-scrna-seq-pipeline.html#cb15-17" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb15-18"><a href="integrated-scrna-seq-pipeline.html#cb15-18" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb15-19"><a href="integrated-scrna-seq-pipeline.html#cb15-19" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb15-20"><a href="integrated-scrna-seq-pipeline.html#cb15-20" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb15-21"><a href="integrated-scrna-seq-pipeline.html#cb15-21" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb15-22"><a href="integrated-scrna-seq-pipeline.html#cb15-22" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb15-23"><a href="integrated-scrna-seq-pipeline.html#cb15-23" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb15-24"><a href="integrated-scrna-seq-pipeline.html#cb15-24" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
-<span id="cb15-25"><a href="integrated-scrna-seq-pipeline.html#cb15-25" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
-<span id="cb15-26"><a href="integrated-scrna-seq-pipeline.html#cb15-26" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
-<span id="cb15-27"><a href="integrated-scrna-seq-pipeline.html#cb15-27" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
-<span id="cb15-28"><a href="integrated-scrna-seq-pipeline.html#cb15-28" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
-<span id="cb15-29"><a href="integrated-scrna-seq-pipeline.html#cb15-29" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb15-30"><a href="integrated-scrna-seq-pipeline.html#cb15-30" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb15-31"><a href="integrated-scrna-seq-pipeline.html#cb15-31" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb15-32"><a href="integrated-scrna-seq-pipeline.html#cb15-32" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb15-33"><a href="integrated-scrna-seq-pipeline.html#cb15-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb15-34"><a href="integrated-scrna-seq-pipeline.html#cb15-34" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb15-35"><a href="integrated-scrna-seq-pipeline.html#cb15-35" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb15-36"><a href="integrated-scrna-seq-pipeline.html#cb15-36" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb15-37"><a href="integrated-scrna-seq-pipeline.html#cb15-37" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb15-38"><a href="integrated-scrna-seq-pipeline.html#cb15-38" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb15-39"><a href="integrated-scrna-seq-pipeline.html#cb15-39" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb15-40"><a href="integrated-scrna-seq-pipeline.html#cb15-40" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb15-41"><a href="integrated-scrna-seq-pipeline.html#cb15-41" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb15-42"><a href="integrated-scrna-seq-pipeline.html#cb15-42" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb15-43"><a href="integrated-scrna-seq-pipeline.html#cb15-43" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb15-44"><a href="integrated-scrna-seq-pipeline.html#cb15-44" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb15-45"><a href="integrated-scrna-seq-pipeline.html#cb15-45" tabindex="-1"></a><span class="co"># getpot</span></span>
-<span id="cb15-46"><a href="integrated-scrna-seq-pipeline.html#cb15-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb15-47"><a href="integrated-scrna-seq-pipeline.html#cb15-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb15-48"><a href="integrated-scrna-seq-pipeline.html#cb15-48" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
-<span id="cb15-49"><a href="integrated-scrna-seq-pipeline.html#cb15-49" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<span id="cb15-7"><a href="integrated-scrna-seq-pipeline.html#cb15-7" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb15-8"><a href="integrated-scrna-seq-pipeline.html#cb15-8" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb15-9"><a href="integrated-scrna-seq-pipeline.html#cb15-9" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb15-10"><a href="integrated-scrna-seq-pipeline.html#cb15-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-11"><a href="integrated-scrna-seq-pipeline.html#cb15-11" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb15-12"><a href="integrated-scrna-seq-pipeline.html#cb15-12" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb15-13"><a href="integrated-scrna-seq-pipeline.html#cb15-13" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb15-14"><a href="integrated-scrna-seq-pipeline.html#cb15-14" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb15-15"><a href="integrated-scrna-seq-pipeline.html#cb15-15" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb15-16"><a href="integrated-scrna-seq-pipeline.html#cb15-16" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb15-17"><a href="integrated-scrna-seq-pipeline.html#cb15-17" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb15-18"><a href="integrated-scrna-seq-pipeline.html#cb15-18" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb15-19"><a href="integrated-scrna-seq-pipeline.html#cb15-19" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb15-20"><a href="integrated-scrna-seq-pipeline.html#cb15-20" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb15-21"><a href="integrated-scrna-seq-pipeline.html#cb15-21" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb15-22"><a href="integrated-scrna-seq-pipeline.html#cb15-22" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb15-23"><a href="integrated-scrna-seq-pipeline.html#cb15-23" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb15-24"><a href="integrated-scrna-seq-pipeline.html#cb15-24" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb15-25"><a href="integrated-scrna-seq-pipeline.html#cb15-25" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb15-26"><a href="integrated-scrna-seq-pipeline.html#cb15-26" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb15-27"><a href="integrated-scrna-seq-pipeline.html#cb15-27" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb15-28"><a href="integrated-scrna-seq-pipeline.html#cb15-28" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb15-29"><a href="integrated-scrna-seq-pipeline.html#cb15-29" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb15-30"><a href="integrated-scrna-seq-pipeline.html#cb15-30" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb15-31"><a href="integrated-scrna-seq-pipeline.html#cb15-31" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb15-32"><a href="integrated-scrna-seq-pipeline.html#cb15-32" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb15-33"><a href="integrated-scrna-seq-pipeline.html#cb15-33" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb15-34"><a href="integrated-scrna-seq-pipeline.html#cb15-34" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb15-35"><a href="integrated-scrna-seq-pipeline.html#cb15-35" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb15-36"><a href="integrated-scrna-seq-pipeline.html#cb15-36" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb15-37"><a href="integrated-scrna-seq-pipeline.html#cb15-37" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb15-38"><a href="integrated-scrna-seq-pipeline.html#cb15-38" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb15-39"><a href="integrated-scrna-seq-pipeline.html#cb15-39" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-40"><a href="integrated-scrna-seq-pipeline.html#cb15-40" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb15-41"><a href="integrated-scrna-seq-pipeline.html#cb15-41" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb15-42"><a href="integrated-scrna-seq-pipeline.html#cb15-42" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb15-43"><a href="integrated-scrna-seq-pipeline.html#cb15-43" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb15-44"><a href="integrated-scrna-seq-pipeline.html#cb15-44" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb15-45"><a href="integrated-scrna-seq-pipeline.html#cb15-45" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb15-46"><a href="integrated-scrna-seq-pipeline.html#cb15-46" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb15-47"><a href="integrated-scrna-seq-pipeline.html#cb15-47" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <ul>
 <li>Run the integrated scRNA-seq pipeline.</li>
 </ul>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform | HemaScope Tutorial</title>
+  <meta name="description" content="This is the tutorial for HemaScope." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform | HemaScope Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the tutorial for HemaScope." />
+  <meta name="github-repo" content="https://github.com/ZhenyiWangTHU/HemaScopeR/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform | HemaScope Tutorial" />
+  
+  <meta name="twitter:description" content="This is the tutorial for HemaScope." />
+  
+
+<meta name="author" content="HemaScope team" />
+
+
+<meta name="date" content="2024-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-by-step-shiny.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">HemaScope</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#create-a-new-conda-environment-and-activate-it"><i class="fa fa-check"></i><b>2.1</b> Create a new conda environment and activate it</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#set-the-channels-in-conda"><i class="fa fa-check"></i><b>2.2</b> Set the channels in conda</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Install R and python</a></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.4</b> Install required R-packages</a></li>
+<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#install-required-python-packages"><i class="fa fa-check"></i><b>2.5</b> Install required Python-packages</a></li>
+<li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#the-installed-packages-with-versions"><i class="fa fa-check"></i><b>2.6</b> The installed packages with versions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>4</b> Step-by-step scRNA-seq Pipeline</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#before-you-begin"><i class="fa fa-check"></i><b>4.1</b> Before you begin</a></li>
+<li class="chapter" data-level="4.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-1.-load-the-input-data"><i class="fa fa-check"></i><b>4.2</b> Step 1. Load the input data</a></li>
+<li class="chapter" data-level="4.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-2.-quality-control"><i class="fa fa-check"></i><b>4.3</b> Step 2. Quality Control</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments"><i class="fa fa-check"></i><b>4.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.3.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step2"><i class="fa fa-check"></i><b>4.3.2</b> codes for running step2</a></li>
+<li class="chapter" data-level="4.3.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#outputs"><i class="fa fa-check"></i><b>4.3.3</b> Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-3.-clustering"><i class="fa fa-check"></i><b>4.4</b> Step 3. Clustering</a></li>
+<li class="chapter" data-level="4.5" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-4.-identify-cell-types"><i class="fa fa-check"></i><b>4.5</b> Step 4. Identify Cell Types</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-abccellmap"><i class="fa fa-check"></i><b>4.5.1</b> codes for running abcCellmap</a></li>
+<li class="chapter" data-level="4.5.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-the-cnv-analysis"><i class="fa fa-check"></i><b>4.5.2</b> codes for running the CNV analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-5.-visualization"><i class="fa fa-check"></i><b>4.6</b> Step 5. Visualization</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-peforming-three-dimensional-reduction-methods"><i class="fa fa-check"></i><b>4.6.1</b> codes for peforming three dimensional reduction methods</a></li>
+<li class="chapter" data-level="4.6.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-calculating-the-proportions"><i class="fa fa-check"></i><b>4.6.2</b> codes for calculating the proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-6.-find-degs"><i class="fa fa-check"></i><b>4.7</b> Step 6. Find DEGs</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-finding-degs"><i class="fa fa-check"></i><b>4.7.1</b> codes for finding DEGs</a></li>
+<li class="chapter" data-level="4.7.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-using-gptcelltype"><i class="fa fa-check"></i><b>4.7.2</b> codes for using GPTCelltype</a></li>
+<li class="chapter" data-level="4.7.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#perform-go-and-kegg-enrichment."><i class="fa fa-check"></i><b>4.7.3</b> Perform GO and KEGG enrichment.</a></li>
+<li class="chapter" data-level="4.7.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#perform-subnetwork-analysis"><i class="fa fa-check"></i><b>4.7.4</b> Perform subnetwork analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-7.-assign-cell-cycles"><i class="fa fa-check"></i><b>4.8</b> Step 7. Assign Cell Cycles</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-1"><i class="fa fa-check"></i><b>4.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.8.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step7"><i class="fa fa-check"></i><b>4.8.2</b> codes for step7</a></li>
+<li class="chapter" data-level="4.8.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#outputs-1"><i class="fa fa-check"></i><b>4.8.3</b> Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-8.-calculate-heterogeneity"><i class="fa fa-check"></i><b>4.9</b> Step 8. Calculate Heterogeneity</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-2"><i class="fa fa-check"></i><b>4.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.9.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step8"><i class="fa fa-check"></i><b>4.9.2</b> codes for step8</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-9.-violin-plot-for-marker-genes"><i class="fa fa-check"></i><b>4.10</b> Step 9. Violin Plot for Marker Genes</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-3"><i class="fa fa-check"></i><b>4.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.10.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step9"><i class="fa fa-check"></i><b>4.10.2</b> codes for step9</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-10.-calculate-lineage-scores"><i class="fa fa-check"></i><b>4.11</b> Step 10. Calculate Lineage Scores</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-4"><i class="fa fa-check"></i><b>4.11.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.11.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-step10"><i class="fa fa-check"></i><b>4.11.2</b> codes for step10</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-11.-gsva"><i class="fa fa-check"></i><b>4.12</b> Step 11. GSVA</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-5"><i class="fa fa-check"></i><b>4.12.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.12.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step11"><i class="fa fa-check"></i><b>4.12.2</b> codes for running step11</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-12.-construct-trajectories"><i class="fa fa-check"></i><b>4.13</b> Step 12. Construct Trajectories</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#data-preparation"><i class="fa fa-check"></i><b>4.13.1</b> data preparation</a></li>
+<li class="chapter" data-level="4.13.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#monocle2"><i class="fa fa-check"></i><b>4.13.2</b> monocle2</a></li>
+<li class="chapter" data-level="4.13.3" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#slingshot"><i class="fa fa-check"></i><b>4.13.3</b> Slingshot</a></li>
+<li class="chapter" data-level="4.13.4" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#scvelo"><i class="fa fa-check"></i><b>4.13.4</b> scVelo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-13.-tf-analysis"><i class="fa fa-check"></i><b>4.14</b> Step 13. TF Analysis</a>
+<ul>
+<li class="chapter" data-level="4.14.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-9"><i class="fa fa-check"></i><b>4.14.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.14.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step13"><i class="fa fa-check"></i><b>4.14.2</b> codes for running step13</a></li>
+</ul></li>
+<li class="chapter" data-level="4.15" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#step-14.-cell-cell-interaction"><i class="fa fa-check"></i><b>4.15</b> Step 14. Cell-Cell Interaction</a>
+<ul>
+<li class="chapter" data-level="4.15.1" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#function-arguments-10"><i class="fa fa-check"></i><b>4.15.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="4.15.2" data-path="step-by-step-scrna-seq-pipeline.html"><a href="step-by-step-scrna-seq-pipeline.html#codes-for-running-step14"><i class="fa fa-check"></i><b>4.15.2</b> codes for running step14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html"><i class="fa fa-check"></i><b>5</b> Integrated ST pipeline</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-10x-visium-data"><i class="fa fa-check"></i><b>5.1</b> For 10X Visium data</a></li>
+<li class="chapter" data-level="5.2" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-merfish-data"><i class="fa fa-check"></i><b>5.2</b> For MERFISH data</a></li>
+<li class="chapter" data-level="5.3" data-path="integrated-st-pipeline.html"><a href="integrated-st-pipeline.html#for-stereo-seq-data"><i class="fa fa-check"></i><b>5.3</b> For stereo-seq data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html"><i class="fa fa-check"></i><b>6</b> Stey-by-step st-seq pipeline</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading"><i class="fa fa-check"></i><b>6.1</b> Step 1. Data loading</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-11"><i class="fa fa-check"></i><b>6.1.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.1.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#funciton-behavior"><i class="fa fa-check"></i><b>6.1.2</b> Funciton behavior:</a></li>
+<li class="chapter" data-level="6.1.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example"><i class="fa fa-check"></i><b>6.1.3</b> An example:</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>6.1.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>6.2</b> Step 2. QC</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-12"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>6.2.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-1"><i class="fa fa-check"></i><b>6.2.3</b> An example:</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-3"><i class="fa fa-check"></i><b>6.2.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-3.-clustering-1"><i class="fa fa-check"></i><b>6.3</b> Step 3. Clustering</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-13"><i class="fa fa-check"></i><b>6.3.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-1"><i class="fa fa-check"></i><b>6.3.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-2"><i class="fa fa-check"></i><b>6.3.3</b> An example:</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-4"><i class="fa fa-check"></i><b>6.3.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-4.-degs"><i class="fa fa-check"></i><b>6.4</b> Step 4. DEGs</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-14"><i class="fa fa-check"></i><b>6.4.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.4.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-2"><i class="fa fa-check"></i><b>6.4.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.4.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-3"><i class="fa fa-check"></i><b>6.4.3</b> An example:</a></li>
+<li class="chapter" data-level="6.4.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-5"><i class="fa fa-check"></i><b>6.4.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-5.-spatially-variable-features"><i class="fa fa-check"></i><b>6.5</b> Step 5. Spatially variable features</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-15"><i class="fa fa-check"></i><b>6.5.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.5.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-3"><i class="fa fa-check"></i><b>6.5.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.5.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-4"><i class="fa fa-check"></i><b>6.5.3</b> An example:</a></li>
+<li class="chapter" data-level="6.5.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-6"><i class="fa fa-check"></i><b>6.5.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-6.-spatial-interaction"><i class="fa fa-check"></i><b>6.6</b> Step 6. Spatial interaction</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-16"><i class="fa fa-check"></i><b>6.6.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-4"><i class="fa fa-check"></i><b>6.6.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.6.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-5"><i class="fa fa-check"></i><b>6.6.3</b> An example:</a></li>
+<li class="chapter" data-level="6.6.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-7"><i class="fa fa-check"></i><b>6.6.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-7.-cnv-analysis"><i class="fa fa-check"></i><b>6.7</b> Step 7. CNV analysis</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-17"><i class="fa fa-check"></i><b>6.7.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.7.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-5"><i class="fa fa-check"></i><b>6.7.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.7.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-6"><i class="fa fa-check"></i><b>6.7.3</b> An example:</a></li>
+<li class="chapter" data-level="6.7.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-8"><i class="fa fa-check"></i><b>6.7.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-8.-deconvolution"><i class="fa fa-check"></i><b>6.8</b> Step 8. Deconvolution</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-18"><i class="fa fa-check"></i><b>6.8.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.8.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-6"><i class="fa fa-check"></i><b>6.8.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.8.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-7"><i class="fa fa-check"></i><b>6.8.3</b> An example:</a></li>
+<li class="chapter" data-level="6.8.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-9"><i class="fa fa-check"></i><b>6.8.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-9.-cell-cycle"><i class="fa fa-check"></i><b>6.9</b> Step 9. Cell cycle</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-19"><i class="fa fa-check"></i><b>6.9.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.9.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-7"><i class="fa fa-check"></i><b>6.9.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.9.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-8"><i class="fa fa-check"></i><b>6.9.3</b> An example:</a></li>
+<li class="chapter" data-level="6.9.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-10"><i class="fa fa-check"></i><b>6.9.4</b> Outputs:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-10.-niche-analysis"><i class="fa fa-check"></i><b>6.10</b> Step 10. Niche analysis</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-20"><i class="fa fa-check"></i><b>6.10.1</b> Function arguments:</a></li>
+<li class="chapter" data-level="6.10.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior-8"><i class="fa fa-check"></i><b>6.10.2</b> Function behavior:</a></li>
+<li class="chapter" data-level="6.10.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example-9"><i class="fa fa-check"></i><b>6.10.3</b> An example:</a></li>
+<li class="chapter" data-level="6.10.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-11"><i class="fa fa-check"></i><b>6.10.4</b> Outputs:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html"><i class="fa fa-check"></i><b>7</b> Step-by-step shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>7.1</b> Step 2. Load the R packages and the input data</a></li>
+<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny"><i class="fa fa-check"></i><b>7.2</b> Step 3. Start HemaScopeShiny</a></li>
+<li class="chapter" data-level="7.3" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.3</b> Step 4. Use HemaScopeShiny via the GUI</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#scrna-seq-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><i class="fa fa-check"></i><b>8</b> Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#user-login"><i class="fa fa-check"></i><b>8.1</b> User Login</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#enter-the-url-in-a-web-browser"><i class="fa fa-check"></i><b>8.1.1</b> Enter the URL in a web browser:</a></li>
+<li class="chapter" data-level="8.1.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-obtain-free-computational-resources"><i class="fa fa-check"></i><b>8.1.2</b> To obtain free computational resources:</a></li>
+<li class="chapter" data-level="8.1.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-browse-hemascopecloud-without-needing-computational-resources"><i class="fa fa-check"></i><b>8.1.3</b> To browse HemaScopeCloud without needing computational resources:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#homepage"><i class="fa fa-check"></i><b>8.2</b> Homepage</a></li>
+<li class="chapter" data-level="8.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#data-page"><i class="fa fa-check"></i><b>8.3</b> Data Page</a></li>
+<li class="chapter" data-level="8.4" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#analysis-page"><i class="fa fa-check"></i><b>8.4</b> Analysis Page</a></li>
+<li class="chapter" data-level="8.5" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#projects-page"><i class="fa fa-check"></i><b>8.5</b> Projects page</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HemaScope Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="user-login" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> User Login<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#user-login" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="enter-the-url-in-a-web-browser" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Enter the URL in a web browser:<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#enter-the-url-in-a-web-browser" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://hemascope.hiplot.cn/?home=hemascope"><em>https://hemascope.hiplot.cn/?home=hemascope</em></a>
+and click to access the login page.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-142"></span>
+<img src="image/hemascopecloud/loginpage.png" alt="Login Page" width="800px" />
+<p class="caption">
+Figure 8.1: Login Page
+</p>
+</div>
+</div>
+<div id="to-obtain-free-computational-resources" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> To obtain free computational resources:<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-obtain-free-computational-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Enter your login email, click “Get Code,” input the verification code
+received in your email, and then click “Login” to complete the login and
+access the system homepage.</p>
+</div>
+<div id="to-browse-hemascopecloud-without-needing-computational-resources" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> To browse HemaScopeCloud without needing computational resources:<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-browse-hemascopecloud-without-needing-computational-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Click the “View without Login” button to access the system homepage. You
+can view demo analysis projects. If you click the button to initiate an
+analysis, the platform will prompt: “Please log in for analysis!”</p>
+</div>
+</div>
+<div id="homepage" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Homepage<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#homepage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-143"></span>
+<img src="image/hemascopecloud/homepage.png" alt="Homepage" width="800px" />
+<p class="caption">
+Figure 8.2: Homepage
+</p>
+</div>
+<p>The left side features a menu bar containing Home, Data, Analysis,
+Project, and Help. And the upper right section includes statistics on
+analysis project status, usage of analysis projects, a quick entry for
+creating new analysis projects, and statistics on allocated storage
+capacity usage.</p>
+<p><strong>Statistics on Analysis Project Status</strong></p>
+<p><strong>Pending Analysis：</strong>Waiting for analysis, not yet submitted for
+analysis.</p>
+<p><strong>Pending Resources：</strong>Waiting for resources, analysis submitted and
+awaiting resource allocation.</p>
+<p><strong>Analyzing：</strong>Currently analyzing.</p>
+<p><strong>Completed：</strong>Analysis completed.</p>
+<p><strong>Error：</strong>An error occurred during analysis.</p>
+<p><strong>Total：</strong>Total of all analysis statuses.</p>
+<p><strong>Usage Statistics for Analysis Projects:</strong> Number of used analysis
+projects / Total number of allocated analysis projects. The current
+allocation for the system is 50 projects. For additional free
+computational resources, please contact the developer.</p>
+<p><strong>Quick Entry for Creating New Analysis Projects:</strong> Supports quick
+access to the new analysis project pages corresponding to two pipelines.</p>
+<p><strong>Storage Capacity Usage:</strong> Used Storage Resources / Allocated Storage
+Resources.</p>
+<p>The lower section displays the most recently run analysis projects. By
+default, it shows demo projects upon initial entry. Clicking the “View”
+option on an entry in the Projects section allows you to access and
+analyze that specific analysis project.</p>
+</div>
+<div id="data-page" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Data Page<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#data-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Data page includes storage for Demo sample project data as well as
+Personal project data. Data under the Demo tab can be downloaded, while
+the Personal tab allows users to create new folders and upload files.</p>
+</div>
+<div id="analysis-page" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Analysis Page<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#analysis-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It lists two analysis pipelines: sc_HemaScopeCloud and
+st_HemaScopeCloud, serving as entries for creating new analysis
+projects. Click the Analysis button to access the new project and
+execution page for that pipeline.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<img src="image/hemascopecloud/SelectAnalysisPipelinePage.png" alt="Select Analysis Pipeline Page" width="800px" />
+<p class="caption">
+Figure 8.3: Select Analysis Pipeline Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<img src="image/hemascopecloud/EntertheAnalysisPipelinePage.png" alt="Enter the Analysis Pipeline Page" width="800px" />
+<p class="caption">
+Figure 8.4: Enter the Analysis Pipeline Page
+</p>
+</div>
+<p><strong>Create New Analysis Project</strong></p>
+<p>Click the Analysis button under the sc_HemaScopeCloud to enter the new
+project page for that pipeline.</p>
+<p><strong>Project Name：</strong>Enter the name of the analysis project for
+identification purposes.</p>
+<p><strong>Input Data：</strong>Click Upload to upload local analysis files. Single and
+multiple file uploads are supported. Uploaded files must comply with the
+pipeline’s input file requirements; otherwise, an error will occur
+during execution.</p>
+<p><strong>Sample Name：</strong>Click Add to enter the sample names, which should
+correspond to the uploaded analysis files.</p>
+<p>Items marked with * are required fields.</p>
+<p><strong>Click the Run button to initiate the analysis：</strong>For the scRNA-seq
+pipeline，this will trigger step1-4; for the st-seq pipeline, it will
+trigger step1-5.</p>
+<p>Each subsequent analysis step requires clicking Run on the relevant step
+page to submit. Before submission, ensure that the previous step has
+generated result files; otherwise, a notification will indicate that the
+analysis cannot proceed.</p>
+<p><strong>Load Demo Data</strong></p>
+<p>HemaScopeCloud supports loading pre-configured analysis demo files and
+default parameters to quickly initiate analysis projects. On the new
+project page, click Load Demo Data to load files from the demo project
+and fill the required fields. Then, click the Run button to execute the
+analysis for the demo project.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<img src="image/hemascopecloud/LoadDemoData.png" alt="Load Demo Data" width="800px" />
+<p class="caption">
+Figure 8.5: Load Demo Data
+</p>
+</div>
+<p>After clicking Run, you will be redirected to the detailed page of the
+analysis project.</p>
+<p><strong>Analysis Project Detail Page Notifications</strong></p>
+<p><strong>Waiting for resources…Do not submit repeatedly:</strong> This indicates
+that the submission is waiting for resources. Do not click the Run
+button again.</p>
+<p><strong>Analyzing…Do not submit repeatedly:</strong> This indicates that the
+project is currently analyzing. Do not click the Run button again.</p>
+<p><strong>Analysis Steps, Current Analysis Step:</strong> Displays all stepwise
+analysis processes and the current step. Click on different steps to
+navigate to the corresponding analysis step page. For the initial
+analysis, you must complete the previous step before proceeding to the
+next one.</p>
+<p><strong>Refresh Button:</strong> Used to refresh the current page.</p>
+<p><strong>Results:</strong> This tab stores the results of the completed step.</p>
+<p><strong>Visualization:</strong> For steps that involve visualizations, the results
+will be found under the visualization tab.</p>
+<p><strong>History：</strong>Click on Run History to view all historical runs of that
+step.</p>
+<p><strong>Status：</strong>Corresponds to the analysis status of the project.</p>
+<p><strong>Log：</strong>Click this button to view the run log.</p>
+<p><strong>Parameter Settings：</strong>Used for entering parameter values.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<img src="image/hemascopecloud/AnalysisProjectPage.png" alt="Analysis Project Page" width="800px" />
+<p class="caption">
+Figure 8.6: Analysis Project Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-148"></span>
+<img src="image/hemascopecloud/AnalysisProjectResultPage.png" alt="Analysis Project Result Page" width="800px" />
+<p class="caption">
+Figure 8.7: Analysis Project Result Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<img src="image/hemascopecloud/Thisstepoftheanalysisprojectdisplays.png" alt="This step of the analysis project displays 'Waiting for resources…Do not submit repeatedlly'" width="800px" />
+<p class="caption">
+Figure 8.8: This step of the analysis project displays ‘Waiting for resources…Do not submit repeatedlly’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-150"></span>
+<img src="image/hemascopecloud/ThisstepoftheanalysisprojectdisplaysAnalyzing.png" alt="This step of the analysis project displays 'Analyzing…Do not submit repeatedly'" width="800px" />
+<p class="caption">
+Figure 8.9: This step of the analysis project displays ‘Analyzing…Do not submit repeatedly’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<img src="image/hemascopecloud/HistoryPage.png" alt="History Page" width="800px" />
+<p class="caption">
+Figure 8.10: History Page
+</p>
+</div>
+<p><strong>Note:</strong> For steps that have already been completed (except for the
+first step), you can adjust the parameters and click Run to perform
+multiple analyses. The results page will retain only the latest analysis
+results.</p>
+</div>
+<div id="projects-page" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Projects page<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#projects-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The homege includes analysis projects created by the user as well as
+pre-configured demo analysis projects provided by the system.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-152"></span>
+<img src="image/hemascopecloud/Demoprojectsanduserspersonalprojects.png" alt="Demo projects and user’s personal projects" width="800px" />
+<p class="caption">
+Figure 8.11: Demo projects and user’s personal projects
+</p>
+</div>
+<p>Clicking “View” allows you to navigate to the analysis project for
+review and step-by-step analysis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<img src="image/hemascopecloud/ClickViewtoaccesstheanalysisproject.png" alt="Click 'View' to access the analysis project" width="800px" />
+<p class="caption">
+Figure 8.12: Click ‘View’ to access the analysis project
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-154"></span>
+<img src="image/hemascopecloud/Enterthedetailedanalysisprojectpage.png" alt="Enter the detailed analysis project page" width="800px" />
+<p class="caption">
+Figure 8.13: Enter the detailed analysis project page
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-by-step-shiny.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-HemaScopeCloud_Tutorial.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

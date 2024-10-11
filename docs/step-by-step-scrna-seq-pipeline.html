@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-10" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,6 +312,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><i class="fa fa-check"></i><b>8</b> Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#user-login"><i class="fa fa-check"></i><b>8.1</b> User Login</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#enter-the-url-in-a-web-browser"><i class="fa fa-check"></i><b>8.1.1</b> Enter the URL in a web browser:</a></li>
+<li class="chapter" data-level="8.1.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-obtain-free-computational-resources"><i class="fa fa-check"></i><b>8.1.2</b> To obtain free computational resources:</a></li>
+<li class="chapter" data-level="8.1.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#to-browse-hemascopecloud-without-needing-computational-resources"><i class="fa fa-check"></i><b>8.1.3</b> To browse HemaScopeCloud without needing computational resources:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#homepage"><i class="fa fa-check"></i><b>8.2</b> Homepage</a></li>
+<li class="chapter" data-level="8.3" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#data-page"><i class="fa fa-check"></i><b>8.3</b> Data Page</a></li>
+<li class="chapter" data-level="8.4" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#analysis-page"><i class="fa fa-check"></i><b>8.4</b> Analysis Page</a></li>
+<li class="chapter" data-level="8.5" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#projects-page"><i class="fa fa-check"></i><b>8.5</b> Projects page</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -368,25 +381,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-27"><a href="step-by-step-scrna-seq-pipeline.html#cb17-27" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
 <span id="cb17-28"><a href="step-by-step-scrna-seq-pipeline.html#cb17-28" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
 <span id="cb17-29"><a href="step-by-step-scrna-seq-pipeline.html#cb17-29" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb17-30"><a href="step-by-step-scrna-seq-pipeline.html#cb17-30" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;&lt;&lt;&lt;&lt;&lt;</span> Updated upstream</span>
-<span id="cb17-31"><a href="step-by-step-scrna-seq-pipeline.html#cb17-31" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb17-32"><a href="step-by-step-scrna-seq-pipeline.html#cb17-32" tabindex="-1"></a><span class="sc">==</span><span class="er">=====</span></span>
-<span id="cb17-33"><a href="step-by-step-scrna-seq-pipeline.html#cb17-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb17-34"><a href="step-by-step-scrna-seq-pipeline.html#cb17-34" tabindex="-1"></a><span class="er">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> Stashed changes</span>
-<span id="cb17-35"><a href="step-by-step-scrna-seq-pipeline.html#cb17-35" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb17-36"><a href="step-by-step-scrna-seq-pipeline.html#cb17-36" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb17-37"><a href="step-by-step-scrna-seq-pipeline.html#cb17-37" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb17-38"><a href="step-by-step-scrna-seq-pipeline.html#cb17-38" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb17-39"><a href="step-by-step-scrna-seq-pipeline.html#cb17-39" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb17-40"><a href="step-by-step-scrna-seq-pipeline.html#cb17-40" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb17-41"><a href="step-by-step-scrna-seq-pipeline.html#cb17-41" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb17-42"><a href="step-by-step-scrna-seq-pipeline.html#cb17-42" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb17-43"><a href="step-by-step-scrna-seq-pipeline.html#cb17-43" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb17-44"><a href="step-by-step-scrna-seq-pipeline.html#cb17-44" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb17-45"><a href="step-by-step-scrna-seq-pipeline.html#cb17-45" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb17-46"><a href="step-by-step-scrna-seq-pipeline.html#cb17-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb17-47"><a href="step-by-step-scrna-seq-pipeline.html#cb17-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb17-48"><a href="step-by-step-scrna-seq-pipeline.html#cb17-48" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<span id="cb17-30"><a href="step-by-step-scrna-seq-pipeline.html#cb17-30" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb17-31"><a href="step-by-step-scrna-seq-pipeline.html#cb17-31" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb17-32"><a href="step-by-step-scrna-seq-pipeline.html#cb17-32" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb17-33"><a href="step-by-step-scrna-seq-pipeline.html#cb17-33" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb17-34"><a href="step-by-step-scrna-seq-pipeline.html#cb17-34" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb17-35"><a href="step-by-step-scrna-seq-pipeline.html#cb17-35" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb17-36"><a href="step-by-step-scrna-seq-pipeline.html#cb17-36" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb17-37"><a href="step-by-step-scrna-seq-pipeline.html#cb17-37" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb17-38"><a href="step-by-step-scrna-seq-pipeline.html#cb17-38" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-39"><a href="step-by-step-scrna-seq-pipeline.html#cb17-39" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb17-40"><a href="step-by-step-scrna-seq-pipeline.html#cb17-40" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb17-41"><a href="step-by-step-scrna-seq-pipeline.html#cb17-41" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb17-42"><a href="step-by-step-scrna-seq-pipeline.html#cb17-42" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb17-43"><a href="step-by-step-scrna-seq-pipeline.html#cb17-43" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb17-44"><a href="step-by-step-scrna-seq-pipeline.html#cb17-44" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <ul>
 <li>Set the paths for the output results, and the Python installation.</li>
 </ul>
