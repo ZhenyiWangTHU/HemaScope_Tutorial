@@ -1,8 +1,7 @@
 h1:step-by-step-shiny Step-by-step shiny
 h2:step-1.-enter-r-and-get-the-path-of-the-installed-r-packages Step 1. Enter R and get the path of the installed R packages
-h2:step-2.-load-the-r-packages-and-the-input-data Step 2. Load the R packages and the input data
-h2:step-3.-start-hemascopeshiny Step 3. Start HemaScopeShiny
-h2:step-4.-use-hemascopeshiny-via-the-gui Step 4. Use HemaScopeShiny via the GUI
+h2:step-2.-run-shiny-code Step 2. Run shiny code
+h2:step-3.-use-hemascopeshiny-via-the-gui Step 3. Use HemaScopeShiny via the GUI
 h3:scrna-seq-pipeline scRNA-seq pipeline
 h4:step-1-scrna-seq-pipeline.-input-data Step 1 (scRNA-seq pipeline). Input Data
 h4:step-2-scrna-seq-pipeline.-quality-control Step 2 (scRNA-seq pipeline). Quality Control

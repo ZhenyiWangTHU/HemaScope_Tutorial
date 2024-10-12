@@ -304,12 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html"><i class="fa fa-check"></i><b>7</b> Step-by-step shiny</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>7.1</b> Step 2. Load the R packages and the input data</a></li>
-<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny"><i class="fa fa-check"></i><b>7.2</b> Step 3. Start HemaScopeShiny</a></li>
-<li class="chapter" data-level="7.3" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.3</b> Step 4. Use HemaScopeShiny via the GUI</a>
+<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-run-shiny-code"><i class="fa fa-check"></i><b>7.1</b> Step 2. Run shiny code</a></li>
+<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.2</b> Step 3. Use HemaScopeShiny via the GUI</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#scrna-seq-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> scRNA-seq pipeline</a></li>
-<li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
+<li class="chapter" data-level="7.2.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#scrna-seq-pipeline"><i class="fa fa-check"></i><b>7.2.1</b> scRNA-seq pipeline</a></li>
+<li class="chapter" data-level="7.2.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.2.2</b> ST-pipeline</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html"><i class="fa fa-check"></i><b>8</b> Operation Manual for the HemaScopeCloud Single-Cell Cloud Analysis Platform</a>
@@ -353,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.1.1</span> Enter the URL in a web browser:<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#enter-the-url-in-a-web-browser" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://hemascope.hiplot.cn/?home=hemascope"><em>https://hemascope.hiplot.cn/?home=hemascope</em></a>
 and click to access the login page.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-142"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-140"></span>
 <img src="image/hemascopecloud/loginpage.png" alt="Login Page" width="800px" />
 <p class="caption">
 Figure 8.1: Login Page
@@ -375,7 +374,7 @@ analysis, the platform will prompt: “Please log in for analysis!”</p>
 </div>
 <div id="homepage" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Homepage<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#homepage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-143"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-141"></span>
 <img src="image/hemascopecloud/homepage.png" alt="Homepage" width="800px" />
 <p class="caption">
 Figure 8.2: Homepage
@@ -420,13 +419,13 @@ the Personal tab allows users to create new folders and upload files.</p>
 st_HemaScopeCloud, serving as entries for creating new analysis
 projects. Click the Analysis button to access the new project and
 execution page for that pipeline.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-142"></span>
 <img src="image/hemascopecloud/SelectAnalysisPipelinePage.png" alt="Select Analysis Pipeline Page" width="800px" />
 <p class="caption">
 Figure 8.3: Select Analysis Pipeline Page
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-143"></span>
 <img src="image/hemascopecloud/EntertheAnalysisPipelinePage.png" alt="Enter the Analysis Pipeline Page" width="800px" />
 <p class="caption">
 Figure 8.4: Enter the Analysis Pipeline Page
@@ -457,7 +456,7 @@ default parameters to quickly initiate analysis projects. On the new
 project page, click Load Demo Data to load files from the demo project
 and fill the required fields. Then, click the Run button to execute the
 analysis for the demo project.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-144"></span>
 <img src="image/hemascopecloud/LoadDemoData.png" alt="Load Demo Data" width="800px" />
 <p class="caption">
 Figure 8.5: Load Demo Data
@@ -485,31 +484,31 @@ step.</p>
 <p><strong>Status：</strong>Corresponds to the analysis status of the project.</p>
 <p><strong>Log：</strong>Click this button to view the run log.</p>
 <p><strong>Parameter Settings：</strong>Used for entering parameter values.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
 <img src="image/hemascopecloud/AnalysisProjectPage.png" alt="Analysis Project Page" width="800px" />
 <p class="caption">
 Figure 8.6: Analysis Project Page
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-148"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
 <img src="image/hemascopecloud/AnalysisProjectResultPage.png" alt="Analysis Project Result Page" width="800px" />
 <p class="caption">
 Figure 8.7: Analysis Project Result Page
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
 <img src="image/hemascopecloud/Thisstepoftheanalysisprojectdisplays.png" alt="This step of the analysis project displays 'Waiting for resources…Do not submit repeatedlly'" width="800px" />
 <p class="caption">
 Figure 8.8: This step of the analysis project displays ‘Waiting for resources…Do not submit repeatedlly’
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-150"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-148"></span>
 <img src="image/hemascopecloud/ThisstepoftheanalysisprojectdisplaysAnalyzing.png" alt="This step of the analysis project displays 'Analyzing…Do not submit repeatedly'" width="800px" />
 <p class="caption">
 Figure 8.9: This step of the analysis project displays ‘Analyzing…Do not submit repeatedly’
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
 <img src="image/hemascopecloud/HistoryPage.png" alt="History Page" width="800px" />
 <p class="caption">
 Figure 8.10: History Page
@@ -524,7 +523,7 @@ results.</p>
 <h2><span class="header-section-number">8.5</span> Projects page<a href="operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform.html#projects-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The homege includes analysis projects created by the user as well as
 pre-configured demo analysis projects provided by the system.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-152"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-150"></span>
 <img src="image/hemascopecloud/Demoprojectsanduserspersonalprojects.png" alt="Demo projects and user’s personal projects" width="800px" />
 <p class="caption">
 Figure 8.11: Demo projects and user’s personal projects
@@ -532,13 +531,13 @@ Figure 8.11: Demo projects and user’s personal projects
 </div>
 <p>Clicking “View” allows you to navigate to the analysis project for
 review and step-by-step analysis.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
 <img src="image/hemascopecloud/ClickViewtoaccesstheanalysisproject.png" alt="Click 'View' to access the analysis project" width="800px" />
 <p class="caption">
 Figure 8.12: Click ‘View’ to access the analysis project
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-154"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-152"></span>
 <img src="image/hemascopecloud/Enterthedetailedanalysisprojectpage.png" alt="Enter the detailed analysis project page" width="800px" />
 <p class="caption">
 Figure 8.13: Enter the detailed analysis project page

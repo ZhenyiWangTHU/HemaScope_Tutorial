@@ -1,7 +1,7 @@
 # Step-by-step shiny
 
 #You can run shiny on Linux or on the Rstudio web page
-#Run shiny on Linux
+Choice 1:Run shiny on Linux
 - Enter Linux, activate the HemaScope environment,install radian package then you can enter the R environment on Linux and run shiny code
 ```{R,eval=FALSE}
 pip install -U radian
@@ -10,29 +10,22 @@ raian
 ```{R,echo=FALSE}
 knitr::include_graphics(path="./image/radian.png")
 ```
--You can see "r$>" . It menns you enter R environment on Linux
-Put all the shiny code in the APP.R file. APP.R.The the code structure is as follows
+-You can see "r$>" . It menns you enter R environment on Linux.
 ```{R,eval=FALSE}
-library(xxx) #library all packages in tutorial
-The codes of UI
-The codes of server
-shinyAPP(ui,server)
+app_path <- system.file("shinyapp/shiny_sc_st_all.R", package = "HemaScopeR")  #The path where shiny_sc_st_all.R is located
+#Run shiny code
+shiny::runApp(app_path,launch.browser = FALSE,host = "xx.xx.xx.xx") #host parameter：Your server IP address
 ```
--Then you can run shiny code
-```{R,eval=FALSE}
-setwd() #The path where APP.R is located
-shiny::runApp(appDir = getwd(),host = "10.19.28.74",launch.browser = FALSE) #host: your server IP
-```
-#You'll see a page like the one below,copy link 
+You'll see a page like the one below,copy link 
 ```{R,echo=FALSE}
 knitr::include_graphics(path="./image/shiny.png")
 ```
-#Open the link with a browser,you can see HemaScopeR shiny home page.
+Open the link with a browser,you can see HemaScopeR shiny home page.
 ```{R,echo=FALSE}
-knitr::include_graphics(path="./image/web_home.png")
+knitr::include_graphics(path="./image/shiny_home.png")
 ```
 
-#Run shiny on Rstudio web page
+Choice2:Run shiny on Rstudio web page
 ## Step 1. Enter R and get the path of the installed R packages
 - Enter the R environment in the Linux command line.
 ```
@@ -44,78 +37,16 @@ R
 ```
 For example, "/An/example/of/the/path/to/installed/R/packages"
 
-## Step 2. Load the R packages and the input data
-
-- Load the R packages.
+## Step 2. Run shiny code
 
 ```{R, eval=FALSE}
 .libPaths("/An/example/of/the/path/to/installed/R/packages")
-# Shiny
-library(shiny)
-library(shinyjs)
-library(shinydashboard)
-library(shinyWidgets)
-library(slickR)
-# sc libraries
-library(Seurat)
-library(phateR)
-library(DoubletFinder)
-library(monocle)
-library(slingshot)
-#library(URD)
-library(GSVA)
-library(limma)
-library(plyr)
-library(dplyr)
-library(org.Mm.eg.db)
-library(org.Hs.eg.db)
-library(CellChat)
-library(velocyto.R)
-library(SeuratWrappers)
-library(stringr)
-library(scran)
-library(ggpubr)
-library(viridis)
-library(pheatmap)
-library(parallel)
-library(reticulate)
-library(SCENIC)
-library(feather)
-library(AUCell)
-library(RcisTarget)
-library(Matrix)
-library(foreach)
-library(doParallel)
-library(clusterProfiler)
-library(OpenXGR)
-library(presto)
-library(doMC)
-library(doRNG)
-# st libraries
-library(RColorBrewer)
-library(Rfast2)
-library(SeuratDisk)
-library(abcCellmap)
-library(biomaRt)
-library(copykat)
-library(gelnet)
-library(ggplot2)
-library(parallelDist)
-library(patchwork)
-library(markdown)
-#getpot
-#library(getopt)
-library(tools)
-# HemaScope
-library(HemaScope)
-```
-## Step 3. Start HemaScopeShiny
-
-```{R, eval=FALSE}
-shinyApp(ui,server)
+app_path <- system.file("shinyapp/shiny_sc_st_all.R", package = "HemaScopeR")  #The path where shiny_sc_st_all.R is located
+#Run shiny code
+shiny::runApp(app_path,launch.browser = FALSE,host = "xx.xx.xx.xx") #host parameter：Your server IP address
 ```
 
-## Step 4. Use HemaScopeShiny via the GUI
+## Step 3. Use HemaScopeShiny via the GUI
 
 - Start interface.
 
