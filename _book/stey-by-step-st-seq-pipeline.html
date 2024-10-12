@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.3" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#an-example"><i class="fa fa-check"></i><b>6.1.3</b> An example:</a></li>
 <li class="chapter" data-level="6.1.4" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#outputs-2"><i class="fa fa-check"></i><b>6.1.4</b> Outputs:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-qc"><i class="fa fa-check"></i><b>6.2</b> Step 2. QC</a>
+<li class="chapter" data-level="6.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#step-2.-quality-control-1"><i class="fa fa-check"></i><b>6.2</b> Step 2. Quality Control</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-arguments-12"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments:</a></li>
 <li class="chapter" data-level="6.2.2" data-path="stey-by-step-st-seq-pipeline.html"><a href="stey-by-step-st-seq-pipeline.html#function-behavior"><i class="fa fa-check"></i><b>6.2.2</b> Function behavior:</a></li>
@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">6</span> Stey-by-step st-seq pipeline<a href="stey-by-step-st-seq-pipeline.html#stey-by-step-st-seq-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="step-1.-data-loading" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Step 1. Data loading<a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>st_Loading_Data</code> function is designed for loading <a href="https://www.10xgenomics.com/cn/products/spatial-gene-expression">10X Visium</a> spatial transcriptomics data from <a href="https://www.10xgenomics.com/cn/support/software/space-ranger/latest">Space Ranger</a>. It will load data from <code>input.data.dir</code> and output it in the <a href="https://github.com/satijalab/seurat-object">SeuratOjbect</a> format.</p>
+<p>The <code>st_Loading_Data</code> function is designed for loading <a href="https://www.10xgenomics.com/cn/products/spatial-gene-expression">10X Visium</a> spatial transcriptomics data from <a href="https://www.10xgenomics.com/cn/support/software/space-ranger/latest">Space Ranger</a>. It will load data from <code>input.data.dir</code> and output it in the <a href="https://github.com/satijalab/seurat-object">SeuratObject</a> format.</p>
 <div id="function-arguments-11" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -401,8 +401,8 @@ Returns the processed Seurat object.</li>
 </ul>
 </div>
 </div>
-<div id="step-2.-qc" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Step 2. QC<a href="stey-by-step-st-seq-pipeline.html#step-2.-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="step-2.-quality-control-1" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Step 2. Quality Control<a href="stey-by-step-st-seq-pipeline.html#step-2.-quality-control-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>QC_Spatial</code> function performs basic quality control on a SeuratObject containing 10X visium data and returns the filtered SeuratObject. It provides options to set thresholds for the number of genes, nUMI (unique molecular identifiers), and spots expressing each gene. It also allows for the removal of mitochondrial genes based on species.</p>
 <div id="function-arguments-12" class="section level3 hasAnchor" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Function arguments:<a href="stey-by-step-st-seq-pipeline.html#function-arguments-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>

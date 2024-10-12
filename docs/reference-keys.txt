@@ -114,7 +114,7 @@ function-arguments-11
 funciton-behavior
 an-example
 outputs-2
-step-2.-qc
+step-2.-quality-control-1
 function-arguments-12
 function-behavior
 an-example-1
