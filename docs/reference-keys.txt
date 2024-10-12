@@ -30,6 +30,8 @@ fig:unnamed-chunk-97
 fig:unnamed-chunk-101
 fig:unnamed-chunk-102
 fig:unnamed-chunk-103
+fig:unnamed-chunk-140
+fig:unnamed-chunk-141
 fig:unnamed-chunk-142
 fig:unnamed-chunk-143
 fig:unnamed-chunk-144
@@ -41,8 +43,6 @@ fig:unnamed-chunk-149
 fig:unnamed-chunk-150
 fig:unnamed-chunk-151
 fig:unnamed-chunk-152
-fig:unnamed-chunk-153
-fig:unnamed-chunk-154
 introduction
 installation
 create-a-new-conda-environment-and-activate-it
@@ -160,9 +160,9 @@ function-behavior-8
 an-example-9
 outputs-11
 step-by-step-shiny
-step-2.-load-the-r-packages-and-the-input-data
-step-3.-start-hemascopeshiny
-step-4.-use-hemascopeshiny-via-the-gui
+step-1.-enter-r-and-get-the-path-of-the-installed-r-packages
+step-2.-run-shiny-code
+step-3.-use-hemascopeshiny-via-the-gui
 scrna-seq-pipeline
 step-1-scrna-seq-pipeline.-input-data
 step-2-scrna-seq-pipeline.-quality-control

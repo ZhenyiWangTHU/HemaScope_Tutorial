@@ -304,9 +304,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html"><i class="fa fa-check"></i><b>7</b> Step-by-step shiny</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data"><i class="fa fa-check"></i><b>7.1</b> Step 2. Load the R packages and the input data</a></li>
-<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny"><i class="fa fa-check"></i><b>7.2</b> Step 3. Start HemaScopeShiny</a></li>
-<li class="chapter" data-level="7.3" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.3</b> Step 4. Use HemaScopeShiny via the GUI</a>
+<li class="chapter" data-level="7.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-1.-enter-r-and-get-the-path-of-the-installed-r-packages"><i class="fa fa-check"></i><b>7.1</b> Step 1. Enter R and get the path of the installed R packages</a></li>
+<li class="chapter" data-level="7.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-2.-run-shiny-code"><i class="fa fa-check"></i><b>7.2</b> Step 2. Run shiny code</a></li>
+<li class="chapter" data-level="7.3" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#step-3.-use-hemascopeshiny-via-the-gui"><i class="fa fa-check"></i><b>7.3</b> Step 3. Use HemaScopeShiny via the GUI</a>
 <ul>
 <li class="chapter" data-level="7.3.1" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#scrna-seq-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> scRNA-seq pipeline</a></li>
 <li class="chapter" data-level="7.3.2" data-path="step-by-step-shiny.html"><a href="step-by-step-shiny.html#st-pipeline"><i class="fa fa-check"></i><b>7.3.2</b> ST-pipeline</a></li>
@@ -348,104 +348,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-by-step-shiny" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">7</span> Step-by-step shiny<a href="step-by-step-shiny.html#step-by-step-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>#You can run shiny on Linux or on the Rstudio web page
-#Run shiny on Linux
+Choice 1:Run shiny on Linux
 - Enter Linux, activate the HemaScope environment,install radian package then you can enter the R environment on Linux and run shiny code</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="step-by-step-shiny.html#cb98-1" tabindex="-1"></a>pip install <span class="sc">-</span>U radian</span>
-<span id="cb98-2"><a href="step-by-step-shiny.html#cb98-2" tabindex="-1"></a>raian</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="step-by-step-shiny.html#cb98-1" tabindex="-1"></a>raian</span></code></pre></div>
 <p><img src="image/radian.png" /><!-- -->
--You can see “r$&gt;” . It menns you enter R environment on Linux
-Put all the shiny code in the APP.R file. APP.R.The the code structure is as follows</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="step-by-step-shiny.html#cb99-1" tabindex="-1"></a><span class="fu">library</span>(xxx) <span class="co">#library all packages in tutorial</span></span>
-<span id="cb99-2"><a href="step-by-step-shiny.html#cb99-2" tabindex="-1"></a>The codes of UI</span>
-<span id="cb99-3"><a href="step-by-step-shiny.html#cb99-3" tabindex="-1"></a>The codes of server</span>
-<span id="cb99-4"><a href="step-by-step-shiny.html#cb99-4" tabindex="-1"></a><span class="fu">shinyAPP</span>(ui,server)</span></code></pre></div>
-<p>-Then you can run shiny code</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="step-by-step-shiny.html#cb100-1" tabindex="-1"></a><span class="fu">setwd</span>() <span class="co">#The path where APP.R is located</span></span>
-<span id="cb100-2"><a href="step-by-step-shiny.html#cb100-2" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="at">appDir =</span> <span class="fu">getwd</span>(),<span class="at">host =</span> <span class="st">&quot;10.19.28.74&quot;</span>,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>) <span class="co">#host: your server IP</span></span></code></pre></div>
-<p>#You’ll see a page like the one below,copy link
+-You can see “r$&gt;” . It menns you enter R environment on Linux.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="step-by-step-shiny.html#cb99-1" tabindex="-1"></a>app_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;shinyapp/shiny_sc_st_all.R&quot;</span>, <span class="at">package =</span> <span class="st">&quot;HemaScopeR&quot;</span>)  <span class="co">#The path where shiny_sc_st_all.R is located</span></span>
+<span id="cb99-2"><a href="step-by-step-shiny.html#cb99-2" tabindex="-1"></a><span class="co">#Run shiny code</span></span>
+<span id="cb99-3"><a href="step-by-step-shiny.html#cb99-3" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(app_path,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>,<span class="at">host =</span> <span class="st">&quot;xx.xx.xx.xx&quot;</span>) <span class="co">#host parameter：Your server IP address</span></span></code></pre></div>
+<p>You’ll see a page like the one below,copy link
 <img src="image/shiny.png" /><!-- -->
-#Open the link with a browser,you can see HemaScopeR shiny home page.
-<img src="image/web_home.png" /><!-- --></p>
-<p>#Run shiny on Rstudio web page
-## Step 1. Enter R and get the path of the installed R packages
-- Enter the R environment in the Linux command line.</p>
+Open the link with a browser,you can see HemaScopeR shiny home page.
+<img src="image/shiny_home.png" /><!-- --></p>
+<p>Choice2:Run shiny on Rstudio web page</p>
+<div id="step-1.-enter-r-and-get-the-path-of-the-installed-r-packages" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Step 1. Enter R and get the path of the installed R packages<a href="step-by-step-shiny.html#step-1.-enter-r-and-get-the-path-of-the-installed-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Enter the R environment in the Linux command line.</li>
+</ul>
 <pre><code>R</code></pre>
 <ul>
 <li>Get the path of the installed R packages in the R command line.</li>
 </ul>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="step-by-step-shiny.html#cb102-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="step-by-step-shiny.html#cb101-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
 <p>For example, “/An/example/of/the/path/to/installed/R/packages”</p>
-<div id="step-2.-load-the-r-packages-and-the-input-data" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Step 2. Load the R packages and the input data<a href="step-by-step-shiny.html#step-2.-load-the-r-packages-and-the-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Load the R packages.</li>
-</ul>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="step-by-step-shiny.html#cb103-1" tabindex="-1"></a><span class="fu">.libPaths</span>(<span class="st">&quot;/An/example/of/the/path/to/installed/R/packages&quot;</span>)</span>
-<span id="cb103-2"><a href="step-by-step-shiny.html#cb103-2" tabindex="-1"></a><span class="co"># Shiny</span></span>
-<span id="cb103-3"><a href="step-by-step-shiny.html#cb103-3" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb103-4"><a href="step-by-step-shiny.html#cb103-4" tabindex="-1"></a><span class="fu">library</span>(shinyjs)</span>
-<span id="cb103-5"><a href="step-by-step-shiny.html#cb103-5" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
-<span id="cb103-6"><a href="step-by-step-shiny.html#cb103-6" tabindex="-1"></a><span class="fu">library</span>(shinyWidgets)</span>
-<span id="cb103-7"><a href="step-by-step-shiny.html#cb103-7" tabindex="-1"></a><span class="fu">library</span>(slickR)</span>
-<span id="cb103-8"><a href="step-by-step-shiny.html#cb103-8" tabindex="-1"></a><span class="co"># sc libraries</span></span>
-<span id="cb103-9"><a href="step-by-step-shiny.html#cb103-9" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
-<span id="cb103-10"><a href="step-by-step-shiny.html#cb103-10" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
-<span id="cb103-11"><a href="step-by-step-shiny.html#cb103-11" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
-<span id="cb103-12"><a href="step-by-step-shiny.html#cb103-12" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
-<span id="cb103-13"><a href="step-by-step-shiny.html#cb103-13" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
-<span id="cb103-14"><a href="step-by-step-shiny.html#cb103-14" tabindex="-1"></a><span class="co">#library(URD)</span></span>
-<span id="cb103-15"><a href="step-by-step-shiny.html#cb103-15" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
-<span id="cb103-16"><a href="step-by-step-shiny.html#cb103-16" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
-<span id="cb103-17"><a href="step-by-step-shiny.html#cb103-17" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb103-18"><a href="step-by-step-shiny.html#cb103-18" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb103-19"><a href="step-by-step-shiny.html#cb103-19" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
-<span id="cb103-20"><a href="step-by-step-shiny.html#cb103-20" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb103-21"><a href="step-by-step-shiny.html#cb103-21" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
-<span id="cb103-22"><a href="step-by-step-shiny.html#cb103-22" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
-<span id="cb103-23"><a href="step-by-step-shiny.html#cb103-23" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
-<span id="cb103-24"><a href="step-by-step-shiny.html#cb103-24" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb103-25"><a href="step-by-step-shiny.html#cb103-25" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb103-26"><a href="step-by-step-shiny.html#cb103-26" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb103-27"><a href="step-by-step-shiny.html#cb103-27" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb103-28"><a href="step-by-step-shiny.html#cb103-28" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb103-29"><a href="step-by-step-shiny.html#cb103-29" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb103-30"><a href="step-by-step-shiny.html#cb103-30" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb103-31"><a href="step-by-step-shiny.html#cb103-31" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
-<span id="cb103-32"><a href="step-by-step-shiny.html#cb103-32" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
-<span id="cb103-33"><a href="step-by-step-shiny.html#cb103-33" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
-<span id="cb103-34"><a href="step-by-step-shiny.html#cb103-34" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
-<span id="cb103-35"><a href="step-by-step-shiny.html#cb103-35" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
-<span id="cb103-36"><a href="step-by-step-shiny.html#cb103-36" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb103-37"><a href="step-by-step-shiny.html#cb103-37" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb103-38"><a href="step-by-step-shiny.html#cb103-38" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb103-39"><a href="step-by-step-shiny.html#cb103-39" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb103-40"><a href="step-by-step-shiny.html#cb103-40" tabindex="-1"></a><span class="fu">library</span>(presto)</span>
-<span id="cb103-41"><a href="step-by-step-shiny.html#cb103-41" tabindex="-1"></a><span class="fu">library</span>(doMC)</span>
-<span id="cb103-42"><a href="step-by-step-shiny.html#cb103-42" tabindex="-1"></a><span class="fu">library</span>(doRNG)</span>
-<span id="cb103-43"><a href="step-by-step-shiny.html#cb103-43" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb103-44"><a href="step-by-step-shiny.html#cb103-44" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb103-45"><a href="step-by-step-shiny.html#cb103-45" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb103-46"><a href="step-by-step-shiny.html#cb103-46" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb103-47"><a href="step-by-step-shiny.html#cb103-47" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb103-48"><a href="step-by-step-shiny.html#cb103-48" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb103-49"><a href="step-by-step-shiny.html#cb103-49" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb103-50"><a href="step-by-step-shiny.html#cb103-50" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb103-51"><a href="step-by-step-shiny.html#cb103-51" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb103-52"><a href="step-by-step-shiny.html#cb103-52" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb103-53"><a href="step-by-step-shiny.html#cb103-53" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb103-54"><a href="step-by-step-shiny.html#cb103-54" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb103-55"><a href="step-by-step-shiny.html#cb103-55" tabindex="-1"></a><span class="co">#getpot</span></span>
-<span id="cb103-56"><a href="step-by-step-shiny.html#cb103-56" tabindex="-1"></a><span class="co">#library(getopt)</span></span>
-<span id="cb103-57"><a href="step-by-step-shiny.html#cb103-57" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb103-58"><a href="step-by-step-shiny.html#cb103-58" tabindex="-1"></a><span class="co"># HemaScope</span></span>
-<span id="cb103-59"><a href="step-by-step-shiny.html#cb103-59" tabindex="-1"></a><span class="fu">library</span>(HemaScope)</span></code></pre></div>
 </div>
-<div id="step-3.-start-hemascopeshiny" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Step 3. Start HemaScopeShiny<a href="step-by-step-shiny.html#step-3.-start-hemascopeshiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="step-by-step-shiny.html#cb104-1" tabindex="-1"></a><span class="fu">shinyApp</span>(ui,server)</span></code></pre></div>
+<div id="step-2.-run-shiny-code" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Step 2. Run shiny code<a href="step-by-step-shiny.html#step-2.-run-shiny-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="step-by-step-shiny.html#cb102-1" tabindex="-1"></a><span class="fu">.libPaths</span>(<span class="st">&quot;/An/example/of/the/path/to/installed/R/packages&quot;</span>)</span>
+<span id="cb102-2"><a href="step-by-step-shiny.html#cb102-2" tabindex="-1"></a>app_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;shinyapp/shiny_sc_st_all.R&quot;</span>, <span class="at">package =</span> <span class="st">&quot;HemaScopeR&quot;</span>)  <span class="co">#The path where shiny_sc_st_all.R is located</span></span>
+<span id="cb102-3"><a href="step-by-step-shiny.html#cb102-3" tabindex="-1"></a><span class="co">#Run shiny code</span></span>
+<span id="cb102-4"><a href="step-by-step-shiny.html#cb102-4" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(app_path,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>,<span class="at">host =</span> <span class="st">&quot;xx.xx.xx.xx&quot;</span>) <span class="co">#host parameter：Your server IP address</span></span></code></pre></div>
 </div>
-<div id="step-4.-use-hemascopeshiny-via-the-gui" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Step 4. Use HemaScopeShiny via the GUI<a href="step-by-step-shiny.html#step-4.-use-hemascopeshiny-via-the-gui" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="step-3.-use-hemascopeshiny-via-the-gui" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Step 3. Use HemaScopeShiny via the GUI<a href="step-by-step-shiny.html#step-3.-use-hemascopeshiny-via-the-gui" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Start interface.</li>
 </ul>

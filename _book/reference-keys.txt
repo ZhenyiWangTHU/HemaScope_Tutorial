@@ -160,6 +160,7 @@ function-behavior-8
 an-example-9
 outputs-11
 step-by-step-shiny
+step-1.-enter-r-and-get-the-path-of-the-installed-r-packages
 step-2.-run-shiny-code
 step-3.-use-hemascopeshiny-via-the-gui
 scrna-seq-pipeline
