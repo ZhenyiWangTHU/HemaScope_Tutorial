@@ -529,9 +529,9 @@ Click "Run Step7" to proceed. After clicking the "Run Step7" button, please do n
 #### Step 8 (st-seq pipeline). Deconvolution
 
 * The figure showing the step 8 of st-seq pipeline.
-<center class="half">
-    <img src="./figures/shiny/st_seq_pipeline_step8.png" width="80%"/>
-</center>
+```{R,echo=FALSE}
+knitr::include_graphics(path="./image/st_shiny_images/st_step8.png")
+```
 
 cell2loc.sc.h5ad.dir (default: 'NULL'): The path to the h5ad format single-cell RNA-seq data. The default value is NULL.
 
@@ -546,9 +546,9 @@ Click "Run Step8" to proceed. After clicking the "Run Step8" button, please do n
 #### Step 9 (st-seq pipeline). Cell cycle analysis
 
 * The figure showing the step 9 of st-seq pipeline.
-<center class="half">
-    <img src="./figures/shiny/st_seq_pipeline_step9.png" width="80%"/>
-</center>
+```{R,echo=FALSE}
+knitr::include_graphics(path="./image/st_shiny_images/st_step9.png")
+```
 
 The gene sets for calculating S phase scores (e.g. "gene1,gene2,gene3"): A list of genes associated with the S phase. The default value is NULL (uses genes from Seurat).
 
@@ -560,9 +560,9 @@ Click "Run Step9" to proceed. After clicking the "Run Step9" button, please do n
 #### Step 10 (st-seq pipeline). Niche analysis
 
 * The figure showing the step 10 of st-seq pipeline.
-<center class="half">
-    <img src="./figures/shiny/st_seq_pipeline_step10.png" width="80%"/>
-</center>
+```{R,echo=FALSE}
+knitr::include_graphics(path="./image/st_shiny_images/st_step10.png")
+```
 
 
 Nich.cluster.n (default: 4): The number of clusters for niche clustering. The default value is 4.
@@ -573,8 +573,8 @@ Click "Run Step10" to proceed. After clicking the "Run Step10" button, please do
 #### Step 11 (st-seq pipeline). Generate the Report
 
 * The figure showing the step 11 of st-seq pipeline.
-<center class="half">
-    <img src="./figures/shiny/st_seq_pipeline_step11.png" width="80%"/>
-</center>
+```{R,echo=FALSE}
+knitr::include_graphics(path="./image/st_shiny_images/st_step11.png")
+```
 
 Click "Run Step11" to generate the analysis report.
