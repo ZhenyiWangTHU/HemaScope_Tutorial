@@ -46,24 +46,24 @@ conda install python=3.9.12
 - From conda
 
 ```         
-conda install -c conda-forge r-devtools=2.4.5      
-conda install -c conda-forge r-Seurat=4.3.0.1       
-conda install -c conda-forge r-Rfast2=0.1.5.1      
-conda install -c conda-forge r-hdf5r=1.3.10
-conda install -c conda-forge r-ggpubr=0.6.0
-conda install pwwang::r-seuratwrappers
-conda install -c bioconda bioconductor-monocle=2.28.0
-conda install -c bioconda bioconductor-slingshot=2.8.0
-conda install -c bioconda bioconductor-GSVA=1.48.2
-conda install -c bioconda bioconductor-org.Mm.eg.db=3.17.0
-conda install -c bioconda bioconductor-org.Hs.eg.db=3.17.0
-conda install -c bioconda bioconductor-scran=1.28.1
-conda install -c bioconda bioconductor-AUCell=1.22.0
-conda install -c bioconda bioconductor-RcisTarget=1.20.0
-conda install -c bioconda bioconductor-GENIE3=1.24.0
-conda install -c bioconda bioconductor-biomaRt=2.56.1
-conda install -c bioconda r-velocyto.r=0.6
-#conda install -c bioconda bioconductor-limma=3.56.2
+conda install -c conda-forge r-devtools=2.4.5 -y
+conda install -c conda-forge r-Seurat=4.3.0.1 -y
+conda install -c conda-forge r-Rfast2=0.1.5.1 -y
+conda install -c conda-forge r-hdf5r=1.3.10 -y
+conda install -c conda-forge r-ggpubr=0.6.0 -y
+conda install pwwang::r-seuratwrappers -y
+conda install -c bioconda bioconductor-monocle=2.28.0 -y
+conda install -c bioconda bioconductor-slingshot=2.8.0 -y
+conda install -c bioconda bioconductor-GSVA=1.48.2 -y
+conda install -c bioconda bioconductor-org.Mm.eg.db=3.17.0 -y
+conda install -c bioconda bioconductor-org.Hs.eg.db=3.17.0 -y
+conda install -c bioconda bioconductor-scran=1.28.1 -y
+conda install -c bioconda bioconductor-AUCell=1.22.0 -y
+conda install -c bioconda bioconductor-RcisTarget=1.20.0 -y
+conda install -c bioconda bioconductor-GENIE3=1.24.0 -y
+conda install -c bioconda bioconductor-biomaRt=2.56.1 -y
+conda install -c bioconda r-velocyto.r=0.6 -y
+#conda install -c bioconda bioconductor-limma=3.56.2 -y
 ```
 - Enter the R language environment
 
