@@ -537,7 +537,7 @@ st_obj <- st_NicheAnalysis(
     st_data_path = 'path/to/data',
     slice = `slice1`,
     species = 'human',
-    condaenv = 'path/to/python'
+    pythonPath = 'path/to/python'
 )
 ```
 
