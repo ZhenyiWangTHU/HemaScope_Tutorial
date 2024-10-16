@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Installation | HemaScope Tutorial</title>
+  <title>8 Operation Manual for the HemaScopeCloud | HemaScope Tutorial</title>
   <meta name="description" content="This is the tutorial for HemaScope." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Installation | HemaScope Tutorial" />
+  <meta property="og:title" content="8 Operation Manual for the HemaScopeCloud | HemaScope Tutorial" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the tutorial for HemaScope." />
   <meta name="github-repo" content="https://github.com/ZhenyiWangTHU/HemaScopeR/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Installation | HemaScope Tutorial" />
+  <meta name="twitter:title" content="8 Operation Manual for the HemaScopeCloud | HemaScope Tutorial" />
   
   <meta name="twitter:description" content="This is the tutorial for HemaScope." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="integrated-scrna-seq-pipeline.html"/>
+<link rel="prev" href="step-by-step-shiny.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -345,169 +345,205 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Installation<a href="installation.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="create-a-new-conda-environment-and-activate-it" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Create a new conda environment and activate it<a href="installation.html#create-a-new-conda-environment-and-activate-it" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>conda create --name HemaScope_env
-conda activate HemaScope_env</code></pre>
+<div id="operation-manual-for-the-hemascopecloud" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Operation Manual for the HemaScopeCloud<a href="operation-manual-for-the-hemascopecloud.html#operation-manual-for-the-hemascopecloud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="user-login" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> User Login<a href="operation-manual-for-the-hemascopecloud.html#user-login" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="enter-the-url-in-a-web-browser" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Enter the URL in a web browser:<a href="operation-manual-for-the-hemascopecloud.html#enter-the-url-in-a-web-browser" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://hemascope.hiplot.cn/?home=hemascope"><em>https://hemascope.hiplot.cn/?home=hemascope</em></a>
+and click to access the login page.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<img src="image/hemascopecloud/loginpage.png" alt="Login Page" width="800px" />
+<p class="caption">
+Figure 8.1: Login Page
+</p>
 </div>
-<div id="set-the-channels-in-conda" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Set the channels in conda<a href="installation.html#set-the-channels-in-conda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code># Add the default channel
-conda config --add channels defaults
-
-# Add default channel URLs
-conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
-conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
-
-# Add custom channels
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch-lts
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/simpleitk
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/deepmodeling
-
-# Set to show channel URLs
-conda config --set show_channel_urls true</code></pre>
 </div>
-<div id="install-r-and-python" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Install R and python<a href="installation.html#install-r-and-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>R 4.3.3 and python 3.9.12</li>
-</ul>
-<pre><code>conda install R-base=4.3.3
-&lt;!-- conda install python=3.9.12 --&gt;</code></pre>
+<div id="to-obtain-free-computational-resources" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> To obtain free computational resources:<a href="operation-manual-for-the-hemascopecloud.html#to-obtain-free-computational-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Enter your login email, click “Get Code,” input the verification code
+received in your email, and then click “Login” to complete the login and
+access the system homepage.</p>
 </div>
-<div id="install-required-r-packages" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Install required R-packages<a href="installation.html#install-required-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>From conda</li>
-</ul>
-<pre><code>conda install -c conda-forge r-devtools=2.4.5 -y
-conda install -c conda-forge r-Seurat=4.3.0.1 -y
-conda install -c conda-forge r-Rfast2=0.1.5.1 -y
-conda install -c conda-forge r-hdf5r=1.3.10 -y
-conda install -c conda-forge r-ggpubr=0.6.0 -y
-conda install pwwang::r-seuratwrappers -y
-conda install -c bioconda bioconductor-monocle=2.28.0 -y
-conda install -c bioconda bioconductor-slingshot=2.8.0 -y
-conda install -c bioconda bioconductor-GSVA=1.48.2 -y
-conda install -c bioconda bioconductor-org.Mm.eg.db=3.17.0 -y
-conda install -c bioconda bioconductor-org.Hs.eg.db=3.17.0 -y
-conda install -c bioconda bioconductor-scran=1.28.1 -y
-conda install -c bioconda bioconductor-AUCell=1.22.0 -y
-conda install -c bioconda bioconductor-RcisTarget=1.20.0 -y
-conda install -c bioconda bioconductor-GENIE3=1.24.0 -y
-conda install -c bioconda bioconductor-biomaRt=2.56.1 -y
-conda install -c bioconda r-velocyto.r=0.6 -y
-#conda install -c bioconda bioconductor-limma=3.56.2 -y</code></pre>
-<ul>
-<li>Enter the R language environment</li>
-</ul>
-<p>We suggest users do not manually update any already installed R packages during the installation of the following R packages.</p>
-<pre><code>R</code></pre>
-<ul>
-<li>From BiocManager</li>
-</ul>
-<pre><code># BiocManager(version = &quot;1.30.23&quot;) should already be installed as a dependency of r-seuratwrappers. 
-# If it is not installed, please run the following code to install it. 
-# install.packages(&quot;BiocManager&quot;,version=&quot;1.30.23&quot;)
-BiocManager::install(&quot;ComplexHeatmap&quot;)     
-BiocManager::install(&quot;scmap&quot;)
-BiocManager::install(&quot;clusterProfiler&quot;)
-BiocManager::install(&quot;BiocNeighbors&quot;)</code></pre>
-<ul>
-<li>From CRAN</li>
-</ul>
-<pre><code>install.packages(&quot;doMC&quot;)
-install.packages(&quot;doRNG&quot;)
-install.packages(&quot;shinyjs&quot;)
-install.packages(&quot;shiny&quot;)
-install.packages(&quot;shinyWidgets&quot;)
-install.packages(&quot;shinydashboard&quot;)
-install.packages(&quot;slickR&quot;)
-install.packages(&quot;phateR&quot;)
-install.packages(&quot;gelnet&quot;)
-install.packages(&quot;parallelDist&quot;)
-install.packages(&quot;kableExtra&quot;)
-install.packages(&quot;transport&quot;)
-install.packages(&quot;feather&quot;)
-install.packages(&quot;markdown&quot;)
-install.packages(&quot;ggalluvial&quot;)
-install.packages(&quot;forcats&quot;)
-install.packages(&quot;mcmc&quot;)
-install.packages(&quot;MCMCpack&quot;)
-install.packages(&quot;fields&quot;)
-install.packages(&quot;getopt&quot;)
-install.packages(&quot;osfr&quot;)</code></pre>
-<ul>
-<li>From GitHub</li>
-</ul>
-<p>tips:</p>
-<p>Sometimes network connection issues may occur, resulting in an error message indicating that GitHub cannot be connected. Please try installing again when the network conditions improve.</p>
-<p>Usage limitations: Sometimes an API rate limit error occurs, and a GitHub token is needed to provide the GitHub API rate limit. The steps to resolve this are as follows: Register for an account or log in to an existing account on the GitHub website. Then click on your profile picture in the top right corner, go to the dropdown menu and select “Settings.” Next, find “Developer settings” and click on it, then find “Personal access tokens (classic).” Click on it, then click “Create new token (classic).” Create a new token by first naming it anything you like. Then choose the expiration time for the token. Finally, check the “repo” box; the token will be used to download code repositories from GitHub. Click “Generate token.” Copy the generated token password.</p>
-<p>After that, set the token in the environment variable in R. Since we are using conda, enter R by typing R in the terminal. Then, enter the command: usethis::edit_r_environ(). This will open a file. Press the i key to edit. Paste the token you copied into the code area as follows: GITHUB_TOKEN=“your_token”.</p>
-<p>Then press Esc, type :wq! (force save). After that, you need to exit Linux and re-enter R. Close and reopen the terminal to apply the environment variable. Reopen Linux, activate the conda environment, and enter R again.</p>
-<pre><code>devtools::install_github(&quot;sqjin/CellChat&quot;)
-devtools::install_github(&quot;immunogenomics/presto&quot;)
-devtools::install_github(&quot;aertslab/SCENIC@140ad6b&quot;)
-devtools::install_github(&quot;pzhulab/abcCellmap@f44c14b&quot;)
-devtools::install_github(&quot;navinlabcode/copykat@d7d6569&quot;)
-devtools::install_github(&#39;chris-mcginnis-ucsf/DoubletFinder@8c7f76e&#39;)
-devtools::install_github(&quot;mojaveazure/seurat-disk@877d4e1&quot;)
-devtools::install_github(c(&quot;hfang-bristol/dnet&quot;))
-</code></pre>
-<ul>
-<li>Install HemaScopeR from github</li>
-</ul>
-<pre><code>devtools::install_github(repo=&quot;ZhenyiWangTHU/HemaScopeR&quot;, dep = FALSE)</code></pre>
-<!-- - Exist the R language environment -->
-<!-- ``` -->
-<!-- quit() -->
-<!-- ``` -->
-<!-- ## Install required Python-packages -->
-<!-- -   Upgrade pip and set mirrors -->
-<!-- ```          -->
-<!-- python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip -->
-<!-- pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple -->
-<!-- pip config set global.extra-index-url http://mirrors.aliyun.com/pypi/simple/ -->
-<!-- ``` -->
-<!-- -   Install required packages -->
-<!-- ```       -->
-<!-- pip install anndata arboreto cell2location commot karateclub matplotlib networkx phate pot scanpy scipy scvi-tools seaborn distributed radian dask==2022.2.1 distributed==2022.2.1 scvelo==0.2.5 numpy==1.23.5 pandas==1.5.3 -->
-<!-- # stereopy==1.3.1 -->
-<!-- ``` -->
+<div id="to-browse-hemascopecloud-without-needing-computational-resources" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> To browse HemaScopeCloud without needing computational resources:<a href="operation-manual-for-the-hemascopecloud.html#to-browse-hemascopecloud-without-needing-computational-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Click the “View without Login” button to access the system homepage. You
+can view demo analysis projects. If you click the button to initiate an
+analysis, the platform will prompt: “Please log in for analysis!”</p>
 </div>
-<div id="create-the-required-python-virtual-environment" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Create the required python virtual environment<a href="installation.html#create-the-required-python-virtual-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Run the <code>init_miniconda</code> function to create the miniconda virtual environments for the scRNA-seq pipeline and ST pipeline of 10X Visium data and MERFISH data.</li>
-</ul>
-<pre><code>init_miniconda()</code></pre>
-<ul>
-<li>(Optional) Run the <code>init_miniconda_stereo</code> function to create the miniconda virtual environment for the stereo-seq data.</li>
-</ul>
-<pre><code>init_miniconda_stereo()</code></pre>
 </div>
-<div id="the-installed-packages-with-versions" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> The installed packages with versions<a href="installation.html#the-installed-packages-with-versions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>R packages with versions</li>
-</ul>
-<pre><code>Package Version
-------- -------
-</code></pre>
-<ul>
-<li>Python packages with versions</li>
-</ul>
-<pre><code>Package                  Version
------------------------- --------------
-</code></pre>
+<div id="homepage" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Homepage<a href="operation-manual-for-the-hemascopecloud.html#homepage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<img src="image/hemascopecloud/homepage.png" alt="Homepage" width="800px" />
+<p class="caption">
+Figure 8.2: Homepage
+</p>
+</div>
+<p>The left side features a menu bar containing Home, Data, Analysis,
+Project, and Help. And the upper right section includes statistics on
+analysis project status, usage of analysis projects, a quick entry for
+creating new analysis projects, and statistics on allocated storage
+capacity usage.</p>
+<p><strong>Statistics on Analysis Project Status</strong></p>
+<p><strong>Pending Analysis：</strong>Waiting for analysis, not yet submitted for
+analysis.</p>
+<p><strong>Pending Resources：</strong>Waiting for resources, analysis submitted and
+awaiting resource allocation.</p>
+<p><strong>Analyzing：</strong>Currently analyzing.</p>
+<p><strong>Completed：</strong>Analysis completed.</p>
+<p><strong>Error：</strong>An error occurred during analysis.</p>
+<p><strong>Total：</strong>Total of all analysis statuses.</p>
+<p><strong>Usage Statistics for Analysis Projects:</strong> Number of used analysis
+projects / Total number of allocated analysis projects. The current
+allocation for the system is 50 projects. For additional free
+computational resources, please contact the developer.</p>
+<p><strong>Quick Entry for Creating New Analysis Projects:</strong> Supports quick
+access to the new analysis project pages corresponding to two pipelines.</p>
+<p><strong>Storage Capacity Usage:</strong> Used Storage Resources / Allocated Storage
+Resources.</p>
+<p>The lower section displays the most recently run analysis projects. By
+default, it shows demo projects upon initial entry. Clicking the “View”
+option on an entry in the Projects section allows you to access and
+analyze that specific analysis project.</p>
+</div>
+<div id="data-page" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Data Page<a href="operation-manual-for-the-hemascopecloud.html#data-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Data page includes storage for Demo sample project data as well as
+Personal project data. Data under the Demo tab can be downloaded, while
+the Personal tab allows users to create new folders and upload files.</p>
+</div>
+<div id="analysis-page" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Analysis Page<a href="operation-manual-for-the-hemascopecloud.html#analysis-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It lists two analysis pipelines: sc_HemaScopeCloud and
+st_HemaScopeCloud, serving as entries for creating new analysis
+projects. Click the Analysis button to access the new project and
+execution page for that pipeline.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<img src="image/hemascopecloud/SelectAnalysisPipelinePage.png" alt="Select Analysis Pipeline Page" width="800px" />
+<p class="caption">
+Figure 8.3: Select Analysis Pipeline Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<img src="image/hemascopecloud/EntertheAnalysisPipelinePage.png" alt="Enter the Analysis Pipeline Page" width="800px" />
+<p class="caption">
+Figure 8.4: Enter the Analysis Pipeline Page
+</p>
+</div>
+<p><strong>Create New Analysis Project</strong></p>
+<p>Click the Analysis button under the sc_HemaScopeCloud to enter the new
+project page for that pipeline.</p>
+<p><strong>Project Name：</strong>Enter the name of the analysis project for
+identification purposes.</p>
+<p><strong>Input Data：</strong>Click Upload to upload local analysis files. Single and
+multiple file uploads are supported. Uploaded files must comply with the
+pipeline’s input file requirements; otherwise, an error will occur
+during execution.</p>
+<p><strong>Sample Name：</strong>Click Add to enter the sample names, which should
+correspond to the uploaded analysis files.</p>
+<p>Items marked with * are required fields.</p>
+<p><strong>Click the Run button to initiate the analysis：</strong>For the scRNA-seq
+pipeline，this will trigger step1-4; for the st-seq pipeline, it will
+trigger step1-5.</p>
+<p>Each subsequent analysis step requires clicking Run on the relevant step
+page to submit. Before submission, ensure that the previous step has
+generated result files; otherwise, a notification will indicate that the
+analysis cannot proceed.</p>
+<p><strong>Load Demo Data</strong></p>
+<p>HemaScopeCloud supports loading pre-configured analysis demo files and
+default parameters to quickly initiate analysis projects. On the new
+project page, click Load Demo Data to load files from the demo project
+and fill the required fields. Then, click the Run button to execute the
+analysis for the demo project.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-148"></span>
+<img src="image/hemascopecloud/LoadDemoData.png" alt="Load Demo Data" width="800px" />
+<p class="caption">
+Figure 8.5: Load Demo Data
+</p>
+</div>
+<p>After clicking Run, you will be redirected to the detailed page of the
+analysis project.</p>
+<p><strong>Analysis Project Detail Page Notifications</strong></p>
+<p><strong>Waiting for resources…Do not submit repeatedly:</strong> This indicates
+that the submission is waiting for resources. Do not click the Run
+button again.</p>
+<p><strong>Analyzing…Do not submit repeatedly:</strong> This indicates that the
+project is currently analyzing. Do not click the Run button again.</p>
+<p><strong>Analysis Steps, Current Analysis Step:</strong> Displays all stepwise
+analysis processes and the current step. Click on different steps to
+navigate to the corresponding analysis step page. For the initial
+analysis, you must complete the previous step before proceeding to the
+next one.</p>
+<p><strong>Refresh Button:</strong> Used to refresh the current page.</p>
+<p><strong>Results:</strong> This tab stores the results of the completed step.</p>
+<p><strong>Visualization:</strong> For steps that involve visualizations, the results
+will be found under the visualization tab.</p>
+<p><strong>History：</strong>Click on Run History to view all historical runs of that
+step.</p>
+<p><strong>Status：</strong>Corresponds to the analysis status of the project.</p>
+<p><strong>Log：</strong>Click this button to view the run log.</p>
+<p><strong>Parameter Settings：</strong>Used for entering parameter values.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<img src="image/hemascopecloud/AnalysisProjectPage.png" alt="Analysis Project Page" width="800px" />
+<p class="caption">
+Figure 8.6: Analysis Project Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-150"></span>
+<img src="image/hemascopecloud/AnalysisProjectResultPage.png" alt="Analysis Project Result Page" width="800px" />
+<p class="caption">
+Figure 8.7: Analysis Project Result Page
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<img src="image/hemascopecloud/Thisstepoftheanalysisprojectdisplays.png" alt="This step of the analysis project displays 'Waiting for resources…Do not submit repeatedlly'" width="800px" />
+<p class="caption">
+Figure 8.8: This step of the analysis project displays ‘Waiting for resources…Do not submit repeatedlly’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-152"></span>
+<img src="image/hemascopecloud/ThisstepoftheanalysisprojectdisplaysAnalyzing.png" alt="This step of the analysis project displays 'Analyzing…Do not submit repeatedly'" width="800px" />
+<p class="caption">
+Figure 8.9: This step of the analysis project displays ‘Analyzing…Do not submit repeatedly’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<img src="image/hemascopecloud/HistoryPage.png" alt="History Page" width="800px" />
+<p class="caption">
+Figure 8.10: History Page
+</p>
+</div>
+<p><strong>Note:</strong> For steps that have already been completed (except for the
+first step), you can adjust the parameters and click Run to perform
+multiple analyses. The results page will retain only the latest analysis
+results.</p>
+</div>
+<div id="projects-page" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Projects page<a href="operation-manual-for-the-hemascopecloud.html#projects-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The homege includes analysis projects created by the user as well as
+pre-configured demo analysis projects provided by the system.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-154"></span>
+<img src="image/hemascopecloud/Demoprojectsanduserspersonalprojects.png" alt="Demo projects and user’s personal projects" width="800px" />
+<p class="caption">
+Figure 8.11: Demo projects and user’s personal projects
+</p>
+</div>
+<p>Clicking “View” allows you to navigate to the analysis project for
+review and step-by-step analysis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-155"></span>
+<img src="image/hemascopecloud/ClickViewtoaccesstheanalysisproject.png" alt="Click 'View' to access the analysis project" width="800px" />
+<p class="caption">
+Figure 8.12: Click ‘View’ to access the analysis project
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-156"></span>
+<img src="image/hemascopecloud/Enterthedetailedanalysisprojectpage.png" alt="Enter the detailed analysis project page" width="800px" />
+<p class="caption">
+Figure 8.13: Enter the detailed analysis project page
+</p>
+</div>
 
 </div>
 </div>
@@ -516,8 +552,8 @@ devtools::install_github(c(&quot;hfang-bristol/dnet&quot;))
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="integrated-scrna-seq-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="step-by-step-shiny.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -548,7 +584,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-HemaScope_installation_tutorial.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-HemaScopeCloud_Tutorial.Rmd",
 "text": "Edit"
 },
 "history": {
