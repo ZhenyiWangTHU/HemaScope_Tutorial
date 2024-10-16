@@ -38,8 +38,9 @@ conda config --set show_channel_urls true
 
 ```
 conda install R-base=4.3.3
-<!-- conda install python=3.9.12 -->
 ```
+
+<!-- conda install python=3.9.12 -->
 
 ## Install required R-packages
 
