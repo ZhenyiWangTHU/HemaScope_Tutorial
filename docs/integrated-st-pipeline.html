@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-14" />
+<meta name="date" content="2024-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#set-the-channels-in-conda"><i class="fa fa-check"></i><b>2.2</b> Set the channels in conda</a></li>
 <li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Install R and python</a></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.4</b> Install required R-packages</a></li>
-<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#install-required-python-packages"><i class="fa fa-check"></i><b>2.5</b> Install required Python-packages</a></li>
+<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#create-the-required-python-virtual-environment"><i class="fa fa-check"></i><b>2.5</b> Create the required python virtual environment</a></li>
 <li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#the-installed-packages-with-versions"><i class="fa fa-check"></i><b>2.6</b> The installed packages with versions</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
@@ -350,287 +350,287 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Load the R packages.</li>
 </ul>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="integrated-st-pipeline.html#cb84-1" tabindex="-1"></a><span class="co"># sc libraries</span></span>
-<span id="cb84-2"><a href="integrated-st-pipeline.html#cb84-2" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
-<span id="cb84-3"><a href="integrated-st-pipeline.html#cb84-3" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
-<span id="cb84-4"><a href="integrated-st-pipeline.html#cb84-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
-<span id="cb84-5"><a href="integrated-st-pipeline.html#cb84-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
-<span id="cb84-6"><a href="integrated-st-pipeline.html#cb84-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
-<span id="cb84-7"><a href="integrated-st-pipeline.html#cb84-7" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
-<span id="cb84-8"><a href="integrated-st-pipeline.html#cb84-8" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
-<span id="cb84-9"><a href="integrated-st-pipeline.html#cb84-9" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
-<span id="cb84-10"><a href="integrated-st-pipeline.html#cb84-10" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb84-11"><a href="integrated-st-pipeline.html#cb84-11" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb84-12"><a href="integrated-st-pipeline.html#cb84-12" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
-<span id="cb84-13"><a href="integrated-st-pipeline.html#cb84-13" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb84-14"><a href="integrated-st-pipeline.html#cb84-14" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
-<span id="cb84-15"><a href="integrated-st-pipeline.html#cb84-15" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
-<span id="cb84-16"><a href="integrated-st-pipeline.html#cb84-16" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
-<span id="cb84-17"><a href="integrated-st-pipeline.html#cb84-17" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb84-18"><a href="integrated-st-pipeline.html#cb84-18" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb84-19"><a href="integrated-st-pipeline.html#cb84-19" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb84-20"><a href="integrated-st-pipeline.html#cb84-20" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb84-21"><a href="integrated-st-pipeline.html#cb84-21" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb84-22"><a href="integrated-st-pipeline.html#cb84-22" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb84-23"><a href="integrated-st-pipeline.html#cb84-23" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb84-24"><a href="integrated-st-pipeline.html#cb84-24" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
-<span id="cb84-25"><a href="integrated-st-pipeline.html#cb84-25" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
-<span id="cb84-26"><a href="integrated-st-pipeline.html#cb84-26" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
-<span id="cb84-27"><a href="integrated-st-pipeline.html#cb84-27" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
-<span id="cb84-28"><a href="integrated-st-pipeline.html#cb84-28" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
-<span id="cb84-29"><a href="integrated-st-pipeline.html#cb84-29" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb84-30"><a href="integrated-st-pipeline.html#cb84-30" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb84-31"><a href="integrated-st-pipeline.html#cb84-31" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb84-32"><a href="integrated-st-pipeline.html#cb84-32" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb84-33"><a href="integrated-st-pipeline.html#cb84-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb84-34"><a href="integrated-st-pipeline.html#cb84-34" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb84-35"><a href="integrated-st-pipeline.html#cb84-35" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb84-36"><a href="integrated-st-pipeline.html#cb84-36" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb84-37"><a href="integrated-st-pipeline.html#cb84-37" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb84-38"><a href="integrated-st-pipeline.html#cb84-38" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb84-39"><a href="integrated-st-pipeline.html#cb84-39" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb84-40"><a href="integrated-st-pipeline.html#cb84-40" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb84-41"><a href="integrated-st-pipeline.html#cb84-41" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb84-42"><a href="integrated-st-pipeline.html#cb84-42" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb84-43"><a href="integrated-st-pipeline.html#cb84-43" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb84-44"><a href="integrated-st-pipeline.html#cb84-44" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb84-45"><a href="integrated-st-pipeline.html#cb84-45" tabindex="-1"></a><span class="co"># getpot</span></span>
-<span id="cb84-46"><a href="integrated-st-pipeline.html#cb84-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb84-47"><a href="integrated-st-pipeline.html#cb84-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb84-48"><a href="integrated-st-pipeline.html#cb84-48" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
-<span id="cb84-49"><a href="integrated-st-pipeline.html#cb84-49" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="integrated-st-pipeline.html#cb83-1" tabindex="-1"></a><span class="co"># sc libraries</span></span>
+<span id="cb83-2"><a href="integrated-st-pipeline.html#cb83-2" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb83-3"><a href="integrated-st-pipeline.html#cb83-3" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
+<span id="cb83-4"><a href="integrated-st-pipeline.html#cb83-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
+<span id="cb83-5"><a href="integrated-st-pipeline.html#cb83-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
+<span id="cb83-6"><a href="integrated-st-pipeline.html#cb83-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
+<span id="cb83-7"><a href="integrated-st-pipeline.html#cb83-7" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
+<span id="cb83-8"><a href="integrated-st-pipeline.html#cb83-8" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb83-9"><a href="integrated-st-pipeline.html#cb83-9" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb83-10"><a href="integrated-st-pipeline.html#cb83-10" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb83-11"><a href="integrated-st-pipeline.html#cb83-11" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb83-12"><a href="integrated-st-pipeline.html#cb83-12" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb83-13"><a href="integrated-st-pipeline.html#cb83-13" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb83-14"><a href="integrated-st-pipeline.html#cb83-14" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb83-15"><a href="integrated-st-pipeline.html#cb83-15" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb83-16"><a href="integrated-st-pipeline.html#cb83-16" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb83-17"><a href="integrated-st-pipeline.html#cb83-17" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb83-18"><a href="integrated-st-pipeline.html#cb83-18" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb83-19"><a href="integrated-st-pipeline.html#cb83-19" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb83-20"><a href="integrated-st-pipeline.html#cb83-20" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb83-21"><a href="integrated-st-pipeline.html#cb83-21" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb83-22"><a href="integrated-st-pipeline.html#cb83-22" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb83-23"><a href="integrated-st-pipeline.html#cb83-23" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb83-24"><a href="integrated-st-pipeline.html#cb83-24" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb83-25"><a href="integrated-st-pipeline.html#cb83-25" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb83-26"><a href="integrated-st-pipeline.html#cb83-26" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb83-27"><a href="integrated-st-pipeline.html#cb83-27" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb83-28"><a href="integrated-st-pipeline.html#cb83-28" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb83-29"><a href="integrated-st-pipeline.html#cb83-29" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb83-30"><a href="integrated-st-pipeline.html#cb83-30" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb83-31"><a href="integrated-st-pipeline.html#cb83-31" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb83-32"><a href="integrated-st-pipeline.html#cb83-32" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
+<span id="cb83-33"><a href="integrated-st-pipeline.html#cb83-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb83-34"><a href="integrated-st-pipeline.html#cb83-34" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb83-35"><a href="integrated-st-pipeline.html#cb83-35" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb83-36"><a href="integrated-st-pipeline.html#cb83-36" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb83-37"><a href="integrated-st-pipeline.html#cb83-37" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb83-38"><a href="integrated-st-pipeline.html#cb83-38" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb83-39"><a href="integrated-st-pipeline.html#cb83-39" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb83-40"><a href="integrated-st-pipeline.html#cb83-40" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb83-41"><a href="integrated-st-pipeline.html#cb83-41" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb83-42"><a href="integrated-st-pipeline.html#cb83-42" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb83-43"><a href="integrated-st-pipeline.html#cb83-43" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb83-44"><a href="integrated-st-pipeline.html#cb83-44" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb83-45"><a href="integrated-st-pipeline.html#cb83-45" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb83-46"><a href="integrated-st-pipeline.html#cb83-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb83-47"><a href="integrated-st-pipeline.html#cb83-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb83-48"><a href="integrated-st-pipeline.html#cb83-48" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb83-49"><a href="integrated-st-pipeline.html#cb83-49" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <div id="for-10x-visium-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> For 10X Visium data<a href="integrated-st-pipeline.html#for-10x-visium-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Run the integrated 10X Visium pipeline.</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="integrated-st-pipeline.html#cb85-1" tabindex="-1"></a><span class="fu">st_10x_visium_pipeline</span>(</span>
-<span id="cb85-2"><a href="integrated-st-pipeline.html#cb85-2" tabindex="-1"></a>        <span class="at">input.data.dir =</span> <span class="st">&#39;path/to/data&#39;</span>,</span>
-<span id="cb85-3"><a href="integrated-st-pipeline.html#cb85-3" tabindex="-1"></a>        <span class="at">output.dir =</span> <span class="st">&#39;.&#39;</span>,</span>
-<span id="cb85-4"><a href="integrated-st-pipeline.html#cb85-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_ST&#39;</span>,</span>
-<span id="cb85-5"><a href="integrated-st-pipeline.html#cb85-5" tabindex="-1"></a></span>
-<span id="cb85-6"><a href="integrated-st-pipeline.html#cb85-6" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
-<span id="cb85-7"><a href="integrated-st-pipeline.html#cb85-7" tabindex="-1"></a>        <span class="at">rds.file =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb85-8"><a href="integrated-st-pipeline.html#cb85-8" tabindex="-1"></a>        <span class="at">filename =</span> <span class="st">&quot;filtered_feature_bc_matrix.h5&quot;</span>,</span>
-<span id="cb85-9"><a href="integrated-st-pipeline.html#cb85-9" tabindex="-1"></a>        <span class="at">assay =</span> <span class="st">&quot;Spatial&quot;</span>,</span>
-<span id="cb85-10"><a href="integrated-st-pipeline.html#cb85-10" tabindex="-1"></a>        <span class="at">slice =</span> <span class="st">&quot;slice1&quot;</span>,</span>
-<span id="cb85-11"><a href="integrated-st-pipeline.html#cb85-11" tabindex="-1"></a>        <span class="at">filter.matrix =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-12"><a href="integrated-st-pipeline.html#cb85-12" tabindex="-1"></a>        <span class="at">to.upper =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb85-13"><a href="integrated-st-pipeline.html#cb85-13" tabindex="-1"></a></span>
-<span id="cb85-14"><a href="integrated-st-pipeline.html#cb85-14" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
-<span id="cb85-15"><a href="integrated-st-pipeline.html#cb85-15" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-16"><a href="integrated-st-pipeline.html#cb85-16" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">200</span>,</span>
-<span id="cb85-17"><a href="integrated-st-pipeline.html#cb85-17" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">500</span>,</span>
-<span id="cb85-18"><a href="integrated-st-pipeline.html#cb85-18" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
-<span id="cb85-19"><a href="integrated-st-pipeline.html#cb85-19" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
-<span id="cb85-20"><a href="integrated-st-pipeline.html#cb85-20" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
-<span id="cb85-21"><a href="integrated-st-pipeline.html#cb85-21" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb85-22"><a href="integrated-st-pipeline.html#cb85-22" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
-<span id="cb85-23"><a href="integrated-st-pipeline.html#cb85-23" tabindex="-1"></a></span>
-<span id="cb85-24"><a href="integrated-st-pipeline.html#cb85-24" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
-<span id="cb85-25"><a href="integrated-st-pipeline.html#cb85-25" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-26"><a href="integrated-st-pipeline.html#cb85-26" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
-<span id="cb85-27"><a href="integrated-st-pipeline.html#cb85-27" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
-<span id="cb85-28"><a href="integrated-st-pipeline.html#cb85-28" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb85-29"><a href="integrated-st-pipeline.html#cb85-29" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.8</span>,</span>
-<span id="cb85-30"><a href="integrated-st-pipeline.html#cb85-30" tabindex="-1"></a></span>
-<span id="cb85-31"><a href="integrated-st-pipeline.html#cb85-31" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
-<span id="cb85-32"><a href="integrated-st-pipeline.html#cb85-32" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-33"><a href="integrated-st-pipeline.html#cb85-33" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-34"><a href="integrated-st-pipeline.html#cb85-34" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb85-35"><a href="integrated-st-pipeline.html#cb85-35" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
-<span id="cb85-36"><a href="integrated-st-pipeline.html#cb85-36" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
-<span id="cb85-37"><a href="integrated-st-pipeline.html#cb85-37" tabindex="-1"></a></span>
-<span id="cb85-38"><a href="integrated-st-pipeline.html#cb85-38" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
-<span id="cb85-39"><a href="integrated-st-pipeline.html#cb85-39" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-40"><a href="integrated-st-pipeline.html#cb85-40" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
-<span id="cb85-41"><a href="integrated-st-pipeline.html#cb85-41" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
-<span id="cb85-42"><a href="integrated-st-pipeline.html#cb85-42" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
-<span id="cb85-43"><a href="integrated-st-pipeline.html#cb85-43" tabindex="-1"></a></span>
-<span id="cb85-44"><a href="integrated-st-pipeline.html#cb85-44" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
-<span id="cb85-45"><a href="integrated-st-pipeline.html#cb85-45" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-46"><a href="integrated-st-pipeline.html#cb85-46" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
-<span id="cb85-47"><a href="integrated-st-pipeline.html#cb85-47" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
-<span id="cb85-48"><a href="integrated-st-pipeline.html#cb85-48" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
-<span id="cb85-49"><a href="integrated-st-pipeline.html#cb85-49" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
-<span id="cb85-50"><a href="integrated-st-pipeline.html#cb85-50" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
-<span id="cb85-51"><a href="integrated-st-pipeline.html#cb85-51" tabindex="-1"></a></span>
-<span id="cb85-52"><a href="integrated-st-pipeline.html#cb85-52" tabindex="-1"></a>        <span class="co"># For Step7 CNV analysis</span></span>
-<span id="cb85-53"><a href="integrated-st-pipeline.html#cb85-53" tabindex="-1"></a>        <span class="at">Step7_CNV =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-54"><a href="integrated-st-pipeline.html#cb85-54" tabindex="-1"></a>        <span class="at">copykat.genome =</span> <span class="cn">NULL</span>,</span>
-<span id="cb85-55"><a href="integrated-st-pipeline.html#cb85-55" tabindex="-1"></a>        <span class="at">copykat.LOW.DR =</span> <span class="fl">0.05</span>,</span>
-<span id="cb85-56"><a href="integrated-st-pipeline.html#cb85-56" tabindex="-1"></a>        <span class="at">copykat.UP.DR =</span> <span class="fl">0.1</span>,</span>
-<span id="cb85-57"><a href="integrated-st-pipeline.html#cb85-57" tabindex="-1"></a>        <span class="at">copykat.win.size =</span> <span class="dv">25</span>,</span>
-<span id="cb85-58"><a href="integrated-st-pipeline.html#cb85-58" tabindex="-1"></a>        <span class="at">copykat.distance =</span> <span class="st">&quot;euclidean&quot;</span>,</span>
-<span id="cb85-59"><a href="integrated-st-pipeline.html#cb85-59" tabindex="-1"></a>        <span class="at">copykat.n.cores =</span> <span class="dv">1</span>,</span>
-<span id="cb85-60"><a href="integrated-st-pipeline.html#cb85-60" tabindex="-1"></a></span>
-<span id="cb85-61"><a href="integrated-st-pipeline.html#cb85-61" tabindex="-1"></a>        <span class="co"># For Step8 Deconvolution</span></span>
-<span id="cb85-62"><a href="integrated-st-pipeline.html#cb85-62" tabindex="-1"></a>        <span class="at">Step8_Deconvolution =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-63"><a href="integrated-st-pipeline.html#cb85-63" tabindex="-1"></a>        <span class="at">cell2loc.sc.h5ad.dir =</span> <span class="cn">NULL</span>,</span>
-<span id="cb85-64"><a href="integrated-st-pipeline.html#cb85-64" tabindex="-1"></a>        <span class="at">cell2loc.sc.max.epoch =</span> <span class="dv">1000</span>,</span>
-<span id="cb85-65"><a href="integrated-st-pipeline.html#cb85-65" tabindex="-1"></a>        <span class="at">cell2loc.st.max.epoch =</span> <span class="dv">10000</span>,</span>
-<span id="cb85-66"><a href="integrated-st-pipeline.html#cb85-66" tabindex="-1"></a>        <span class="at">cell2loc.use.gpu =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-67"><a href="integrated-st-pipeline.html#cb85-67" tabindex="-1"></a>        <span class="at">cell2loc.use.dataset =</span> <span class="st">&#39;LymphNode&#39;</span>,</span>
-<span id="cb85-68"><a href="integrated-st-pipeline.html#cb85-68" tabindex="-1"></a></span>
-<span id="cb85-69"><a href="integrated-st-pipeline.html#cb85-69" tabindex="-1"></a>        <span class="co"># For Step9 Cellcycle</span></span>
-<span id="cb85-70"><a href="integrated-st-pipeline.html#cb85-70" tabindex="-1"></a>        <span class="at">Step9_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-71"><a href="integrated-st-pipeline.html#cb85-71" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb85-72"><a href="integrated-st-pipeline.html#cb85-72" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb85-73"><a href="integrated-st-pipeline.html#cb85-73" tabindex="-1"></a></span>
-<span id="cb85-74"><a href="integrated-st-pipeline.html#cb85-74" tabindex="-1"></a>        <span class="co"># For Step10 Nich</span></span>
-<span id="cb85-75"><a href="integrated-st-pipeline.html#cb85-75" tabindex="-1"></a>        <span class="at">Step10_Niche =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb85-76"><a href="integrated-st-pipeline.html#cb85-76" tabindex="-1"></a>        <span class="at">coexistence.method =</span> <span class="st">&#39;correlation&#39;</span>,</span>
-<span id="cb85-77"><a href="integrated-st-pipeline.html#cb85-77" tabindex="-1"></a>        <span class="at">Niche.cluster.n =</span> <span class="dv">4</span>,</span>
-<span id="cb85-78"><a href="integrated-st-pipeline.html#cb85-78" tabindex="-1"></a></span>
-<span id="cb85-79"><a href="integrated-st-pipeline.html#cb85-79" tabindex="-1"></a>        <span class="co"># settings</span></span>
-<span id="cb85-80"><a href="integrated-st-pipeline.html#cb85-80" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="st">&#39;path/to/python&#39;</span>,</span>
-<span id="cb85-81"><a href="integrated-st-pipeline.html#cb85-81" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb85-82"><a href="integrated-st-pipeline.html#cb85-82" tabindex="-1"></a>        <span class="at">genReport =</span> <span class="cn">TRUE</span></span>
-<span id="cb85-83"><a href="integrated-st-pipeline.html#cb85-83" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="integrated-st-pipeline.html#cb84-1" tabindex="-1"></a><span class="fu">st_10x_visium_pipeline</span>(</span>
+<span id="cb84-2"><a href="integrated-st-pipeline.html#cb84-2" tabindex="-1"></a>        <span class="at">input.data.dir =</span> <span class="st">&#39;path/to/data&#39;</span>,</span>
+<span id="cb84-3"><a href="integrated-st-pipeline.html#cb84-3" tabindex="-1"></a>        <span class="at">output.dir =</span> <span class="st">&#39;.&#39;</span>,</span>
+<span id="cb84-4"><a href="integrated-st-pipeline.html#cb84-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_ST&#39;</span>,</span>
+<span id="cb84-5"><a href="integrated-st-pipeline.html#cb84-5" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="integrated-st-pipeline.html#cb84-6" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
+<span id="cb84-7"><a href="integrated-st-pipeline.html#cb84-7" tabindex="-1"></a>        <span class="at">rds.file =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb84-8"><a href="integrated-st-pipeline.html#cb84-8" tabindex="-1"></a>        <span class="at">filename =</span> <span class="st">&quot;filtered_feature_bc_matrix.h5&quot;</span>,</span>
+<span id="cb84-9"><a href="integrated-st-pipeline.html#cb84-9" tabindex="-1"></a>        <span class="at">assay =</span> <span class="st">&quot;Spatial&quot;</span>,</span>
+<span id="cb84-10"><a href="integrated-st-pipeline.html#cb84-10" tabindex="-1"></a>        <span class="at">slice =</span> <span class="st">&quot;slice1&quot;</span>,</span>
+<span id="cb84-11"><a href="integrated-st-pipeline.html#cb84-11" tabindex="-1"></a>        <span class="at">filter.matrix =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-12"><a href="integrated-st-pipeline.html#cb84-12" tabindex="-1"></a>        <span class="at">to.upper =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb84-13"><a href="integrated-st-pipeline.html#cb84-13" tabindex="-1"></a></span>
+<span id="cb84-14"><a href="integrated-st-pipeline.html#cb84-14" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
+<span id="cb84-15"><a href="integrated-st-pipeline.html#cb84-15" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-16"><a href="integrated-st-pipeline.html#cb84-16" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">200</span>,</span>
+<span id="cb84-17"><a href="integrated-st-pipeline.html#cb84-17" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">500</span>,</span>
+<span id="cb84-18"><a href="integrated-st-pipeline.html#cb84-18" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
+<span id="cb84-19"><a href="integrated-st-pipeline.html#cb84-19" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
+<span id="cb84-20"><a href="integrated-st-pipeline.html#cb84-20" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
+<span id="cb84-21"><a href="integrated-st-pipeline.html#cb84-21" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb84-22"><a href="integrated-st-pipeline.html#cb84-22" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
+<span id="cb84-23"><a href="integrated-st-pipeline.html#cb84-23" tabindex="-1"></a></span>
+<span id="cb84-24"><a href="integrated-st-pipeline.html#cb84-24" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
+<span id="cb84-25"><a href="integrated-st-pipeline.html#cb84-25" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-26"><a href="integrated-st-pipeline.html#cb84-26" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
+<span id="cb84-27"><a href="integrated-st-pipeline.html#cb84-27" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
+<span id="cb84-28"><a href="integrated-st-pipeline.html#cb84-28" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb84-29"><a href="integrated-st-pipeline.html#cb84-29" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.8</span>,</span>
+<span id="cb84-30"><a href="integrated-st-pipeline.html#cb84-30" tabindex="-1"></a></span>
+<span id="cb84-31"><a href="integrated-st-pipeline.html#cb84-31" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
+<span id="cb84-32"><a href="integrated-st-pipeline.html#cb84-32" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-33"><a href="integrated-st-pipeline.html#cb84-33" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-34"><a href="integrated-st-pipeline.html#cb84-34" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb84-35"><a href="integrated-st-pipeline.html#cb84-35" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
+<span id="cb84-36"><a href="integrated-st-pipeline.html#cb84-36" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
+<span id="cb84-37"><a href="integrated-st-pipeline.html#cb84-37" tabindex="-1"></a></span>
+<span id="cb84-38"><a href="integrated-st-pipeline.html#cb84-38" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
+<span id="cb84-39"><a href="integrated-st-pipeline.html#cb84-39" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-40"><a href="integrated-st-pipeline.html#cb84-40" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
+<span id="cb84-41"><a href="integrated-st-pipeline.html#cb84-41" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
+<span id="cb84-42"><a href="integrated-st-pipeline.html#cb84-42" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
+<span id="cb84-43"><a href="integrated-st-pipeline.html#cb84-43" tabindex="-1"></a></span>
+<span id="cb84-44"><a href="integrated-st-pipeline.html#cb84-44" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
+<span id="cb84-45"><a href="integrated-st-pipeline.html#cb84-45" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-46"><a href="integrated-st-pipeline.html#cb84-46" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
+<span id="cb84-47"><a href="integrated-st-pipeline.html#cb84-47" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
+<span id="cb84-48"><a href="integrated-st-pipeline.html#cb84-48" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
+<span id="cb84-49"><a href="integrated-st-pipeline.html#cb84-49" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
+<span id="cb84-50"><a href="integrated-st-pipeline.html#cb84-50" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
+<span id="cb84-51"><a href="integrated-st-pipeline.html#cb84-51" tabindex="-1"></a></span>
+<span id="cb84-52"><a href="integrated-st-pipeline.html#cb84-52" tabindex="-1"></a>        <span class="co"># For Step7 CNV analysis</span></span>
+<span id="cb84-53"><a href="integrated-st-pipeline.html#cb84-53" tabindex="-1"></a>        <span class="at">Step7_CNV =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-54"><a href="integrated-st-pipeline.html#cb84-54" tabindex="-1"></a>        <span class="at">copykat.genome =</span> <span class="cn">NULL</span>,</span>
+<span id="cb84-55"><a href="integrated-st-pipeline.html#cb84-55" tabindex="-1"></a>        <span class="at">copykat.LOW.DR =</span> <span class="fl">0.05</span>,</span>
+<span id="cb84-56"><a href="integrated-st-pipeline.html#cb84-56" tabindex="-1"></a>        <span class="at">copykat.UP.DR =</span> <span class="fl">0.1</span>,</span>
+<span id="cb84-57"><a href="integrated-st-pipeline.html#cb84-57" tabindex="-1"></a>        <span class="at">copykat.win.size =</span> <span class="dv">25</span>,</span>
+<span id="cb84-58"><a href="integrated-st-pipeline.html#cb84-58" tabindex="-1"></a>        <span class="at">copykat.distance =</span> <span class="st">&quot;euclidean&quot;</span>,</span>
+<span id="cb84-59"><a href="integrated-st-pipeline.html#cb84-59" tabindex="-1"></a>        <span class="at">copykat.n.cores =</span> <span class="dv">1</span>,</span>
+<span id="cb84-60"><a href="integrated-st-pipeline.html#cb84-60" tabindex="-1"></a></span>
+<span id="cb84-61"><a href="integrated-st-pipeline.html#cb84-61" tabindex="-1"></a>        <span class="co"># For Step8 Deconvolution</span></span>
+<span id="cb84-62"><a href="integrated-st-pipeline.html#cb84-62" tabindex="-1"></a>        <span class="at">Step8_Deconvolution =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-63"><a href="integrated-st-pipeline.html#cb84-63" tabindex="-1"></a>        <span class="at">cell2loc.sc.h5ad.dir =</span> <span class="cn">NULL</span>,</span>
+<span id="cb84-64"><a href="integrated-st-pipeline.html#cb84-64" tabindex="-1"></a>        <span class="at">cell2loc.sc.max.epoch =</span> <span class="dv">1000</span>,</span>
+<span id="cb84-65"><a href="integrated-st-pipeline.html#cb84-65" tabindex="-1"></a>        <span class="at">cell2loc.st.max.epoch =</span> <span class="dv">10000</span>,</span>
+<span id="cb84-66"><a href="integrated-st-pipeline.html#cb84-66" tabindex="-1"></a>        <span class="at">cell2loc.use.gpu =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-67"><a href="integrated-st-pipeline.html#cb84-67" tabindex="-1"></a>        <span class="at">cell2loc.use.dataset =</span> <span class="st">&#39;LymphNode&#39;</span>,</span>
+<span id="cb84-68"><a href="integrated-st-pipeline.html#cb84-68" tabindex="-1"></a></span>
+<span id="cb84-69"><a href="integrated-st-pipeline.html#cb84-69" tabindex="-1"></a>        <span class="co"># For Step9 Cellcycle</span></span>
+<span id="cb84-70"><a href="integrated-st-pipeline.html#cb84-70" tabindex="-1"></a>        <span class="at">Step9_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-71"><a href="integrated-st-pipeline.html#cb84-71" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb84-72"><a href="integrated-st-pipeline.html#cb84-72" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb84-73"><a href="integrated-st-pipeline.html#cb84-73" tabindex="-1"></a></span>
+<span id="cb84-74"><a href="integrated-st-pipeline.html#cb84-74" tabindex="-1"></a>        <span class="co"># For Step10 Nich</span></span>
+<span id="cb84-75"><a href="integrated-st-pipeline.html#cb84-75" tabindex="-1"></a>        <span class="at">Step10_Niche =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-76"><a href="integrated-st-pipeline.html#cb84-76" tabindex="-1"></a>        <span class="at">coexistence.method =</span> <span class="st">&#39;correlation&#39;</span>,</span>
+<span id="cb84-77"><a href="integrated-st-pipeline.html#cb84-77" tabindex="-1"></a>        <span class="at">Niche.cluster.n =</span> <span class="dv">4</span>,</span>
+<span id="cb84-78"><a href="integrated-st-pipeline.html#cb84-78" tabindex="-1"></a></span>
+<span id="cb84-79"><a href="integrated-st-pipeline.html#cb84-79" tabindex="-1"></a>        <span class="co"># settings</span></span>
+<span id="cb84-80"><a href="integrated-st-pipeline.html#cb84-80" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="st">&#39;path/to/python&#39;</span>,</span>
+<span id="cb84-81"><a href="integrated-st-pipeline.html#cb84-81" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb84-82"><a href="integrated-st-pipeline.html#cb84-82" tabindex="-1"></a>        <span class="at">genReport =</span> <span class="cn">TRUE</span></span>
+<span id="cb84-83"><a href="integrated-st-pipeline.html#cb84-83" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="for-merfish-data" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> For MERFISH data<a href="integrated-st-pipeline.html#for-merfish-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Run the integrated MERFISH pipeline.</li>
 </ul>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="integrated-st-pipeline.html#cb86-1" tabindex="-1"></a><span class="fu">st_MERFISH_pipeline</span>(</span>
-<span id="cb86-2"><a href="integrated-st-pipeline.html#cb86-2" tabindex="-1"></a>        input.data.dir,</span>
-<span id="cb86-3"><a href="integrated-st-pipeline.html#cb86-3" tabindex="-1"></a>        output.dir,</span>
-<span id="cb86-4"><a href="integrated-st-pipeline.html#cb86-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_MERFISH&#39;</span>,</span>
-<span id="cb86-5"><a href="integrated-st-pipeline.html#cb86-5" tabindex="-1"></a>        <span class="at">fov =</span> <span class="st">&#39;fov&#39;</span>,</span>
-<span id="cb86-6"><a href="integrated-st-pipeline.html#cb86-6" tabindex="-1"></a>        <span class="at">tech =</span> <span class="st">&#39;Vizgen&#39;</span>,</span>
-<span id="cb86-7"><a href="integrated-st-pipeline.html#cb86-7" tabindex="-1"></a>        </span>
-<span id="cb86-8"><a href="integrated-st-pipeline.html#cb86-8" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
-<span id="cb86-9"><a href="integrated-st-pipeline.html#cb86-9" tabindex="-1"></a>        <span class="at">rds.file =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb86-10"><a href="integrated-st-pipeline.html#cb86-10" tabindex="-1"></a>        <span class="at">assay =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-11"><a href="integrated-st-pipeline.html#cb86-11" tabindex="-1"></a>        <span class="at">Vizgen.z =</span> <span class="dv">3</span><span class="dt">L</span>, </span>
-<span id="cb86-12"><a href="integrated-st-pipeline.html#cb86-12" tabindex="-1"></a>        <span class="at">Akoya.type =</span> <span class="st">&#39;inform&#39;</span>,</span>
-<span id="cb86-13"><a href="integrated-st-pipeline.html#cb86-13" tabindex="-1"></a>        </span>
-<span id="cb86-14"><a href="integrated-st-pipeline.html#cb86-14" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
-<span id="cb86-15"><a href="integrated-st-pipeline.html#cb86-15" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-16"><a href="integrated-st-pipeline.html#cb86-16" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">20</span>,</span>
-<span id="cb86-17"><a href="integrated-st-pipeline.html#cb86-17" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">50</span>,</span>
-<span id="cb86-18"><a href="integrated-st-pipeline.html#cb86-18" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
-<span id="cb86-19"><a href="integrated-st-pipeline.html#cb86-19" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
-<span id="cb86-20"><a href="integrated-st-pipeline.html#cb86-20" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
-<span id="cb86-21"><a href="integrated-st-pipeline.html#cb86-21" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb86-22"><a href="integrated-st-pipeline.html#cb86-22" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
-<span id="cb86-23"><a href="integrated-st-pipeline.html#cb86-23" tabindex="-1"></a>        </span>
-<span id="cb86-24"><a href="integrated-st-pipeline.html#cb86-24" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
-<span id="cb86-25"><a href="integrated-st-pipeline.html#cb86-25" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-26"><a href="integrated-st-pipeline.html#cb86-26" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
-<span id="cb86-27"><a href="integrated-st-pipeline.html#cb86-27" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
-<span id="cb86-28"><a href="integrated-st-pipeline.html#cb86-28" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb86-29"><a href="integrated-st-pipeline.html#cb86-29" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
-<span id="cb86-30"><a href="integrated-st-pipeline.html#cb86-30" tabindex="-1"></a>        </span>
-<span id="cb86-31"><a href="integrated-st-pipeline.html#cb86-31" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
-<span id="cb86-32"><a href="integrated-st-pipeline.html#cb86-32" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-33"><a href="integrated-st-pipeline.html#cb86-33" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-34"><a href="integrated-st-pipeline.html#cb86-34" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb86-35"><a href="integrated-st-pipeline.html#cb86-35" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
-<span id="cb86-36"><a href="integrated-st-pipeline.html#cb86-36" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
-<span id="cb86-37"><a href="integrated-st-pipeline.html#cb86-37" tabindex="-1"></a>        </span>
-<span id="cb86-38"><a href="integrated-st-pipeline.html#cb86-38" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
-<span id="cb86-39"><a href="integrated-st-pipeline.html#cb86-39" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-40"><a href="integrated-st-pipeline.html#cb86-40" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
-<span id="cb86-41"><a href="integrated-st-pipeline.html#cb86-41" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
-<span id="cb86-42"><a href="integrated-st-pipeline.html#cb86-42" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
-<span id="cb86-43"><a href="integrated-st-pipeline.html#cb86-43" tabindex="-1"></a>        </span>
-<span id="cb86-44"><a href="integrated-st-pipeline.html#cb86-44" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
-<span id="cb86-45"><a href="integrated-st-pipeline.html#cb86-45" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-46"><a href="integrated-st-pipeline.html#cb86-46" tabindex="-1"></a>        <span class="at">h5ad_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-47"><a href="integrated-st-pipeline.html#cb86-47" tabindex="-1"></a>        <span class="at">counts_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-48"><a href="integrated-st-pipeline.html#cb86-48" tabindex="-1"></a>        <span class="at">coordinates_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-49"><a href="integrated-st-pipeline.html#cb86-49" tabindex="-1"></a>        <span class="at">coordinates_index_col =</span> <span class="dv">0</span>,</span>
-<span id="cb86-50"><a href="integrated-st-pipeline.html#cb86-50" tabindex="-1"></a>        <span class="at">counts_transpose =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-51"><a href="integrated-st-pipeline.html#cb86-51" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
-<span id="cb86-52"><a href="integrated-st-pipeline.html#cb86-52" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
-<span id="cb86-53"><a href="integrated-st-pipeline.html#cb86-53" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
-<span id="cb86-54"><a href="integrated-st-pipeline.html#cb86-54" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
-<span id="cb86-55"><a href="integrated-st-pipeline.html#cb86-55" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
-<span id="cb86-56"><a href="integrated-st-pipeline.html#cb86-56" tabindex="-1"></a>        </span>
-<span id="cb86-57"><a href="integrated-st-pipeline.html#cb86-57" tabindex="-1"></a>        <span class="co"># For Step7 Cellcycle</span></span>
-<span id="cb86-58"><a href="integrated-st-pipeline.html#cb86-58" tabindex="-1"></a>        <span class="at">Step7_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-59"><a href="integrated-st-pipeline.html#cb86-59" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-60"><a href="integrated-st-pipeline.html#cb86-60" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb86-61"><a href="integrated-st-pipeline.html#cb86-61" tabindex="-1"></a>        </span>
-<span id="cb86-62"><a href="integrated-st-pipeline.html#cb86-62" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb86-63"><a href="integrated-st-pipeline.html#cb86-63" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="cn">NULL</span></span>
-<span id="cb86-64"><a href="integrated-st-pipeline.html#cb86-64" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="integrated-st-pipeline.html#cb85-1" tabindex="-1"></a><span class="fu">st_MERFISH_pipeline</span>(</span>
+<span id="cb85-2"><a href="integrated-st-pipeline.html#cb85-2" tabindex="-1"></a>        input.data.dir,</span>
+<span id="cb85-3"><a href="integrated-st-pipeline.html#cb85-3" tabindex="-1"></a>        output.dir,</span>
+<span id="cb85-4"><a href="integrated-st-pipeline.html#cb85-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_MERFISH&#39;</span>,</span>
+<span id="cb85-5"><a href="integrated-st-pipeline.html#cb85-5" tabindex="-1"></a>        <span class="at">fov =</span> <span class="st">&#39;fov&#39;</span>,</span>
+<span id="cb85-6"><a href="integrated-st-pipeline.html#cb85-6" tabindex="-1"></a>        <span class="at">tech =</span> <span class="st">&#39;Vizgen&#39;</span>,</span>
+<span id="cb85-7"><a href="integrated-st-pipeline.html#cb85-7" tabindex="-1"></a>        </span>
+<span id="cb85-8"><a href="integrated-st-pipeline.html#cb85-8" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
+<span id="cb85-9"><a href="integrated-st-pipeline.html#cb85-9" tabindex="-1"></a>        <span class="at">rds.file =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb85-10"><a href="integrated-st-pipeline.html#cb85-10" tabindex="-1"></a>        <span class="at">assay =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-11"><a href="integrated-st-pipeline.html#cb85-11" tabindex="-1"></a>        <span class="at">Vizgen.z =</span> <span class="dv">3</span><span class="dt">L</span>, </span>
+<span id="cb85-12"><a href="integrated-st-pipeline.html#cb85-12" tabindex="-1"></a>        <span class="at">Akoya.type =</span> <span class="st">&#39;inform&#39;</span>,</span>
+<span id="cb85-13"><a href="integrated-st-pipeline.html#cb85-13" tabindex="-1"></a>        </span>
+<span id="cb85-14"><a href="integrated-st-pipeline.html#cb85-14" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
+<span id="cb85-15"><a href="integrated-st-pipeline.html#cb85-15" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-16"><a href="integrated-st-pipeline.html#cb85-16" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">20</span>,</span>
+<span id="cb85-17"><a href="integrated-st-pipeline.html#cb85-17" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">50</span>,</span>
+<span id="cb85-18"><a href="integrated-st-pipeline.html#cb85-18" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
+<span id="cb85-19"><a href="integrated-st-pipeline.html#cb85-19" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
+<span id="cb85-20"><a href="integrated-st-pipeline.html#cb85-20" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
+<span id="cb85-21"><a href="integrated-st-pipeline.html#cb85-21" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb85-22"><a href="integrated-st-pipeline.html#cb85-22" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
+<span id="cb85-23"><a href="integrated-st-pipeline.html#cb85-23" tabindex="-1"></a>        </span>
+<span id="cb85-24"><a href="integrated-st-pipeline.html#cb85-24" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
+<span id="cb85-25"><a href="integrated-st-pipeline.html#cb85-25" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-26"><a href="integrated-st-pipeline.html#cb85-26" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
+<span id="cb85-27"><a href="integrated-st-pipeline.html#cb85-27" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
+<span id="cb85-28"><a href="integrated-st-pipeline.html#cb85-28" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb85-29"><a href="integrated-st-pipeline.html#cb85-29" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
+<span id="cb85-30"><a href="integrated-st-pipeline.html#cb85-30" tabindex="-1"></a>        </span>
+<span id="cb85-31"><a href="integrated-st-pipeline.html#cb85-31" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
+<span id="cb85-32"><a href="integrated-st-pipeline.html#cb85-32" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-33"><a href="integrated-st-pipeline.html#cb85-33" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-34"><a href="integrated-st-pipeline.html#cb85-34" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb85-35"><a href="integrated-st-pipeline.html#cb85-35" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
+<span id="cb85-36"><a href="integrated-st-pipeline.html#cb85-36" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
+<span id="cb85-37"><a href="integrated-st-pipeline.html#cb85-37" tabindex="-1"></a>        </span>
+<span id="cb85-38"><a href="integrated-st-pipeline.html#cb85-38" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
+<span id="cb85-39"><a href="integrated-st-pipeline.html#cb85-39" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-40"><a href="integrated-st-pipeline.html#cb85-40" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
+<span id="cb85-41"><a href="integrated-st-pipeline.html#cb85-41" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
+<span id="cb85-42"><a href="integrated-st-pipeline.html#cb85-42" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
+<span id="cb85-43"><a href="integrated-st-pipeline.html#cb85-43" tabindex="-1"></a>        </span>
+<span id="cb85-44"><a href="integrated-st-pipeline.html#cb85-44" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
+<span id="cb85-45"><a href="integrated-st-pipeline.html#cb85-45" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-46"><a href="integrated-st-pipeline.html#cb85-46" tabindex="-1"></a>        <span class="at">h5ad_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-47"><a href="integrated-st-pipeline.html#cb85-47" tabindex="-1"></a>        <span class="at">counts_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-48"><a href="integrated-st-pipeline.html#cb85-48" tabindex="-1"></a>        <span class="at">coordinates_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-49"><a href="integrated-st-pipeline.html#cb85-49" tabindex="-1"></a>        <span class="at">coordinates_index_col =</span> <span class="dv">0</span>,</span>
+<span id="cb85-50"><a href="integrated-st-pipeline.html#cb85-50" tabindex="-1"></a>        <span class="at">counts_transpose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-51"><a href="integrated-st-pipeline.html#cb85-51" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
+<span id="cb85-52"><a href="integrated-st-pipeline.html#cb85-52" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
+<span id="cb85-53"><a href="integrated-st-pipeline.html#cb85-53" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
+<span id="cb85-54"><a href="integrated-st-pipeline.html#cb85-54" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
+<span id="cb85-55"><a href="integrated-st-pipeline.html#cb85-55" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
+<span id="cb85-56"><a href="integrated-st-pipeline.html#cb85-56" tabindex="-1"></a>        </span>
+<span id="cb85-57"><a href="integrated-st-pipeline.html#cb85-57" tabindex="-1"></a>        <span class="co"># For Step7 Cellcycle</span></span>
+<span id="cb85-58"><a href="integrated-st-pipeline.html#cb85-58" tabindex="-1"></a>        <span class="at">Step7_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-59"><a href="integrated-st-pipeline.html#cb85-59" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-60"><a href="integrated-st-pipeline.html#cb85-60" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb85-61"><a href="integrated-st-pipeline.html#cb85-61" tabindex="-1"></a>        </span>
+<span id="cb85-62"><a href="integrated-st-pipeline.html#cb85-62" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb85-63"><a href="integrated-st-pipeline.html#cb85-63" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="cn">NULL</span></span>
+<span id="cb85-64"><a href="integrated-st-pipeline.html#cb85-64" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="for-stereo-seq-data" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> For stereo-seq data<a href="integrated-st-pipeline.html#for-stereo-seq-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Run the integrated stereo-seq pipeline.</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="integrated-st-pipeline.html#cb87-1" tabindex="-1"></a><span class="fu">st_stereo_pipeline</span>(</span>
-<span id="cb87-2"><a href="integrated-st-pipeline.html#cb87-2" tabindex="-1"></a>        input.data.dir,</span>
-<span id="cb87-3"><a href="integrated-st-pipeline.html#cb87-3" tabindex="-1"></a>        output.dir,</span>
-<span id="cb87-4"><a href="integrated-st-pipeline.html#cb87-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_stereo&#39;</span>,</span>
-<span id="cb87-5"><a href="integrated-st-pipeline.html#cb87-5" tabindex="-1"></a></span>
-<span id="cb87-6"><a href="integrated-st-pipeline.html#cb87-6" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
-<span id="cb87-7"><a href="integrated-st-pipeline.html#cb87-7" tabindex="-1"></a>        <span class="at">data_type =</span> <span class="st">&#39;gem&#39;</span>,</span>
-<span id="cb87-8"><a href="integrated-st-pipeline.html#cb87-8" tabindex="-1"></a>        <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>,</span>
-<span id="cb87-9"><a href="integrated-st-pipeline.html#cb87-9" tabindex="-1"></a>        <span class="at">bin_type =</span> <span class="st">&#39;bins&#39;</span>,</span>
-<span id="cb87-10"><a href="integrated-st-pipeline.html#cb87-10" tabindex="-1"></a>        <span class="at">bin_size =</span> <span class="dv">100</span>,</span>
-<span id="cb87-11"><a href="integrated-st-pipeline.html#cb87-11" tabindex="-1"></a>        <span class="at">spot_diameter =</span> <span class="dv">80</span>,</span>
-<span id="cb87-12"><a href="integrated-st-pipeline.html#cb87-12" tabindex="-1"></a>        <span class="at">is_sparse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-13"><a href="integrated-st-pipeline.html#cb87-13" tabindex="-1"></a>        <span class="at">gene_list =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-14"><a href="integrated-st-pipeline.html#cb87-14" tabindex="-1"></a>        <span class="at">region =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-15"><a href="integrated-st-pipeline.html#cb87-15" tabindex="-1"></a>        <span class="at">assay =</span> <span class="st">&#39;Spatial&#39;</span>,</span>
-<span id="cb87-16"><a href="integrated-st-pipeline.html#cb87-16" tabindex="-1"></a></span>
-<span id="cb87-17"><a href="integrated-st-pipeline.html#cb87-17" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
-<span id="cb87-18"><a href="integrated-st-pipeline.html#cb87-18" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-19"><a href="integrated-st-pipeline.html#cb87-19" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">20</span>,</span>
-<span id="cb87-20"><a href="integrated-st-pipeline.html#cb87-20" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">50</span>,</span>
-<span id="cb87-21"><a href="integrated-st-pipeline.html#cb87-21" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
-<span id="cb87-22"><a href="integrated-st-pipeline.html#cb87-22" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
-<span id="cb87-23"><a href="integrated-st-pipeline.html#cb87-23" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
-<span id="cb87-24"><a href="integrated-st-pipeline.html#cb87-24" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb87-25"><a href="integrated-st-pipeline.html#cb87-25" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
-<span id="cb87-26"><a href="integrated-st-pipeline.html#cb87-26" tabindex="-1"></a></span>
-<span id="cb87-27"><a href="integrated-st-pipeline.html#cb87-27" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
-<span id="cb87-28"><a href="integrated-st-pipeline.html#cb87-28" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-29"><a href="integrated-st-pipeline.html#cb87-29" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
-<span id="cb87-30"><a href="integrated-st-pipeline.html#cb87-30" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
-<span id="cb87-31"><a href="integrated-st-pipeline.html#cb87-31" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb87-32"><a href="integrated-st-pipeline.html#cb87-32" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.1</span>,</span>
-<span id="cb87-33"><a href="integrated-st-pipeline.html#cb87-33" tabindex="-1"></a>        <span class="at">max.n.cluster =</span> <span class="dv">30</span>,</span>
-<span id="cb87-34"><a href="integrated-st-pipeline.html#cb87-34" tabindex="-1"></a></span>
-<span id="cb87-35"><a href="integrated-st-pipeline.html#cb87-35" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
-<span id="cb87-36"><a href="integrated-st-pipeline.html#cb87-36" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-37"><a href="integrated-st-pipeline.html#cb87-37" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-38"><a href="integrated-st-pipeline.html#cb87-38" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb87-39"><a href="integrated-st-pipeline.html#cb87-39" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
-<span id="cb87-40"><a href="integrated-st-pipeline.html#cb87-40" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
-<span id="cb87-41"><a href="integrated-st-pipeline.html#cb87-41" tabindex="-1"></a></span>
-<span id="cb87-42"><a href="integrated-st-pipeline.html#cb87-42" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
-<span id="cb87-43"><a href="integrated-st-pipeline.html#cb87-43" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-44"><a href="integrated-st-pipeline.html#cb87-44" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
-<span id="cb87-45"><a href="integrated-st-pipeline.html#cb87-45" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
-<span id="cb87-46"><a href="integrated-st-pipeline.html#cb87-46" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
-<span id="cb87-47"><a href="integrated-st-pipeline.html#cb87-47" tabindex="-1"></a></span>
-<span id="cb87-48"><a href="integrated-st-pipeline.html#cb87-48" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
-<span id="cb87-49"><a href="integrated-st-pipeline.html#cb87-49" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-50"><a href="integrated-st-pipeline.html#cb87-50" tabindex="-1"></a>        <span class="at">h5ad_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-51"><a href="integrated-st-pipeline.html#cb87-51" tabindex="-1"></a>        <span class="at">counts_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-52"><a href="integrated-st-pipeline.html#cb87-52" tabindex="-1"></a>        <span class="at">coordinates_path =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-53"><a href="integrated-st-pipeline.html#cb87-53" tabindex="-1"></a>        <span class="at">coordinates_index_col =</span> <span class="dv">0</span>,</span>
-<span id="cb87-54"><a href="integrated-st-pipeline.html#cb87-54" tabindex="-1"></a>        <span class="at">counts_transpose =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-55"><a href="integrated-st-pipeline.html#cb87-55" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
-<span id="cb87-56"><a href="integrated-st-pipeline.html#cb87-56" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
-<span id="cb87-57"><a href="integrated-st-pipeline.html#cb87-57" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
-<span id="cb87-58"><a href="integrated-st-pipeline.html#cb87-58" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
-<span id="cb87-59"><a href="integrated-st-pipeline.html#cb87-59" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
-<span id="cb87-60"><a href="integrated-st-pipeline.html#cb87-60" tabindex="-1"></a></span>
-<span id="cb87-61"><a href="integrated-st-pipeline.html#cb87-61" tabindex="-1"></a>        <span class="co"># For Step7 Cellcycle</span></span>
-<span id="cb87-62"><a href="integrated-st-pipeline.html#cb87-62" tabindex="-1"></a>        <span class="at">Step7_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-63"><a href="integrated-st-pipeline.html#cb87-63" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-64"><a href="integrated-st-pipeline.html#cb87-64" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-65"><a href="integrated-st-pipeline.html#cb87-65" tabindex="-1"></a></span>
-<span id="cb87-66"><a href="integrated-st-pipeline.html#cb87-66" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb87-67"><a href="integrated-st-pipeline.html#cb87-67" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="cn">NULL</span></span>
-<span id="cb87-68"><a href="integrated-st-pipeline.html#cb87-68" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="integrated-st-pipeline.html#cb86-1" tabindex="-1"></a><span class="fu">st_stereo_pipeline</span>(</span>
+<span id="cb86-2"><a href="integrated-st-pipeline.html#cb86-2" tabindex="-1"></a>        input.data.dir,</span>
+<span id="cb86-3"><a href="integrated-st-pipeline.html#cb86-3" tabindex="-1"></a>        output.dir,</span>
+<span id="cb86-4"><a href="integrated-st-pipeline.html#cb86-4" tabindex="-1"></a>        <span class="at">sampleName =</span> <span class="st">&#39;Hema_stereo&#39;</span>,</span>
+<span id="cb86-5"><a href="integrated-st-pipeline.html#cb86-5" tabindex="-1"></a></span>
+<span id="cb86-6"><a href="integrated-st-pipeline.html#cb86-6" tabindex="-1"></a>        <span class="co"># For Step1 Loading</span></span>
+<span id="cb86-7"><a href="integrated-st-pipeline.html#cb86-7" tabindex="-1"></a>        <span class="at">data_type =</span> <span class="st">&#39;gem&#39;</span>,</span>
+<span id="cb86-8"><a href="integrated-st-pipeline.html#cb86-8" tabindex="-1"></a>        <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>,</span>
+<span id="cb86-9"><a href="integrated-st-pipeline.html#cb86-9" tabindex="-1"></a>        <span class="at">bin_type =</span> <span class="st">&#39;bins&#39;</span>,</span>
+<span id="cb86-10"><a href="integrated-st-pipeline.html#cb86-10" tabindex="-1"></a>        <span class="at">bin_size =</span> <span class="dv">100</span>,</span>
+<span id="cb86-11"><a href="integrated-st-pipeline.html#cb86-11" tabindex="-1"></a>        <span class="at">spot_diameter =</span> <span class="dv">80</span>,</span>
+<span id="cb86-12"><a href="integrated-st-pipeline.html#cb86-12" tabindex="-1"></a>        <span class="at">is_sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-13"><a href="integrated-st-pipeline.html#cb86-13" tabindex="-1"></a>        <span class="at">gene_list =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-14"><a href="integrated-st-pipeline.html#cb86-14" tabindex="-1"></a>        <span class="at">region =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-15"><a href="integrated-st-pipeline.html#cb86-15" tabindex="-1"></a>        <span class="at">assay =</span> <span class="st">&#39;Spatial&#39;</span>,</span>
+<span id="cb86-16"><a href="integrated-st-pipeline.html#cb86-16" tabindex="-1"></a></span>
+<span id="cb86-17"><a href="integrated-st-pipeline.html#cb86-17" tabindex="-1"></a>        <span class="co"># For Step2 QC</span></span>
+<span id="cb86-18"><a href="integrated-st-pipeline.html#cb86-18" tabindex="-1"></a>        <span class="at">Step2_QC =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-19"><a href="integrated-st-pipeline.html#cb86-19" tabindex="-1"></a>        <span class="at">min.gene =</span> <span class="dv">20</span>,</span>
+<span id="cb86-20"><a href="integrated-st-pipeline.html#cb86-20" tabindex="-1"></a>        <span class="at">min.nUMI =</span> <span class="dv">50</span>,</span>
+<span id="cb86-21"><a href="integrated-st-pipeline.html#cb86-21" tabindex="-1"></a>        <span class="at">max.gene =</span> <span class="cn">Inf</span>,</span>
+<span id="cb86-22"><a href="integrated-st-pipeline.html#cb86-22" tabindex="-1"></a>        <span class="at">max.nUMI =</span> <span class="cn">Inf</span>,</span>
+<span id="cb86-23"><a href="integrated-st-pipeline.html#cb86-23" tabindex="-1"></a>        <span class="at">min.spot =</span> <span class="dv">0</span>,</span>
+<span id="cb86-24"><a href="integrated-st-pipeline.html#cb86-24" tabindex="-1"></a>        <span class="at">bool.remove.mito =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb86-25"><a href="integrated-st-pipeline.html#cb86-25" tabindex="-1"></a>        <span class="at">species =</span> <span class="st">&#39;mouse&#39;</span>, <span class="co"># &#39;human&#39; or &#39;mosue&#39;</span></span>
+<span id="cb86-26"><a href="integrated-st-pipeline.html#cb86-26" tabindex="-1"></a></span>
+<span id="cb86-27"><a href="integrated-st-pipeline.html#cb86-27" tabindex="-1"></a>        <span class="co"># For Step3 Clustering</span></span>
+<span id="cb86-28"><a href="integrated-st-pipeline.html#cb86-28" tabindex="-1"></a>        <span class="at">Step3_Clustering =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-29"><a href="integrated-st-pipeline.html#cb86-29" tabindex="-1"></a>        <span class="at">normalization.method =</span> <span class="st">&#39;SCTransform&#39;</span>,</span>
+<span id="cb86-30"><a href="integrated-st-pipeline.html#cb86-30" tabindex="-1"></a>        <span class="at">npcs =</span> <span class="dv">50</span>,</span>
+<span id="cb86-31"><a href="integrated-st-pipeline.html#cb86-31" tabindex="-1"></a>        <span class="at">pcs.used =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb86-32"><a href="integrated-st-pipeline.html#cb86-32" tabindex="-1"></a>        <span class="at">resolution =</span> <span class="fl">0.1</span>,</span>
+<span id="cb86-33"><a href="integrated-st-pipeline.html#cb86-33" tabindex="-1"></a>        <span class="at">max.n.cluster =</span> <span class="dv">30</span>,</span>
+<span id="cb86-34"><a href="integrated-st-pipeline.html#cb86-34" tabindex="-1"></a></span>
+<span id="cb86-35"><a href="integrated-st-pipeline.html#cb86-35" tabindex="-1"></a>        <span class="co"># For Step4 Find DEGs</span></span>
+<span id="cb86-36"><a href="integrated-st-pipeline.html#cb86-36" tabindex="-1"></a>        <span class="at">Step4_Find_DEGs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-37"><a href="integrated-st-pipeline.html#cb86-37" tabindex="-1"></a>        <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-38"><a href="integrated-st-pipeline.html#cb86-38" tabindex="-1"></a>        <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb86-39"><a href="integrated-st-pipeline.html#cb86-39" tabindex="-1"></a>        <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>,</span>
+<span id="cb86-40"><a href="integrated-st-pipeline.html#cb86-40" tabindex="-1"></a>        <span class="at">test.use =</span> <span class="st">&#39;wilcox&#39;</span>,</span>
+<span id="cb86-41"><a href="integrated-st-pipeline.html#cb86-41" tabindex="-1"></a></span>
+<span id="cb86-42"><a href="integrated-st-pipeline.html#cb86-42" tabindex="-1"></a>        <span class="co"># For Step5 SVF</span></span>
+<span id="cb86-43"><a href="integrated-st-pipeline.html#cb86-43" tabindex="-1"></a>        <span class="at">Step5_SVFs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-44"><a href="integrated-st-pipeline.html#cb86-44" tabindex="-1"></a>        <span class="at">selection.method =</span> <span class="st">&#39;moransi&#39;</span>,</span>
+<span id="cb86-45"><a href="integrated-st-pipeline.html#cb86-45" tabindex="-1"></a>        <span class="at">n.top.show =</span> <span class="dv">10</span>,</span>
+<span id="cb86-46"><a href="integrated-st-pipeline.html#cb86-46" tabindex="-1"></a>        <span class="at">n.col.show =</span> <span class="dv">5</span>,</span>
+<span id="cb86-47"><a href="integrated-st-pipeline.html#cb86-47" tabindex="-1"></a></span>
+<span id="cb86-48"><a href="integrated-st-pipeline.html#cb86-48" tabindex="-1"></a>        <span class="co"># For Step6 Interaction</span></span>
+<span id="cb86-49"><a href="integrated-st-pipeline.html#cb86-49" tabindex="-1"></a>        <span class="at">Step6_Interaction =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-50"><a href="integrated-st-pipeline.html#cb86-50" tabindex="-1"></a>        <span class="at">h5ad_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-51"><a href="integrated-st-pipeline.html#cb86-51" tabindex="-1"></a>        <span class="at">counts_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-52"><a href="integrated-st-pipeline.html#cb86-52" tabindex="-1"></a>        <span class="at">coordinates_path =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-53"><a href="integrated-st-pipeline.html#cb86-53" tabindex="-1"></a>        <span class="at">coordinates_index_col =</span> <span class="dv">0</span>,</span>
+<span id="cb86-54"><a href="integrated-st-pipeline.html#cb86-54" tabindex="-1"></a>        <span class="at">counts_transpose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-55"><a href="integrated-st-pipeline.html#cb86-55" tabindex="-1"></a>        <span class="at">commot.signaling_type =</span> <span class="st">&#39;Secreted Signaling&#39;</span>,</span>
+<span id="cb86-56"><a href="integrated-st-pipeline.html#cb86-56" tabindex="-1"></a>        <span class="at">commot.database =</span> <span class="st">&#39;CellChat&#39;</span>,</span>
+<span id="cb86-57"><a href="integrated-st-pipeline.html#cb86-57" tabindex="-1"></a>        <span class="at">commot.min_cell_pct =</span> <span class="fl">0.05</span>,</span>
+<span id="cb86-58"><a href="integrated-st-pipeline.html#cb86-58" tabindex="-1"></a>        <span class="at">commot.dis_thr =</span> <span class="dv">500</span>,</span>
+<span id="cb86-59"><a href="integrated-st-pipeline.html#cb86-59" tabindex="-1"></a>        <span class="at">commot.n_permutations =</span> <span class="dv">100</span>,</span>
+<span id="cb86-60"><a href="integrated-st-pipeline.html#cb86-60" tabindex="-1"></a></span>
+<span id="cb86-61"><a href="integrated-st-pipeline.html#cb86-61" tabindex="-1"></a>        <span class="co"># For Step7 Cellcycle</span></span>
+<span id="cb86-62"><a href="integrated-st-pipeline.html#cb86-62" tabindex="-1"></a>        <span class="at">Step7_Cellcycle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-63"><a href="integrated-st-pipeline.html#cb86-63" tabindex="-1"></a>        <span class="at">s.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-64"><a href="integrated-st-pipeline.html#cb86-64" tabindex="-1"></a>        <span class="at">g2m.features =</span> <span class="cn">NULL</span>,</span>
+<span id="cb86-65"><a href="integrated-st-pipeline.html#cb86-65" tabindex="-1"></a></span>
+<span id="cb86-66"><a href="integrated-st-pipeline.html#cb86-66" tabindex="-1"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb86-67"><a href="integrated-st-pipeline.html#cb86-67" tabindex="-1"></a>        <span class="at">pythonPath =</span> <span class="cn">NULL</span></span>
+<span id="cb86-68"><a href="integrated-st-pipeline.html#cb86-68" tabindex="-1"></a>)</span></code></pre></div>
 
 </div>
 </div>
