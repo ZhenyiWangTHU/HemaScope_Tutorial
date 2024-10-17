@@ -191,7 +191,7 @@ step-8-st-seq-pipeline.-deconvolution
 step-9-st-seq-pipeline.-cell-cycle-analysis
 step-10-st-seq-pipeline.-niche-analysis
 step-11-st-seq-pipeline.-generate-the-report
-operation-manual-for-the-hemascopecloud-single-cell-cloud-analysis-platform
+operation-manual-for-the-hemascopecloud
 user-login
 enter-the-url-in-a-web-browser
 to-obtain-free-computational-resources
