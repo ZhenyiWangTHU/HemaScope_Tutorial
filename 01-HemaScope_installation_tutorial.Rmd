@@ -167,6 +167,7 @@ devtools::install_github(repo="ZhenyiWangTHU/HemaScopeR", dep = FALSE)
 -   Run the `init_miniconda` function to create the miniconda virtual environments for the scRNA-seq pipeline and ST pipeline of 10X Visium data and MERFISH data.
 
 ```
+library(HemaScopeR)
 init_miniconda()
 ```
 
