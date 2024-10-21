@@ -32,9 +32,10 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 conda config --set show_channel_urls true
 ```
 
-## Install R and python
+## Install R
 
-- R 4.3.3 and python 3.9.12
+<!-- - R 4.3.3 and python 3.9.12 -->
+- R 4.3.3
 
 ```
 conda install R-base=4.3.3
