@@ -89,27 +89,27 @@ BiocManager::install("BiocNeighbors")
 - From CRAN
 
 ```
-install.packages(c("doMC",
-"doRNG",
-"shinyjs",
-"shiny",
-"shinyWidgets",
-"shinydashboard",
-"slickR",
-"phateR",
-"gelnet",
-"parallelDist",
-"kableExtra",
-"transport",
-"feather",
-"markdown",
-"ggalluvial",
-"forcats",
-"mcmc",
-"MCMCpack",
-"fields",
-"getopt",
-"osfr"))
+install.packages("doMC")
+install.packages("doRNG")
+install.packages("shinyjs")
+install.packages("shiny")
+install.packages("shinyWidgets")
+install.packages("shinydashboard")
+install.packages("slickR")
+install.packages("phateR")
+install.packages("gelnet")
+install.packages("parallelDist")
+install.packages("kableExtra")
+install.packages("transport")
+install.packages("feather")
+install.packages("markdown")
+install.packages("ggalluvial")
+install.packages("forcats")
+install.packages("mcmc")
+install.packages("MCMCpack")
+install.packages("fields")
+install.packages("getopt")
+install.packages("osfr")
 ```
 
 - From GitHub
