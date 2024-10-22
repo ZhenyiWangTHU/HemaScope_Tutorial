@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2024-10-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,9 +145,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#create-a-new-conda-environment-and-activate-it"><i class="fa fa-check"></i><b>2.1</b> Create a new conda environment and activate it</a></li>
 <li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#set-the-channels-in-conda"><i class="fa fa-check"></i><b>2.2</b> Set the channels in conda</a></li>
-<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Install R and python</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#install-r"><i class="fa fa-check"></i><b>2.3</b> Install R</a></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#install-required-r-packages"><i class="fa fa-check"></i><b>2.4</b> Install required R-packages</a></li>
-<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#create-the-required-python-virtual-environment"><i class="fa fa-check"></i><b>2.5</b> Create the required python virtual environment</a></li>
+<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#create-the-required-python-v.3.9.12-virtual-environment"><i class="fa fa-check"></i><b>2.5</b> Create the required python (v.3.9.12) virtual environment</a></li>
 <li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#the-installed-packages-with-versions"><i class="fa fa-check"></i><b>2.6</b> The installed packages with versions</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="integrated-scrna-seq-pipeline.html"><a href="integrated-scrna-seq-pipeline.html"><i class="fa fa-check"></i><b>3</b> Integrated scRNA-seq pipeline</a></li>
@@ -375,13 +375,12 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 # Set to show channel URLs
 conda config --set show_channel_urls true</code></pre>
 </div>
-<div id="install-r-and-python" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Install R and python<a href="installation.html#install-r-and-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="install-r" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Install R<a href="installation.html#install-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>R 4.3.3 and python 3.9.12</li>
+<li>R 4.3.3</li>
 </ul>
 <pre><code>conda install R-base=4.3.3</code></pre>
-<!-- conda install python=3.9.12 -->
 </div>
 <div id="install-required-r-packages" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Install required R-packages<a href="installation.html#install-required-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -424,27 +423,27 @@ BiocManager::install(&quot;BiocNeighbors&quot;)</code></pre>
 <ul>
 <li>From CRAN</li>
 </ul>
-<pre><code>install.packages(&quot;doMC&quot;)
-install.packages(&quot;doRNG&quot;)
-install.packages(&quot;shinyjs&quot;)
-install.packages(&quot;shiny&quot;)
-install.packages(&quot;shinyWidgets&quot;)
-install.packages(&quot;shinydashboard&quot;)
-install.packages(&quot;slickR&quot;)
-install.packages(&quot;phateR&quot;)
-install.packages(&quot;gelnet&quot;)
-install.packages(&quot;parallelDist&quot;)
-install.packages(&quot;kableExtra&quot;)
-install.packages(&quot;transport&quot;)
-install.packages(&quot;feather&quot;)
-install.packages(&quot;markdown&quot;)
-install.packages(&quot;ggalluvial&quot;)
-install.packages(&quot;forcats&quot;)
-install.packages(&quot;mcmc&quot;)
-install.packages(&quot;MCMCpack&quot;)
-install.packages(&quot;fields&quot;)
-install.packages(&quot;getopt&quot;)
-install.packages(&quot;osfr&quot;)</code></pre>
+<pre><code>install.packages(c(&quot;doMC&quot;,
+&quot;doRNG&quot;,
+&quot;shinyjs&quot;,
+&quot;shiny&quot;,
+&quot;shinyWidgets&quot;,
+&quot;shinydashboard&quot;,
+&quot;slickR&quot;,
+&quot;phateR&quot;,
+&quot;gelnet&quot;,
+&quot;parallelDist&quot;,
+&quot;kableExtra&quot;,
+&quot;transport&quot;,
+&quot;feather&quot;,
+&quot;markdown&quot;,
+&quot;ggalluvial&quot;,
+&quot;forcats&quot;,
+&quot;mcmc&quot;,
+&quot;MCMCpack&quot;,
+&quot;fields&quot;,
+&quot;getopt&quot;,
+&quot;osfr&quot;))</code></pre>
 <ul>
 <li>From GitHub</li>
 </ul>
@@ -483,12 +482,13 @@ devtools::install_github(c(&quot;hfang-bristol/dnet&quot;))
 <!-- # stereopy==1.3.1 -->
 <!-- ``` -->
 </div>
-<div id="create-the-required-python-virtual-environment" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Create the required python virtual environment<a href="installation.html#create-the-required-python-virtual-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="create-the-required-python-v.3.9.12-virtual-environment" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Create the required python (v.3.9.12) virtual environment<a href="installation.html#create-the-required-python-v.3.9.12-virtual-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Run the <code>init_miniconda</code> function to create the miniconda virtual environments for the scRNA-seq pipeline and ST pipeline of 10X Visium data and MERFISH data.</li>
 </ul>
-<pre><code>init_miniconda()</code></pre>
+<pre><code>library(HemaScopeR)
+init_miniconda()</code></pre>
 <ul>
 <li>(Optional) Run the <code>init_miniconda_stereo</code> function to create the miniconda virtual environment for the stereo-seq data.</li>
 </ul>

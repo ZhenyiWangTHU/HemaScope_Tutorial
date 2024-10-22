@@ -34,10 +34,6 @@ conda config --set show_channel_urls true
 
 ## Install R
 
-<<<<<<< Updated upstream
-<!-- - R 4.3.3 and python 3.9.12 -->
-=======
->>>>>>> Stashed changes
 - R 4.3.3
 
 ```
