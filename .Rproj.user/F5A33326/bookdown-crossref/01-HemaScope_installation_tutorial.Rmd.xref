@@ -3,6 +3,5 @@ h2:create-a-new-conda-environment-and-activate-it Create a new conda environment
 h2:set-the-channels-in-conda Set the channels in conda
 h2:install-r Install R
 h2:install-required-r-packages Install required R-packages
-h2:create-the-required-python-v.3.9.12-virtual-environment Create the required python (v.3.9.12) virtual environment
-h2:the-installed-packages-with-versions The installed packages with versions
+h2:create-the-required-python-virtual-environment Create the required python virtual environment
 

@@ -34,10 +34,6 @@ conda config --set show_channel_urls true
 
 ## Install R
 
-<<<<<<< Updated upstream
-<!-- - R 4.3.3 and python 3.9.12 -->
-=======
->>>>>>> Stashed changes
 - R 4.3.3
 
 ```
@@ -164,7 +160,7 @@ devtools::install_github(repo="ZhenyiWangTHU/HemaScopeR", dep = FALSE)
 <!-- # stereopy==1.3.1 -->
 <!-- ``` -->
 
-## Create the required python (v.3.9.12) virtual environment
+## Create the required python virtual environment
 
 -   Run the `init_miniconda` function to create the miniconda virtual environments for the scRNA-seq pipeline and ST pipeline of 10X Visium data and MERFISH data.
 
@@ -180,17 +176,3 @@ init_miniconda_stereo()
 ```
 
 
-
-## The installed packages with versions
-- R packages with versions
-```         
-Package	Version
-------- -------
-
-```
-- Python packages with versions
-```
-Package                  Version
------------------------- --------------
-
-```

@@ -3,7 +3,7 @@
     "path": "D:/GitHub/HemaScope_Tutorial/01-HemaScope_installation_tutorial.Rmd",
     "project_path": "01-HemaScope_installation_tutorial.Rmd",
     "type": "r_markdown",
-    "hash": "1225064144",
+    "hash": "1154276271",
     "contents": "",
     "dirty": false,
     "created": 1729562861292.0,
@@ -13,14 +13,14 @@
         "source_window_id": "",
         "Source": "Source",
         "cursorPosition": "162,33",
-        "scrollLine": "123"
+        "scrollLine": "122"
     },
     "folds": "",
-    "lastKnownWriteTime": 1729565172,
+    "lastKnownWriteTime": 1729842896,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1729565172,
+    "last_content_update": 1729842896,
     "read_only": false,
     "read_only_alternatives": []
 }

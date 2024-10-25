@@ -49,8 +49,7 @@ create-a-new-conda-environment-and-activate-it
 set-the-channels-in-conda
 install-r
 install-required-r-packages
-create-the-required-python-v.3.9.12-virtual-environment
-the-installed-packages-with-versions
+create-the-required-python-virtual-environment
 integrated-scrna-seq-pipeline
 step-by-step-scrna-seq-pipeline
 before-you-begin
