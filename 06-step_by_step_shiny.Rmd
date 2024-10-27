@@ -15,6 +15,7 @@ knitr::include_graphics(path="./image/enterR.png")
 
 - You can see ">" . It means that you have accessed the R environment on Linux.
 ```{R,eval=FALSE}
+library(HemaScopeR)
 app_path <- system.file("shinyapp/shiny_sc_st_all.R", package = "HemaScopeR")  #The path where shiny_sc_st_all.R is located
 #Run shiny code
 shiny::runApp(app_path,launch.browser = FALSE,host = "127.0.0.1",port=18888) #host parameter：Your server IP address

@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-26" />
+<meta name="date" content="2024-10-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -358,9 +358,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>You can see “&gt;” . It means that you have accessed the R environment on Linux.</li>
 </ul>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="step-by-step-shiny.html#cb96-1" tabindex="-1"></a>app_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;shinyapp/shiny_sc_st_all.R&quot;</span>, <span class="at">package =</span> <span class="st">&quot;HemaScopeR&quot;</span>)  <span class="co">#The path where shiny_sc_st_all.R is located</span></span>
-<span id="cb96-2"><a href="step-by-step-shiny.html#cb96-2" tabindex="-1"></a><span class="co">#Run shiny code</span></span>
-<span id="cb96-3"><a href="step-by-step-shiny.html#cb96-3" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(app_path,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>,<span class="at">host =</span> <span class="st">&quot;127.0.0.1&quot;</span>,<span class="at">port=</span><span class="dv">18888</span>) <span class="co">#host parameter：Your server IP address</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="step-by-step-shiny.html#cb96-1" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span>
+<span id="cb96-2"><a href="step-by-step-shiny.html#cb96-2" tabindex="-1"></a>app_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;shinyapp/shiny_sc_st_all.R&quot;</span>, <span class="at">package =</span> <span class="st">&quot;HemaScopeR&quot;</span>)  <span class="co">#The path where shiny_sc_st_all.R is located</span></span>
+<span id="cb96-3"><a href="step-by-step-shiny.html#cb96-3" tabindex="-1"></a><span class="co">#Run shiny code</span></span>
+<span id="cb96-4"><a href="step-by-step-shiny.html#cb96-4" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(app_path,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>,<span class="at">host =</span> <span class="st">&quot;127.0.0.1&quot;</span>,<span class="at">port=</span><span class="dv">18888</span>) <span class="co">#host parameter：Your server IP address</span></span></code></pre></div>
 <ul>
 <li><p>You’ll see a page like the one below,copy link
 <img src="image/shiny.png" /><!-- --></p></li>
