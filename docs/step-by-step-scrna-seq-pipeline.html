@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-27" />
+<meta name="date" content="2024-10-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -380,21 +380,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-27"><a href="step-by-step-scrna-seq-pipeline.html#cb14-27" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
 <span id="cb14-28"><a href="step-by-step-scrna-seq-pipeline.html#cb14-28" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
 <span id="cb14-29"><a href="step-by-step-scrna-seq-pipeline.html#cb14-29" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb14-30"><a href="step-by-step-scrna-seq-pipeline.html#cb14-30" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb14-31"><a href="step-by-step-scrna-seq-pipeline.html#cb14-31" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb14-32"><a href="step-by-step-scrna-seq-pipeline.html#cb14-32" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb14-33"><a href="step-by-step-scrna-seq-pipeline.html#cb14-33" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb14-34"><a href="step-by-step-scrna-seq-pipeline.html#cb14-34" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb14-35"><a href="step-by-step-scrna-seq-pipeline.html#cb14-35" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb14-36"><a href="step-by-step-scrna-seq-pipeline.html#cb14-36" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb14-37"><a href="step-by-step-scrna-seq-pipeline.html#cb14-37" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb14-38"><a href="step-by-step-scrna-seq-pipeline.html#cb14-38" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-39"><a href="step-by-step-scrna-seq-pipeline.html#cb14-39" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb14-40"><a href="step-by-step-scrna-seq-pipeline.html#cb14-40" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb14-41"><a href="step-by-step-scrna-seq-pipeline.html#cb14-41" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb14-42"><a href="step-by-step-scrna-seq-pipeline.html#cb14-42" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb14-43"><a href="step-by-step-scrna-seq-pipeline.html#cb14-43" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb14-44"><a href="step-by-step-scrna-seq-pipeline.html#cb14-44" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<span id="cb14-30"><a href="step-by-step-scrna-seq-pipeline.html#cb14-30" tabindex="-1"></a><span class="fu">library</span>(GPTCelltype)</span>
+<span id="cb14-31"><a href="step-by-step-scrna-seq-pipeline.html#cb14-31" tabindex="-1"></a><span class="fu">library</span>(openai)</span>
+<span id="cb14-32"><a href="step-by-step-scrna-seq-pipeline.html#cb14-32" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb14-33"><a href="step-by-step-scrna-seq-pipeline.html#cb14-33" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb14-34"><a href="step-by-step-scrna-seq-pipeline.html#cb14-34" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb14-35"><a href="step-by-step-scrna-seq-pipeline.html#cb14-35" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb14-36"><a href="step-by-step-scrna-seq-pipeline.html#cb14-36" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb14-37"><a href="step-by-step-scrna-seq-pipeline.html#cb14-37" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb14-38"><a href="step-by-step-scrna-seq-pipeline.html#cb14-38" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb14-39"><a href="step-by-step-scrna-seq-pipeline.html#cb14-39" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb14-40"><a href="step-by-step-scrna-seq-pipeline.html#cb14-40" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-41"><a href="step-by-step-scrna-seq-pipeline.html#cb14-41" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb14-42"><a href="step-by-step-scrna-seq-pipeline.html#cb14-42" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb14-43"><a href="step-by-step-scrna-seq-pipeline.html#cb14-43" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb14-44"><a href="step-by-step-scrna-seq-pipeline.html#cb14-44" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb14-45"><a href="step-by-step-scrna-seq-pipeline.html#cb14-45" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb14-46"><a href="step-by-step-scrna-seq-pipeline.html#cb14-46" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <ul>
 <li>Set the paths for the output results, and the Python installation.</li>
 </ul>
