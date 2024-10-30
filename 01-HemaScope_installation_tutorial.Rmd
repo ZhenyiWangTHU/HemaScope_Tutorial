@@ -106,6 +106,7 @@ install.packages("MCMCpack")
 install.packages("fields")
 install.packages("getopt")
 install.packages("osfr")
+install.packages("openai")
 ```
 
 - From GitHub
@@ -129,7 +130,7 @@ devtools::install_github("navinlabcode/copykat@d7d6569")
 devtools::install_github('chris-mcginnis-ucsf/DoubletFinder@8c7f76e')
 devtools::install_github("mojaveazure/seurat-disk@877d4e1")
 devtools::install_github(c("hfang-bristol/dnet"))
-
+remotes::install_github("Winnie09/GPTCelltype")
 ```
 
 - Install HemaScopeR from github

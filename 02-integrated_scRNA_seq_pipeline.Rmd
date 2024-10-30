@@ -33,6 +33,8 @@ library(Matrix)
 library(foreach)
 library(doParallel)
 library(clusterProfiler)
+library(GPTCelltype)
+library(openai)
 # st libraries
 library(RColorBrewer)
 library(Rfast2)
