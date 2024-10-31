@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-10-30" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -452,7 +452,7 @@ install.packages(&quot;openai&quot;)</code></pre>
 <p>Usage limitations: Sometimes an API rate limit error occurs, and a GitHub token is needed to provide the GitHub API rate limit. The steps to resolve this are as follows: Register for an account or log in to an existing account on the GitHub website. Then click on your profile picture in the top right corner, go to the dropdown menu and select “Settings.” Next, find “Developer settings” and click on it, then find “Personal access tokens (classic).” Click on it, then click “Create new token (classic).” Create a new token by first naming it anything you like. Then choose the expiration time for the token. Finally, check the “repo” box; the token will be used to download code repositories from GitHub. Click “Generate token.” Copy the generated token password.</p>
 <p>After that, set the token in the environment variable in R. Since we are using conda, enter R by typing R in the terminal. Then, enter the command: usethis::edit_r_environ(). This will open a file. Press the i key to edit. Paste the token you copied into the code area as follows: GITHUB_TOKEN=“your_token”.</p>
 <p>Then press Esc, type :wq! (force save). After that, you need to exit Linux and re-enter R. Close and reopen the terminal to apply the environment variable. Reopen Linux, activate the conda environment, and enter R again.</p>
-<pre><code>devtools::install_github(&quot;sqjin/CellChat&quot;)
+<pre><code>devtools::install_github(&quot;jinworks/CellChat&quot;)
 devtools::install_github(&quot;immunogenomics/presto&quot;)
 devtools::install_github(&quot;aertslab/SCENIC@140ad6b&quot;)
 devtools::install_github(&quot;pzhulab/abcCellmap@f44c14b&quot;)
