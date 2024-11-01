@@ -1,0 +1,15 @@
+# HemaScopeDocker
+
+- Pull the 'hemascopedocker' image from docker hub.
+
+Please note that you need to configure a proxy port for your server.
+
+```{shell, eval=FALSE}
+docker pull zhenyiwang123/hemascopedocker:latest
+```
+
+- Start a docker container
+
+```{shell, eval=FALSE}
+docker run -it --security-opt seccomp=unconfined zhenyiwang123/hemascopedocker /bin/bash
+```

@@ -13,5 +13,6 @@ rmd_files:
  - 05-step_by_step_st_seq_pipeline.Rmd
  - 06-step_by_step_shiny.Rmd
  - 07-HemaScopeCloud_Tutorial.Rmd
+ - 08-HemaScopeDocker.Rmd
 # - shiny_usage.Rmd
 # - HemaScopeCloud_usage.Rmd
