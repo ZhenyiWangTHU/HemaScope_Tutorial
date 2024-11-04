@@ -50,6 +50,8 @@ set-the-channels-in-conda
 install-r
 install-required-r-packages
 create-the-required-python-virtual-environment
+download-the-database
+download-demo-datasets
 integrated-scrna-seq-pipeline
 step-by-step-scrna-seq-pipeline
 before-you-begin

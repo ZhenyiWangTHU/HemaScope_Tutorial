@@ -176,4 +176,8 @@ init_miniconda()
 init_miniconda_stereo()
 ```
 
+## Download the database
+In addition to the R-packages and Python-packages, you will also need to download the database for HemaScopeR. The database is available in our Cloud Drive via this link [https://cloud.tsinghua.edu.cn/d/759fd04333274d3f9946/](https://cloud.tsinghua.edu.cn/d/759fd04333274d3f9946/). Please assign the local storage path of the database to the 'databasePath' parameter.
 
+## Download demo datasets
+The demo datasets are available in our Cloud Drive via this link [https://cloud.tsinghua.edu.cn/d/3d363e32665249409571/](https://cloud.tsinghua.edu.cn/d/3d363e32665249409571/).

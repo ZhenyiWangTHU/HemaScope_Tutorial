@@ -4,4 +4,6 @@ h2:set-the-channels-in-conda Set the channels in conda
 h2:install-r Install R
 h2:install-required-r-packages Install required R-packages
 h2:create-the-required-python-virtual-environment Create the required python virtual environment
+h2:download-the-database Download the database
+h2:download-demo-datasets Download demo datasets
 
