@@ -30,7 +30,6 @@ fig:unnamed-chunk-97
 fig:unnamed-chunk-101
 fig:unnamed-chunk-102
 fig:unnamed-chunk-103
-fig:unnamed-chunk-144
 fig:unnamed-chunk-145
 fig:unnamed-chunk-146
 fig:unnamed-chunk-147
@@ -43,6 +42,7 @@ fig:unnamed-chunk-153
 fig:unnamed-chunk-154
 fig:unnamed-chunk-155
 fig:unnamed-chunk-156
+fig:unnamed-chunk-157
 introduction
 installation
 create-a-new-conda-environment-and-activate-it

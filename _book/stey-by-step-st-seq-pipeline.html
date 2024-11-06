@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-11-04" />
+<meta name="date" content="2024-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,6 +349,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="stey-by-step-st-seq-pipeline" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">6</span> Stey-by-step st-seq pipeline<a href="stey-by-step-st-seq-pipeline.html#stey-by-step-st-seq-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Load the R packages.</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="stey-by-step-st-seq-pipeline.html#cb85-1" tabindex="-1"></a><span class="co"># sc libraries</span></span>
+<span id="cb85-2"><a href="stey-by-step-st-seq-pipeline.html#cb85-2" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb85-3"><a href="stey-by-step-st-seq-pipeline.html#cb85-3" tabindex="-1"></a><span class="fu">library</span>(phateR)</span>
+<span id="cb85-4"><a href="stey-by-step-st-seq-pipeline.html#cb85-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
+<span id="cb85-5"><a href="stey-by-step-st-seq-pipeline.html#cb85-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
+<span id="cb85-6"><a href="stey-by-step-st-seq-pipeline.html#cb85-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
+<span id="cb85-7"><a href="stey-by-step-st-seq-pipeline.html#cb85-7" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb85-8"><a href="stey-by-step-st-seq-pipeline.html#cb85-8" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb85-9"><a href="stey-by-step-st-seq-pipeline.html#cb85-9" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb85-10"><a href="stey-by-step-st-seq-pipeline.html#cb85-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb85-11"><a href="stey-by-step-st-seq-pipeline.html#cb85-11" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb85-12"><a href="stey-by-step-st-seq-pipeline.html#cb85-12" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb85-13"><a href="stey-by-step-st-seq-pipeline.html#cb85-13" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb85-14"><a href="stey-by-step-st-seq-pipeline.html#cb85-14" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb85-15"><a href="stey-by-step-st-seq-pipeline.html#cb85-15" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb85-16"><a href="stey-by-step-st-seq-pipeline.html#cb85-16" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb85-17"><a href="stey-by-step-st-seq-pipeline.html#cb85-17" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb85-18"><a href="stey-by-step-st-seq-pipeline.html#cb85-18" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb85-19"><a href="stey-by-step-st-seq-pipeline.html#cb85-19" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb85-20"><a href="stey-by-step-st-seq-pipeline.html#cb85-20" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb85-21"><a href="stey-by-step-st-seq-pipeline.html#cb85-21" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb85-22"><a href="stey-by-step-st-seq-pipeline.html#cb85-22" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb85-23"><a href="stey-by-step-st-seq-pipeline.html#cb85-23" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb85-24"><a href="stey-by-step-st-seq-pipeline.html#cb85-24" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb85-25"><a href="stey-by-step-st-seq-pipeline.html#cb85-25" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb85-26"><a href="stey-by-step-st-seq-pipeline.html#cb85-26" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb85-27"><a href="stey-by-step-st-seq-pipeline.html#cb85-27" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb85-28"><a href="stey-by-step-st-seq-pipeline.html#cb85-28" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb85-29"><a href="stey-by-step-st-seq-pipeline.html#cb85-29" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb85-30"><a href="stey-by-step-st-seq-pipeline.html#cb85-30" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb85-31"><a href="stey-by-step-st-seq-pipeline.html#cb85-31" tabindex="-1"></a><span class="fu">library</span>(GPTCelltype)</span>
+<span id="cb85-32"><a href="stey-by-step-st-seq-pipeline.html#cb85-32" tabindex="-1"></a><span class="fu">library</span>(openai)</span>
+<span id="cb85-33"><a href="stey-by-step-st-seq-pipeline.html#cb85-33" tabindex="-1"></a><span class="fu">library</span>(HematoMap)</span>
+<span id="cb85-34"><a href="stey-by-step-st-seq-pipeline.html#cb85-34" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb85-35"><a href="stey-by-step-st-seq-pipeline.html#cb85-35" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb85-36"><a href="stey-by-step-st-seq-pipeline.html#cb85-36" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb85-37"><a href="stey-by-step-st-seq-pipeline.html#cb85-37" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb85-38"><a href="stey-by-step-st-seq-pipeline.html#cb85-38" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb85-39"><a href="stey-by-step-st-seq-pipeline.html#cb85-39" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb85-40"><a href="stey-by-step-st-seq-pipeline.html#cb85-40" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb85-41"><a href="stey-by-step-st-seq-pipeline.html#cb85-41" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb85-42"><a href="stey-by-step-st-seq-pipeline.html#cb85-42" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb85-43"><a href="stey-by-step-st-seq-pipeline.html#cb85-43" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb85-44"><a href="stey-by-step-st-seq-pipeline.html#cb85-44" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb85-45"><a href="stey-by-step-st-seq-pipeline.html#cb85-45" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb85-46"><a href="stey-by-step-st-seq-pipeline.html#cb85-46" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb85-47"><a href="stey-by-step-st-seq-pipeline.html#cb85-47" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb85-48"><a href="stey-by-step-st-seq-pipeline.html#cb85-48" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb85-49"><a href="stey-by-step-st-seq-pipeline.html#cb85-49" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb85-50"><a href="stey-by-step-st-seq-pipeline.html#cb85-50" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <div id="step-1.-data-loading" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Step 1. Data loading<a href="stey-by-step-st-seq-pipeline.html#step-1.-data-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>st_Loading_Data</code> function is designed for loading <a href="https://www.10xgenomics.com/cn/products/spatial-gene-expression">10X Visium</a> spatial transcriptomics data from <a href="https://www.10xgenomics.com/cn/support/software/space-ranger/latest">Space Ranger</a>. It will load data from <code>input.data.dir</code> and output it in the <a href="https://github.com/satijalab/seurat-object">SeuratObject</a> format.</p>

@@ -131,6 +131,7 @@ devtools::install_github('chris-mcginnis-ucsf/DoubletFinder@8c7f76e')
 devtools::install_github("mojaveazure/seurat-disk@877d4e1")
 devtools::install_github(c("hfang-bristol/dnet"))
 remotes::install_github("Winnie09/GPTCelltype")
+devtools::install_github("NRCTM-bioinfo/HematoMap")
 ```
 
 - Install HemaScopeR from github

@@ -1,5 +1,60 @@
 # Stey-by-step st-seq pipeline
 
+- Load the R packages.
+
+```{R, eval=FALSE}
+# sc libraries
+library(Seurat)
+library(phateR)
+library(DoubletFinder)
+library(monocle)
+library(slingshot)
+library(GSVA)
+library(limma)
+library(plyr)
+library(dplyr)
+library(org.Mm.eg.db)
+library(org.Hs.eg.db)
+library(CellChat)
+library(velocyto.R)
+library(SeuratWrappers)
+library(stringr)
+library(scran)
+library(ggpubr)
+library(viridis)
+library(pheatmap)
+library(parallel)
+library(reticulate)
+library(SCENIC)
+library(feather)
+library(AUCell)
+library(RcisTarget)
+library(Matrix)
+library(foreach)
+library(doParallel)
+library(clusterProfiler)
+library(GPTCelltype)
+library(openai)
+library(HematoMap)
+# st libraries
+library(RColorBrewer)
+library(Rfast2)
+library(SeuratDisk)
+library(abcCellmap)
+library(biomaRt)
+library(copykat)
+library(gelnet)
+library(ggplot2)
+library(parallelDist)
+library(patchwork)
+library(markdown)
+# getpot
+library(getopt)
+library(tools)
+# HemaScopeR
+library(HemaScopeR)
+```
+
 ## Step 1. Data loading
 
 The `st_Loading_Data` function is designed for loading [10X Visium](https://www.10xgenomics.com/cn/products/spatial-gene-expression) spatial transcriptomics data from [Space Ranger](https://www.10xgenomics.com/cn/support/software/space-ranger/latest). It will load data from `input.data.dir` and output it in the [SeuratObject](https://github.com/satijalab/seurat-object) format.

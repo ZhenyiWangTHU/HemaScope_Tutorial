@@ -3,6 +3,7 @@
 ## Before you begin
 - Load the R packages.
 ```{R, eval=FALSE}
+# sc libraries
 library(Seurat)
 library(phateR)
 library(DoubletFinder)
@@ -34,6 +35,7 @@ library(doParallel)
 library(clusterProfiler)
 library(GPTCelltype)
 library(openai)
+library(HematoMap)
 # st libraries
 library(RColorBrewer)
 library(Rfast2)
@@ -46,8 +48,10 @@ library(ggplot2)
 library(parallelDist)
 library(patchwork)
 library(markdown)
+# getpot
 library(getopt)
 library(tools)
+# HemaScopeR
 library(HemaScopeR)
 ```
 

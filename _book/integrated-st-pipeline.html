@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team" />
 
 
-<meta name="date" content="2024-11-04" />
+<meta name="date" content="2024-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -358,49 +358,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb81-4"><a href="integrated-st-pipeline.html#cb81-4" tabindex="-1"></a><span class="fu">library</span>(DoubletFinder)</span>
 <span id="cb81-5"><a href="integrated-st-pipeline.html#cb81-5" tabindex="-1"></a><span class="fu">library</span>(monocle)</span>
 <span id="cb81-6"><a href="integrated-st-pipeline.html#cb81-6" tabindex="-1"></a><span class="fu">library</span>(slingshot)</span>
-<span id="cb81-7"><a href="integrated-st-pipeline.html#cb81-7" tabindex="-1"></a><span class="fu">library</span>(URD)</span>
-<span id="cb81-8"><a href="integrated-st-pipeline.html#cb81-8" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
-<span id="cb81-9"><a href="integrated-st-pipeline.html#cb81-9" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
-<span id="cb81-10"><a href="integrated-st-pipeline.html#cb81-10" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb81-11"><a href="integrated-st-pipeline.html#cb81-11" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb81-12"><a href="integrated-st-pipeline.html#cb81-12" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
-<span id="cb81-13"><a href="integrated-st-pipeline.html#cb81-13" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb81-14"><a href="integrated-st-pipeline.html#cb81-14" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
-<span id="cb81-15"><a href="integrated-st-pipeline.html#cb81-15" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
-<span id="cb81-16"><a href="integrated-st-pipeline.html#cb81-16" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
-<span id="cb81-17"><a href="integrated-st-pipeline.html#cb81-17" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb81-18"><a href="integrated-st-pipeline.html#cb81-18" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb81-19"><a href="integrated-st-pipeline.html#cb81-19" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb81-20"><a href="integrated-st-pipeline.html#cb81-20" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb81-21"><a href="integrated-st-pipeline.html#cb81-21" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb81-22"><a href="integrated-st-pipeline.html#cb81-22" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb81-23"><a href="integrated-st-pipeline.html#cb81-23" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb81-24"><a href="integrated-st-pipeline.html#cb81-24" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
-<span id="cb81-25"><a href="integrated-st-pipeline.html#cb81-25" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
-<span id="cb81-26"><a href="integrated-st-pipeline.html#cb81-26" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
-<span id="cb81-27"><a href="integrated-st-pipeline.html#cb81-27" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
-<span id="cb81-28"><a href="integrated-st-pipeline.html#cb81-28" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
-<span id="cb81-29"><a href="integrated-st-pipeline.html#cb81-29" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb81-30"><a href="integrated-st-pipeline.html#cb81-30" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb81-31"><a href="integrated-st-pipeline.html#cb81-31" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb81-32"><a href="integrated-st-pipeline.html#cb81-32" tabindex="-1"></a><span class="fu">library</span>(OpenXGR)</span>
-<span id="cb81-33"><a href="integrated-st-pipeline.html#cb81-33" tabindex="-1"></a><span class="co"># st libraries</span></span>
-<span id="cb81-34"><a href="integrated-st-pipeline.html#cb81-34" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb81-35"><a href="integrated-st-pipeline.html#cb81-35" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
-<span id="cb81-36"><a href="integrated-st-pipeline.html#cb81-36" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
-<span id="cb81-37"><a href="integrated-st-pipeline.html#cb81-37" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
-<span id="cb81-38"><a href="integrated-st-pipeline.html#cb81-38" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
-<span id="cb81-39"><a href="integrated-st-pipeline.html#cb81-39" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
-<span id="cb81-40"><a href="integrated-st-pipeline.html#cb81-40" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
-<span id="cb81-41"><a href="integrated-st-pipeline.html#cb81-41" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb81-42"><a href="integrated-st-pipeline.html#cb81-42" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
-<span id="cb81-43"><a href="integrated-st-pipeline.html#cb81-43" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb81-44"><a href="integrated-st-pipeline.html#cb81-44" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb81-45"><a href="integrated-st-pipeline.html#cb81-45" tabindex="-1"></a><span class="co"># getpot</span></span>
-<span id="cb81-46"><a href="integrated-st-pipeline.html#cb81-46" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
-<span id="cb81-47"><a href="integrated-st-pipeline.html#cb81-47" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb81-48"><a href="integrated-st-pipeline.html#cb81-48" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
-<span id="cb81-49"><a href="integrated-st-pipeline.html#cb81-49" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
+<span id="cb81-7"><a href="integrated-st-pipeline.html#cb81-7" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb81-8"><a href="integrated-st-pipeline.html#cb81-8" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb81-9"><a href="integrated-st-pipeline.html#cb81-9" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb81-10"><a href="integrated-st-pipeline.html#cb81-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb81-11"><a href="integrated-st-pipeline.html#cb81-11" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb81-12"><a href="integrated-st-pipeline.html#cb81-12" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb81-13"><a href="integrated-st-pipeline.html#cb81-13" tabindex="-1"></a><span class="fu">library</span>(CellChat)</span>
+<span id="cb81-14"><a href="integrated-st-pipeline.html#cb81-14" tabindex="-1"></a><span class="fu">library</span>(velocyto.R)</span>
+<span id="cb81-15"><a href="integrated-st-pipeline.html#cb81-15" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb81-16"><a href="integrated-st-pipeline.html#cb81-16" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb81-17"><a href="integrated-st-pipeline.html#cb81-17" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb81-18"><a href="integrated-st-pipeline.html#cb81-18" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb81-19"><a href="integrated-st-pipeline.html#cb81-19" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb81-20"><a href="integrated-st-pipeline.html#cb81-20" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb81-21"><a href="integrated-st-pipeline.html#cb81-21" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb81-22"><a href="integrated-st-pipeline.html#cb81-22" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb81-23"><a href="integrated-st-pipeline.html#cb81-23" tabindex="-1"></a><span class="fu">library</span>(SCENIC)</span>
+<span id="cb81-24"><a href="integrated-st-pipeline.html#cb81-24" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb81-25"><a href="integrated-st-pipeline.html#cb81-25" tabindex="-1"></a><span class="fu">library</span>(AUCell)</span>
+<span id="cb81-26"><a href="integrated-st-pipeline.html#cb81-26" tabindex="-1"></a><span class="fu">library</span>(RcisTarget)</span>
+<span id="cb81-27"><a href="integrated-st-pipeline.html#cb81-27" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb81-28"><a href="integrated-st-pipeline.html#cb81-28" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb81-29"><a href="integrated-st-pipeline.html#cb81-29" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb81-30"><a href="integrated-st-pipeline.html#cb81-30" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb81-31"><a href="integrated-st-pipeline.html#cb81-31" tabindex="-1"></a><span class="fu">library</span>(GPTCelltype)</span>
+<span id="cb81-32"><a href="integrated-st-pipeline.html#cb81-32" tabindex="-1"></a><span class="fu">library</span>(openai)</span>
+<span id="cb81-33"><a href="integrated-st-pipeline.html#cb81-33" tabindex="-1"></a><span class="fu">library</span>(HematoMap)</span>
+<span id="cb81-34"><a href="integrated-st-pipeline.html#cb81-34" tabindex="-1"></a><span class="co"># st libraries</span></span>
+<span id="cb81-35"><a href="integrated-st-pipeline.html#cb81-35" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb81-36"><a href="integrated-st-pipeline.html#cb81-36" tabindex="-1"></a><span class="fu">library</span>(Rfast2)</span>
+<span id="cb81-37"><a href="integrated-st-pipeline.html#cb81-37" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb81-38"><a href="integrated-st-pipeline.html#cb81-38" tabindex="-1"></a><span class="fu">library</span>(abcCellmap)</span>
+<span id="cb81-39"><a href="integrated-st-pipeline.html#cb81-39" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb81-40"><a href="integrated-st-pipeline.html#cb81-40" tabindex="-1"></a><span class="fu">library</span>(copykat)</span>
+<span id="cb81-41"><a href="integrated-st-pipeline.html#cb81-41" tabindex="-1"></a><span class="fu">library</span>(gelnet)</span>
+<span id="cb81-42"><a href="integrated-st-pipeline.html#cb81-42" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb81-43"><a href="integrated-st-pipeline.html#cb81-43" tabindex="-1"></a><span class="fu">library</span>(parallelDist)</span>
+<span id="cb81-44"><a href="integrated-st-pipeline.html#cb81-44" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb81-45"><a href="integrated-st-pipeline.html#cb81-45" tabindex="-1"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb81-46"><a href="integrated-st-pipeline.html#cb81-46" tabindex="-1"></a><span class="co"># getpot</span></span>
+<span id="cb81-47"><a href="integrated-st-pipeline.html#cb81-47" tabindex="-1"></a><span class="fu">library</span>(getopt)</span>
+<span id="cb81-48"><a href="integrated-st-pipeline.html#cb81-48" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
+<span id="cb81-49"><a href="integrated-st-pipeline.html#cb81-49" tabindex="-1"></a><span class="co"># HemaScopeR</span></span>
+<span id="cb81-50"><a href="integrated-st-pipeline.html#cb81-50" tabindex="-1"></a><span class="fu">library</span>(HemaScopeR)</span></code></pre></div>
 <div id="for-10x-visium-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> For 10X Visium data<a href="integrated-st-pipeline.html#for-10x-visium-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
