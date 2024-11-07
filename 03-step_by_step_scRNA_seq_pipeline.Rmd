@@ -619,6 +619,15 @@ if(!is.null(pythonPath)){
 knitr::include_graphics("./sc_img/step5/phateR.png")
 ```
 
+- Run HematoMap to visualize cluster tree plots.
+```{R, eval=FALSE}
+run_HematoMap(sc_object = sc_object,
+              output.dir = paste0(output.dir,'/Step5.Visualization/'))
+```
+```{r echo=FALSE,fig.cap="HematoMap result", out.width = "400px" , fig.align = 'center'}
+knitr::include_graphics("./sc_img/step5/HematoMap.png")
+```
+
 ### codes for calculating the proportions
 - The statistical results for the numbers and proportions of cell groups.
 ```{R, eval=FALSE}
