@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="This is the tutorial for HemaScope." />
   
 
-<meta name="author" content="HemaScope team" />
+<meta name="author" content="HemaScope team (contact us via wangzy17@tsinghua.org.cn)" />
 
 
-<meta name="date" content="2024-11-07" />
+<meta name="date" content="2024-12-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -357,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="step-by-step-shiny.html#cb97-1" tabindex="-1"></a>conda activate HemaScope_env</span>
 <span id="cb97-2"><a href="step-by-step-shiny.html#cb97-2" tabindex="-1"></a>R</span></code></pre></div>
-<p><img src="image/enterR.png" /><!-- --></p>
+<p><img src="image/enterR.png" width="338" /></p>
 <ul>
 <li>You can see “&gt;” . It means that you have accessed the R environment on Linux.</li>
 </ul>
@@ -367,9 +367,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb98-4"><a href="step-by-step-shiny.html#cb98-4" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(app_path,<span class="at">launch.browser =</span> <span class="cn">FALSE</span>,<span class="at">host =</span> <span class="st">&quot;127.0.0.1&quot;</span>,<span class="at">port=</span><span class="dv">18888</span>) <span class="co">#host parameter：Your server IP address</span></span></code></pre></div>
 <ul>
 <li><p>You’ll see a page like the one below,copy link
-<img src="image/shiny.png" /><!-- --></p></li>
+<img src="image/shiny.png" width="440" /></p></li>
 <li><p>Open the link with a browser,you can see HemaScopeR shiny home page.
-<img src="image/shiny_home.png" /><!-- --></p></li>
+<img src="image/shiny_home.png" width="1106" /></p></li>
 </ul>
 </div>
 <div id="option-2-run-shiny-on-rstudio-web-page" class="section level2 hasAnchor" number="7.2">
@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A UI page appears with two buttons: “Start scRNA-seq Analysis” and “Start st-seq Analysis.” Users can click the corresponding button based on their needs to enter the respective analysis page.
 * The figure showing the start interface.
-<img src="image/shiny_home.png" /><!-- --></p>
+<img src="image/shiny_home.png" width="1106" /></p>
 <ul>
 <li>Begin a new analysis, continue the previous analysis, or return to the start interface</li>
 </ul>
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Please note: users should follow the analysis steps sequentially and not skip steps. For example, analyzing steps 1, 2, and 3 and then jumping directly to step 6 is incorrect. The proper analysis sequence should be step 1, 2, 3, 4, 5, 6, … N.</p>
 <ul>
 <li>The figure showing the interface for beginning a new analysis, continuing the previous analysis, or returning to the start interface.
-<img src="image/shiny_UI.png" /><!-- --></li>
+<img src="image/shiny_UI.png" width="1023" /></li>
 </ul>
 <div id="scrna-seq-pipeline" class="section level4 hasAnchor" number="7.2.3.1">
 <h4><span class="header-section-number">7.2.3.1</span> scRNA-seq pipeline<a href="step-by-step-shiny.html#scrna-seq-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -432,7 +432,7 @@ Step 15. Generate the Report
 Back to Prior Page</p>
 <ul>
 <li>The figure showing the scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_page.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_page.png" width="1113" />
 Please start the analysis from step 1 and do not skip any steps. The correct analysis sequence is steps 1 through 15: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15.</li>
 </ul>
 <p>To return to the previous page, click “Back to Prior Page”.</p>
@@ -445,7 +445,7 @@ Choose a step you want to analyze: Select the step you want to continue analyzin
 <h5><span class="header-section-number">7.2.3.1.1</span> Step 1 (scRNA-seq pipeline). Input Data<a href="step-by-step-shiny.html#step-1-scrna-seq-pipeline.-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 1 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step1.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step1.png" width="1166" /></li>
 </ul>
 <p>Enter data path: Input multiple file paths separated by semicolons, for example: /path1/file1/data1;/path2/file2/data2;/path2/file2/data3. For a single file, use: /path2/file2/data2.</p>
 <p>Enter project name: When entering multiple files, you must also input multiple project names, separated by semicolons. The number of project names must match the number of input files. Example: projectname1;projectname2;projectname3. For a single file, use: projectname1.</p>
@@ -466,7 +466,7 @@ Choose a step you want to analyze: Select the step you want to continue analyzin
 <h5><span class="header-section-number">7.2.3.1.2</span> Step 2 (scRNA-seq pipeline). Quality Control<a href="step-by-step-shiny.html#step-2-scrna-seq-pipeline.-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 2 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step2.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step2.png" width="1152" /></li>
 </ul>
 <p>nFeature_RNA.limit: Minimum number of genes detected per cell. Default value: 200
 percent.mt.limit: Threshold for filtering mitochondrial genes. Default value: 20
@@ -490,7 +490,7 @@ Step2_Quality_Control.RemoveDoublets: Whether to remove detected doublets. Defau
 <h5><span class="header-section-number">7.2.3.1.3</span> Step 3 (scRNA-seq pipeline). Clustering<a href="step-by-step-shiny.html#step-3-scrna-seq-pipeline.-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 3 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step3.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step3.png" width="1156" /></li>
 </ul>
 <p>PCs for clustering (default: 1:20): Principal components used for clustering. Default value: 1:20
 n.neighbors for clustering (default: 50): k.param parameter in the FindNeighbors function. Default value: 50
@@ -502,7 +502,7 @@ resolution for clustering (default: 0.4): Resolution used for clustering. Defaul
 <h5><span class="header-section-number">7.2.3.1.4</span> Step 4 (scRNA-seq pipeline). Identify Cell Types<a href="step-by-step-shiny.html#step-4-scrna-seq-pipeline.-identify-cell-types" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 4 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step4.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_step4.png" width="1153" />
 Choose organism: ‘hsa’ for human, ‘mmu’ for mouse
 Choose Labels: Cell labels, default value: clustering
 Run CNV: TRUE if copy number variation (CNV) analysis is to be performed
@@ -515,7 +515,7 @@ CPU cores for parallel processing: Number of CPU cores for parallel processing, 
 <h5><span class="header-section-number">7.2.3.1.5</span> Step 5 (scRNA-seq pipeline). Visualization<a href="step-by-step-shiny.html#step-5-scrna-seq-pipeline.-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 5 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step5.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step5.png" width="1150" /></li>
 </ul>
 <p>Nearest neighbors for PhateR analysis (default: 50): phate.knn parameter, the number of nearest neighbors to consider in the PhateR algorithm. Default value: 50
 Principal components for PhateR (default: 20): phate.npca parameter, the number of principal components to use in the PhateR algorithm. Default value: 20
@@ -528,7 +528,7 @@ Dimensions for PhateR (default: 2): phate.ndim parameter, the number of dimensio
 <h5><span class="header-section-number">7.2.3.1.6</span> Step 6 (scRNA-seq pipeline). Find Differential Genes<a href="step-by-step-shiny.html#step-6-scrna-seq-pipeline.-find-differential-genes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 6 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step6.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_step6.png" width="1153" />
 Minimum gene percentage for differential detection (default: 0.25): The minimum fraction of cells expressing a gene in any cluster. Default value: 0.25
 Log-fold threshold for gene analysis (default: 0.25): The log-fold change threshold for differential gene expression analysis. Default value: 0.25</li>
 </ul>
@@ -539,7 +539,7 @@ Log-fold threshold for gene analysis (default: 0.25): The log-fold change thresh
 <h5><span class="header-section-number">7.2.3.1.7</span> Step 7 (scRNA-seq pipeline). Assign Cell Cycles<a href="step-by-step-shiny.html#step-7-scrna-seq-pipeline.-assign-cell-cycles" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 7 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step7.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_step7.png" width="1156" />
 Define cell cycle cutoff (default: NULL): The cutoff value used to distinguish between cycling and non-cycling cells. Default value: NULL</li>
 </ul>
 <p>Click the “Run Step 7” button to start the process. After clicking the “Run Step 7” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 7 completed” message will appear.</p>
@@ -549,7 +549,7 @@ Define cell cycle cutoff (default: NULL): The cutoff value used to distinguish b
 <h5><span class="header-section-number">7.2.3.1.8</span> Step 8 (scRNA-seq pipeline). Calculate Heterogeneity<a href="step-by-step-shiny.html#step-8-scrna-seq-pipeline.-calculate-heterogeneity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 8 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step8.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_step8.png" width="1154" />
 Order cell types: The order of cell types for visualization. If not provided, the function will use the unique cell types from the input cell_types_groups. Default value: NULL</li>
 </ul>
 <p>Click the “Run Step 8” button to start the process. After clicking the “Run Step 8” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 8 completed” message will appear.</p>
@@ -559,7 +559,7 @@ Order cell types: The order of cell types for visualization. If not provided, th
 <h5><span class="header-section-number">7.2.3.1.9</span> Step 9 (scRNA-seq pipeline). Violin Plot for Marker Genes<a href="step-by-step-shiny.html#step-9-scrna-seq-pipeline.-violin-plot-for-marker-genes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 9 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step9.png" /><!-- -->
+<img src="image/sc_shiny_images/sc_step9.png" width="1154" />
 Enter marker genes for violin plot (separate by ‘,’): The marker genes for the violin plot. Default value is the built-in marker genes: NULL.</li>
 </ul>
 <p>Set the hexadecimal codes of colors for cell types (separate by ‘,’): Specify the colors for cell types. The default is the color palette: NULL.</p>
@@ -570,7 +570,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.10</span> Step 10 (scRNA-seq pipeline). Calculate Lineage Scores<a href="step-by-step-shiny.html#step-10-scrna-seq-pipeline.-calculate-lineage-scores" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 10 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step10.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step10.png" width="1149" /></li>
 </ul>
 <p>The gene sets for calculating lineage scores: The gene sets used for calculating lineage scores. The default is the color palette: NULL.</p>
 <p>The names for the lineages: The names of the lineages. Default value: NULL.</p>
@@ -582,7 +582,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.11</span> Step 11 (scRNA-seq pipeline). GSVA<a href="step-by-step-shiny.html#step-11-scrna-seq-pipeline.-gsva" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 11 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step11.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step11.png" width="1156" /></li>
 </ul>
 <p>Option to identify cell type-specific GSVA terms: Whether to identify cell type-specific GSVA terms. Default value: TRUE.</p>
 <p>Option to identify differential GSVA terms: Whether to identify differential GSVA terms. Default value: TRUE.</p>
@@ -593,7 +593,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.12</span> Step 12 (scRNA-seq pipeline). Construct Trajectories<a href="step-by-step-shiny.html#step-12-scrna-seq-pipeline.-construct-trajectories" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 12 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step12.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step12.png" width="1152" /></li>
 </ul>
 <p>Set the cell types for constructing trajectories: The cell types to be used for trajectory analysis. Different cell types should be separated by commas. Default value: “all.”</p>
 <p>Option to run monocle2: Whether to perform Monocle2 trajectory analysis. Default value: TRUE.</p>
@@ -607,7 +607,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.13</span> Step 13 (scRNA-seq pipeline). Transcription Factors Analysis<a href="step-by-step-shiny.html#step-13-scrna-seq-pipeline.-transcription-factors-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 13 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step13.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step13.png" width="1155" /></li>
 </ul>
 <p>Set the hexadecimal codes of colors for cell types: Colors used for visualizing cell types. Default value: NULL (color palette).</p>
 <p>Set the hexadecimal codes of colors for groups: Colors used for visualizing groups. Default value: NULL (color palette).</p>
@@ -618,7 +618,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.14</span> Step 14 (scRNA-seq pipeline). Cell-Cell Interaction<a href="step-by-step-shiny.html#step-14-scrna-seq-pipeline.-cell-cell-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 14 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step14.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step14.png" width="1142" /></li>
 </ul>
 <p>The cell groups were sorted: Whether to consider the size (number) of cell groups in the cell communication analysis. Default value: TRUE.</p>
 <p>Click the “Run Step 14” button to start the process. After clicking the “Run Step 14” button, please do not interact with other parameters or buttons on the page. Once the process is complete, a “Step 14 completed” message will appear.</p>
@@ -628,7 +628,7 @@ Enter marker genes for violin plot (separate by ‘,’): The marker genes for t
 <h5><span class="header-section-number">7.2.3.1.15</span> Step 15 (scRNA-seq pipeline). Generate the Report<a href="step-by-step-shiny.html#step-15-scrna-seq-pipeline.-generate-the-report" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 15 of scRNA-seq pipeline.
-<img src="image/sc_shiny_images/sc_step15.png" /><!-- --></li>
+<img src="image/sc_shiny_images/sc_step15.png" width="824" /></li>
 </ul>
 <p>Click “Run Step 15” to generate the analysis report.</p>
 </div>
@@ -660,7 +660,7 @@ Choose a step you want to analyze: Select the step you want to continue analyzin
 <h5><span class="header-section-number">7.2.3.2.1</span> Step 1 (st-seq pipeline). Input Data<a href="step-by-step-shiny.html#step-1-st-seq-pipeline.-input-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 1 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step1.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step1.png" width="1152" /></li>
 </ul>
 <p>Enter data path: The directory where the input data is stored. The input data should be 10X Visium spatial transcriptomics data. Only one dataset can be input at a time; unlike single-cell data, multiple datasets cannot be entered simultaneously.</p>
 <p>Enter sample name: A string for naming the sample. The default value is ‘Hema_ST’.</p>
@@ -679,7 +679,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.2</span> Step 2 (st-seq pipeline). Quality Control<a href="step-by-step-shiny.html#step-2-st-seq-pipeline.-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 2 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step2.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step2.png" width="829" /></li>
 </ul>
 <p>min.gene (default: 200): Specifies the minimum number of genes detected in a spot. The default value is 200.</p>
 <p>min.nUMI (default: 500): Specifies the minimum number of nUMIs detected in a spot. The default value is 500.</p>
@@ -694,7 +694,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.3</span> Step 3 (st-seq pipeline). Clustering<a href="step-by-step-shiny.html#step-3-st-seq-pipeline.-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 3 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step3.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step3.png" width="824" /></li>
 </ul>
 <p>normalization.method (default: ‘SCTransform’): The method for data normalization. The default value is ‘SCTransform’.</p>
 <p>npcs (default: 50): The number of principal components (PCs) to use in PCA. The default value is 50.</p>
@@ -706,7 +706,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.4</span> Step 4 (st-seq pipeline). Find Differential Genes<a href="step-by-step-shiny.html#step-4-st-seq-pipeline.-find-differential-genes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 4 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step4.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step4.png" width="828" /></li>
 </ul>
 <p>only.pos: A logical flag to include only positive markers. The default value is TRUE.</p>
 <p>min.pct (default: 0.25): The minimum fraction of cells expressing the gene in any cluster. The default value is 0.25.</p>
@@ -718,7 +718,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.5</span> Step 5 (st-seq pipeline). Spatially variable features<a href="step-by-step-shiny.html#step-5-st-seq-pipeline.-spatially-variable-features" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 5 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step5.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step5.png" width="826" /></li>
 </ul>
 <p>selection.method (default: ‘moransi’): The method used for selecting spatially variable features. The default value is ‘moransi’.</p>
 <p>n.top.show (default: 10): The number of top spatially variable features to visualize. The default value is 10.</p>
@@ -729,7 +729,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.6</span> Step 6 (st-seq pipeline). Spatial interaction<a href="step-by-step-shiny.html#step-6-st-seq-pipeline.-spatial-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 6 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step6.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step6.png" width="828" /></li>
 </ul>
 <p>commot.signaling_type (default: ‘Secreted Signaling’): The type of signaling interaction to consider. The default value is ‘Secreted Signaling’.</p>
 <p>commot.database (default: ‘CellChat’): The database used for the analysis. The default value is ‘CellChat’.</p>
@@ -742,7 +742,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.7</span> Step 7 (st-seq pipeline). CNV analysis<a href="step-by-step-shiny.html#step-7-st-seq-pipeline.-cnv-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 7 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step7.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step7.png" width="826" /></li>
 </ul>
 <p>copykat.genome (default: ‘NULL’): The genome version used, either ‘hg20’ or ‘mm10’. The default value is “hg20”.</p>
 <p>copykat.LOW.DR (default: 0.05): The lower dropout rate threshold in CopyKAT. The default value is 0.05.</p>
@@ -756,7 +756,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.8</span> Step 8 (st-seq pipeline). Deconvolution<a href="step-by-step-shiny.html#step-8-st-seq-pipeline.-deconvolution" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 8 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step8.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step8.png" width="825" /></li>
 </ul>
 <p>cell2loc.sc.h5ad.dir (default: ‘NULL’): The path to the h5ad format single-cell RNA-seq data. The default value is NULL.</p>
 <p>cell2loc.sc.max.epoch (default: 1000): The maximum number of epochs for single-cell deconvolution. The default value is 1000.</p>
@@ -768,7 +768,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.9</span> Step 9 (st-seq pipeline). Cell cycle analysis<a href="step-by-step-shiny.html#step-9-st-seq-pipeline.-cell-cycle-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 9 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step9.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step9.png" width="824" /></li>
 </ul>
 <p>The gene sets for calculating S phase scores (e.g. “gene1,gene2,gene3”): A list of genes associated with the S phase. The default value is NULL (uses genes from Seurat).</p>
 <p>The gene sets for calculating G2M phase scores (e.g. “gene1,gene2,gene3”): A list of genes associated with the G2M phase. The default value is NULL (uses genes from Seurat).</p>
@@ -778,7 +778,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.10</span> Step 10 (st-seq pipeline). Niche analysis<a href="step-by-step-shiny.html#step-10-st-seq-pipeline.-niche-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 10 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step10.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step10.png" width="824" /></li>
 </ul>
 <p>Nich.cluster.n (default: 4): The number of clusters for niche clustering. The default value is 4.</p>
 <p>Click “Run Step10” to proceed. After clicking the “Run Step10” button, please do not modify any other parameters on the page. Once Step 10 is completed, the result files will appear in the UI and will be stored in the folder specified by the user in the output.dir parameter.</p>
@@ -787,7 +787,7 @@ If a step generates result plots, they will be displayed. Users can switch betwe
 <h5><span class="header-section-number">7.2.3.2.11</span> Step 11 (st-seq pipeline). Generate the Report<a href="step-by-step-shiny.html#step-11-st-seq-pipeline.-generate-the-report" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>The figure showing the step 11 of st-seq pipeline.
-<img src="image/st_shiny_images/st_step11.png" /><!-- --></li>
+<img src="image/st_shiny_images/st_step11.png" width="816" /></li>
 </ul>
 <p>Click “Run Step11” to generate the analysis report.</p>
 
