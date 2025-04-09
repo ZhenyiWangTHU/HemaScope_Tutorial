@@ -1,5 +1,7 @@
 # Installation
 
+We recommend that users install and use HemaScope on Linux servers, and do not recommend installing and using this tool on personal computers with the Windows operating system.
+
 ## Create a new conda environment and activate it
 
 ```
