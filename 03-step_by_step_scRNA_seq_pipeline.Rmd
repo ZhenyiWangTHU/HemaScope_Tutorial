@@ -1204,6 +1204,15 @@ if (!file.exists(paste0(output.dir, '/Step12.Construct_trajectories/scVelo/'))) 
 } 
 ```
 - Prepare the input data.
+
+- Construct trajectories for all cells.
+```{R, eval=FALSE}
+Step12_Construct_Trajectories.clusters <- NULL
+```
+- Construct trajectories for specific cell types.
+```{R, eval=FALSE}
+Step12_Construct_Trajectories.clusters <- c('cell.type1','cell.type2','cell.type3',...)
+```
 ```{R, eval=FALSE}
 if(is.null(Step12_Construct_Trajectories.clusters)){
     sc_object.subset <- sc_object
