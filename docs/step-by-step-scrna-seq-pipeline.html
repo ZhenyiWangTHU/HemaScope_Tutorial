@@ -23,7 +23,7 @@
 <meta name="author" content="HemaScope team (contact us via wangzy17@tsinghua.org.cn)" />
 
 
-<meta name="date" content="2025-04-16" />
+<meta name="date" content="2025-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1351,22 +1351,28 @@ Figure 4.21: Box plot showing the Spearman correlation coefficients between cell
 <span id="cb61-27"><a href="step-by-step-scrna-seq-pipeline.html#cb61-27" tabindex="-1"></a>    marker.genes <span class="ot">&lt;-</span> <span class="fu">c</span>(HSPCs_lineage_signatures, Myeloids_lineage_signatures, B_cells_lineage_signatures, T_NK_cells_lineage_signatures)</span>
 <span id="cb61-28"><a href="step-by-step-scrna-seq-pipeline.html#cb61-28" tabindex="-1"></a>}</span>
 <span id="cb61-29"><a href="step-by-step-scrna-seq-pipeline.html#cb61-29" tabindex="-1"></a></span>
-<span id="cb61-30"><a href="step-by-step-scrna-seq-pipeline.html#cb61-30" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ViolinPlot.cellTypeOrders)){</span>
-<span id="cb61-31"><a href="step-by-step-scrna-seq-pipeline.html#cb61-31" tabindex="-1"></a>  ViolinPlot.cellTypeOrders <span class="ot">&lt;-</span> <span class="fu">unique</span>(sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels)</span>
-<span id="cb61-32"><a href="step-by-step-scrna-seq-pipeline.html#cb61-32" tabindex="-1"></a>}</span>
-<span id="cb61-33"><a href="step-by-step-scrna-seq-pipeline.html#cb61-33" tabindex="-1"></a></span>
-<span id="cb61-34"><a href="step-by-step-scrna-seq-pipeline.html#cb61-34" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ViolinPlot.cellTypeColors)){</span>
-<span id="cb61-35"><a href="step-by-step-scrna-seq-pipeline.html#cb61-35" tabindex="-1"></a>  ViolinPlot.cellTypeColors <span class="ot">&lt;-</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="fu">length</span>(<span class="fu">unique</span>(sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels)))</span>
-<span id="cb61-36"><a href="step-by-step-scrna-seq-pipeline.html#cb61-36" tabindex="-1"></a>}</span>
-<span id="cb61-37"><a href="step-by-step-scrna-seq-pipeline.html#cb61-37" tabindex="-1"></a></span>
-<span id="cb61-38"><a href="step-by-step-scrna-seq-pipeline.html#cb61-38" tabindex="-1"></a><span class="fu">combinedViolinPlot</span>(<span class="at">dataMatrix =</span> dataMatrix,</span>
-<span id="cb61-39"><a href="step-by-step-scrna-seq-pipeline.html#cb61-39" tabindex="-1"></a>                   <span class="at">features =</span> marker.genes,</span>
-<span id="cb61-40"><a href="step-by-step-scrna-seq-pipeline.html#cb61-40" tabindex="-1"></a>                   <span class="at">CellTypes =</span> sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels,</span>
-<span id="cb61-41"><a href="step-by-step-scrna-seq-pipeline.html#cb61-41" tabindex="-1"></a>                   <span class="at">cellTypeOrders =</span> ViolinPlot.cellTypeOrders,</span>
-<span id="cb61-42"><a href="step-by-step-scrna-seq-pipeline.html#cb61-42" tabindex="-1"></a>                   <span class="at">cellTypeColors =</span> ViolinPlot.cellTypeColors,</span>
-<span id="cb61-43"><a href="step-by-step-scrna-seq-pipeline.html#cb61-43" tabindex="-1"></a>                   <span class="at">Org =</span> Org,</span>
-<span id="cb61-44"><a href="step-by-step-scrna-seq-pipeline.html#cb61-44" tabindex="-1"></a>                   <span class="at">output.dir =</span> <span class="fu">paste0</span>(output.dir, <span class="st">&#39;/Step9.Violin_plot_for_marker_genes/&#39;</span>),</span>
-<span id="cb61-45"><a href="step-by-step-scrna-seq-pipeline.html#cb61-45" tabindex="-1"></a>                   <span class="at">databasePath =</span> databasePath)</span></code></pre></div>
+<span id="cb61-30"><a href="step-by-step-scrna-seq-pipeline.html#cb61-30" tabindex="-1"></a><span class="co"># To specify cell type orders in the violin plot</span></span>
+<span id="cb61-31"><a href="step-by-step-scrna-seq-pipeline.html#cb61-31" tabindex="-1"></a><span class="co"># ViolinPlot.cellTypeOrders &lt;- c(&#39;cell type A&#39;, &#39;cell type B&#39;, ...)</span></span>
+<span id="cb61-32"><a href="step-by-step-scrna-seq-pipeline.html#cb61-32" tabindex="-1"></a>ViolinPlot.cellTypeOrders <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># random orders</span></span>
+<span id="cb61-33"><a href="step-by-step-scrna-seq-pipeline.html#cb61-33" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ViolinPlot.cellTypeOrders)){</span>
+<span id="cb61-34"><a href="step-by-step-scrna-seq-pipeline.html#cb61-34" tabindex="-1"></a>  ViolinPlot.cellTypeOrders <span class="ot">&lt;-</span> <span class="fu">unique</span>(sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels)</span>
+<span id="cb61-35"><a href="step-by-step-scrna-seq-pipeline.html#cb61-35" tabindex="-1"></a>}</span>
+<span id="cb61-36"><a href="step-by-step-scrna-seq-pipeline.html#cb61-36" tabindex="-1"></a></span>
+<span id="cb61-37"><a href="step-by-step-scrna-seq-pipeline.html#cb61-37" tabindex="-1"></a><span class="co"># To specify the colors for c(&#39;cell type A&#39;, &#39;cell type B&#39;, ...) in the violin plot</span></span>
+<span id="cb61-38"><a href="step-by-step-scrna-seq-pipeline.html#cb61-38" tabindex="-1"></a><span class="co"># ViolinPlot.cellTypeColors &lt;- c(&#39;color A&#39;, &#39;color B&#39;, ...)</span></span>
+<span id="cb61-39"><a href="step-by-step-scrna-seq-pipeline.html#cb61-39" tabindex="-1"></a>ViolinPlot.cellTypeColors <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># random colors</span></span>
+<span id="cb61-40"><a href="step-by-step-scrna-seq-pipeline.html#cb61-40" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ViolinPlot.cellTypeColors)){</span>
+<span id="cb61-41"><a href="step-by-step-scrna-seq-pipeline.html#cb61-41" tabindex="-1"></a>  ViolinPlot.cellTypeColors <span class="ot">&lt;-</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="fu">length</span>(<span class="fu">unique</span>(sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels)))</span>
+<span id="cb61-42"><a href="step-by-step-scrna-seq-pipeline.html#cb61-42" tabindex="-1"></a>}</span>
+<span id="cb61-43"><a href="step-by-step-scrna-seq-pipeline.html#cb61-43" tabindex="-1"></a></span>
+<span id="cb61-44"><a href="step-by-step-scrna-seq-pipeline.html#cb61-44" tabindex="-1"></a><span class="fu">combinedViolinPlot</span>(<span class="at">dataMatrix =</span> dataMatrix,</span>
+<span id="cb61-45"><a href="step-by-step-scrna-seq-pipeline.html#cb61-45" tabindex="-1"></a>                   <span class="at">features =</span> marker.genes,</span>
+<span id="cb61-46"><a href="step-by-step-scrna-seq-pipeline.html#cb61-46" tabindex="-1"></a>                   <span class="at">CellTypes =</span> sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels,</span>
+<span id="cb61-47"><a href="step-by-step-scrna-seq-pipeline.html#cb61-47" tabindex="-1"></a>                   <span class="at">cellTypeOrders =</span> ViolinPlot.cellTypeOrders,</span>
+<span id="cb61-48"><a href="step-by-step-scrna-seq-pipeline.html#cb61-48" tabindex="-1"></a>                   <span class="at">cellTypeColors =</span> ViolinPlot.cellTypeColors,</span>
+<span id="cb61-49"><a href="step-by-step-scrna-seq-pipeline.html#cb61-49" tabindex="-1"></a>                   <span class="at">Org =</span> Org,</span>
+<span id="cb61-50"><a href="step-by-step-scrna-seq-pipeline.html#cb61-50" tabindex="-1"></a>                   <span class="at">output.dir =</span> <span class="fu">paste0</span>(output.dir, <span class="st">&#39;/Step9.Violin_plot_for_marker_genes/&#39;</span>),</span>
+<span id="cb61-51"><a href="step-by-step-scrna-seq-pipeline.html#cb61-51" tabindex="-1"></a>                   <span class="at">databasePath =</span> databasePath)</span></code></pre></div>
 <ul>
 <li>Save the variables.</li>
 </ul>
@@ -1490,7 +1496,6 @@ Figure 4.24: Heatmap showing the score of lineage signatures for each cell
 <li><code>GSVA.cellTypes</code>: A character vector specifying the cell types or labels for each cell.</li>
 <li><code>GSVA.cellTypes.orders</code>: A character vector specifying the order of cell types for visualization.</li>
 <li><code>GSVA.cellGroups</code>: A character vector specifying the cell groups or conditions for each cell.</li>
-<li><code>GSVA.identify.cellType.features</code>: Logical. If TRUE, identify cell type-specific features.</li>
 <li><code>GSVA.identify.diff.features</code>: Logical. If TRUE, identify differentially expressed features between cell groups.</li>
 <li><code>GSVA.comparison.design</code>: A list specifying the experimental design for differential GSVA analysis.</li>
 <li><code>OrgDB</code>: An organism-specific annotation database (OrgDb) for gene symbol conversion. e.g. org.Mm.eg.db or org.Hs.eg.db.</li>
@@ -1532,11 +1537,10 @@ Figure 4.24: Heatmap showing the score of lineage signatures for each cell
 <span id="cb67-22"><a href="step-by-step-scrna-seq-pipeline.html#cb67-22" tabindex="-1"></a>         <span class="at">GSVA.cellTypes =</span> sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>selectLabels,</span>
 <span id="cb67-23"><a href="step-by-step-scrna-seq-pipeline.html#cb67-23" tabindex="-1"></a>         <span class="at">GSVA.cellTypes.orders =</span> cellTypes_orders,</span>
 <span id="cb67-24"><a href="step-by-step-scrna-seq-pipeline.html#cb67-24" tabindex="-1"></a>         <span class="at">GSVA.cellGroups =</span> sc_object<span class="sc">@</span>meta.data<span class="sc">$</span>datasetID,</span>
-<span id="cb67-25"><a href="step-by-step-scrna-seq-pipeline.html#cb67-25" tabindex="-1"></a>         <span class="at">GSVA.identify.cellType.features =</span> Step11_GSVA.identify.cellType.features,</span>
-<span id="cb67-26"><a href="step-by-step-scrna-seq-pipeline.html#cb67-26" tabindex="-1"></a>         <span class="at">GSVA.identify.diff.features =</span> Step11_GSVA.identify.diff.features,</span>
-<span id="cb67-27"><a href="step-by-step-scrna-seq-pipeline.html#cb67-27" tabindex="-1"></a>         <span class="at">GSVA.comparison.design =</span> Step11_GSVA.comparison.design,</span>
-<span id="cb67-28"><a href="step-by-step-scrna-seq-pipeline.html#cb67-28" tabindex="-1"></a>         <span class="at">OrgDB =</span> OrgDB,</span>
-<span id="cb67-29"><a href="step-by-step-scrna-seq-pipeline.html#cb67-29" tabindex="-1"></a>         <span class="at">output.dir =</span> <span class="fu">paste0</span>(output.dir, <span class="st">&#39;/Step11.GSVA/&#39;</span>))</span></code></pre></div>
+<span id="cb67-25"><a href="step-by-step-scrna-seq-pipeline.html#cb67-25" tabindex="-1"></a>         <span class="at">GSVA.identify.diff.features =</span> Step11_GSVA.identify.diff.features,</span>
+<span id="cb67-26"><a href="step-by-step-scrna-seq-pipeline.html#cb67-26" tabindex="-1"></a>         <span class="at">GSVA.comparison.design =</span> Step11_GSVA.comparison.design,</span>
+<span id="cb67-27"><a href="step-by-step-scrna-seq-pipeline.html#cb67-27" tabindex="-1"></a>         <span class="at">OrgDB =</span> OrgDB,</span>
+<span id="cb67-28"><a href="step-by-step-scrna-seq-pipeline.html#cb67-28" tabindex="-1"></a>         <span class="at">output.dir =</span> <span class="fu">paste0</span>(output.dir, <span class="st">&#39;/Step11.GSVA/&#39;</span>))</span></code></pre></div>
 <ul>
 <li>Save the variables.</li>
 </ul>

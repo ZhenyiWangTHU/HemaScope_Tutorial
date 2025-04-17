@@ -969,10 +969,16 @@ if(is.null(marker.genes)&(Org == 'mmu')){
     marker.genes <- c(HSPCs_lineage_signatures, Myeloids_lineage_signatures, B_cells_lineage_signatures, T_NK_cells_lineage_signatures)
 }
 
+# To specify cell type orders in the violin plot
+# ViolinPlot.cellTypeOrders <- c('cell type A', 'cell type B', ...)
+ViolinPlot.cellTypeOrders <- NULL # random orders
 if(is.null(ViolinPlot.cellTypeOrders)){
   ViolinPlot.cellTypeOrders <- unique(sc_object@meta.data$selectLabels)
 }
 
+# To specify the colors for c('cell type A', 'cell type B', ...) in the violin plot
+# ViolinPlot.cellTypeColors <- c('color A', 'color B', ...)
+ViolinPlot.cellTypeColors <- NULL # random colors
 if(is.null(ViolinPlot.cellTypeColors)){
   ViolinPlot.cellTypeColors <- viridis::viridis(length(unique(sc_object@meta.data$selectLabels)))
 }
@@ -1097,7 +1103,6 @@ This step runs GSVA analysis, which calculates enrichment scores for gene sets i
 * `GSVA.cellTypes`: A character vector specifying the cell types or labels for each cell.
 * `GSVA.cellTypes.orders`: A character vector specifying the order of cell types for visualization.
 * `GSVA.cellGroups`: A character vector specifying the cell groups or conditions for each cell.
-* `GSVA.identify.cellType.features`: Logical. If TRUE, identify cell type-specific features.
 * `GSVA.identify.diff.features`: Logical. If TRUE, identify differentially expressed features between cell groups.
 * `GSVA.comparison.design`: A list specifying the experimental design for differential GSVA analysis.
 * `OrgDB`: An organism-specific annotation database (OrgDb) for gene symbol conversion. e.g. org.Mm.eg.db or org.Hs.eg.db.
@@ -1137,7 +1142,6 @@ run_GSVA(sc_object = sc_object,
          GSVA.cellTypes = sc_object@meta.data$selectLabels,
          GSVA.cellTypes.orders = cellTypes_orders,
          GSVA.cellGroups = sc_object@meta.data$datasetID,
-         GSVA.identify.cellType.features = Step11_GSVA.identify.cellType.features,
          GSVA.identify.diff.features = Step11_GSVA.identify.diff.features,
          GSVA.comparison.design = Step11_GSVA.comparison.design,
          OrgDB = OrgDB,
