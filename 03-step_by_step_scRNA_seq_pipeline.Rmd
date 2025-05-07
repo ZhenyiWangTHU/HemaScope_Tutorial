@@ -78,11 +78,12 @@ if (!file.exists(paste0(output.dir, '/RDSfiles/'))) {
 }
 
 #set the path for loading previous results, if necessary
-previous_results_path <- paste0(output.dir, '/RDSfiles/')  
-# if (Whether_load_previous_results) {
-#    print('Loading the previous results...') 
-#    Load_previous_results(previous_results_path = previous_results_path)
-# }
+previous_results_path <- paste0(output.dir, '/RDSfiles/')
+Whether_load_previous_results <- FALSE
+if (Whether_load_previous_results) {
+    print('Loading the previous results...') 
+    Load_previous_results(previous_results_path = previous_results_path)
+ }
 ```
 
 ## Step 1. Load the input data
