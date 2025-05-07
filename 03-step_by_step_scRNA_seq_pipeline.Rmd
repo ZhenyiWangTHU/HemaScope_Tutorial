@@ -57,8 +57,8 @@ library(HemaScopeR)
 
 - Set the paths for the output results, and the Python installation.
 ```{R, eval=FALSE}
-output.dir = './output'
-pythonPath = '/home/anaconda3/envs/HemaScopeR/bin/python'
+output.dir = '/home/wangzy/HemaScopeR/Demo/output/',
+pythonPath = python.path.sc(),
 ```
 
 - Create folders for saving the results of HemaScopeR analysis.
