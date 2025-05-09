@@ -57,14 +57,12 @@ library(HemaScopeR)
 
 - Set the paths for the output results, and the Python installation.
 ```{R, eval=FALSE}
-output.dir = '/home/wangzy/HemaScopeR/Demo/output/',
-pythonPath = python.path.sc(),
+output.dir = '/home/wangzy/HemaScopeR/Demo/output/'
+pythonPath = python.path.sc()
 ```
 
 - Create folders for saving the results of HemaScopeR analysis.
 ```{R, eval=FALSE}
-wdir <- getwd()
-
 if(is.null(pythonPath)==FALSE){ reticulate::use_python(pythonPath) }else{print('Please set the path of Python.')}
 
 if (!file.exists(paste0(output.dir, '/HemaScopeR_results'))) {
@@ -79,42 +77,61 @@ if (!file.exists(paste0(output.dir, '/RDSfiles/'))) {
 
 #set the path for loading previous results, if necessary
 previous_results_path <- paste0(output.dir, '/RDSfiles/')
-Whether_load_previous_results <- FALSE
-if (Whether_load_previous_results) {
-    print('Loading the previous results...') 
-    Load_previous_results(previous_results_path = previous_results_path)
+Whether_load_previous_results <- FALSE #set TRUE to load the RDS files
+if (Whether_load_previous_results) {  
+    print('Loading the previous results...')   
+    Load_previous_results(previous_results_path = previous_results_path)  
  }
 ```
 
 ## Step 1. Load the input data
 
+
+
 - Create a folder for step1
-```{R, eval=FALSE}
-print('Step1. Input data.')
-if (!file.exists(paste0(output.dir, '/Step1.Input_data/'))) {
-  dir.create(paste0(output.dir, '/Step1.Input_data/'))
+
+
+```{R, eval=FALSE}  
+print('Step1. Input data.')  
+if (!file.exists(paste0(output.dir, '/Step1.Input_data/'))) {  
+  dir.create(paste0(output.dir, '/Step1.Input_data/'))  
 }  
 ```
 
 - Set the parameters for loading the data sets.
-```{R, eval=FALSE}
-input.data.dirs = c('./SRR7881399/outs/filtered_feature_bc_matrix')#,
-                    #'./SRR7881400/outs/filtered_feature_bc_matrix',
-                    #'./SRR7881401/outs/filtered_feature_bc_matrix',
-                    #'./SRR7881402/outs/filtered_feature_bc_matrix',
-                    #'./SRR7881403/outs/filtered_feature_bc_matrix'
 
-project.names = c('SRR7881399')#,
-                  #'SRR7881400',
-                  #'SRR7881401',
-                  #'SRR7881402',
-                  #'SRR7881403'
+
+```{R, eval=FALSE}  
+Step1_Input_Data.type = 'cellranger-count'
+input.data.dirs = c('home/wangzy/HemaScopeR/Demo/SRR7881399/filtered_feature_bc_matrix',    
+                    'home/wangzy/HemaScopeR/Demo/SRR7881400/filtered_feature_bc_matrix',  
+                    'home/wangzy/HemaScopeR/Demo/SRR7881401/filtered_feature_bc_matrix',  
+                    'home/wangzy/HemaScopeR/Demo/SRR7881402/filtered_feature_bc_matrix',  
+                    'home/wangzy/HemaScopeR/Demo/SRR7881403/filtered_feature_bc_matrix'  
+
+#Step1_Input_Data.type = 'Seurat'
+#input.data.dirs = c('/home/wangzy/HemaScopeR/Demo/SRR7881399.Rds',  
+#                    '/home/wangzy/HemaScopeR/Demo/SRR7881400.Rds',  
+#                    '/home/wangzy/HemaScopeR/Demo/SRR7881401.Rds',  
+#                    '/home/wangzy/HemaScopeR/Demo/SRR7881402.Rds',  
+#                    '/home/wangzy/HemaScopeR/Demo/SRR7881403.Rds')  
+
+project.names = c(  'SRR7881399', 
+                    'SRR7881400', 
+                    'SRR7881401',   
+                    'SRR7881402',
+                    'SRR7881403')
+
 gene.column = 2
 min.cells = 10
 min.feature = 200
 mt.pattern = '^MT-' # set '^mt-' for mouse data
-Step1_Input_Data.type = 'cellranger-count'
-loom.files.path ="./SRR7881399/loom"
+
+loom.files.path = c( '/home/wangzy/HemaScopeR/Demo/SRR7881399.loom',
+                     '/home/wangzy/HemaScopeR/Demo/SRR7881400.loom',
+                     '/home/wangzy/HemaScopeR/Demo/SRR7881401.loom',
+                     '/home/wangzy/HemaScopeR/Demo/SRR7881402.loom',
+                     '/home/wangzy/HemaScopeR/Demo/SRR7881403.loom')
 ```
 
 - Load the data sets
@@ -890,19 +907,24 @@ if (!file.exists(paste0(output.dir, '/Step8.Calculate_heterogeneity/'))) {
 ```{R, eval=FALSE}
 expression_matrix <- GetAssayData(object = datasets.before.batch.removal, slot = "data")%>%as.matrix()
 expression_matrix <- expression_matrix[,rownames(sc_object@meta.data)]
-cell_types_groups <- as.data.frame(cbind(sc_object@meta.data$selectLabels,
+cell_types_groups <- as.data.frame(cbind(sc_object@meta.data$selectLabels,  
                                          sc_object@meta.data$datasetID))
 colnames(cell_types_groups) <- c('clusters', 'datasetID')
 
+# To specify cell type orders/colors in step8 (Heterogeneity plot), step9 (the violin plot), step 10 (lineage scores)
+ViolinPlot.cellTypeOrders <- NULL # specify the vector like c('cell type A', 'cell type B', ...), or set NULL for random orders
 if(is.null(ViolinPlot.cellTypeOrders)){
-  cellTypes_orders <- unique(sc_object@meta.data$selectLabels)
-}else{
-  cellTypes_orders <- ViolinPlot.cellTypeOrders  
-} 
+  ViolinPlot.cellTypeOrders <- unique(sc_object@meta.data$selectLabels)
+}
+
+ViolinPlot.cellTypeColors <- NULL # specify the vector like c('color A', 'color B', ...), or set NULL for random colors
+if(is.null(ViolinPlot.cellTypeColors)){
+  ViolinPlot.cellTypeColors <- viridis::viridis(length(unique(sc_object@meta.data$selectLabels)))
+}
 
 heterogeneity(expression_matrix = expression_matrix,
               cell_types_groups = cell_types_groups,
-              cellTypeOrders = cellTypes_orders,
+              cellTypeOrders = ViolinPlot.cellTypeOrders,
               output.dir = paste0(output.dir, '/Step8.Calculate_heterogeneity/'))
 ```
 - Save the variables.
@@ -948,7 +970,8 @@ if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){
 
 dataMatrix <- GetAssayData(object = sc_object, slot = "scale.data")
 
-if(is.null(marker.genes)&(Org == 'mmu')){
+marker.genes <- NULL 
+if(is.null(marker.genes)&(Org == 'mmu')){  
     # mpp genes are from 'The bone marrow microenvironment at single cell resolution'
     # the other genes are from 'single cell characterization of haematopoietic progenitors and their trajectories in homeostasis and perturbed haematopoiesis'
     # the aliases of these genes were changed in gecodeM16：Gpr64 -> Adgrg2, Sdpr -> Cavin2, Hbb-b1 -> Hbb-bs, Sfpi1 -> Spi1
@@ -968,20 +991,6 @@ if(is.null(marker.genes)&(Org == 'mmu')){
                     'NKG7','PDCD1','TNFRSF9','LAG3','CD160','CD4','CD40LG','IL2RA',
                     'FOXP3','DUSP4','IL2RB','KLRF1','FCGR3A','NCAM1','XCL1','MKI67','PCNA','KLRF')
     marker.genes <- c(HSPCs_lineage_signatures, Myeloids_lineage_signatures, B_cells_lineage_signatures, T_NK_cells_lineage_signatures)
-}
-
-# To specify cell type orders in the violin plot
-# ViolinPlot.cellTypeOrders <- c('cell type A', 'cell type B', ...)
-ViolinPlot.cellTypeOrders <- NULL # random orders
-if(is.null(ViolinPlot.cellTypeOrders)){
-  ViolinPlot.cellTypeOrders <- unique(sc_object@meta.data$selectLabels)
-}
-
-# To specify the colors for c('cell type A', 'cell type B', ...) in the violin plot
-# ViolinPlot.cellTypeColors <- c('color A', 'color B', ...)
-ViolinPlot.cellTypeColors <- NULL # random colors
-if(is.null(ViolinPlot.cellTypeColors)){
-  ViolinPlot.cellTypeColors <- viridis::viridis(length(unique(sc_object@meta.data$selectLabels)))
 }
 
 combinedViolinPlot(dataMatrix = dataMatrix,
@@ -1034,6 +1043,10 @@ if (!file.exists(paste0(output.dir, '/Step10.Calculate_lineage_scores/'))) {
 ```
 - Run lineage score calculation.
 ```{R, eval=FALSE}
+lineage.genelist <- NULL
+lineage.names <- NULL
+groups_colors <- NULL
+
 if(is.null(lineage.genelist)&is.null(lineage.names)&(Org == 'mmu')){
     lineage.genelist <- c(list(HSC_lineage_signatures),
                           list(Mpp_genes),
@@ -1056,15 +1069,9 @@ if(is.null(lineage.genelist)&is.null(lineage.names)&(Org == 'mmu')){
                        'T_NK_cells_lineage_signatures') 
 }
 
-if(is.null(ViolinPlot.cellTypeOrders)){
-  cellTypes_orders <- unique(sc_object@meta.data$selectLabels)
-}else{
-  cellTypes_orders <- ViolinPlot.cellTypeOrders  
-}
-    
 lineageScores(expression_matrix = expression_matrix,
               cellTypes = sc_object@meta.data$selectLabels,
-              cellTypes_orders = cellTypes_orders,
+              cellTypes_orders = ViolinPlot.cellTypeOrders,
               cellTypes_colors = ViolinPlot.cellTypeColors,
               groups = sc_object@meta.data$datasetID,
               groups_orders = unique(sc_object@meta.data$datasetID),
@@ -1119,8 +1126,6 @@ if (!file.exists(paste0(output.dir, '/Step11.GSVA/'))) {
 ```
 - Run GSVA.
 ```{R, eval=FALSE}
-setwd(wdir)
-
 if(Org=='mmu'){
   load(paste0(databasePath,"/mouse_c2_v5p2.rdata"))
   GSVA.genelist <- Mm.c2
@@ -1133,15 +1138,13 @@ if(Org=='mmu'){
   stop("Org should be 'mmu' or 'hsa'.")
 }
 
-if(is.null(ViolinPlot.cellTypeOrders)){
-  cellTypes_orders <- unique(sc_object@meta.data$selectLabels)
-}else{
-  cellTypes_orders <- ViolinPlot.cellTypeOrders  
-}    
+Step11_GSVA.identify.diff.features <- F
+Step11_GSVA.comparison.design <- NULL
+
 run_GSVA(sc_object = sc_object,
          GSVA.genelist = GSVA.genelist,
          GSVA.cellTypes = sc_object@meta.data$selectLabels,
-         GSVA.cellTypes.orders = cellTypes_orders,
+         GSVA.cellTypes.orders = ViolinPlot.cellTypeOrders,
          GSVA.cellGroups = sc_object@meta.data$datasetID,
          GSVA.identify.diff.features = Step11_GSVA.identify.diff.features,
          GSVA.comparison.design = Step11_GSVA.comparison.design,
@@ -1293,6 +1296,10 @@ Running Slingshot to infer cell trajectories and lineage relationships involves 
 
 ####  codes for running Slingshot
 ```{R, eval=FALSE}
+slingshot.start.clus <- "cell.type1"
+slingshot.end.clus <- "cell.type2"
+slingshot.colors <- NULL
+
 if( (length(input.data.dirs) > 1) & Step2_Quality_Control.RemoveBatches ){
     DefaultAssay(sc_object.subset) <- 'integrated'
 }else{
@@ -1454,6 +1461,7 @@ if (!file.exists(paste0(output.dir, '/Step14.Cell_cell_interection/'))) {
 - Run CellChat to perform cell-cell interaction analysis.
 ```{R, eval=FALSE}
 tempwd <- getwd()
+sorting=T
 run_CellChat(data.input=countsSlot,
              labels = sc_object@meta.data$selectLabels,
              cell.orders = ViolinPlot.cellTypeOrders,
